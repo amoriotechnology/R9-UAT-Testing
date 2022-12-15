@@ -105,7 +105,28 @@ class Web_settings extends CI_Model {
         return true;
 
     }
-
+    public function admin_company() {
+        $this->db->select('company_name' );
+         $this->db->from('company_information');
+       $this->db->where('create_by',$this->session->userdata('user_id'));
+       $query = $this->db->get();
+        if ($query->num_rows() > 0) {
+         return $query->result_array();
+         }
+     }
+     public function admin_user_mail_ids($company) {
+            $this->db->select('a.email,b.email_id' );
+             $this->db->from('company_information a');
+             $this->db->join('user_login b', 'b.cid = a.company_id');
+             $this->db->where('a.create_by',$this->session->userdata('user_id'));
+             $this->db->where('a.company_name',$company);
+           $query = $this->db->get();
+            if ($query->num_rows() > 0) {
+             return $query->result_array();
+             }
+ 
+ 
+     }
     public function invoice_desgn() {
         $purchase_id = date('YmdHis');
       
