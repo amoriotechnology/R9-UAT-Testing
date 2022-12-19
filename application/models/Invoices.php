@@ -3214,8 +3214,47 @@ if(!empty($this->input->post('paid_amount',TRUE))){
 
 
     }
+    public function get_payment_info($cname,$gtotal){
+        $this->db->select('*');
 
+        $this->db->from('payment');
+        $this->db->where('customer_name',$cname);
+        $this->db->where('total_amt',$gtotal);
+        $this->db->where('create_by',$this->session->userdata('user_id'));
+        $this->db->order_by('payment_date', 'DESC');
+        $this->db->limit(1);
+     
 
+        $query = $this->db->get();
+
+        if ($query->num_rows() > 0) {
+
+            return $query->result_array();
+
+        }
+
+       
+    }
+    public function add_payment_info(){
+       
+        $data=array(
+            'customer_name' =>$this->input->post('cutomer_name'),
+            'payment_date'  =>$this->input->post('payment_date'),
+            'reference_no' => $this->input->post('ref_no'),
+            'bank_name' => $this->input->post('bank'),
+            'total_amt' => $this->input->post('amount_to_pay'),
+            'amt_received' =>$this->input->post('amount_received') ,
+            'balance' => $this->input->post('balance'),
+            'amt_paid' =>$this->input->post('payment') ,
+            'details' => $this->input->post('details'),
+            'attachement' => $this->input->post('attachement'),
+            'create_by'  => $this->session->userdata('user_id')
+           );
+           $this->db->insert('payment', $data);
+
+echo $this->db->last_query();
+
+    }
     //update ocean import trucking
 
      public function update_ocean_import() {

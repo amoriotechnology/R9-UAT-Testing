@@ -45,7 +45,54 @@ class Cinvoice extends CI_Controller {
         $this->template->full_admin_html_view($content);
 
     }
+    public function add_payment_info(){
+        $CI = & get_instance();
 
+        $CI->auth->check_admin_auth();
+
+        $CI->load->model('Invoices');
+
+        $payment = $CI->Invoices->add_payment_info();
+  }
+  public function get_payment_info(){
+    $CI = & get_instance();
+
+    $CI->auth->check_admin_auth();
+
+    $CI->load->model('Invoices');
+$cname=$this->input->post('customer_name');
+$gtotal=$this->input->post('gtotal');
+    $payment = $CI->Invoices->get_payment_info($cname,$gtotal);
+    echo json_encode($payment);
+}
+    public function makepay() {
+
+
+        $CI = & get_instance();
+
+        $CI->auth->check_admin_auth();
+
+        $CI->load->library('linvoice');
+        $data=array();
+     
+       $CI->load->model('Invoices');
+       $bank_name = $CI->db->select('bank_name')
+       ->from('bank_add')
+       ->get()
+       ->result_array();
+       $data = array(
+
+           'bank_name' =>$bank_name
+
+       );
+
+      
+        $content = $this->load->view('invoice/add_bank', $data, true);
+        //$content='';
+        $this->template->full_admin_html_view($content);
+
+
+    }
 
      public function profarma_invoice() {
 
@@ -1532,7 +1579,9 @@ $this->db->update('bootgrid_data');
         $data = $this->Invoices->getTruckingList($postData);
         echo json_encode($data);
      }
-
+     public function select_bank_name(){
+   
+    }
 
           //Trucking Update Form
     public function trucking_update_form($purchase_id) {
@@ -3475,6 +3524,7 @@ $this->db->update('bootgrid_data');
             'customer_address' => $this->input->post('address',TRUE),
 
             'customer_mobile'  => $this->input->post('mobile',TRUE),
+            'currency_type'   => $this->input->post('currency1',TRUE),
 
             'customer_email'   => $this->input->post('email',TRUE),
 

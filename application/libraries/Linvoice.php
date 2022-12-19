@@ -868,6 +868,11 @@ class Linvoice {
         ->from('tax_information')
         ->get()
         ->result_array();
+        $bank_name = $CI->db->select('bank_name')
+        ->from('bank_add')
+        ->get()
+        ->result_array();
+    
         $taxfield = $CI->db->select('tax_name,default_value')
                 ->from('tax_settings')
                 ->get()
@@ -886,6 +891,7 @@ class Linvoice {
             'title'         => display('add_new_invoice'),
             'discount_type' => $currency_details[0]['discount_type'],
             'taxes'         => $taxfield,
+            'bank_name'  =>$bank_name,
             'tax'           => $taxfield1,
             'product'       =>$prodt,
             'customer_details'   => $customer_details,
@@ -905,6 +911,7 @@ class Linvoice {
        // $invoiceForm = $CI->parser->parse('invoice/profarma_invoice', $data, true);
         return $invoiceForm;
     }
+  
     public function invoice_add_form1() {
         $CI = & get_instance();
         ////////////Tax value////////////////

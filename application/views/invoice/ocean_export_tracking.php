@@ -157,11 +157,14 @@
                                     <div class="col-sm-8">
                                     <div class="form-group row">
                                     <div class="col-sm-6">
-                                        <select name="consignee" id="consignee" class="form-control " required="" tabindex="1"> 
+                                    <select name="consignee" id="consignee" class="form-control " required="" tabindex="1">
                                             <option value=" "><?php echo display('select_one') ?></option>
-                                            {all_customer}
-                                            <option value="{customer_name}">{customer_name}</option>
-                                            {/all_customer}
+                                           <?php
+                                           foreach($customer_name as $cus_name)
+                                           {
+                                           ?>
+                                            <option value="<?php echo $cus_name['customer_id']; ?>"><?php echo $cus_name['customer_name']; ?></option>
+                                         <?php } ?>
                                         </select>
                                         </div>
                                         <div class="col-sm-2">
@@ -436,172 +439,133 @@
 
 <!-- Purchase Report End -->
 <div class="modal fade modal-success" id="add_vendor" role="dialog">
-
-<div class="modal-dialog" role="document">
-
-    <div class="modal-content">
-
-        <div class="modal-header">
-
-            <a href="#" class="close" data-dismiss="modal">&times;</a>
-
-            <h3 class="modal-title">Add New Vendor</h3>
-
-        </div>
-
-        
-
-        <div class="modal-body">
-
-            <div id="customeMessage" class="alert hide"></div>
-
-           
-
-             <?php echo form_open_multipart('Csupplier/insert_supplier', array('id' => 'insert_supplier')) ?>
-
-
-    <div class="panel-body">
-
-
-
-        <div class="col-sm-6">
-
-        <div class="form-group row">
-            <label for="supplier_name" class="col-sm-4 col-form-label">Vendor Name<i class="text-danger">*</i></label>
-            <div class="col-sm-8">
-                <input class="form-control" name ="supplier_name" id="supplier_name" type="text" placeholder="Vendor Name"  required="" tabindex="1">
-            </div>
-        </div>
-
-        <div class="form-group row">
-            <label for="mobile" class="col-sm-4 col-form-label">Vendor Mobile<i class="text-danger"></i></label>
-            <div class="col-sm-8">
-                <input class="form-control" name="mobile" id="mobile" type="number" placeholder="Vendor Mobile"  min="0" tabindex="2">
-            </div>
-        </div>
-            <div class="form-group row">
-            <label for="phone" class="col-sm-4 col-form-label"><?php echo display('phone') ?> <i class="text-danger"></i></label>
-            <div class="col-sm-8">
-                <input class="form-control" name="phone" id="phone" type="number" placeholder="<?php echo display('phone') ?>"  min="0" tabindex="2">
-            </div>
-        </div>
-         <div class="form-group row">
-            <label for="email" class="col-sm-4 col-form-label"><?php echo display('email') ?> <i class="text-danger"></i></label>
-            <div class="col-sm-8">
-                <input class="form-control" name="email" id="email" type="email" placeholder="<?php echo display('email') ?>"   tabindex="2">
-            </div>
-        </div>
-         <div class="form-group row">
-            <label for="emailaddress" class="col-sm-4 col-form-label"><?php echo display('email').' '.display('address'); ?> <i class="text-danger"></i></label>
-            <div class="col-sm-8">
-                <input class="form-control" name="emailaddress" id="emailaddress" type="email" placeholder="<?php echo display('email').' '.display('address') ?>"  >
-            </div>
-        </div>
-
-          <div class="form-group row">
-            <label for="contact" class="col-sm-4 col-form-label"><?php echo display('contact'); ?> <i class="text-danger"></i></label>
-            <div class="col-sm-8">
-                <input class="form-control" name="contact" id="contact" type="text" placeholder="<?php echo display('contact') ?>"  >
-            </div>
-        </div>
-
-        <div class="form-group row">
-            <label for="fax" class="col-sm-4 col-form-label"><?php echo display('fax'); ?> <i class="text-danger"></i></label>
-            <div class="col-sm-8">
-                <input class="form-control" name="fax" id="fax" type="text" placeholder="<?php echo display('fax') ?>"  >
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="city" class="col-sm-4 col-form-label"><?php echo display('city'); ?> <i class="text-danger"></i></label>
-            <div class="col-sm-8">
-                <input class="form-control" name="city" id="city" type="text" placeholder="<?php echo display('city') ?>"  >
-            </div>
-        </div>
-        <div class="form-group-row">
-        <label for="" class="col-sm-4 col-form-label">Service Provider</label>
-            <div class="col-sm-8">
-               <select  style="width: 99px;"  class="form-control" name="service_provider">
-               
-                <option value="1">Yes</option>
-                <option value="0" selected>No</option>
-               </select>
-            </div>
-    </div>
-
-
-         
-    </div>
-    <div class="col-sm-6">
-    <div class="form-group row">
-            <label for="state" class="col-sm-4 col-form-label"><?php echo display('state'); ?> <i class="text-danger"></i></label>
-            <div class="col-sm-8">
-                <input class="form-control" name="state" id="state" type="text" placeholder="<?php echo display('state') ?>"  >
-            </div>
-        </div>
-      
-         
-         <div class="form-group row">
-            <label for="zip" class="col-sm-4 col-form-label"><?php echo display('zip'); ?> <i class="text-danger"></i></label>
-            <div class="col-sm-8">
-                <input class="form-control" name="zip" id="zip" type="text" placeholder="<?php echo display('zip') ?>"  >
-            </div>
-        </div>
-         <div class="form-group row">
-            <label for="country" class="col-sm-4 col-form-label"><?php echo display('country') ?> <i class="text-danger"></i></label>
-            <div class="col-sm-8">
-                <input class="form-control" name="country" id="country" type="text" placeholder="<?php echo display('country') ?>"  >
-            </div>
-        </div>
-
-        <div class="form-group row">
-            <label for="address " class="col-sm-4 col-form-label"><?php echo display('supplier_address') ?></label>
-            <div class="col-sm-8">
-                <textarea class="form-control" name="address" id="address " rows="2" placeholder="<?php echo display('supplier_address') ?>" ></textarea>
-            </div>
-        </div>
-
-         <div class="form-group row">
-            <label for="address2 " class="col-sm-4 col-form-label"><?php echo display('address') ?>2</label>
-            <div class="col-sm-8">
-                <textarea class="form-control" name="address2" id="address2" rows="2" placeholder="<?php echo display('supplier_address') ?>2" ></textarea>
-            </div>
-        </div>
-
-        <div class="form-group row">
-            <label for="details" class="col-sm-4 col-form-label"><?php echo display('supplier_details') ?></label>
-            <div class="col-sm-8">
-                <textarea class="form-control" name="details" id="details" rows="2" placeholder="<?php echo display('supplier_details') ?>" tabindex="4"></textarea>
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="previous_balance" class="col-sm-4 col-form-label"><?php echo display('previous_balance') ?></label>
-            <div class="col-sm-8">
-                <input class="form-control" name="previous_balance" id="previous_balance" type="text" min="0" placeholder="<?php echo display('previous_balance') ?>" tabindex="5">
-            </div>
-        </div>
-    </div> 
-
-    <div class="form-group row">
-            <label for="previous_balance" class="col-sm-4 col-form-label"><?php echo "Preferred Currency" ?></label>
-            <div class="col-sm-6">
-            <select name="currency_type" class="currency" id="currency1" style="width: 100%;">
-            <option id="im" value="select preferred currency">select preferred currency</option>
-    </select>
-<input type="hidden" name="" id="num" >
-<div class="right_box" style="display:none;">
-<select name="currency_type" class="currency" id="currency2" style="width: 95%;"></select>
-<input type="hidden" name="" id="ans" disabled>
-</div>
-<small id="errorMSG" style="display:none;"></small>
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <a href="#" class="close" data-dismiss="modal">&times;</a>
+                            <h3 class="modal-title">Add New Vendor</h3>
+                        </div>
+                        <div class="modal-body">
+                            <div id="customeMessage" class="alert hide"></div>
+                             <?php echo form_open_multipart('Csupplier/insert_supplier', array('id' => 'insert_supplier')) ?>
+                    <div class="panel-body">
+                        <div class="col-sm-6">
+                        <div class="form-group row">
+                            <label for="supplier_name" class="col-sm-4 col-form-label">Vendor Name<i class="text-danger">*</i></label>
+                            <div class="col-sm-8">
+                                <input class="form-control" name ="supplier_name" id="supplier_name" type="text" placeholder="Vendor Name"  required="" tabindex="1">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="mobile" class="col-sm-4 col-form-label">Vendor Mobile<i class="text-danger"></i></label>
+                            <div class="col-sm-8">
+                                <input class="form-control" name="mobile" id="mobile" type="number" placeholder="Vendor Mobile"  min="0" tabindex="2">
+                            </div>
+                        </div>
+                            <div class="form-group row">
+                            <label for="phone" class="col-sm-4 col-form-label"><?php echo display('phone') ?> <i class="text-danger"></i></label>
+                            <div class="col-sm-8">
+                                <input class="form-control" name="phone" id="phone" type="number" placeholder="<?php echo display('phone') ?>"  min="0" tabindex="2">
+                            </div>
+                        </div>
+                         <div class="form-group row">
+                            <label for="email" class="col-sm-4 col-form-label"><?php echo display('email') ?> <i class="text-danger"></i></label>
+                            <div class="col-sm-8">
+                                <input class="form-control" name="email" id="email" type="email" placeholder="<?php echo display('email') ?>"   tabindex="2">
+                            </div>
+                        </div>
+                         <div class="form-group row">
+                            <label for="emailaddress" class="col-sm-4 col-form-label"><?php echo display('email').' '.display('address'); ?> <i class="text-danger"></i></label>
+                            <div class="col-sm-8">
+                                <input class="form-control" name="emailaddress" id="emailaddress" type="email" placeholder="<?php echo display('email').' '.display('address') ?>"  >
+                            </div>
+                        </div>
+                          <div class="form-group row">
+                            <label for="contact" class="col-sm-4 col-form-label"><?php echo display('contact'); ?> <i class="text-danger"></i></label>
+                            <div class="col-sm-8">
+                                <input class="form-control" name="contact" id="contact" type="text" placeholder="<?php echo display('contact') ?>"  >
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="fax" class="col-sm-4 col-form-label"><?php echo display('fax'); ?> <i class="text-danger"></i></label>
+                            <div class="col-sm-8">
+                                <input class="form-control" name="fax" id="fax" type="text" placeholder="<?php echo display('fax') ?>"  >
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="city" class="col-sm-4 col-form-label"><?php echo display('city'); ?> <i class="text-danger"></i></label>
+                            <div class="col-sm-8">
+                                <input class="form-control" name="city" id="city" type="text" placeholder="<?php echo display('city') ?>"  >
+                            </div>
+                        </div>
+                         <div class="form-group-row">
+                        <label for="" class="col-sm-4 col-form-label">Service Provider</label>
+                            <div class="col-sm-8">
+                               <select class="form-control" name="service_provider">
+                                <option value="1">Yes</option>
+                                <option value="0" selected>No</option>
+                               </select>
+                            </div>
+                    </div>
+                    </div>
+                    <div class="col-sm-6">
+                    <div class="form-group row">
+                            <label for="state" class="col-sm-4 col-form-label"><?php echo display('state'); ?> <i class="text-danger"></i></label>
+                            <div class="col-sm-8">
+                                <input class="form-control" name="state" id="state" type="text" placeholder="<?php echo display('state') ?>"  >
+                            </div>
+                        </div>
+                         <div class="form-group row">
+                            <label for="zip" class="col-sm-4 col-form-label"><?php echo display('zip'); ?> <i class="text-danger"></i></label>
+                            <div class="col-sm-8">
+                                <input class="form-control" name="zip" id="zip" type="text" placeholder="<?php echo display('zip') ?>"  >
+                            </div>
+                        </div>
+                         <div class="form-group row">
+                            <label for="country" class="col-sm-4 col-form-label"><?php echo display('country') ?> <i class="text-danger"></i></label>
+                            <div class="col-sm-8">
+                                <input class="form-control" name="country" id="country" type="text" placeholder="<?php echo display('country') ?>"  >
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="address " class="col-sm-4 col-form-label"><?php echo display('supplier_address') ?></label>
+                            <div class="col-sm-8">
+                                <textarea class="form-control" name="address" id="address " rows="2" placeholder="<?php echo display('supplier_address') ?>" ></textarea>
+                            </div>
+                        </div>
+                         <div class="form-group row">
+                            <label for="address2 " class="col-sm-4 col-form-label"><?php echo display('address') ?>2</label>
+                            <div class="col-sm-8">
+                                <textarea class="form-control" name="address2" id="address2" rows="2" placeholder="<?php echo display('supplier_address') ?>2" ></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="details" class="col-sm-4 col-form-label"><?php echo display('supplier_details') ?></label>
+                            <div class="col-sm-8">
+                                <textarea class="form-control" name="details" id="details" rows="2" placeholder="<?php echo display('supplier_details') ?>" tabindex="4"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="previous_balance" class="col-sm-4 col-form-label"><?php echo display('previous_balance') ?></label>
+                            <div class="col-sm-8">
+                                <input class="form-control" name="previous_balance" id="previous_balance" type="text" min="0" placeholder="<?php echo display('previous_balance') ?>" tabindex="5">
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="form-group row">
+                            <label for="previous_balance" class="col-sm-4 col-form-label"><?php echo "Preferred Currency" ?></label>
+                            <div class="col-sm-8">
+                            <select name="currency1" class="currency" id="currency" style="width: 100%;">
+                            <option id="im" value="select preferred currency">select preferred currency</option>
+                            </select>
+                              <input type="hidden" name="" id="num" >
+                            <div class="right_box" style="display:none;">
+                              <select name="currency" class="currency" id="currency2" style="width: 95%;"></select>
+                              <input type="hidden" name="" id="ans" disabled>
+                            </div>
+                          <small id="errorMSG" style="display:none;"></small>
 <br><br>
-</div>
-
-
-    </div>
-
-    
-
-        </div>
 
 
 

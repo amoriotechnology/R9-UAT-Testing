@@ -165,6 +165,10 @@ $Web_settings = $CI->Web_settings->retrieve_setting_editdata();
                         <td colspan="5" style="text-align:right;font-weight:bold;">Grand Total:</td>
                         <td style="font-size: 16px;"><?php echo $currency;   ?><?php echo $grand_total;  ?></td>
                     </tr>
+                    <tr>
+                        <td colspan="5" style="text-align:right;font-weight:bold;">Grand Total(Preferred Currency):</td>
+                        <td style="font-size: 16px;"><?php echo "" ?>$<?php echo $grand_total;  ?></td>
+                    </tr>
                     </tfoot>
             </table>
             <br>
@@ -267,6 +271,10 @@ $Web_settings = $CI->Web_settings->retrieve_setting_editdata();
                     <tr>
                         <td colspan="5" style="text-align:right;font-weight:bold;">Grand Total:</td>
                         <td style="font-size: 16px;"><?php echo $currency;   ?><?php echo $grand_total;  ?></td>
+                    </tr>
+                    <tr>
+                        <td colspan="5" style="text-align:right;font-weight:bold;">Grand Total(Preferred Currency):</td>
+                        <td style="font-size: 16px;"><?php echo "" ?>$<?php echo $grand_total;  ?></td>
                     </tr>
                     </tfoot>
             </table>
@@ -383,6 +391,10 @@ elseif($template==3)
                        <td colspan="5" style="text-align:right;font-weight:bold;">Grand Total:</td>
                        <td style="font-size: 16px;"><?php echo $currency;   ?><?php echo $grand_total;  ?></td>
                    </tr>
+                   <tr>
+                        <td colspan="5" style="text-align:right;font-weight:bold;">Grand Total(Preferred Currency):</td>
+                        <td style="font-size: 16px;"><?php echo "" ?>$<?php echo $grand_total;  ?></td>
+                    </tr>
                    </tfoot>
            </table> 
            <br>

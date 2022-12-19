@@ -758,6 +758,22 @@ $(document).ready(function(){
 
   
 });
+let s1=0;
+    $('#Measurments'+s1).change(function(){
+    let measure1 = $("#Measurments"+s1).val();
+    let height1 , weight1 , thickness1;
+    $("#thickness"+s1).keyup(function(){
+        height1 = $("#height"+s1).val();
+        console.log(height1);
+        weight1 = $("#weight"+s1).val();
+          console.log(weight1);
+        thickness1 = $("#thickness"+s1).val();
+          console.log(thickness1);
+        let calcu1 = height1*weight1*thickness1;
+        calcu1 = calcu1+measure1;
+        $("#area"+s1).val(calcu1);
+    });
+  });
 $('#insert_purchase').submit(function (event) {
     var dataString = {
         dataString : $("#insert_purchase").serialize()

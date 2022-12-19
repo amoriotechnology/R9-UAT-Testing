@@ -1410,7 +1410,7 @@ return $output;
             'shipping_line'   => $this->input->post('shipping_line',TRUE),
             'container_no'   => $this->input->post('container_no',TRUE),
             'bl_number'   => $this->input->post('bl_number',TRUE),
-            'isf_filling'   => $this->input->post('isf_filling',TRUE),
+            'isf_filling'   => $this->input->post('isf_no',TRUE),
             'paid_amount'        => $paid_amount,
             'due_amount'         => $due_amount,
             'status'             => 1,

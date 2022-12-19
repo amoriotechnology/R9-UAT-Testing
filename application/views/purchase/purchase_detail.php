@@ -86,6 +86,10 @@
                         <td colspan="5" style="text-align:right;font-weight:bold;">Overall Total:</td>
                         <td style="font-size: 16px;"><?php  echo $currency." " ; ?><?php echo $purchase_all_data[0]['grand_total_amount']; ?></td>
                     </tr>
+                    <tr>
+                        <td colspan="5" style="text-align:right;font-weight:bold;">Grand Total(Preferred Currency):</td>
+                        <td style="font-size: 16px;"><?php echo "" ?>$<?php echo $purchase_all_data[0]['grand_total_amount']; ?></td>
+                    </tr>
                 </tbody>
             </table>
             <br>
@@ -163,6 +167,10 @@ elseif($template==1)
                     <tr>
                         <td colspan="5" style="text-align:right;font-weight:bold;">Overall Total:</td>
                         <td style="font-size: 16px;"><?php  echo $currency." " ; ?><?php echo $purchase_all_data[0]['grand_total_amount']; ?></td>
+                    </tr>
+                    <tr>
+                        <td colspan="5" style="text-align:right;font-weight:bold;">Grand Total(Preferred Currency):</td>
+                        <td style="font-size: 16px;"><?php echo "" ?>$<?php echo $purchase_all_data[0]['grand_total_amount']; ?></td>
                     </tr>
                 </tbody>
             </table>
@@ -248,6 +256,10 @@ elseif($template==3)
                     <tr>
                         <td colspan="5" style="text-align:right;font-weight:bold;">Overall Total:</td>
                         <td style="font-size: 16px;"><?php  echo $currency." " ; ?><?php echo $purchase_all_data[0]['grand_total_amount']; ?></td>
+                    </tr>
+                    <tr>
+                        <td colspan="5" style="text-align:right;font-weight:bold;">Grand Total(Preferred Currency):</td>
+                        <td style="font-size: 16px;"><?php echo "" ?>$<?php echo $purchase_all_data[0]['grand_total_amount']; ?></td>
                     </tr>
                 </tbody>
             </table>
