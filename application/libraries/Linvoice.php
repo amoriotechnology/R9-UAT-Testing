@@ -969,15 +969,13 @@ class Linvoice {
     }
 
       //ocean_export_tracking_add_form
-    public function ocean_export_tracking_add_form() {
+      public function ocean_export_tracking_add_form() {
         $CI = & get_instance();
         $CI->load->model('Invoices');
         $CI->load->model('Ppurchases');
         $CI->load->model('Web_settings');
-
         $all_supplier = $CI->Ppurchases->select_all_supplier();
         $customer_details = $CI->Invoices->pos_customer_setup();
-     
         $currency_details = $CI->Web_settings->retrieve_setting_editdata();
         $taxfield = $CI->db->select('tax_name,default_value')->from('tax_settings')->get()->result_array();
         $bank_list          = $CI->Web_settings->bank_list();
@@ -985,7 +983,7 @@ class Linvoice {
             'title'         => 'Add New Export Invoice',
             'discount_type' => $currency_details[0]['discount_type'],
             'taxes'         => $taxfield,
-            'customer_name' => isset($customer_details[0]['customer_name'])?$customer_details[0]['customer_name']:'',
+            'customer_name' => $CI->Invoices->pos_customer_setup(),
             'customer_id'   => isset($customer_details[0]['customer_id'])?$customer_details[0]['customer_id']:'',
             'bank_list'     => $bank_list,
                'all_supplier'  => $all_supplier

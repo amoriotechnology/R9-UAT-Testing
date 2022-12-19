@@ -149,7 +149,7 @@ border: 2px solid #dce4ec;
 
                  
 
-
+<?php    $payment_id=rand(); ?>
 
                     
 
@@ -247,7 +247,7 @@ border: 2px solid #dce4ec;
 
                         <input type="hidden" name="<?php echo $this->security->get_csrf_token_name();?>" value="<?php echo $this->security->get_csrf_hash();?>">
                         <input type="hidden" id="invoice_hdn"/> <input type="hidden" id="invoice_hdn1"/>
-
+                        <input type="text"  value="<?php echo $payment_id; ?>"  name="payment_id"/>
                         <div class="row">
 
                             <div class="col-sm-6">
@@ -272,7 +272,7 @@ border: 2px solid #dce4ec;
 
                                 </div>
 
-                                <input type="hidden" id="invoice_hdn1"/>
+                             
 
 
                                       <div class="form-group row">
@@ -695,26 +695,31 @@ textarea:focus, input:focus{
 
                                             <input type="hidden" name="baseUrl" class="baseUrl" value="<?php echo base_url();?>"/></td>
                                     </tr> 
-                                    <tr>
-                                        <td>
-                                        <input type="submit" value="Make Payment" id="paypls"/>
-                                            </td>
+                                    
+                                    <tr id="amt">
+                                   
+                                            <td style="text-align:right;"  colspan="4"><b><?php echo "Amount Paid" ?>:</b></td>
+                                          
                                             <td>
                                             <span class="form-control" style="background-color: #eee;" id="custospan"><input style="width:7%;font-weight:bold;" type="text" id="cus"  name="cus"  readonly="readonly" />
                                             <input type="text" id="amount_paid"  value="0.00" name="amount_paid"  readonly="readonly" />
                                             </span>
                                             </td>
                                             </tr> 
-                                            <tr>
-                                        <td>
-                                        <input type="submit" value="Payment History" id="history"/>
-                                            </td>
+                                            <tr id="bal">
+                                            <td style="text-align:right;"  colspan="4"><b><?php echo "Balance Amount " ?>:</b></td>
                                             <td>
                                             <span class="form-control" style="background-color: #eee;" id="custospan"><input style="width:7%;font-weight:bold;" type="text" id="cus"  name="cus"  readonly="readonly" />
                                             <input type="text" id="balance"  name="balance"  readonly="readonly" />
                                             </span>
                                             </td>
                                             </tr> 
+                                            <tr style="border-right:none;border-left:none;border-bottom:none;border-top:none">
+                                               
+                                            <td colspan="6" style="text-align: end;">
+                                        <input type="submit" value="Make Payment" class="btn btn-primary btn-large" id="paypls"/>
+                                            </td>
+                                            </tr>
                                 </tfoot>
                             </table>
                         </div>
@@ -1057,8 +1062,7 @@ $('.modal-backdrop').remove();
     event.preventDefault();
 });
 $('#download').on('click', function (e) {
-var link=localStorage.getItem("truck");
-console.log(link);
+
  var popout = window.open("<?php  echo base_url(); ?>Cinvoice/invoice_inserted_data/"+$('#invoice_hdn1').val());
  
     window.setTimeout(function(){
@@ -1668,123 +1672,134 @@ function payment_info(){
 
   <!------ add new bank -->  
      
-  <!------ add new customer -->  
-
-    <div class="modal fade modal-success" id="cust_info" role="dialog">
-
+<!------ add new customer -->
+<div class="modal fade modal-success" id="cust_info" role="dialog">
                 <div class="modal-dialog" role="document">
-
-                    <div class="modal-content">
-
+                    <div class="modal-content"    style="height: 50%;">
                         <div class="modal-header">
-
-                            
-
                             <a href="#" class="close" data-dismiss="modal">&times;</a>
-
                             <h3 class="modal-title"><?php echo display('add_new_customer') ?></h3>
-
                         </div>
-
-                        
-
-                        <div class="modal-body">
-
+                        <div class="modal-body"    style=" width: 90%;">
                             <div id="customeMessage" class="alert hide"></div>
-
                        <?php echo form_open('Cinvoice/instant_customer', array('class' => 'form-vertical', 'id' => 'newcustomer')) ?>
-
                     <div class="panel-body">
-
                         <input type ="hidden" name="csrf_test_name" id="" value="<?php echo $this->security->get_csrf_hash();?>">
-
                         <div class="form-group row">
-
-                            <label for="customer_name" class="col-sm-3 col-form-label"><?php echo display('customer_name') ?> <i class="text-danger">*</i></label>
-
-                            <div class="col-sm-6">
-
+                            <label for="customer_name" class="col-sm-4 col-form-label"><?php echo display('customer_name') ?> <i class="text-danger">*</i></label>
+                            <div class="col-sm-8">
                                 <input class="form-control" name ="customer_name" id="" type="text" placeholder="<?php echo display('customer_name') ?>"  required="" tabindex="1">
-
                             </div>
-
                         </div>
-
-
-
-                        <div class="form-group row">
-
-                             <label for="customer_email" class="col-sm-3 col-form-label">
-                                Customer <br>Email
-                              <i class="text-danger">*</i></label>
-
-                            <div class="col-sm-6">
-
-                                <input class="form-control" name ="email" id="email" type="email" placeholder="<?php echo display('customer_email') ?>" required tabindex="2"> 
-
+    <div class="form-group row">
+                            <label for="email" class="col-sm-4 col-form-label"><?php echo display('customer_email') ?><i class="text-danger">*</i></label>
+                            <div class="col-sm-8">
+                                <input class="form-control" name ="email" id="email" type="email" required="" placeholder="<?php echo display('customer_email') ?>" tabindex="2">
                             </div>
-
                         </div>
-
-
-
                         <div class="form-group row">
-
-                            <label for="mobile" class="col-sm-3 col-form-label"><?php echo display('customer_mobile') ?><i class="text-danger">*</i></label>
-
-                            <div class="col-sm-6">
-
+                            <label for="emailaddress" class="col-sm-4 col-form-label"><?php echo display('email').' '.display('address'); ?> <i class="text-danger"></i><i class="text-danger">*</i></label>
+                            <div class="col-sm-8">
+                                <input class="form-control" name="emailaddress" id="emailaddress" type="email" placeholder="<?php echo display('email').' '.display('address') ?>"  >
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="mobile" class="col-sm-4 col-form-label"><?php echo display('customer_mobile') ?> <i class="text-danger">*</i></label>
+                            <div class="col-sm-8">
                                 <input class="form-control" name ="mobile" id="mobile" type="number" placeholder="<?php echo display('customer_mobile') ?>" min="0" tabindex="3" required>
-
                             </div>
-
                         </div>
-
-
-
+                         <div class="form-group row">
+                            <label for="phone" class="col-sm-4 col-form-label"><?php echo display('phone') ?> <i class="text-danger">*</i></label>
+                            <div class="col-sm-8">
+                                <input class="form-control" name="phone" id="phone" type="number" placeholder="<?php echo display('phone') ?>"  min="0" tabindex="2" required="">
+                            </div>
+                        </div>
+                                 <div class="form-group row">
+                            <label for="contact" class="col-sm-4 col-form-label"><?php echo display('contact'); ?> <i class="text-danger">*</i></label>
+                            <div class="col-sm-8">
+                                <input class="form-control" name="contact" id="contact" type="text" placeholder="<?php echo display('contact') ?>" required="" >
+                            </div>
+                        </div>
                         <div class="form-group row">
-
-                            <label for="address " class="col-sm-3 col-form-label"><?php echo display('customer_address') ?><i class="text-danger">*</i></label>
-
-                            <div class="col-sm-6">
-
-                                <textarea class="form-control" required name="address" id="address " rows="3" placeholder="<?php echo display('customer_address') ?>" tabindex="4"></textarea>
-
+                            <label for="fax" class="col-sm-4 col-form-label"><?php echo display('fax'); ?> <i class="text-danger">*</i></label>
+                            <div class="col-sm-8">
+                                <input class="form-control" name="fax" id="fax" type="text" placeholder="<?php echo display('fax') ?>"  required="">
                             </div>
-
                         </div>
-
-                      
-
+                        <div class="form-group row">
+                            <label for="Preferred currency" class="col-sm-4 col-form-label"> Preferred currency<i class="text-danger">*</i></label>
+                            <div class="col-sm-8">
+                            <select name="currency1" class="currency" id="currency1" style="width: 99%;">
+                            <option id="im" value="select preferred currency">select preferred currency</option>
+                            </select>
+                                <input type="hidden" name="" id="num" >
+                                <div class="right_box" style="display:none;">
+                                <select name="currency" class="currency" id="currency2" style="width: 65%;"></select>
+                                <input type="hidden" name="" id="ans" disabled>
+                                </div>
+                            <small id="errorMSG" style="display:none;"></small>
+                            <br><br>
+                            </div>
+                            <div id="pageLoader">
+                            </div>
+                            </div>
+<!--
+                    <div class="col-sm-6">
+                        <div class="form-group row">
+                            <label for="city" class="col-sm-4 col-form-label"><?php echo display('city'); ?> <i class="text-danger">*</i></label>
+                            <div class="col-sm-8">
+                                <input class="form-control" name="city" id="city" type="text" placeholder="<?php echo display('city') ?>" required="" >
+                            </div>
+                        </div> -->
+                      <div class="form-group row">
+                            <label for="state" class="col-sm-4 col-form-label"><?php echo display('state'); ?> <i class="text-danger">*</i></label>
+                            <div class="col-sm-8">
+                                <input class="form-control" name="state" id="state" type="text" placeholder="<?php echo display('state') ?>" required="" >
+                            </div>
+                        </div>
+                         <div class="form-group row">
+                            <label for="zip" class="col-sm-4 col-form-label"><?php echo display('zip'); ?> <i class="text-danger">*</i></label>
+                            <div class="col-sm-8">
+                                <input class="form-control" name="zip" id="zip" type="text" placeholder="<?php echo display('zip') ?>"  required="">
+                            </div>
+                        </div>
+                         <div class="form-group row">
+                            <label for="country" class="col-sm-4 col-form-label"><?php echo display('country') ?> <i class="text-danger">*</i></label>
+                            <div class="col-sm-8">
+                                <input class="form-control" name="country" id="country" type="text" placeholder="<?php echo display('country') ?>" required="" >
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="address " class="col-sm-4 col-form-label"><?php echo display('customer_address') ?><i class="text-danger">*</i></label>
+                            <div class="col-sm-8">
+                                <textarea class="form-control" name="address" id="address " required="" rows="2" placeholder="<?php echo display('customer_address') ?>"></textarea>
+                            </div>
+                        </div>
+                          <div class="form-group row">
+                            <label for="address2 " class="col-sm-4 col-form-label"><?php echo display('address') ?><i class="text-danger">*</i></label>
+                            <div class="col-sm-8">
+                                <textarea class="form-control" required="" name="address2" id="address2" rows="2" placeholder="<?php echo display('address') ?>2" ></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="previous_balance" class="col-sm-4 col-form-label"><?php echo display('previous_balance') ?> <i class="text-danger">*</i></label>
+                            <div class="col-sm-8">
+                                <input class="form-control" name="previous_balance" id="previous_balance" type="text" min="0" placeholder="<?php echo display('previous_balance') ?>" tabindex="5" required="">
+                            </div>
+                        </div>
                     </div>
-
-                    
-
-                        </div>
-
-
-
+                    </div>
                         <div class="modal-footer">
-
-                            
-
                             <a href="#" class="btn btn-danger" data-dismiss="modal">Close</a>
-
-                            
-
                             <input type="submit" class="btn btn-success" onClick="refreshPage()" value="Submit">
-
                         </div>
-
                         <?php echo form_close() ?>
-
                     </div><!-- /.modal-content -->
-
                 </div><!-- /.modal-dialog -->
-
             </div><!-- /.modal -->
 
-         
+   
 
 
 
@@ -1896,6 +1911,7 @@ function payment_info(){
 
     </div>
 <input type="hidden" id="cutomer_name" name="cutomer_name"/>
+<input type="text"  value="<?php echo $payment_id; ?>"  name="payment_id"/>
  <div class="form-group row">
 
         <label for="billing_address" style="text-align:end;" class="col-sm-3 col-form-label">Reference No</label>
@@ -1950,7 +1966,7 @@ function payment_info(){
 </div>
       </div>
       <input type="hidden" name="<?php echo $this->security->get_csrf_token_name();?>" value="<?php echo $this->security->get_csrf_hash();?>">
-                       
+      <input class=" form-control" type="hidden"  readonly name="customer_name_modal" id="customer_name_modal" required   />    
       <div class="form-group row">
 
 <label for="billing_address" style="text-align:end;" class="col-sm-3 col-form-label">Amount to be paid : </label>
@@ -1975,7 +1991,7 @@ function payment_info(){
 
 <div class="col-sm-5">
     
-<input class=" form-control" type="text"  readonly name="balance" value="0.00" id="balance" required   />
+<input class=" form-control" type="text"  readonly name="balance" value="0.00" id="balance_modal" required   />
 </div>
 </div> 
 <div class="form-group row">
@@ -1984,7 +2000,7 @@ function payment_info(){
 
 <div class="col-sm-5">
     
-<input class=" form-control" type="text"  name="payment" id="payment" required   />
+<input class=" form-control" type="text"  name="payment" id="payment_from_modal" required   />
 </div>
 </div>
 
@@ -2007,15 +2023,15 @@ function payment_info(){
 
 
 
-</form>
+
 
      
-     </div>
+     </div>   </div>
      <div class="modal-footer">
-     <input class=" form-control" type="submit"  name="submit_pay"  required   />
+     <input class=" form-control" type="submit"  name="submit_pay" id="submit_pay"  required   />
      </div>
    </div>
-   
+   </form>
  </div>
 </div>
 
@@ -2190,7 +2206,7 @@ function payment_info(){
        console.log('You selected: ' + this.value);
     }).change();
     $('#customer_name').change(function(e){
-       
+       $('#customer_name_modal').val($(this).val());
     var data = {
       
         value:$(this).val()
@@ -2229,6 +2245,20 @@ function payment_info(){
 
 
 <script type="text/javascript">
+ 
+    
+     $('#payment_from_modal').on('input',function(e){
+
+ var payment=parseInt($('#payment_from_modal').val());
+var amount_to_pay=parseInt($('#amount_to_pay').val());
+console.log(payment+"/"+amount_to_pay);
+console.log(parseInt(amount_to_pay)-parseInt(payment));
+var value=parseInt(amount_to_pay)-parseInt(payment);
+$('#balance_modal').val(value);
+if (isNaN(value)) {
+  $('#balance_modal').val("0");
+   }
+ });
       $('#bank_id').change(function(){
         localStorage.setItem("selected_bank_name",$('#bank_id').val());
 
@@ -2358,17 +2388,9 @@ function refreshPage(){
 
 
 <script type="text/javascript">
-$(document).ready(function () {
-    $("#add_purchase").click(function () {
-        $("#save_another").toggle();
-    });
-});
+;
 
-$(document).ready(function () {
-    $("#add_purchase").click(function () {
-        $("#download").toggle();
-    });
-});
+
 
 function packing(id)
 {
@@ -2378,7 +2400,10 @@ function packing(id)
      $("#packbutton").hide();
 }
 
-
+$(document).ready(function(){
+$('#amt').hide();
+$('#bal').hide();
+    });
 $('#paypls').on('click', function (e) {
 $('#amount_to_pay').val($('#gtotal').val());
     $('#payment_modal').modal('show');
@@ -2402,27 +2427,21 @@ $('#add_payment_info').submit(function (event) {
        data:$("#add_payment_info").serialize(),
 
        success:function (data) {
-        localStorage.setItem("sale_paid_amt",$('#payment').val());
-        localStorage.setItem("sale_bal_amt",$('#balance').val());
-
-       console.log(localStorage.getItem("sale_paid_amt")+"/"+localStorage.getItem("sale_bal_amt"));
-       var input_hdn2="New Sale created Successfully";
-       $("#bodyModal1").html(input_hdn2);
+        console.log(data);
+        $('#amount_paid').val($('#payment_from_modal').val());
+    $('#balance').val($('#balance_modal').val());
+    $('#amt').show();
+$('#bal').show();
+    $('#payment_modal').modal('hide');
+    $("#bodyModal1").html("Payment Successfully Completed");
        $('#myModal1').modal('show');
-       $('#final_submit').show();
-       $('#download').show();
-       $('#email_btn').show();
-   window.setTimeout(function(){
-       $('.modal').modal('hide');
-      
-$('.modal-backdrop').remove();
+    
+    window.setTimeout(function(){
+        $('#myModal1').modal('hide');
 },2500);
 
-           var split = data.split("/");
-           $('#invoice_hdn1').val(split[0]);
-        
-    
-        $('#invoice_hdn').val(split[1]);
+
+      
       }
 
    });

@@ -53,6 +53,7 @@ class Cinvoice extends CI_Controller {
         $CI->load->model('Invoices');
 
         $payment = $CI->Invoices->add_payment_info();
+        echo json_encode($payment);
   }
   public function get_payment_info(){
     $CI = & get_instance();

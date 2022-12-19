@@ -206,7 +206,25 @@
                                 </div>
                             </div>
                         </div>
-
+                        <div class="row">
+                        <div class="form-group row">
+                       <label for="ISF NO" class="col-sm-3 col-form-label"  > ISF FIELD</label>
+                                 <div class="col-sm-2">
+                              <select name="isf_field" class="form-control" required="" onchange="bank_paymet(this.value)" tabindex="3" style="width150px">
+                                              <option value=""selected>Select ISF NO</option>
+                                            <option value="1"><?php echo display('NO') ?></option>
+                                            <option value="2"><?php echo display('YES') ?></option>
+                             </select>
+                                  </div>
+                    </div>
+                     <div class="col-sm-5" id="bank_div">
+                         <div class="form-group row">
+                            <label for="ISF" class="col-sm-6   col-form-label"   >ISF NO </label>
+                               <div class="col-sm-6">
+                            <input name="isf_no" class="form-control bankpayment"   value=""  id="bank_id">
+                    </div>
+               </div>
+           </div>
 
                           <div class="row">
 

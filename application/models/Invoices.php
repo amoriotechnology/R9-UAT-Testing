@@ -1889,13 +1889,17 @@ public function retrieve_packing_editdata($purchase_id) {
 
             ############ default table :: customer_payment :: inflow_92mizdldrv #################
 
-     
+            $payment_id=$this->input->post('payment_id');
+      
+          
+               
 
 
 
         //Data inserting into invoice table
 
         $datainv = array(
+            'payment_id' => $payment_id,
 
             'invoice_id'      => $invoice_id,
 
@@ -1916,8 +1920,8 @@ public function retrieve_packing_editdata($purchase_id) {
             'total_amount'    => $this->input->post('total',TRUE),
             'etd'    => $this->input->post('etd',TRUE),
             'eta'    => $this->input->post('eta',TRUE),
-           
-
+            'amt_paid'    => $this->input->post('amount_paid',TRUE),
+            'balance'    => $this->input->post('balance',TRUE),
             'gtotal'    => $this->input->post('gtotal',TRUE),
             'ac_details'    => $this->input->post('ac_details',TRUE),
             'remark'    => $this->input->post('remark',TRUE),
@@ -3236,9 +3240,11 @@ if(!empty($this->input->post('paid_amount',TRUE))){
        
     }
     public function add_payment_info(){
-       
+       $payment_id=$this->input->post('payment_id');
+      
         $data=array(
-            'customer_name' =>$this->input->post('cutomer_name'),
+            'payment_id' => $payment_id,
+            'customer_name' =>$this->input->post('customer_name_modal'),
             'payment_date'  =>$this->input->post('payment_date'),
             'reference_no' => $this->input->post('ref_no'),
             'bank_name' => $this->input->post('bank'),
@@ -3252,7 +3258,7 @@ if(!empty($this->input->post('paid_amount',TRUE))){
            );
            $this->db->insert('payment', $data);
 
-echo $this->db->last_query();
+
 
     }
     //update ocean import trucking

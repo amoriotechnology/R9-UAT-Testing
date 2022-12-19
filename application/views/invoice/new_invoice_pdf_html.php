@@ -148,6 +148,40 @@ $Web_settings = $CI->Web_settings->retrieve_setting_editdata();
                     <td colspan="5" style="text-align:right;font-weight:bold;">Grand Total:</td>
                         <td style="font-size: 16px;"><?php  echo $currency." " ; ?><?php echo $all_invoice[0]['gtotal']; ?></td>
                     </tr>
+                    <tr>
+                                        
+                                    
+                                    
+                                    <td style="text-align:right;"  colspan="4"><b><?php echo "Grand Total" ?>:</b><br/><b>(Preferred Currency)</b></td>
+                                    <td>
+                                            <span class="form-control" style="background-color: #eee;" id="custospan"><input style="width:7%;font-weight:bold;" type="text" id="cus"  name="cus"  readonly="readonly" />
+                                            <input type="text" id="customer_gtotal"  name="customer_gtotal"  readonly="readonly" />
+                                            </span></td>
+                                      
+
+                                            <input type="text" id="final_gtotal"  name="final_gtotal" />
+
+                                            <input type="hidden" name="baseUrl" class="baseUrl" value="<?php echo base_url();?>"/></td>
+                                    </tr> 
+                                    
+                                    <tr id="amt">
+                                   
+                                            <td style="text-align:right;"  colspan="4"><b><?php echo "Amount Paid" ?>:</b></td>
+                                          
+                                            <td>
+                                            <span class="form-control" style="background-color: #eee;" id="custospan"><input style="width:7%;font-weight:bold;" type="text" id="cus"  name="cus"  readonly="readonly" />
+                                            <input type="text" id="amount_paid"  value="0.00" name="amount_paid"  readonly="readonly" />
+                                            </span>
+                                            </td>
+                                            </tr> 
+                                            <tr id="bal">
+                                            <td style="text-align:right;"  colspan="4"><b><?php echo "Balance Amount " ?>:</b></td>
+                                            <td>
+                                            <span class="form-control" style="background-color: #eee;" id="custospan"><input style="width:7%;font-weight:bold;" type="text" id="cus"  name="cus"  readonly="readonly" />
+                                            <input type="text" id="balance"  name="balance"  readonly="readonly" />
+                                            </span>
+                                            </td>
+                                            </tr> 
                                    </tfoot>
             </table>
             <br>
