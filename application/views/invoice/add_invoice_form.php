@@ -17,6 +17,7 @@ border: 2px solid #dce4ec;
 .bootstrap-select:not([class*=col-]):not([class*=form-control]):not(.input-group-btn) {
     width: 420px;
 }
+
     </style>
 
 <!-- Add New Invoice Start -->
@@ -217,7 +218,7 @@ border: 2px solid #dce4ec;
 
     <div class="col-sm-5">
 
-        <select name="paytype" class="form-control" required="" onchange="bank_paymet(this.value)" tabindex="3" style="width100">
+        <select name="paytype" id="paytype" class="form-control" required=""  tabindex="3" style="width100">
 
             <option value="1"><?php echo display('cash_payment') ?></option>
 
@@ -247,7 +248,7 @@ border: 2px solid #dce4ec;
 
                         <input type="hidden" name="<?php echo $this->security->get_csrf_token_name();?>" value="<?php echo $this->security->get_csrf_hash();?>">
                         <input type="hidden" id="invoice_hdn"/> <input type="hidden" id="invoice_hdn1"/>
-                        <input type="text"  value="<?php echo $payment_id; ?>"  name="payment_id"/>
+                        <input type="hidden"  value="<?php echo $payment_id; ?>"  name="payment_id"/>
                         <div class="row">
 
                             <div class="col-sm-6">
@@ -460,80 +461,7 @@ border: 2px solid #dce4ec;
 
 
 
-                        <div class="col-sm-5" id="bank_div">
-
-                            <div class="form-group row">
-
-                                <label for="bank" class="col-sm-5   col-form-label"><?php
-
-                                    echo display('bank');
-
-                                    ?> <i class="text-danger">*</i></label>
-
-                                <div class="col-sm-6">
-
-                                   <select name="bank_id" class="form-control bankpayment"  id="bank_id">
-
-                                   <option value="" disabled selected>Choose Your Bank</option>
-
-<option value="Axis Bank Ltd.">Axis Bank Ltd.</option>
-<option value="Bandhan Bank Ltd.">Bandhan Bank Ltd.</option>
-<option value="Bank of Baroda">Bank of Baroda</option>
-<option value="Bank of India">Bank of India</option>
-<option value="Bank of Maharashtra">Bank of Maharashtra</option>
-<option value="Canara Bank">Canara Bank</option>
-<option value="Central Bank of India">Central Bank of India</option>
-<option value="City Union Bank Ltd.">City Union Bank Ltd.</option>
-<option value="CSB Bank Ltd.">CSB Bank Ltd.</option>
-<option value="DCB Bank Ltd.">DCB Bank Ltd.</option>
-<option value="Dhanlaxmi Bank Ltd.">Dhanlaxmi Bank Ltd.</option>
-<option value="Federal Bank Ltd.">Federal Bank Ltd.</option>
-<option value="HDFC Bank Ltd">HDFC Bank Ltd</option>
-<option value="ICICI Bank Ltd.">ICICI Bank Ltd.</option>
-<option value="IDBI Bank Ltd.">IDBI Bank Ltd.</option>
-<option value="IDFC First Bank Ltd.">IDFC First Bank Ltd.</option>
-<option value="Indian Bank">Indian Bank</option>
-<option value="Indian Overseas Bank">Indian Overseas Bank</option>
-<option value="Induslnd Bank Ltd">Induslnd Bank Ltd</option>
-<option value="Jammu & Kashmir Bank Ltd.">Jammu & Kashmir Bank Ltd.</option>
-<option value="Karnataka Bank Ltd.">Karnataka Bank Ltd.</option>
-<option value="Karur Vysya Bank Ltd.">Karur Vysya Bank Ltd.</option>
-<option value="Kotak Mahindra Bank Ltd">Kotak Mahindra Bank Ltd</option>
-<option value="Nainital Bank Ltd.">Nainital Bank Ltd.</option>
-<option value="Punjab & Sind Bank">Punjab & Sind Bank</option>
-<option value="Punjab National Bank">Punjab National Bank</option>
-<option value="RBL Bank Ltd.">RBL Bank Ltd.</option>
-<option value="South Indian Bank Ltd.">South Indian Bank Ltd.</option>
-<option value="State Bank of India">State Bank of India</option>
-<option value="Tamilnad Mercantile Bank Ltd.">Tamilnad Mercantile Bank Ltd.</option>
-<option value="UCO Bank">UCO Bank</option>
-<option value="Union Bank of India">Union Bank of India</option>
-<option value="YES Bank Ltd.">YES Bank Ltd.</option>
-<?php foreach($bank_name as $b){ ?>
-  <option value="<?=$b['bank_name']; ?>"><?=$b['bank_name']; ?></option>
-<?php } ?>
-
-                              
-
-                                    </select>
-
-                                 
-
-                                </div>
-                                 <?php if($this->permission1->method('add_customer','create')->access()){ ?>
-
-                                    <div  class=" col-sm-1">
-
-                                         <!-- <a href="#" class="client-add-btn btn btn-info" aria-hidden="true" data-toggle="modal" data-target="#bank_info"><i class="ti-plus m-r-2"></i></a> -->
-                                         <a href="#" class="client-add-btn btn btn-info" aria-hidden="true"   data-toggle="modal" data-target="#add_bank_info" >Add New Bank</a>
-                                    </div>
-
-                                <?php } ?>
-                             
-
-                            </div>
-
-                        </div>
+                      
 
                         </div>
 
@@ -686,7 +614,7 @@ textarea:focus, input:focus{
                                     
                                     <td style="text-align:right;"  colspan="4"><b><?php echo "Grand Total" ?>:</b><br/><b>(Preferred Currency)</b></td>
                                     <td>
-                                            <span class="form-control" style="background-color: #eee;" id="custospan"><input style="width:7%;font-weight:bold;" type="text" id="cus"  name="cus"  readonly="readonly" />
+                                            <span class="form-control" style="background-color: #eee;" class="custospan"><input style="width:15%;font-weight:bold;" type="text" class="cus"  name="cus"  readonly="readonly" />
                                             <input type="text" id="customer_gtotal"  name="customer_gtotal"  readonly="readonly" />
                                             </span></td>
                                       
@@ -701,7 +629,7 @@ textarea:focus, input:focus{
                                             <td style="text-align:right;"  colspan="4"><b><?php echo "Amount Paid" ?>:</b></td>
                                           
                                             <td>
-                                            <span class="form-control" style="background-color: #eee;" id="custospan"><input style="width:7%;font-weight:bold;" type="text" id="cus"  name="cus"  readonly="readonly" />
+                                            <span class="form-control" style="background-color: #eee;" class="custospan"><input style="width:15%;font-weight:bold;" type="text" class="cus"  name="cus"  readonly="readonly" />
                                             <input type="text" id="amount_paid"  value="0.00" name="amount_paid"  readonly="readonly" />
                                             </span>
                                             </td>
@@ -709,7 +637,7 @@ textarea:focus, input:focus{
                                             <tr id="bal">
                                             <td style="text-align:right;"  colspan="4"><b><?php echo "Balance Amount " ?>:</b></td>
                                             <td>
-                                            <span class="form-control" style="background-color: #eee;" id="custospan"><input style="width:7%;font-weight:bold;" type="text" id="cus"  name="cus"  readonly="readonly" />
+                                            <span class="form-control" style="background-color: #eee;" class="custospan"><input style="width:15%;font-weight:bold;" type="text" class="cus"  name="cus"  readonly="readonly" />
                                             <input type="text" id="balance"  name="balance"  readonly="readonly" />
                                             </span>
                                             </td>
@@ -1231,7 +1159,7 @@ $('#customer_name').on('change', function (e) {
                csrfHash = result.csrfHash;
             }
          console.log(result[0]['currency_type']);
-        $("#cus").val(result[0]['currency_type']);
+        $(".cus").val(result[0]['currency_type']);
         $("label[for='custocurrency']").html(result[0]['currency_type']);
        console.log('https://open.er-api.com/v6/latest/<?php echo $curn_info_default; ?>');
        $.getJSON('https://open.er-api.com/v6/latest/<?php echo $curn_info_default; ?>', 
@@ -1890,12 +1818,12 @@ function payment_info(){
       <div class="modal-content" style="    margin-top: 190px;">
         <div class="modal-header" style="">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">New Sale</h4>
+          <h4 class="modal-title">ADD PAYMENT</h4>
         </div>
         <div class="modal-body">
           
    
-<form id="add_payment_info"  method="post">  
+<form id="add_payment_info"  method="post" >  
             <div class="row">
 
 
@@ -1911,17 +1839,17 @@ function payment_info(){
 
     </div>
 <input type="hidden" id="cutomer_name" name="cutomer_name"/>
-<input type="text"  value="<?php echo $payment_id; ?>"  name="payment_id"/>
+<input type="hidden"  value="<?php echo $payment_id; ?>"  name="payment_id"/>
  <div class="form-group row">
 
-        <label for="billing_address" style="text-align:end;" class="col-sm-3 col-form-label">Reference No</label>
+        <label for="billing_address" style="text-align:end;" class="col-sm-3 col-form-label">Reference No<i class="text-danger">*</i></label>
 
         <div class="col-sm-5">
         <input class=" form-control" type="text"  name="ref_no" id="ref_no" required   />
 </div>
  </div> 
     <div class="form-group row">
-      <label for="bank" style="text-align:end;" class="col-sm-3 col-form-label">Select Bank:</label>
+      <label for="bank" style="text-align:end;" class="col-sm-3 col-form-label">Select Bank:<i class="text-danger">*</i></label>
       <a data-toggle="modal" href="#add_bank_info" class="btn btn-primary">Add Bank</a>
       <div class="col-sm-5">
   <select name="bank" id="bank"  class="form-control bankpayment" >
@@ -1972,8 +1900,9 @@ function payment_info(){
 <label for="billing_address" style="text-align:end;" class="col-sm-3 col-form-label">Amount to be paid : </label>
 
 <div class="col-sm-5">
-    
-<input class=" form-control" type="text"  readonly name="amount_to_pay" id="amount_to_pay" required   />
+<span class="form-control" style="background-color: #eee;" class="custospan"><input style="width:15%;font-weight:bold;" type="text" class="cus"  name="cus"  readonly="readonly" />
+<input  type="text"  readonly name="amount_to_pay" id="amount_to_pay" required   />
+</span>
 </div>
 </div> 
       <div class="form-group row" style="display:none;">
@@ -1981,8 +1910,9 @@ function payment_info(){
 <label for="billing_address" style="text-align:end;" class="col-sm-3 col-form-label">Amount Received : </label>
 
 <div class="col-sm-5">
-    
-<input class=" form-control" type="text"  name="amount_received" value="0.00" id="amount_received" required   />
+<span class="form-control" style="background-color: #eee;" class="custospan"><input style="width:15%;font-weight:bold;" type="text" class="cus"  name="cus"  readonly="readonly" />
+<input  type="text"  name="amount_received" value="0.00" id="amount_received" required   />
+</span>
 </div>
 </div> 
 <div class="form-group row">
@@ -1990,17 +1920,19 @@ function payment_info(){
 <label for="billing_address" style="text-align:end;" class="col-sm-3 col-form-label">Balance : </label>
 
 <div class="col-sm-5">
-    
-<input class=" form-control" type="text"  readonly name="balance" value="0.00" id="balance_modal" required   />
+<span class="form-control" style="background-color: #eee;" class="custospan"><input style="width:15%;font-weight:bold;" type="text" class="cus"  name="cus"  readonly="readonly" />
+<input  type="text"  readonly name="balance" value="0.00" id="balance_modal" required   />
+</span>
 </div>
 </div> 
 <div class="form-group row">
 
-<label for="billing_address" style="text-align:end;" class="col-sm-3 col-form-label">Payment Amount: </label>
+<label for="billing_address" style="text-align:end;" class="col-sm-3 col-form-label">Payment Amount: <i class="text-danger">*</i></label>
 
 <div class="col-sm-5">
-    
-<input class=" form-control" type="text"  name="payment" id="payment_from_modal" required   />
+<span class="form-control" style="background-color: #eee;" class="custospan"><input style="width:15%;font-weight:bold;" type="text" class="cus"  name="cus"  readonly="readonly" />
+<input  type="text"  name="payment" id="payment_from_modal" required   />
+</span>
 </div>
 </div>
 
@@ -2009,7 +1941,7 @@ function payment_info(){
 <label for="billing_address" style="text-align:end;" class="col-sm-3 col-form-label">Additional Information : </label>
 
 <div class="col-sm-5">
-<input class=" form-control" type="text"  name="details" id="details" required/>
+<input class=" form-control" type="text"  name="details" id="details"/>
 </div>
 </div> 
 <div class="form-group row">
@@ -2017,7 +1949,7 @@ function payment_info(){
 <label for="billing_address" style="text-align:end;" class="col-sm-3 col-form-label">Attachement : </label>
 
 <div class="col-sm-5">
-<input class=" form-control" type="file"  name="attachement" id="attachement" required   />
+<input class=" form-control" type="file"  name="attachement" id="attachement" />
 </div>
 </div> 
 
@@ -2028,7 +1960,7 @@ function payment_info(){
      
      </div>   </div>
      <div class="modal-footer">
-     <input class=" form-control" type="submit"  name="submit_pay" id="submit_pay"  required   />
+     <input class=" form-control" type="submit"  name="submit_pay" id="submit_pay"   required   />
      </div>
    </div>
    </form>
@@ -2263,6 +2195,9 @@ if (isNaN(value)) {
         localStorage.setItem("selected_bank_name",$('#bank_id').val());
 
       });
+   
+
+     
      $('#number_of_days').change(function(){
       
        var data = {
@@ -2401,11 +2336,12 @@ function packing(id)
 }
 
 $(document).ready(function(){
+   
 $('#amt').hide();
 $('#bal').hide();
     });
 $('#paypls').on('click', function (e) {
-$('#amount_to_pay').val($('#gtotal').val());
+$('#amount_to_pay').val($('#customer_gtotal').val());
     $('#payment_modal').modal('show');
   e.preventDefault();
 

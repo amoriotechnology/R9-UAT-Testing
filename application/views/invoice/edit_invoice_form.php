@@ -436,7 +436,7 @@
                             </div>
 
 
-                            <input type="text"  value="<?php echo $all_invoice[0]['payment_id']; ?>" id="payment_id"/>
+                          
 
                         <div class="col-sm-5" id="bank_div">
 
@@ -534,7 +534,7 @@ input[type=number]::-webkit-outer-spin-button {
 </td>
 </tr>
 </table>
-
+<input type="hidden"  value="<?php echo $all_invoice[0]['payment_id']; ?>" name="payment_id" class="payment_id"/>
 
 <table class="table table-bordered table-hover" id="normalinvoice">
                                 <thead>
@@ -645,7 +645,7 @@ textarea:focus, input:focus{
                                
                                     <td style="text-align:right;"  colspan="4"><b><?php echo "Grand Total" ?>:</b><br/><b>(Preferred Currency)</b></td>
                                     <td>
-                                            <span class="form-control" style="background-color: #eee;" id="custospan"><input style="width:7%;font-weight:bold;" type="text" id="cus"  name="cus"  readonly="readonly" />
+                                    <span class="form-control" style="background-color: #eee;" class="custospan"><input style="width:15%;font-weight:bold;" type="text" class="cus"  name="cus"  readonly="readonly" />
                                             <input type="text" id="customer_gtotal"  name="customer_gtotal"  readonly="readonly" />
                                             </span></td>
                                       
@@ -659,7 +659,7 @@ textarea:focus, input:focus{
                                    <td style="text-align:right;"  colspan="4"><b><?php echo "Amount Paid" ?>:</b></td>
                                  
                                    <td>
-                                   <span class="form-control" style="background-color: #eee;" id="custospan"><input style="width:7%;font-weight:bold;" type="text" id="cus"  name="cus"  readonly="readonly" />
+                                   <span class="form-control" style="background-color: #eee;" class="custospan"><input style="width:15%;font-weight:bold;" type="text" class="cus"  name="cus"  readonly="readonly" />
                                    <input type="text" id="amount_paid"  value="<?php echo $all_invoice[0]['amt_paid']; ?>" name="amount_paid"  readonly="readonly" />
                                    </span>
                                    </td>
@@ -667,7 +667,7 @@ textarea:focus, input:focus{
                                    <tr id="bal">
                                    <td style="text-align:right;"  colspan="4"><b><?php echo "Balance Amount " ?>:</b></td>
                                    <td>
-                                   <span class="form-control" style="background-color: #eee;" id="custospan"><input style="width:7%;font-weight:bold;" type="text" id="cus"  name="cus"  readonly="readonly" />
+                                   <span class="form-control" style="background-color: #eee;" class="custospan"><input style="width:15%;font-weight:bold;" type="text" class="cus"  name="cus"  readonly="readonly" />
                                    <input type="text" id="balance"  value="<?php echo $all_invoice[0]['balance']; ?>" name="balance"  readonly="readonly" />
                                    </span>
                                    </td>
@@ -675,7 +675,7 @@ textarea:focus, input:focus{
                                    <tr style="border-right:none;border-left:none;border-bottom:none;border-top:none">
                                       
                                    <td colspan="6" style="text-align: end;">
-                               <input type="submit" value="Make Payment" class="btn btn-primary btn-large" id="paypls"/>
+                               <input type="submit" value="Payment Update" class="btn btn-primary btn-large" id="paypls"/>
                                    </td>
                                    </tr>
                                 </tfoot>
@@ -751,11 +751,15 @@ textarea:focus, input:focus{
                         </div>
 <div id='customer-data' style='color:red;'></div>
                                             </form>
-                              
+                                            <form id="histroy" method="post" >
+<input type="hidden" name="<?php echo $this->security->get_csrf_token_name();?>" value="<?php echo $this->security->get_csrf_hash();?>">
+<input type="hidden"  value="<?php echo $all_invoice[0]['payment_id']; ?>" name="payment_id" class="payment_id"/>
+<input type="submit" id="payment_history" name="payment_history" class="btn btn-primary" value="Payment_histroy" style="float:right;"/>
+                                            </form>
                     </div>
                     <input type="hidden" id="hdn"/>
 <input type="text" id="gtotal_dup"/>
-                  
+
 <div class="modal fade" id="myModal1" role="dialog" >
     <div class="modal-dialog">
     
@@ -808,7 +812,7 @@ textarea:focus, input:focus{
       <div class="modal-content" style="    margin-top: 190px;">
         <div class="modal-header" style="">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">New Sale</h4>
+          <h4 class="modal-title">ADD PAYMENT</h4>
         </div>
         <div class="modal-body">
           
@@ -883,14 +887,16 @@ textarea:focus, input:focus{
 </div>
       </div>
       <input type="hidden" name="<?php echo $this->security->get_csrf_token_name();?>" value="<?php echo $this->security->get_csrf_hash();?>">
-      <input class=" form-control" type="hidden"  readonly name="customer_name_modal" id="customer_name_modal" required   />    
+      <input type="hidden"  value="<?php echo $all_invoice[0]['payment_id']; ?>" name="payment_id" id="payment_id"/>
+      <input class=" form-control" type="hidden"  readonly name="customer_name_modal" value="<?php echo $customer_name; ?>"  id="customer_name_modal" required   />    
       <div class="form-group row">
 
 <label for="billing_address" style="text-align:end;" class="col-sm-3 col-form-label">Amount to be paid : </label>
 
 <div class="col-sm-5">
-    
-<input class=" form-control" type="text"  readonly name="amount_to_pay" id="amount_to_pay" required   />
+<span class="form-control" style="background-color: #eee;" class="custospan"><input style="width:15%;font-weight:bold;" type="text" class="cus"  name="cus"  readonly="readonly" />
+<input  type="text"  readonly name="amount_to_pay" id="amount_to_pay" required   />
+</span>
 </div>
 </div> 
       <div class="form-group row" style="display:none;">
@@ -898,8 +904,9 @@ textarea:focus, input:focus{
 <label for="billing_address" style="text-align:end;" class="col-sm-3 col-form-label">Amount Received : </label>
 
 <div class="col-sm-5">
-    
-<input class=" form-control" type="text"  name="amount_received" value="0.00" id="amount_received" required   />
+<span class="form-control" style="background-color: #eee;" class="custospan"><input style="width:15%;font-weight:bold;" type="text" class="cus"  name="cus"  readonly="readonly" />
+<input  type="text"  name="amount_received" value="0.00" id="amount_received" required   />
+<span>
 </div>
 </div> 
 <div class="form-group row">
@@ -907,8 +914,9 @@ textarea:focus, input:focus{
 <label for="billing_address" style="text-align:end;" class="col-sm-3 col-form-label">Balance : </label>
 
 <div class="col-sm-5">
-    
-<input class=" form-control" type="text"  readonly name="balance" value="0.00" id="balance_modal" required   />
+<span class="form-control" style="background-color: #eee;" class="custospan"><input style="width:15%;font-weight:bold;" type="text" class="cus"  name="cus"  readonly="readonly" />
+<input  type="text"  readonly name="balance" value="0.00" id="balance_modal" required   />
+<span>
 </div>
 </div> 
 <div class="form-group row">
@@ -916,8 +924,9 @@ textarea:focus, input:focus{
 <label for="billing_address" style="text-align:end;" class="col-sm-3 col-form-label">Payment Amount: </label>
 
 <div class="col-sm-5">
-    
-<input class=" form-control" type="text"  name="payment" id="payment_from_modal" required   />
+<span class="form-control" style="background-color: #eee;" class="custospan"><input style="width:15%;font-weight:bold;" type="text" class="cus"  name="cus"  readonly="readonly" />
+<input  type="text"  name="payment" id="payment_from_modal" required   />
+<span>
 </div>
 </div>
 
@@ -926,7 +935,7 @@ textarea:focus, input:focus{
 <label for="billing_address" style="text-align:end;" class="col-sm-3 col-form-label">Additional Information : </label>
 
 <div class="col-sm-5">
-<input class=" form-control" type="text"  name="details" id="details" required/>
+<input class=" form-control" type="text"  name="details" id="details" />
 </div>
 </div> 
 <div class="form-group row">
@@ -934,7 +943,7 @@ textarea:focus, input:focus{
 <label for="billing_address" style="text-align:end;" class="col-sm-3 col-form-label">Attachement : </label>
 
 <div class="col-sm-5">
-<input class=" form-control" type="file"  name="attachement" id="attachement" required   />
+<input class=" form-control" type="file"  name="attachement" id="attachement"  />
 </div>
 </div> 
 
@@ -1242,6 +1251,11 @@ $('#custocurrency_rate').on('change textInput input', function (e) {
     calculate();
 });
 
+
+
+
+
+
 $('.common_qnt').on('change textInput input', function (e) {
     calculate();
 });
@@ -1333,7 +1347,7 @@ $('#customer_name').on('change', function (e) {
         url:'<?php echo base_url();?>Cinvoice/getcustomer_data',
         success: function(result, statut) {
          console.log(result[0]['currency_type']);
-        $("#cus").val(result[0]['currency_type']);
+        $(".cus").val(result[0]['currency_type']);
         $("label[for='custocurrency']").html(result[0]['currency_type']);
        console.log('https://open.er-api.com/v6/latest/<?php echo $curn_info_default; ?>');
        $.getJSON('https://open.er-api.com/v6/latest/<?php echo $curn_info_default; ?>', 
@@ -1457,6 +1471,11 @@ var amt=parseInt(answer)+parseInt(first);
  var custo_amt=$('#custocurrency_rate').val();
  $("#gtotal").val(num);  
  console.log(num +"-"+custo_amt);
+ var gt= $("#gtotal").val();
+   var ampunt_paid=$('#amount_paid').val();
+   var b=parseInt(gt-ampunt_paid);
+   console.log("B :"+b);
+   $('#balance').val(b);
  var value=parseInt(num*custo_amt);
  var custo_final = isNaN(parseInt(value)) ? 0 : parseInt(value)
 $('#customer_gtotal').val(custo_final);
@@ -1482,6 +1501,11 @@ $("#gtotal").val(num);
 var custo_amt=$('#custocurrency_rate').val();
 
 console.log(num +"-"+custo_amt);
+var gt= $("#gtotal").val();
+   var ampunt_paid=$('#amount_paid').val();
+   var b=parseInt(gt-ampunt_paid);
+   console.log("B :"+b);
+   $('#balance').val(b);
 var value=parseInt(num*custo_amt);
 var custo_final = isNaN(parseInt(value)) ? 0 : parseInt(value)
 $('#customer_gtotal').val(custo_final);  
@@ -1534,7 +1558,7 @@ $('#customer_gtotal').val(custo_final);
 
             <h4><?php echo display('do_you_want_to_print') ?> ??</h4>
 
-            <input type="hidden" name="invoice_id" id="inv_id">
+            <input type="text" name="invoice_id" id="inv_id">
 
           </div>
 
@@ -2192,7 +2216,26 @@ $('#customer_gtotal').val(custo_final);
 
   <!-- End Modal for all action -->
 <!-- Invoice Report End -->
-
+<div class="modal fade" id="payment_history_modal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content" style="width: 1000px;min-width: max-content;margin-top: 190px;">
+        <div class="modal-header" style="">
+          <button type="button" id="history_close" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">PAYMENT HISTORY</h4>
+        </div>
+        <div class="modal-body1">
+        <div id="salle_list"></div>
+     
+        </div>
+        <div class="modal-footer">
+          
+        </div>
+      </div>
+      
+    </div>
+  </div>
 
 
 <div id="packmodal" class="modal fade" role="dialog">
@@ -2446,20 +2489,18 @@ function refreshPage(){
 
 // }
 </script>
-
+<!--style for payment history modal -->
+<style>
+.td{
+    width: 200px;
+    text-align-last: end;
+    border-right: hidden;
+}
+    </style>
 
 <script type="text/javascript">
-$(document).ready(function () {
-    $("#add_purchase").click(function () {
-        $("#save_another").toggle();
-    });
-});
 
-$(document).ready(function () {
-    $("#add_purchase").click(function () {
-        $("#download").toggle();
-    });
-});
+
 
 function packing(id)
 {
@@ -2523,8 +2564,10 @@ $('#add_payment_info').submit(function (event) {
        data:$("#add_payment_info").serialize(),
 
        success:function (data) {
-        console.log(data);
-        $('#amount_paid').val($('#payment_from_modal').val());
+       var already_paid=$('#amount_paid').val();
+       var recent_pay=$('#payment_from_modal').val();
+       console.log(already_paid+"***"+recent_pay);
+        $('#amount_paid').val(parseInt(already_paid)+parseInt(recent_pay));
     $('#balance').val($('#balance_modal').val());
     $('#amt').show();
 $('#bal').show();
@@ -2542,6 +2585,61 @@ $('#bal').show();
 
    });
    event.preventDefault();
+});
+$('#payment_history').click(function (event) {
+   
+       
+   var dataString = {
+       dataString : $("#histroy").serialize()
+   
+  };
+  dataString[csrfName] = csrfHash;
+ 
+   $.ajax({
+       type:"POST",
+       dataType:"json",
+       url:"<?php echo base_url(); ?>Cinvoice/payment_history",
+       data:$("#histroy").serialize(),
+
+       success:function (data) {
+        var gt=$('#gtotal').val();
+        var amtpd=data.amt_paid;
+        console.log(gt+"^"+amtpd);
+        var bal= parseFloat($('#gtotal').val()) - Number(data.amt_paid);
+var total= "<table class='table table-striped table-bordered'><tr><td rowspan='2' style='vertical-align: middle;text-align-last: center;'><b>Grand Total :  <?php  echo $currency;  ?>"+$('#gtotal').val()+"<b></td><td class='td' style='border-right: hidden;'><b>Total Amount Paid :<b></td><td><?php  echo $currency;  ?>"+data.amt_paid+"</td></tr></tr><td class='td' style='border-right: hidden;'><b>Balance :<b></td><td><?php  echo $currency;  ?>"+bal +"</td></tr></table>"
+        var table_header = "<table class='table table-striped table-bordered'><thead style='FONT-WEIGHT:BOLD;'><tr><td>S.NO</td><td>Payment Date</td><td>Reference.NO</td><td>Bank Name</td><td>Amount Paid</td><td>Balance</td><td>Details</td></tr></thead><tbody>";
+                   var table_footer = "</tbody></table>";
+                var html ="";
+var count=1;
+               data.payment_get.forEach(function(element) {
+              
+              html += "<tr><td>"+count +"</td><td>"+element.payment_date+"</td><td>"+element.reference_no+"</td><td>"+element.bank_name+"</td><td><?php  echo $currency;  ?>"+element.amt_paid+"</td><td><?php  echo $currency;  ?>"+element.balance+"</td><td>"+element.details+"</td></tr>";
+         count++;
+            });
+
+
+
+                var all = total+table_header +html+ table_footer;
+
+               
+
+                $('#salle_list').html(all);
+                            $('#payment_history_modal').modal('show');
+      
+       
+      
+      }
+
+   });
+   event.preventDefault();
+});
+
+$( "#balance" ).on('change', function(){
+   var bl=$(this).val();
+   console.log("bl : "+bl);
+   if(bl<=0){
+    $('#paypls').hide();
+   }
 });
 </script>
 

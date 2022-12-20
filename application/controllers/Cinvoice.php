@@ -51,20 +51,38 @@ class Cinvoice extends CI_Controller {
         $CI->auth->check_admin_auth();
 
         $CI->load->model('Invoices');
-
+        $payment_id=$this->input->post('payment_id');
+      
         $payment = $CI->Invoices->add_payment_info();
-        echo json_encode($payment);
+        $payment_get = $CI->Invoices->get_payment_info($payment_id);
+        $amt_paid = $this->db->select('sum(amt_paid) as amt_paid')->from('payment')->where('payment_id',$payment_id)->get()->row()->amt_paid;
+        $data=array();
+        $data=array(
+            'payment_get'  =>$payment_get,
+            'amt_paid' =>  $amt_paid
+
+        );
+        echo json_encode($data);
+
   }
-  public function get_payment_info(){
+  public function payment_history(){
     $CI = & get_instance();
 
     $CI->auth->check_admin_auth();
 
     $CI->load->model('Invoices');
-$cname=$this->input->post('customer_name');
-$gtotal=$this->input->post('gtotal');
-    $payment = $CI->Invoices->get_payment_info($cname,$gtotal);
-    echo json_encode($payment);
+    $payment_id=$this->input->post('payment_id');
+    $payment_get = $CI->Invoices->get_payment_info($payment_id);
+
+    $amt_paid = $this->db->select('sum(amt_paid) as amt_paid')->from('payment')->where('payment_id',$payment_id)->get()->row()->amt_paid;
+    $data=array();
+    $data=array(
+        'payment_get'  =>$payment_get,
+        'amt_paid' =>  $amt_paid
+
+    );
+echo json_encode($data);
+
 }
     public function makepay() {
 
