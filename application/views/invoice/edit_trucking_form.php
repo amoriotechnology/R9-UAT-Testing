@@ -5,7 +5,7 @@
 
 <script src="<?php echo base_url()?>my-assets/js/admin_js/purchase.js" type="text/javascript"></script>
 
-
+<script src="<?php echo base_url() ?>my-assets/js/countrypicker.js" type="text/javascript"></script>
 <script src="<?php echo base_url()?>my-assets/js/admin_js/trucking.js" type="text/javascript"></script>
 <style>
     .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
@@ -30,6 +30,11 @@
         </div>
     </section>
     <style>
+        .td{
+    width: 200px;
+    text-align-last: end;
+    border-right: hidden;
+}
         input {
     border: none;
     background-color: #eee;
@@ -74,14 +79,25 @@ textarea:focus, input:focus{
                 <div class="panel panel-bd lobidrag">
         
                     <div class="panel-heading">
-                        <div class="panel-title">
-                            <h4>Create New Trucking Invoice</h4>             <form id="histroy" method="post" >
+                    <div class="panel-title">
+                        <div class="row" style="height: 30px;">
+                        <div class="col-sm-6" >
+                            <h4><?php echo "Trucking"; ?></h4>
+                            </div>  <div class="col-sm-6" >
+                            <form id="histroy" method="post" >
 <input type="hidden" name="<?php echo $this->security->get_csrf_token_name();?>" value="<?php echo $this->security->get_csrf_hash();?>">
-<input type="hidden"  value="<?php echo $purchase_info[0]['payment_id']; ?>" name="payment_id" class="payment_id"/>
-<input type="submit" id="payment_history" name="payment_history" class="btn btn-primary" value="Payment_histroy" style="float:right;margin-top:30px;margin-right:50px;"/>
+<input type="hidden"  value="<?php echo $all_invoice[0]['payment_id']; ?>" name="payment_id" class="payment_id"/>
+<input type="submit" id="payment_history" name="payment_history" class="btn btn-primary" value="Payment_histroy" style="float:right;margin-bottom:30px;"/>
                                             </form>
+                                            </div>
                         </div>
+
+
+                        </div>
+
                     </div>
+
+
 
                     <div class="panel-body">
 
@@ -280,7 +296,9 @@ preg_match('#\((.*?)\)#', $d, $match);
                                 </thead>
                                 <tbody id="addPurchaseItem">
                              
-                                <?php foreach($purchase_info as $pf){ ?>
+                                <?php $cnt=1;
+                                 foreach($purchase_info as $pf){ ?>
+
                                     <tr>
                                         <td class="span3 supplier">
                                                 
@@ -289,14 +307,14 @@ preg_match('#\((.*?)\)#', $d, $match);
                                         </td>
 
                                        <td class="wt">
-                                            <input type="text" name="product_quantity[]" id="cartoon_1" required="" min="0" class="qty form-control text-right store_cal_1" onkeyup="total_amt(1);"  placeholder="0.00" value=<?php echo $pf['qty'] ; ?> tabindex="6"/>
+                                            <input type="text" name="product_quantity[]" id="cartoon_<?php echo $cnt; ?>" required="" min="0" class="qty form-control text-right store_cal_<?php echo $cnt; ?>" onkeyup="total_amt(<?php echo $cnt; ?>);"  placeholder="0.00" value=<?php echo $pf['qty'] ; ?> tabindex="6"/>
                                         </td>
                                         
                                         <td class="text-right">
                                             <input type="text" name="description[]" id="" required="" min="0" class="form-control text-right" value=<?php echo $pf['description'] ; ?>    tabindex="6"/>
                                         </td>
                                         <td><span style='background-color: #eee;'><?php echo $currency;  ?>
-                                            <input type="text" name="product_rate[]" required="" onkeyup="total_amt(1);"  id="product_rate_1" class="product_rate_1" placeholder="0.00" value=<?php echo $pf['rate'] ; ?>    min="0" tabindex="7"/>
+                                            <input type="text" name="product_rate[]" required="" onkeyup="total_amt(<?php echo $cnt; ?>);"  id="product_rate_<?php echo $cnt; ?>" class="product_rate_<?php echo $cnt; ?>" placeholder="0.00" value=<?php echo $pf['rate'] ; ?>    min="0" tabindex="7"/>
                                   </span>  </td>
 
                                         <td class="text-right">
@@ -304,13 +322,13 @@ preg_match('#\((.*?)\)#', $d, $match);
                                         </td>
                                            
                                         <td><span class='form-control' style='background-color: #eee;'><?php echo $currency;  ?>
-                                            <input class="total_price" type="text" name="total_price[]" id="total_price_1"  value=<?php echo $pf['total'] ; ?>   readonly="readonly" />
+                                            <input class="total_price" type="text" name="total_price[]" id="total_price_<?php echo $cnt; ?>"  value=<?php echo $pf['total'] ; ?>   readonly="readonly" />
                                   </span></td>
                                         <td>
                                             <button  class="btn btn-danger text-right red" type="button" value="<?php echo display('delete')?>" onclick="deleteRow(this)" tabindex="8"><i class="fa fa-close"></i></button>
                                         </td>
                                     </tr>
-                                    <?php } ?>
+                                    <?php $cnt++; } ?>
                                 </tbody>
                                 <tfoot>
                                     <tr>
@@ -811,7 +829,11 @@ preg_match('#\((.*?)\)#', $d, $match);
      
      </div>   </div>
      <div class="modal-footer">
-     <input class=" form-control" type="submit"  name="submit_pay" id="submit_pay"  required   />
+     <div class="col-sm-8"></div>
+     <div class="col-sm-2"></div>
+     <div class="col-sm-2">
+     <input class=" form-control pull-left btn btn-primary" type="submit"  name="submit_pay" id="submit_pay"   required   />
+</div>
      </div>
    </div>
    </form>
@@ -821,7 +843,7 @@ preg_match('#\((.*?)\)#', $d, $match);
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="myModal5" aria-hidden="true">×</button>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 	<h4 class="modal-title">ADD BANK</h4>
 
             </div>
@@ -927,10 +949,10 @@ preg_match('#\((.*?)\)#', $d, $match);
 
       
 
-      <a href="#" class="btn btn-danger" data-dismiss="modal">Close</a>
+   
 
       
-      <input type="submit" id="addBank"  name="addBank" value="<?php echo display('save') ?>"/>
+      <input type="submit" id="addBank"  name="addBank" class="btn btn-primary" value="<?php echo display('save') ?>"/>
      <!--  <input type="submit" class="btn btn-success" value="Submit"> -->
 
   </div>
@@ -1078,28 +1100,10 @@ window.onbeforeunload = function(){
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-var count=1;
 function addTruckingOrderField(t) {
 
     var row = $("#truckingTable tbody tr").length;
-     count = count + 1;
+    var count = row + 1;
       var  tab1 = 0;
       var  tab2 = 0;
       var  tab3 = 0;
@@ -1137,13 +1141,14 @@ function addTruckingOrderField(t) {
         tab10 = tabindex + 10;
         tab11 = tabindex + 11;
         tab12 = tabindex + 12;
-        e.innerHTML ='<td class="span3 supplier"><input type="date" name="trucking_date[]" required="" class="form-control" tabindex="'+tab1+'" > <input type="hidden" class="autocomplete_hidden_value product_id_'+ count +'" name="product_id[]" id="SchoolHiddenId"/>  <input type="hidden" class="sl" value="'+ count +'">  </td> <td class="text-right"><input type="text" name="product_quantity[]" tabindex="'+tab2+'" required  id="cartoon_'+ count +'" class="qty form-control text-right store_cal_' + count + '" onkeyup="total_amt(' + count + ');"  placeholder="0.00" value="" min="0"/></td><td class="text-right"><input class="form-control" type="text" name="description[]" id="pro_no" value=""  /></td><td><span  style="padding:5px;background-color: #eee;"><?php  echo $currency." ";  ?> <input type="text" name="product_rate[]" onkeyup="total_amt('+ count +');"  id="product_rate_'+ count +'" class="product_rate_'+ count +'" placeholder="0.00" value="" min="0" tabindex="'+tab3+'"/></span></td><td class="text-right"><input class="form-control" type="text" name="pro_no[]" id="pro_no" value=""  /></td><td><span class="form-control" style="background-color: #eee;"><?php echo $currency." ";   ?> <input class="total_price total_price_'+ count +'" type="text" name="total_price[]" id="total_price_'+ count +'" value="0.00" readonly="readonly" /></span> </td><td> <input type="hidden" id="total_discount_1" class="" /><input type="hidden" id="all_discount_1" class="total_discount" /><button style="text-align: right;" class="btn btn-danger red" type="button"  onclick="deleteRow(this)" tabindex="8"><i class="fa fa-close"></i></button></td>';
+        e.innerHTML ='<td class="span3 supplier"><input type="date" name="trucking_date[]" required="" class="form-control" tabindex="'+tab1+'" > <input type="hidden" class="autocomplete_hidden_value product_id_'+ count +'" name="product_id[]" id="SchoolHiddenId"/>  <input type="hidden" class="sl" value="'+ count +'">  </td> <td class="text-right"><input type="text" name="product_quantity[]" tabindex="'+tab2+'" required  id="cartoon_'+ count +'" class="form-control text-right store_cal_' + count + '" onkeyup="total_amt(' + count + ');"  placeholder="0.00" value="" min="0"/></td><td class="text-right"><input class="form-control" type="text" name="description[]" id="pro_no" value=""  /></td><td><span  style="padding:5px;background-color: #eee;"><?php  echo $currency." ";  ?> <input type="text" name="product_rate[]" onkeyup="total_amt('+ count +');"  id="product_rate_'+ count +'" class="product_rate_'+ count +'" placeholder="0.00" value="" min="0" tabindex="'+tab3+'"/></span></td><td class="text-right"><input class="form-control" type="text" name="pro_no[]" id="pro_no" value=""  /></td><td><span class="form-control" style="background-color: #eee;"><?php echo $currency." ";   ?> <input class="total_price total_price_'+ count +'" type="text" name="total_price[]" id="total_price_'+ count +'" value="0.00" readonly="readonly" /></span> </td><td> <input type="hidden" id="total_discount_1" class="" /><input type="hidden" id="all_discount_1" class="total_discount" /><button style="text-align: right;" class="btn btn-danger red" type="button"  onclick="deleteRow(this)" tabindex="8"><i class="fa fa-close"></i></button></td>';
                
         document.getElementById(t).appendChild(e),
              
                 count++
     }
 }
+
 
     $(document).ready(function(){
         $('#final_submit').hide();
@@ -1172,6 +1177,11 @@ var value=parseInt(num*custo_amt);
 var custo_final = isNaN(parseInt(value)) ? 0 : parseInt(value)
 $('#customer_gtotal').val(custo_final);  
 calculate();
+var v_g_t=$('#customer_gtotal').val();
+   var amount_paid =$("#amount_paid").val();
+   var bal= parseInt(v_g_t-amount_paid);
+   console.log("Bal :");
+   $('#balance').val(bal);
 });
 });
 $( document ).ready(function() {
@@ -1213,7 +1223,11 @@ function(data) {
     
 var custo_final = isNaN(parseInt(value)) ? 0 : parseInt(value)
 $('#customer_gtotal').val(custo_final);  
-    
+var v_g_t=$('#customer_gtotal').val();
+   var amount_paid =$("#amount_paid").val();
+   var bal= parseInt(v_g_t-amount_paid);
+   console.log("Bal :");
+   $('#balance').val(bal);
       }
 )}
     });
@@ -1294,6 +1308,11 @@ var value=parseInt(num*custo_amt);
 var custo_final = isNaN(parseInt(value)) ? 0 : parseInt(value)
 $('#customer_gtotal').val(custo_final);  
 calculate();
+var v_g_t=$('#customer_gtotal').val();
+   var amount_paid =$("#amount_paid").val();
+   var bal= parseInt(v_g_t-amount_paid);
+   console.log("Bal :");
+   $('#balance').val(bal);
 });
 
 // Restricts input for each element in the set of matched elements to the given inputFilter.
@@ -1432,6 +1451,11 @@ var amt=parseInt(answer)+parseInt(first);
  var value=parseInt(num*custo_amt);
  var custo_final = isNaN(parseInt(value)) ? 0 : parseInt(value)
 $('#customer_gtotal').val(custo_final);
+var v_g_t=$('#customer_gtotal').val();
+   var amount_paid =$("#amount_paid").val();
+   var bal= parseInt(v_g_t-amount_paid);
+   console.log("Bal :");
+   $('#balance').val(bal);
 }  
 }
 function calculate(){
@@ -1457,6 +1481,11 @@ console.log(num +"-"+custo_amt);
 var value=parseInt(num*custo_amt);
 var custo_final = isNaN(parseInt(value)) ? 0 : parseInt(value)
 $('#customer_gtotal').val(custo_final);  
+var v_g_t=$('#customer_gtotal').val();
+   var amount_paid =$("#amount_paid").val();
+   var bal= parseInt(v_g_t-amount_paid);
+   console.log("Bal :");
+   $('#balance').val(bal);
 }
 
 
@@ -1592,4 +1621,98 @@ $( "#balance" ).on('change', function(){
     $('#paypls').hide();
    }
 });
+$('#add_bank').submit(function (event) {
+      
+          
+      var dataString = {
+          dataString : $("#add_bank").serialize()
+      
+     };
+     dataString[csrfName] = csrfHash;
+    
+      $.ajax({
+          type:"POST",
+          dataType:"json",
+          url:"<?php echo base_url(); ?>Csettings/add_new_bank",
+          data:$("#add_bank").serialize(),
+   
+          success: function (data) {
+           $.each(data, function (i, item) {
+              
+               result = '<option value=' + data[i].bank_name + '>' + data[i].bank_name + '</option>';
+           });
+         
+           $('.bankpayment').selectmenu(); 
+           $('.bankpayment').append(result).selectmenu('refresh',true);
+          $("#bodyModal1").html("Bank Added Successfully");
+          $('#myModal3').modal('hide');
+           $('#myModal1').modal('show');
+           $('#add_bank_info').modal('hide');
+          window.setTimeout(function(){
+         
+           $('#myModal5').modal('hide');
+           $('#myModal1').modal('hide');
+       
+        }, 2000);
+        
+         }
+   
+      });
+      event.preventDefault();
+   });
+   
+   
+   
+   
+         $(document).ready(function () {
+         $('#bank').selectize({
+             sortField: 'text'
+         });
+     });
 </script>
+<style>
+    .ui-selectmenu-text{
+        display:none;
+    }
+   </style>
+
+<script>
+const select = document.querySelectorAll(".currency");
+const btn = document.getElementById("btn");
+const num = document.getElementById("num");
+const ans = document.getElementById("ans");
+const err = document.getElementById("errorMSG");
+const info = document.getElementById("info");
+const baseFlagsUrl = "https://wise.com/public-resources/assets/flags/rectangle";
+const currencyApiUrl = "https://open.er-api.com/v6/latest";
+
+document.addEventListener('DOMContentLoaded', function(){ 
+  fetch(currencyApiUrl)
+    .then((data) => data.json())
+    .then((data) => {
+    err.innerHTML = "";
+    display(data.rates);
+    $('.currency').select2({
+      width: 'resolve',
+  
+      maximumInputLength: 3
+    });
+    info.innerHTML = "Result: "+data.result+"<br>Provider: "+data.provider+"<br>Documentation: "+data.documentation+"<br>Terms of use: "+data.terms_of_use+"<br>Time Last Update UTC: "+data.time_last_update_utc;
+    $('#pageLoader').fadeOut();
+  }).catch(function(error) {
+    err.innerHTML = "Error: " + error;
+    $('#pageLoader').fadeOut();
+  });
+function display(data){
+  const entries = Object.entries(data);
+  for (var i = 0; i < entries.length; i++){
+    select[0].innerHTML += `<option value="${entries[i][0]}">${entries[i][0]}</option>`;
+    select[1].innerHTML += `<option value="${entries[i][0]}">${entries[i][0]}</option>`;
+  }
+  
+}
+});
+
+    </script>
+
+

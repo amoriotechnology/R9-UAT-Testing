@@ -1,4 +1,35 @@
 
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"/>
+<script type="text/javascript" src="<?php echo base_url()?>assets/js/jquery.base64.js"></script>
+  <script type="text/javascript" src="<?php echo base_url()?>assets/js/html2canvas.js"></script>
+ <script type="text/javascript" src="<?php echo base_url()?>assets/js/jspdf.plugin.autotable"></script>
+  <script type="text/javascript" src="<?php echo base_url()?>assets/js/jspdf.umd.js"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap/3/css/bootstrap.css" />
+<script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
+ <script type="text/javascript" src="<?php echo base_url()?>my-assets/js/tableManager.js"></script>
+<script type="text/javascript" src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"></script>
+<script type="text/javascript" src="http://mrrio.github.io/jsPDF/dist/jspdf.debug.js"></script>
+<input type="hidden" name="<?php echo $this->security->get_csrf_token_name();?>" value="<?php echo $this->security->get_csrf_hash();?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url()?>my-assets/css/css.css" />
+<script type="text/javascript" src="http://www.bacubacu.com/colresizable/js/colResizable-1.5.min.js"></script> 
+
+
+
+
+
+<!-- Product Purchase js -->
+<script src="<?php echo base_url()?>my-assets/js/admin_js/json/product_purchase.js.php" ></script>
+<!-- Supplier Js -->
+<script src="<?php echo base_url(); ?>my-assets/js/admin_js/json/supplier.js.php" ></script>
+
+<script src="<?php echo base_url()?>my-assets/js/admin_js/purchase.js" type="text/javascript"></script>
+
+<script src="<?php echo base_url()?>my-assets/js/admin_js/packing.js" type="text/javascript"></script>
+
+
+
 <script src="<?php echo base_url() ?>my-assets/js/admin_js/json/product.js" type="text/javascript"></script>
 <!-- Add Product Start -->
 <div class="content-wrapper">
@@ -73,7 +104,26 @@
                                 <div class="form-group row">
                                     <label for="barcode_or_qrcode" class="col-sm-4 col-form-label"><?php echo display('barcode_or_qrcode') ?> <i class="text-danger"></i></label>
                                     <div class="col-sm-8">
-                                        <input class="form-control" name="product_id" type="text" id="product_id" placeholder="<?php echo display('barcode_or_qrcode') ?>"  tabindex="1" >
+                                        <!-- <input class="form-control" name="product_id" type="text" id="product_id" placeholder=""  tabindex="1" > -->
+
+                                        <div class="col-sm-8">
+                                        <input type="text" tabindex="3" class="form-control" name="product_id" value="<?php if(!empty($voucher_no[0]['voucher'])){ 
+                               $vn = substr($voucher_no[0]['voucher'],9)+1;
+                               echo $voucher_n = 'P-'.$vn;
+                             }
+                             else{
+                               echo $voucher_n='P-'.rand(0,100000);
+                             } 
+                             ?>" 
+                             
+                             
+                             
+                             
+                             
+                             
+                             placeholder="Barcode/QR-code" id="product_id"  readonly/>
+                                    </div>
+
                                     </div>
                                 </div>
                             </div>
@@ -87,7 +137,6 @@
                             </div>
                         </div>
                            
-
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="form-group row">
@@ -208,8 +257,6 @@
                
                        <?php $i++;}?>
                         </div> 
-
-
 
 
                         <div class="table-responsive product-supplier">

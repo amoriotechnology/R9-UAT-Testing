@@ -1,8 +1,8 @@
  <!-- Invoice js -->
 
  <script src="<?php echo base_url() ?>my-assets/js/admin_js/invoice.js" type="text/javascript"></script>
+ <script src="<?php echo base_url() ?>my-assets/js/countrypicker.js" type="text/javascript"></script>
 
-<?php error_reporting(1); ?>
 
 <!-- Customer type change by javascript end -->
 
@@ -127,10 +127,18 @@
                     <div class="panel-heading">
 
                         <div class="panel-title">
-
+                        <div class="row" style="height: 30px;">
+                        <div class="col-sm-6" >
                             <h4><?php echo display('new_invoice') ?></h4>
+                            </div>  <div class="col-sm-6" >
+                            <form id="histroy" method="post" >
+<input type="hidden" name="<?php echo $this->security->get_csrf_token_name();?>" value="<?php echo $this->security->get_csrf_hash();?>">
+<input type="hidden"  value="<?php echo $all_invoice[0]['payment_id']; ?>" name="payment_id" class="payment_id"/>
+<input type="submit" id="payment_history" name="payment_history" class="btn btn-primary" value="Payment_histroy" style="float:right;margin-bottom:30px;"/>
+                                            </form>
+                                            </div>
+                        </div>
 
-                           
 
                         </div>
 
@@ -563,7 +571,9 @@ textarea:focus, input:focus{
 </style>
 
                                 <tbody id="addPurchaseItem">
-                                {all_invoice}
+                              
+                                <?php $cnt=1;
+                                 foreach($all_invoice as $pf){ ?>
                                     <tr>
                                         <td>
                                         <select name="prodt[]" id="prodt_1" class="form-control product_name" onchange="available_quantity(1);">
@@ -575,26 +585,26 @@ textarea:focus, input:focus{
                                                 <option value="<?php echo $tx['product_name'].'-'.$tx['product_model'];?>">  <?php echo $tx['product_name'].'-'.$tx['product_model'];  ?></option>
                                            <?php } ?>
                                         </select>
-                                        <input type='hidden' class='common_product autocomplete_hidden_value  product_id_1' value="{product_id}" name='product_id[]' id='SchoolHiddenId' />
+                                        <input type='hidden' class='common_product autocomplete_hidden_value  product_id_<?php echo $cnt;  ?>' value="<?php echo $pf['product_id']  ?>" name='product_id[]' id='SchoolHiddenId' />
                                         </td>
 
                                        <td class="wt">
-                                                <input type="text" id="available_quantity[]"  value="{in_stock}" name="available_quantity[]" class="form-control text-right available_quantity_1" placeholder="0.00" readonly/>
+                                                <input type="text" id="available_quantity[]"  value="<?php echo $pf['in_stock']  ?>"   name="available_quantity[]" class="form-control text-right available_quantity_<?php echo $cnt;  ?>" placeholder="0.00" readonly/>
                                             </td>
                                         
                                             <td class="text-right">
-                                                <input type="text" name="product_quantity[]" id="cartoon_1" required="" min="0" class="form-control text-right store_cal_1" onkeyup="total_amt(1);" placeholder="0.00" value="{quantity}"  tabindex="6"/>
+                                                <input type="text" name="product_quantity[]" id="cartoon_<?php echo $cnt;  ?>" required="" min="0" class="form-control text-right store_cal_<?php echo $cnt;  ?>" onkeyup="total_amt(<?php echo $cnt;  ?>);" onchange="total_amt(<?php echo $cnt;  ?>);" placeholder="0.00" value="<?php echo $pf['quantity']  ?>"   tabindex="6"/>
                                             </td>
                                             <td>
                                             <span class="form-control" style="background-color: #eee;"><?php  echo $currency;  ?>
-                                                <input type="text" name="product_rate[]" required=""  id="product_rate_1" class="product_rate_1" placeholder="0.00" value="{rate}"  min="0" tabindex="7" readonly/>
+                                                <input type="text" name="product_rate[]" required=""  id="product_rate_<?php echo $cnt;  ?>" class="product_rate_<?php echo $cnt;  ?>" placeholder="0.00" value="<?php echo $pf['rate']  ?>"   min="0" tabindex="7" readonly/>
                                             </span> </td>
                                          
 
                                             <td style="text-align:left;">
                                             <span class="form-control" style="    background-color: #eee;"><?php  echo $currency;  ?> 
-                                                <input class="total_price" type="text" name="total_price[]" id="total_price_1" value="{total_price}"  readonly="readonly" />
-                                                <input type="hidden" name="invoice_details_id[]" id="invoice_details_id" value="{invoice_details_id}"/>
+                                                <input class="total_price" type="text" name="total_price[]" id="total_price_<?php echo $cnt;  ?>" value="<?php echo $pf['total_price']  ?>"   readonly="readonly" />
+                                                <input type="hidden" name="invoice_details_id[]" id="invoice_details_id" value="<?php echo $pf['invoice_details_id']  ?>"/>
                                                 </span></td>
 
 
@@ -602,11 +612,11 @@ textarea:focus, input:focus{
 
                                                
                                          
-                                                <button  class="btn btn-danger text-right red" type="button" value="<?php echo display('delete')?>" onclick="calculate();total_amt(1);deleteRow(this)" tabindex="8"><i class="fa fa-close"></i></button>
+                                                <button  class="btn btn-danger text-right red" type="button" value="<?php echo display('delete')?>" onclick="calculate();total_amt(<?php echo $cnt;  ?>);deleteRow(this)" tabindex="8"><i class="fa fa-close"></i></button>
                                             </td>
                                            
                                     </tr>
-                                    {/all_invoice}
+                                    <?php $cnt++; } ?>
                                 </tbody>
                                 <tfoot>
                                     <tr>
@@ -751,14 +761,10 @@ textarea:focus, input:focus{
                         </div>
 <div id='customer-data' style='color:red;'></div>
                                             </form>
-                                            <form id="histroy" method="post" >
-<input type="hidden" name="<?php echo $this->security->get_csrf_token_name();?>" value="<?php echo $this->security->get_csrf_hash();?>">
-<input type="hidden"  value="<?php echo $all_invoice[0]['payment_id']; ?>" name="payment_id" class="payment_id"/>
-<input type="submit" id="payment_history" name="payment_history" class="btn btn-primary" value="Payment_histroy" style="float:right;"/>
-                                            </form>
+                                     
                     </div>
                     <input type="hidden" id="hdn"/>
-<input type="text" id="gtotal_dup"/>
+<input type="hidden" id="gtotal_dup"/>
 
 <div class="modal fade" id="myModal1" role="dialog" >
     <div class="modal-dialog">
@@ -954,7 +960,11 @@ textarea:focus, input:focus{
      
      </div>   </div>
      <div class="modal-footer">
-     <input class=" form-control" type="submit"  name="submit_pay" id="submit_pay"  required   />
+     <div class="col-sm-8"></div>
+     <div class="col-sm-2"></div>
+     <div class="col-sm-2">
+     <input class=" form-control pull-left btn btn-primary" type="submit"  name="submit_pay" id="submit_pay"   required   />
+</div>
      </div>
    </div>
    </form>
@@ -964,7 +974,7 @@ textarea:focus, input:focus{
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="myModal5" aria-hidden="true">×</button>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 	<h4 class="modal-title">ADD BANK</h4>
 
             </div>
@@ -1070,10 +1080,10 @@ textarea:focus, input:focus{
 
       
 
-      <a href="#" class="btn btn-danger" data-dismiss="modal">Close</a>
+      
 
       
-      <input type="submit" id="addBank"  name="addBank" value="<?php echo display('save') ?>"/>
+      <input type="submit" id="addBank"  class="btn btn-primary" name="addBank" value="<?php echo display('save') ?>"/>
      <!--  <input type="submit" class="btn btn-success" value="Submit"> -->
 
   </div>
@@ -1094,6 +1104,42 @@ $('#download').hide();
 $('#email_btn').hide();
 
 });
+function available_quantity (id) {
+$('.product_name').on('change', function (e) {
+    var name = 'available_quantity_'+ id;
+
+var amount = 'product_rate_'+ id;
+var pdt=$('#prodt_'+id).val();
+const myArray = pdt.split("-");
+var product_nam=myArray[0];
+var product_model=myArray[1];
+var data = {
+   amount:'product_rate_'+ id,
+   name:'available_quantity_'+ id,
+   product_nam:product_nam,
+   product_model:product_model
+};
+data[csrfName] = csrfHash;
+
+$.ajax({
+    type:'POST',
+    data: data, 
+ dataType:"json",
+    url:'<?php echo base_url();?>Cinvoice/availability',
+    success: function(result, statut) {
+        if(result.csrfName){
+         
+           csrfName = result.csrfName;
+           csrfHash = result.csrfHash;
+        }
+      $(".available_quantity_"+ id).val(result[0]['p_quantity']);
+      $("#product_rate_"+ id).val(result[0]['price']);
+      $(".product_id_"+ id).val(result[0]['product_id']);
+        console.log(result);
+    }
+});
+});
+}
 function discard(){
    $.get(
     "<?php echo base_url(); ?>Cinvoice/deletesale/", 
@@ -1215,91 +1261,9 @@ window.onbeforeunload = function(){
     }
 };
  
-$(document).ready(function(){
-
-    $('#product_tax').on('change', function (e) {
-        var first=$("#Total").val();
-    var tax= $('#product_tax').val();
-var field = tax.split('-');
-
-var percent = field[1];
-var answer=0;
-  var answer = parseInt((percent / 100) * first);
-   console.log("Answer : "+answer);
-  var gtotal = parseInt(first + answer);
-  console.log("gtotal :" +gtotal);
-  
- var final_g= $('#final_gtotal').val();
-
-
- var amt=parseInt(answer)+parseInt(first);
- var num = isNaN(parseInt(amt)) ? 0 : parseInt(amt)
- var custo_amt=$('#custocurrency_rate').val(); 
- console.log("numhere :"+num +"-"+custo_amt);
- var value=parseInt(num*custo_amt);
- var custo_final = isNaN(parseInt(value)) ? 0 : parseInt(value)
-$('#customer_gtotal').val(custo_final);  
-calculate();
-});
-});
-$( document ).ready(function() {
-                        $('.hiden').css("display","none");
-
-  
-
-$('#custocurrency_rate').on('change textInput input', function (e) {
-    calculate();
-});
 
 
 
-
-
-
-$('.common_qnt').on('change textInput input', function (e) {
-    calculate();
-});
-
-});
-
-var csrfName = '<?php echo $this->security->get_csrf_token_name();?>';
-var csrfHash = '<?php echo $this->security->get_csrf_hash();?>';
-function available_quantity (id) {
-    $('.product_name').on('change', function (e) {
-        var name = 'available_quantity_'+ id;
-   
-   var amount = 'product_rate_'+ id;
-   var pdt=$('#prodt_'+id).val();
-   const myArray = pdt.split("-");
-   var product_nam=myArray[0];
-   var product_model=myArray[1];
-  var data = {
-       amount:'product_rate_'+ id,
-       name:'available_quantity_'+ id,
-       product_nam:product_nam,
-       product_model:product_model
-    };
-    data[csrfName] = csrfHash;
-
-    $.ajax({
-        type:'POST',
-        data: data, 
-     dataType:"json",
-        url:'<?php echo base_url();?>Cinvoice/availability',
-        success: function(result, statut) {
-            if(result.csrfName){
-             
-               csrfName = result.csrfName;
-               csrfHash = result.csrfHash;
-            }
-          $(".available_quantity_"+ id).val(result[0]['p_quantity']);
-          $("#product_rate_"+ id).val(result[0]['price']);
-          $(".product_id_"+ id).val(result[0]['product_id']);
-            console.log(result);
-        }
-    });
-});
-}
 
 
 
@@ -1366,150 +1330,6 @@ function(data) {
 });
 
 
-$( document ).ready(function() {
-                    $('.hiden').css("display","none");
-                    var data = {
-      value: $('#customer_name').val()
-   };
-  data[csrfName] = csrfHash;
-  $.ajax({
-      type:'POST',
-      data: data,
-     dataType:"json",
-      url:'<?php echo base_url();?>Cinvoice/getcustomer_byID',
-      success: function(result, statut) {
-        console.log(result[0]['currency_type']);
-        $("#cus").val(result[0]['currency_type']);
-        $("label[for='custocurrency']").html(result[0]['currency_type']);
-       console.log('https://open.er-api.com/v6/latest/<?php echo $curn_info_default; ?>');
-       $.getJSON('https://open.er-api.com/v6/latest/<?php echo $curn_info_default; ?>', 
-function(data) {
- var custo_currency=result[0]['currency_type'];
-    var x=data['rates'][custo_currency];
- var Rate =parseFloat(x).toFixed(3);
-  console.log("Rate : "+Rate);
-  $('.hiden').show();
-  $("#custocurrency_rate").val(Rate);
-  var num=$("#gtotal").val();
-
-    var value=parseInt(num*Rate);
-    
-var custo_final = isNaN(parseInt(value)) ? 0 : parseInt(value)
-$('#customer_gtotal').val(custo_final);  
-    
-      }
-)}
-    });
-
-});
-
-
-
-
-
-
-$('#product_tax').on('change', function (e) {
-    var optionSelected = $("option:selected", this);
-    var valueSelected = this.value;
-    var total=$('#Total').val();
-var tax= $('#product_tax').val();
-
-var field = tax.split('-');
-
-var percent = field[1];
-percent=percent.replace("%","");
- var answer = (percent / 100) * parseInt(total);
-$('#final_gtotal').val(answer);
-   $('#hdn').val(valueSelected);
-   console.log("taxi :"+valueSelected);
-  $('#tax_details').val(answer +" ( "+tax+" )");
-   calculate();
-});
-var arr=[];
-
-function total_amt(id){
-
-    var sum=0;
-  
-var total='total_price_'+id;
-
-var quantity='cartoon_'+id;
-var amount = 'product_rate_'+ id;
-var grand=$('#gtotal').val();
-var quan=$('#'+quantity).val();
-var amt=$('#'+amount).val();
-var result=parseInt(quan) * parseInt(amt);
-result = isNaN(result) ? 0 : result;
-arr.push(result);
-$('#'+total).val(result);
-
-gt();
-}
-function gt(){
-    var sum=0;
-    $('.total_price').each(function() {
-    sum += parseFloat($(this).val());
-});
-$('#Total').val(sum);
-var final_g= $('#final_gtotal').val();
-if(final_g !=''){
-var first=$("#Total").val();
-    var tax= $('#product_tax').val();
-
-var field = tax.split('-');
-
-var percent = field[1];
-var answer=0;
-  var answer =(parseInt(percent) / 100) * parseInt(first);
-   console.log(answer);
-   $('#tax_details').val(answer +" ( "+tax+" )");
-
-  var gtotal = parseInt(first + answer);
-  console.log(gtotal);
-var amt=parseInt(answer)+parseInt(first);
- var num = isNaN(parseInt(amt)) ? 0 : parseInt(amt)
- var custo_amt=$('#custocurrency_rate').val();
- $("#gtotal").val(num);  
- console.log(num +"-"+custo_amt);
- var gt= $("#gtotal").val();
-   var ampunt_paid=$('#amount_paid').val();
-   var b=parseInt(gt-ampunt_paid);
-   console.log("B :"+b);
-   $('#balance').val(b);
- var value=parseInt(num*custo_amt);
- var custo_final = isNaN(parseInt(value)) ? 0 : parseInt(value)
-$('#customer_gtotal').val(custo_final);
-}  
-}
-function calculate(){
-  
-  var first=$("#Total").val();
-  var tax= $('#product_tax').val();
-var field = tax.split('-');
-
-var percent = field[1];
-var answer=0;
-var answer = parseInt((percent / 100) * first);
-var gtotal = parseInt(first + answer);
-console.log(gtotal);
-var final_g= $('#final_gtotal').val();
-
-
-var amt=parseInt(final_g)+parseInt(first);
-var num = isNaN(parseInt(amt)) ? 0 : parseInt(amt);
-$("#gtotal").val(num);  
-var custo_amt=$('#custocurrency_rate').val();
-
-console.log(num +"-"+custo_amt);
-var gt= $("#gtotal").val();
-   var ampunt_paid=$('#amount_paid').val();
-   var b=parseInt(gt-ampunt_paid);
-   console.log("B :"+b);
-   $('#balance').val(b);
-var value=parseInt(num*custo_amt);
-var custo_final = isNaN(parseInt(value)) ? 0 : parseInt(value)
-$('#customer_gtotal').val(custo_final);  
-}
 
 
 
@@ -2512,6 +2332,315 @@ function packing(id)
 
 </script>
 <script type="text/javascript">
+   $(document).ready(function(){
+        $('#final_submit').hide();
+$('#download').hide();
+$('#email_btn').hide();
+
+$('#product_tax').on('change', function (e) {
+    var first=$("#Total").val();
+var tax= $('#product_tax').val();
+var field = tax.split('-');
+
+var percent = field[1];
+var answer=0;
+var answer = parseInt((percent / 100) * first);
+console.log("Answer : "+answer);
+var gtotal = parseInt(first + answer);
+console.log("gtotal :" +gtotal);
+var final_g= $('#final_gtotal').val();
+
+
+var amt=parseInt(answer)+parseInt(first);
+var num = isNaN(parseInt(amt)) ? 0 : parseInt(amt)
+var custo_amt=$('#custocurrency_rate').val(); 
+console.log("numhere :"+num +"-"+custo_amt);
+var value=parseInt(num*custo_amt);
+var custo_final = isNaN(parseInt(value)) ? 0 : parseInt(value)
+$('#customer_gtotal').val(custo_final); 
+
+calculate();
+var v_g_t=$('#customer_gtotal').val();
+   var amount_paid =$("#amount_paid").val();
+   var bal= parseInt(v_g_t-amount_paid);
+   console.log("Bal :");
+   $('#balance').val(bal);
+});
+});
+$( document ).ready(function() {
+                    $('.hiden').css("display","none");
+                    var data = {
+      value: $('#customer_name').val()
+   };
+  data[csrfName] = csrfHash;
+  $.ajax({
+      type:'POST',
+      data: data,
+   
+      //dataType tells jQuery to expect JSON response
+      dataType:"json",
+      url:'<?php echo base_url();?>Cinvoice/getcustomer_byID',
+      success: function(result, statut) {
+          if(result.csrfName){
+             //assign the new csrfName/Hash
+             csrfName = result.csrfName;
+             csrfHash = result.csrfHash;
+          }
+         // var parsedData = JSON.parse(result);
+        //  alert(result[0].p_quantity);
+        console.log(result[0]['currency_type']);
+        $(".cus").val(result[0]['currency_type']);
+        $("label[for='custocurrency']").html(result[0]['currency_type']);
+       console.log('https://open.er-api.com/v6/latest/<?php echo $curn_info_default; ?>');
+       $.getJSON('https://open.er-api.com/v6/latest/<?php echo $curn_info_default; ?>', 
+function(data) {
+ var custo_currency=result[0]['currency_type'];
+    var x=data['rates'][custo_currency];
+ var Rate =parseFloat(x).toFixed(3);
+  console.log(Rate);
+  $('.hiden').show();
+  $("#custocurrency_rate").val(Rate);
+  var num=$("#gtotal").val();
+
+    var value=parseInt(num*Rate);
+    
+var custo_final = isNaN(parseInt(value)) ? 0 : parseInt(value)
+$('#customer_gtotal').val(custo_final);  
+var v_g_t=$('#customer_gtotal').val();
+   var amount_paid =$("#amount_paid").val();
+   var bal= parseInt(v_g_t-amount_paid);
+   console.log("Bal :");
+   $('#balance').val(bal);
+      }
+)}
+    });
+
+});
+
+
+
+
+
+$('#custocurrency_rate').on('change textInput input', function (e) {
+calculate();
+});
+
+$('.common_qnt').on('change textInput input', function (e) {
+calculate();
+});
+var csrfName = '<?php echo $this->security->get_csrf_token_name();?>';
+var csrfHash = '<?php echo $this->security->get_csrf_hash();?>';
+
+
+$(".qty").on("input",function(){
+
+var first=$(".someClass").val();
+var tax= $('#product_tax').val();
+console.log(first+"/"+tax);
+var field = tax.split('-');
+
+var percent = field[1];
+var answer=0;
+var answer = parseInt((percent / 100) * first);
+console.log("Answer : "+answer);
+var gtotal = parseInt(first + answer);
+console.log("gtotal :" +gtotal);
+var final_g= $('#final_gtotal').val();
+
+
+var amt=parseInt(answer)+parseInt(first);
+var num = isNaN(parseInt(amt)) ? 0 : parseInt(amt)
+var custo_amt=$('#custocurrency_rate').val(); 
+console.log("numhere :"+num +"-"+custo_amt);
+var value=parseInt(num*custo_amt);
+var custo_final = isNaN(parseInt(value)) ? 0 : parseInt(value)
+$('#customer_gtotal').val(custo_final);  
+calculate();
+var v_g_t=$('#customer_gtotal').val();
+   var amount_paid =$("#amount_paid").val();
+   var bal= parseInt(v_g_t-amount_paid);
+   console.log("Bal :");
+   $('#balance').val(bal);
+});
+
+// Restricts input for each element in the set of matched elements to the given inputFilter.
+(function($) {
+$.fn.inputFilter = function(callback, errMsg) {
+return this.on("input keydown keyup mousedown mouseup select contextmenu drop focusout", function(e) {
+  if (callback(this.value)) {
+    // Accepted value
+    if (["keydown","mousedown","focusout"].indexOf(e.type) >= 0){
+      $(this).removeClass("input-error");
+      this.setCustomValidity("");
+    }
+    this.oldValue = this.value;
+    this.oldSelectionStart = this.selectionStart;
+    this.oldSelectionEnd = this.selectionEnd;
+  } else if (this.hasOwnProperty("oldValue")) {
+    // Rejected value - restore the previous one
+    $(this).addClass("input-error");
+    this.setCustomValidity(errMsg);
+    this.reportValidity();
+    this.value = this.oldValue;
+    this.setSelectionRange(this.oldSelectionStart, this.oldSelectionEnd);
+  } else {
+    // Rejected value - nothing to restore
+    this.value = "";
+  }
+});
+};
+}(jQuery));
+
+$("#custocurrency_rate").inputFilter(function(value) {
+return /^-?\d*[.,]?\d*$/.test(value); }, "Must be a floating (real) Number");
+$('#customer_name').on('change', function (e) {
+  
+  var data = {
+      value: $('#customer_name').val()
+   };
+  data[csrfName] = csrfHash;
+  $.ajax({
+      type:'POST',
+      data: data,
+   
+      //dataType tells jQuery to expect JSON response
+      dataType:"json",
+      url:'<?php echo base_url();?>Cinvoice/getcustomer_byID',
+      success: function(result, statut) {
+          if(result.csrfName){
+             //assign the new csrfName/Hash
+             csrfName = result.csrfName;
+             csrfHash = result.csrfHash;
+          }
+         // var parsedData = JSON.parse(result);
+        //  alert(result[0].p_quantity);
+        console.log(result[0]['currency_type']);
+        $(".cus").val(result[0]['currency_type']);
+        $("label[for='custocurrency']").html(result[0]['currency_type']);
+       console.log('https://open.er-api.com/v6/latest/<?php echo $curn_info_default; ?>');
+       $.getJSON('https://open.er-api.com/v6/latest/<?php echo $curn_info_default; ?>', 
+function(data) {
+ var custo_currency=result[0]['currency_type'];
+    var x=data['rates'][custo_currency];
+ var Rate =parseFloat(x).toFixed(3);
+  console.log(Rate);
+  $('.hiden').show();
+  $("#custocurrency_rate").val(Rate);
+});
+    
+      }
+  });
+
+
+});
+$('#product_tax').on('change', function (e) {
+    var optionSelected = $("option:selected", this);
+    var valueSelected = this.value;
+    var total=$('#Total').val();
+var tax= $('#product_tax').val();
+
+var field = tax.split('-');
+
+var percent = field[1];
+percent=percent.replace("%","");
+ var answer = (percent / 100) * parseInt(total);
+$('#final_gtotal').val(answer);
+   $('#hdn').val(valueSelected);
+   console.log("taxi :"+valueSelected);
+  $('#tax_details').val(answer +" ( "+tax+" )");
+
+   calculate();
+});
+var arr=[];
+
+function total_amt(id){
+
+    var sum=0;
+  
+var total='total_price_'+id;
+
+var quantity='cartoon_'+id;
+var amount = 'product_rate_'+ id;
+var grand=$('#gtotal').val();
+var quan=$('#'+quantity).val();
+var amt=$('#'+amount).val();
+var result=parseInt(quan) * parseInt(amt);
+result = isNaN(result) ? 0 : result;
+arr.push(result);
+$('#'+total).val(result);
+
+gt();
+}
+function gt(){
+    var sum=0;
+    $('.total_price').each(function() {
+    sum += parseFloat($(this).val());
+});
+$('#Total').val(sum);
+var final_g= $('#final_gtotal').val();
+if(final_g !=''){
+var first=$("#Total").val();
+    var tax= $('#product_tax').val();
+
+var field = tax.split('-');
+
+var percent = field[1];
+var answer=0;
+  var answer =(parseInt(percent) / 100) * parseInt(first);
+   console.log(answer);
+   $('#tax_details').val(answer +" ( "+tax+" )");
+
+  var gtotal = parseInt(first + answer);
+  console.log(gtotal);
+var amt=parseInt(answer)+parseInt(first);
+ var num = isNaN(parseInt(amt)) ? 0 : parseInt(amt)
+ var custo_amt=$('#custocurrency_rate').val();
+ $("#gtotal").val(num);  
+ console.log(num +"-"+custo_amt);
+ var value=parseInt(num*custo_amt);
+ var custo_final = isNaN(parseInt(value)) ? 0 : parseInt(value)
+$('#customer_gtotal').val(custo_final);
+var v_g_t=$('#customer_gtotal').val();
+   var amount_paid =$("#amount_paid").val();
+   var bal= parseInt(v_g_t-amount_paid);
+   console.log("Bal :");
+   $('#balance').val(bal);
+}  
+}
+function calculate(){
+  
+  var first=$("#Total").val();
+  var tax= $('#product_tax').val();
+var field = tax.split('-');
+
+var percent = field[1];
+var answer=0;
+var answer = parseInt((percent / 100) * first);
+var gtotal = parseInt(first + answer);
+console.log(gtotal);
+var final_g= $('#final_gtotal').val();
+
+
+var amt=parseInt(final_g)+parseInt(first);
+var num = isNaN(parseInt(amt)) ? 0 : parseInt(amt);
+$("#gtotal").val(num);  
+var custo_amt=$('#custocurrency_rate').val();
+
+console.log(num +"-"+custo_amt);
+var value=parseInt(num*custo_amt);
+var custo_final = isNaN(parseInt(value)) ? 0 : parseInt(value)
+$('#customer_gtotal').val(custo_final);  
+var v_g_t=$('#customer_gtotal').val();
+   var amount_paid =$("#amount_paid").val();
+   var bal= parseInt(v_g_t-amount_paid);
+   console.log("Bal :");
+   $('#balance').val(bal);
+}
+
+
+    </script>
+	
+    <script type="text/javascript">
    $('#paypls').on('click', function (e) {
 $('#amount_to_pay').val($('#balance').val());
     $('#payment_modal').modal('show');
@@ -2602,11 +2731,11 @@ $('#payment_history').click(function (event) {
        data:$("#histroy").serialize(),
 
        success:function (data) {
-        var gt=$('#gtotal').val();
+        var gt=$('#customer_gtotal').val();
         var amtpd=data.amt_paid;
         console.log(gt+"^"+amtpd);
-        var bal= parseFloat($('#gtotal').val()) - Number(data.amt_paid);
-var total= "<table class='table table-striped table-bordered'><tr><td rowspan='2' style='vertical-align: middle;text-align-last: center;'><b>Grand Total :  <?php  echo $currency;  ?>"+$('#gtotal').val()+"<b></td><td class='td' style='border-right: hidden;'><b>Total Amount Paid :<b></td><td><?php  echo $currency;  ?>"+data.amt_paid+"</td></tr></tr><td class='td' style='border-right: hidden;'><b>Balance :<b></td><td><?php  echo $currency;  ?>"+bal +"</td></tr></table>"
+        var bal= parseFloat($('#customer_gtotal').val()) - Number(data.amt_paid);
+var total= "<table class='table table-striped table-bordered'><tr><td rowspan='2' style='vertical-align: middle;text-align-last: center;'><b>Grand Total :  <?php  echo $currency;  ?>"+$('#customer_gtotal').val()+"<b></td><td class='td' style='border-right: hidden;'><b>Total Amount Paid :<b></td><td><?php  echo $currency;  ?>"+data.amt_paid+"</td></tr></tr><td class='td' style='border-right: hidden;'><b>Balance :<b></td><td><?php  echo $currency;  ?>"+bal +"</td></tr></table>"
         var table_header = "<table class='table table-striped table-bordered'><thead style='FONT-WEIGHT:BOLD;'><tr><td>S.NO</td><td>Payment Date</td><td>Reference.NO</td><td>Bank Name</td><td>Amount Paid</td><td>Balance</td><td>Details</td></tr></thead><tbody>";
                    var table_footer = "</tbody></table>";
                 var html ="";
@@ -2633,7 +2762,98 @@ var count=1;
    });
    event.preventDefault();
 });
+$(document).ready(function(){
+   // $('#payment_modal').modal("show");
+    $('#product_tax').on('change', function (e) {
+        var first=$("#Total").val();
+    var tax= $('#product_tax').val();
+var field = tax.split('-');
 
+var percent = field[1];
+var answer=0;
+  var answer = parseInt((percent / 100) * first);
+   console.log("Answer : "+answer);
+  var gtotal = parseInt(first + answer);
+  console.log("gtotal :" +gtotal);
+  
+ var final_g= $('#final_gtotal').val();
+
+
+ var amt=parseInt(answer)+parseInt(first);
+ var num = isNaN(parseInt(amt)) ? 0 : parseInt(amt)
+ var custo_amt=$('#custocurrency_rate').val(); 
+ console.log("numhere :"+num +"-"+custo_amt);
+ var value=parseInt(num*custo_amt);
+ var custo_final = isNaN(parseInt(value)) ? 0 : parseInt(value)
+$('#customer_gtotal').val(custo_final);  
+
+calculate();
+var v_g_t=$('#customer_gtotal').val();
+   var amount_paid =$("#amount_paid").val();
+   var bal= parseInt(v_g_t-amount_paid);
+   console.log("Bal :");
+   $('#balance').val(bal);
+});
+});
+$( document ).ready(function() {
+                        $('.hiden').css("display","none");
+
+  
+                        $('#customer_gtotal').on('change textInput input', function (e) {
+   var v_g_t=$('#customer_gtotal').val();
+   var amount_paid =$("#amount_paid").val();
+   var bal= parseInt(v_g_t-amount_paid);
+   console.log("Bal :");
+   $('#balance').val(bal);
+});
+$('#custocurrency_rate').on('change textInput input', function (e) {
+    calculate();
+});
+
+$('.common_qnt').on('change textInput input', function (e) {
+    calculate();
+});
+
+});
+
+var csrfName = '<?php echo $this->security->get_csrf_token_name();?>';
+var csrfHash = '<?php echo $this->security->get_csrf_hash();?>';
+function available_quantity (id) {
+    $('.product_name').on('change', function (e) {
+        var name = 'available_quantity_'+ id;
+   
+   var amount = 'product_rate_'+ id;
+   var pdt=$('#prodt_'+id).val();
+   const myArray = pdt.split("-");
+   var product_nam=myArray[0];
+   var product_model=myArray[1];
+  var data = {
+       amount:'product_rate_'+ id,
+       name:'available_quantity_'+ id,
+       product_nam:product_nam,
+       product_model:product_model
+    };
+    data[csrfName] = csrfHash;
+
+    $.ajax({
+        type:'POST',
+        data: data, 
+     dataType:"json",
+        url:'<?php echo base_url();?>Cinvoice/availability',
+        success: function(result, statut) {
+            if(result.csrfName){
+             
+               csrfName = result.csrfName;
+               csrfHash = result.csrfHash;
+            }
+          $(".available_quantity_"+ id).val(result[0]['p_quantity']);
+          $("#product_rate_"+ id).val(result[0]['price']);
+          $(".product_id_"+ id).val(result[0]['product_id']);
+            console.log(result);
+        }
+    });
+});
+}
 $( "#balance" ).on('change', function(){
    var bl=$(this).val();
    console.log("bl : "+bl);
@@ -2641,12 +2861,99 @@ $( "#balance" ).on('change', function(){
     $('#paypls').hide();
    }
 });
+$('#add_bank').submit(function (event) {
+   
+       
+   var dataString = {
+       dataString : $("#add_bank").serialize()
+   
+  };
+  dataString[csrfName] = csrfHash;
+ 
+   $.ajax({
+       type:"POST",
+       dataType:"json",
+       url:"<?php echo base_url(); ?>Csettings/add_new_bank",
+       data:$("#add_bank").serialize(),
+
+       success: function (data) {
+        $.each(data, function (i, item) {
+           
+            result = '<option value=' + data[i].bank_name + '>' + data[i].bank_name + '</option>';
+        });
+      
+        $('.bankpayment').selectmenu(); 
+        $('.bankpayment').append(result).selectmenu('refresh',true);
+       $("#bodyModal1").html("Bank Added Successfully");
+       $('#myModal3').modal('hide');
+       $('#add_bank_info').modal('hide');
+       
+        $('#myModal1').modal('show');
+       window.setTimeout(function(){
+      
+        $('#myModal5').modal('hide');
+        $('#myModal1').modal('hide');
+    
+     }, 2000);
+     
+      }
+
+   });
+   event.preventDefault();
+});
+
+
+
+
+      $(document).ready(function () {
+      $('#bank').selectize({
+          sortField: 'text'
+      });
+  });
 </script>
+<style>
+    .ui-selectmenu-text{
+        display:none;
+    }
+   </style>
 
+<script>
+const select = document.querySelectorAll(".currency");
+const btn = document.getElementById("btn");
+const num = document.getElementById("num");
+const ans = document.getElementById("ans");
+const err = document.getElementById("errorMSG");
+const info = document.getElementById("info");
+const baseFlagsUrl = "https://wise.com/public-resources/assets/flags/rectangle";
+const currencyApiUrl = "https://open.er-api.com/v6/latest";
 
+document.addEventListener('DOMContentLoaded', function(){ 
+  fetch(currencyApiUrl)
+    .then((data) => data.json())
+    .then((data) => {
+    err.innerHTML = "";
+    display(data.rates);
+    $('.currency').select2({
+      width: 'resolve',
+  
+      maximumInputLength: 3
+    });
+    info.innerHTML = "Result: "+data.result+"<br>Provider: "+data.provider+"<br>Documentation: "+data.documentation+"<br>Terms of use: "+data.terms_of_use+"<br>Time Last Update UTC: "+data.time_last_update_utc;
+    $('#pageLoader').fadeOut();
+  }).catch(function(error) {
+    err.innerHTML = "Error: " + error;
+    $('#pageLoader').fadeOut();
+  });
+function display(data){
+  const entries = Object.entries(data);
+  for (var i = 0; i < entries.length; i++){
+    select[0].innerHTML += `<option value="${entries[i][0]}">${entries[i][0]}</option>`;
+    select[1].innerHTML += `<option value="${entries[i][0]}">${entries[i][0]}</option>`;
+  }
+  
+}
+});
 
-
-
-
+    </script>
 
 

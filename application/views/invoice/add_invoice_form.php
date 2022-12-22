@@ -607,7 +607,7 @@ textarea:focus, input:focus{
 
                                            
                                     </tr>
-                                    </tr>
+                                  
                                     <tr>
                                         
                                     
@@ -619,7 +619,7 @@ textarea:focus, input:focus{
                                             </span></td>
                                       
 
-                                            <input type="text" id="final_gtotal"  name="final_gtotal" />
+                                            <input type="hidden" id="final_gtotal"  name="final_gtotal" />
 
                                             <input type="hidden" name="baseUrl" class="baseUrl" value="<?php echo base_url();?>"/></td>
                                     </tr> 
@@ -723,7 +723,7 @@ textarea:focus, input:focus{
                               
                     </div>
                     <input type="hidden" id="hdn"/>
-<input type="text" id="gtotal_dup"/>
+<input type="hidden" id="gtotal_dup"/>
 
 <div class="modal fade" id="myModal1" role="dialog" >
     <div class="modal-dialog">
@@ -775,7 +775,7 @@ textarea:focus, input:focus{
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="myModal5" aria-hidden="true">×</button>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 	<h4 class="modal-title">ADD BANK</h4>
 
             </div>
@@ -861,7 +861,7 @@ textarea:focus, input:focus{
     </select>
 <input type="hidden" name="" id="num" >
 <div class="right_box" style="display:none;">
-<select name="currency1" class="currency" id="currency2" style="width: 95%;"></select>
+<select name="currency2" class="currency" id="currency2" style="width: 95%;"></select>
 <input type="hidden" name="" id="ans" disabled>
 </div>
 <small id="errorMSG" style="display:none;"></small>
@@ -881,10 +881,10 @@ textarea:focus, input:focus{
 
       
 
-      <a href="#" class="btn btn-danger" data-dismiss="modal">Close</a>
+   
 
       
-      <input type="submit" id="addBank"  name="addBank" value="<?php echo display('save') ?>"/>
+      <input type="submit" id="addBank"  name="addBank" class="btn btn-primary" value="<?php echo display('save') ?>"/>
      <!--  <input type="submit" class="btn btn-success" value="Submit"> -->
 
   </div>
@@ -1952,15 +1952,13 @@ function payment_info(){
 <input class=" form-control" type="file"  name="attachement" id="attachement" />
 </div>
 </div> 
-
-
-
-
-
-     
-     </div>   </div>
+  </div>   </div>
      <div class="modal-footer">
-     <input class=" form-control" type="submit"  name="submit_pay" id="submit_pay"   required   />
+     <div class="col-sm-8"></div>
+     <div class="col-sm-2"></div>
+     <div class="col-sm-2">
+     <input class=" form-control pull-left btn btn-primary" type="submit"  name="submit_pay" id="submit_pay"   required   />
+</div>
      </div>
    </div>
    </form>
@@ -2408,6 +2406,8 @@ $('#bal').show();
         $('.bankpayment').append(result).selectmenu('refresh',true);
        $("#bodyModal1").html("Bank Added Successfully");
        $('#myModal3').modal('hide');
+       $('#add_bank_info').modal('hide');
+       
         $('#myModal1').modal('show');
        window.setTimeout(function(){
       
@@ -2473,16 +2473,46 @@ $('#openBtn').click(function () {
     .ui-selectmenu-text{
         display:none;
     }
-.payment_class {
-  width: 80%;
-  height: 80%;
-  padding: 0;
-}
+   </style>
 
-.payment_content {
-  height: 80%;
-  border-radius: 0;
+<script>
+const select = document.querySelectorAll(".currency");
+const btn = document.getElementById("btn");
+const num = document.getElementById("num");
+const ans = document.getElementById("ans");
+const err = document.getElementById("errorMSG");
+const info = document.getElementById("info");
+const baseFlagsUrl = "https://wise.com/public-resources/assets/flags/rectangle";
+const currencyApiUrl = "https://open.er-api.com/v6/latest";
+
+document.addEventListener('DOMContentLoaded', function(){ 
+  fetch(currencyApiUrl)
+    .then((data) => data.json())
+    .then((data) => {
+    err.innerHTML = "";
+    display(data.rates);
+    $('.currency').select2({
+      width: 'resolve',
+  
+      maximumInputLength: 3
+    });
+    info.innerHTML = "Result: "+data.result+"<br>Provider: "+data.provider+"<br>Documentation: "+data.documentation+"<br>Terms of use: "+data.terms_of_use+"<br>Time Last Update UTC: "+data.time_last_update_utc;
+    $('#pageLoader').fadeOut();
+  }).catch(function(error) {
+    err.innerHTML = "Error: " + error;
+    $('#pageLoader').fadeOut();
+  });
+function display(data){
+  const entries = Object.entries(data);
+  for (var i = 0; i < entries.length; i++){
+    select[0].innerHTML += `<option value="${entries[i][0]}">${entries[i][0]}</option>`;
+    select[1].innerHTML += `<option value="${entries[i][0]}">${entries[i][0]}</option>`;
+  }
+  
 }
-    </style>
+});
+
+    </script>
+
 
 

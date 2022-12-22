@@ -143,7 +143,10 @@ class Ccpurchase extends CI_Controller {
         $voucher_no = $this->Purchases->trucking_voucher_no();
         $currency_details = $CI->Web_settings->retrieve_setting_editdata();
         $curn_info_default = $CI->db->select('*')->from('currency_tbl')->where('icon',$currency_details[0]['currency'])->get()->result_array();
-      
+        $taxfield1 = $CI->db->select('tax_id,tax')
+         ->from('tax_information')
+         ->get()
+         ->result_array();
         $data = array(
             'curn_info_default' =>$curn_info_default[0]['currency_name'],
           
@@ -154,6 +157,7 @@ class Ccpurchase extends CI_Controller {
             'customer_list' => $get_customer,
             'voucher_no'  => $voucher_no,
             'bank_list'     => $bank_list,
+            'tax'         => $taxfield1
         );
 
        // echo $content = $CI->linvoice->invoice_add_form();

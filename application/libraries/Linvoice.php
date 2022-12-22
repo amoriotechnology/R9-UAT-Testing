@@ -1011,6 +1011,7 @@ class Linvoice {
         ->from('tax_information')
         ->get()
         ->result_array();
+        $company_info = $CI->Invoices->company_information();
         $bank_list = $CI->Web_settings->bank_list();
         $data = array(
             'curn_info_default' =>$curn_info_default[0]['currency_name'],
@@ -1020,6 +1021,7 @@ class Linvoice {
             'all_supplier'  => $all_supplier,
             'taxes'         => $taxfield,
             'tax'         => $taxfield1,
+            'company_name' =>$company_info,
             'customer_name' => isset($customer_details[0]['customer_name'])?$customer_details[0]['customer_name']:'',
             'customer_id'   => isset($customer_details[0]['customer_id'])?$customer_details[0]['customer_id']:'',
             'bank_list'     => $bank_list,

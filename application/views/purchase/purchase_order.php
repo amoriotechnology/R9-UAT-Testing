@@ -337,7 +337,15 @@ textarea:focus, input:focus{
                                 <tbody id="addPurchaseItem">
                                     <tr>
                                         <td class="span3 supplier">
-                                           <input type="text" name="product_name" required class="form-control product_name productSelection" onkeypress="product_pur_or_list(1);" placeholder="<?php echo display('product_name') ?>" id="product_name_1" tabindex="5" >
+                                         
+                                           <select  name="product_name" id="product_name_1" class="form-control product_name ;">
+                                        <option value="Select the Product" selected>Select the Product</option>
+                                            <?php
+                                            foreach($products as $tx){?>
+   <option value="<?php echo $tx['product_name'].'-'.$tx['product_model'];?>">  <?php echo $tx['product_name'].'-'.$tx['product_model'];  ?></option>
+                                           <?php } ?>
+                                    </select>
+
 
                                              <input type="hidden" class="autocomplete_hidden_value product_id_1" name="product_id[]" id="SchoolHiddenId"/>
 
@@ -568,9 +576,8 @@ textarea:focus, input:focus{
 </div>   
            
  
-
 <!-- Purchase Report End -->
-  <!-- Purchase Report End -->
+<form id="insert_supplier"  method="post">
   <div class="modal fade modal-success" id="add_vendor" role="dialog">
 <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -648,6 +655,7 @@ textarea:focus, input:focus{
                 <input class="form-control" name="state" id="state" type="text" placeholder="<?php echo display('state') ?>"  >
             </div>
         </div>
+        <input type="hidden" name="<?php echo $this->security->get_csrf_token_name();?>" value="<?php echo $this->security->get_csrf_hash();?>">
          <div class="form-group row">
             <label for="zip" class="col-sm-4 col-form-label"><?php echo display('zip'); ?> <i class="text-danger"></i></label>
             <div class="col-sm-8">
@@ -705,8 +713,12 @@ textarea:focus, input:focus{
                             <a href="#" class="btn btn-danger" data-dismiss="modal">Close</a>
                             <input type="submit" id="add-supplier-from-expense" name="add-supplier-from-expense"  class="btn btn-success" value="Submit">
                         </div>
-                        </div></div></div></div>
-  
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </form>
+
 
 
             <div class="modal fade" id="product_info" role="dialog">
@@ -1171,7 +1183,29 @@ window.onbeforeunload = function(){
     }
 }
 
-  
+$('#insert_supplier').submit(function (event) {
+    var dataString = {
+        dataString : $("#insert_supplier").serialize()
+   };
+   dataString[csrfName] = csrfHash;
+    $.ajax({
+        type:"POST",
+        dataType:"json",
+        url:"<?php echo base_url(); ?>Csupplier/insert_supplier",
+        data:$("#insert_supplier").serialize(),
+        success:function (data) {
+            $("#bodyModal1").html("Add New Vendor Saved Successfully");
+        $('#myModal1').modal('show');
+        $('#add_vendor').modal('hide');
+        console.log(data);
+  console.log(input_hdn);
+        }
+    });
+    event.preventDefault();
+    window.setTimeout(function(){
+       $('#add_vendor').modal('hide');
+     }, 2000);
+});
 
     </script>
 

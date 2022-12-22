@@ -92,12 +92,17 @@ class Lpurchase {
         $currency_details = $CI->Web_settings->retrieve_setting_editdata();
         $curn_info_default = $CI->db->select('*')->from('currency_tbl')->where('icon',$currency_details[0]['currency'])->get()->result_array();
      $product_name=$CI->Invoices->allproduct();
+     $taxfield1 = $CI->db->select('tax_id,tax')
+     ->from('tax_information')
+     ->get()
+     ->result_array();
         $data = array(
             'curn_info_default' =>$curn_info_default[0]['currency_name'],
             'currency' => $currency_details[0]['currency'],
             'title'         => display('add_purchase'),
             'all_supplier'  => $all_supplier,
             'product_list'  => $all_product_list,
+            'tax'           => $taxfield1,
            'product_name' =>$product_name,
             'invoice_no'    => $CI->auth->generator(10),
             'category_list'=> $category_list,
@@ -758,11 +763,14 @@ class Lpurchase {
         $currency_details = $CI->Web_settings->retrieve_setting_editdata();
         $curn_info_default = $CI->db->select('*')->from('currency_tbl')->where('icon',$currency_details[0]['currency'])->get()->result_array();
       
-
+        $taxfield1 = $CI->db->select('tax_id,tax')
+        ->from('tax_information')
+        ->get()
+        ->result_array();
         $data = array(
             'curn_info_default' =>$curn_info_default[0]['currency_name'],
             'currency' => $currency_details[0]['currency'],
-
+            'all_tax' =>$taxfield1,
             'title'         => display('purchase_edit'),
 
             'purchase_id'   => $purchase_detail[0]['purchase_id'],
@@ -795,8 +803,8 @@ class Lpurchase {
 
             'paid_amount'   => $purchase_detail[0]['paid_amount'],
 
-            'due_amount'    => $purchase_detail[0]['due_amount'],
-
+            'balance'    => $purchase_detail[0]['balance'],
+            'payment_id'    => $purchase_detail[0]['payment_id'],
             'bank_list'     => $bank_list,
 
             'supplier_selected' => $supplier_selected,
@@ -804,6 +812,7 @@ class Lpurchase {
             'discount_type' => $currency_details[0]['discount_type'],
 
             'paytype'       => $purchase_detail[0]['payment_type'],
+           'total_tax'       => $purchase_detail[0]['total_tax']
 
         );
 
@@ -1034,7 +1043,7 @@ class Lpurchase {
     public function trucking_edit_data($purchase_id) {
 
         $CI = & get_instance();
-
+        $CI->load->model('Invoices');
         $CI->load->model('Purchases');
 
         $CI->load->model('Suppliers');
@@ -1072,11 +1081,22 @@ class Lpurchase {
         $currency_details = $CI->Web_settings->retrieve_setting_editdata();
         $all_supplier = $CI1->Purchases->select_all_supplier();
         $get_customer= $this->accounts_model->get_customer();
+        
+        $taxfield = $CI->db->select('tax_name,default_value')->from('tax_settings')->get()->result_array();
+        $taxfield1 = $CI->db->select('tax_id,tax')
+        ->from('tax_information')
+        ->get()
+        ->result_array();
+        $currency_details = $CI->Web_settings->retrieve_setting_editdata();
+        $curn_info_default = $CI->db->select('*')->from('currency_tbl')->where('icon',$currency_details[0]['currency'])->get()->result_array();
         $data = array(
+            'curn_info_default' =>$curn_info_default[0]['currency_name'],
+            'currency'  =>$currency_details[0]['currency'],
             'customer_list' => $get_customer,
             'all_supplier'  => $all_supplier,
             'title'         => display('purchase_edit'),
-
+            'taxes'         => $taxfield,
+            'tax'         => $taxfield1,
             'trucking_id'   => $purchase_detail[0]['trucking_id'],
 
             'invoice_no'     => $purchase_detail[0]['invoice_no'],

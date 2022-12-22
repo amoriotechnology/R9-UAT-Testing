@@ -4,7 +4,7 @@
 <script src="<?php echo base_url(); ?>my-assets/js/admin_js/json/supplier.js.php" ></script>
 
 <script src="<?php echo base_url()?>my-assets/js/admin_js/purchase.js" type="text/javascript"></script>
-
+<script src="<?php echo base_url() ?>my-assets/js/countrypicker.js" type="text/javascript"></script>
 
 <script src="<?php echo base_url()?>my-assets/js/admin_js/trucking.js" type="text/javascript"></script>
 
@@ -114,7 +114,7 @@ textarea:focus, input:focus{
                         </div>
                         <input type="hidden" id="invoice_hdn"/> <input type="hidden" id="invoice_hdn1"/>
                         <div class="row">
-                        <input type="text"  value="<?php echo $payment_id; ?>"  name="payment_id"/>
+                        <input type="hidden"  value="<?php echo $payment_id; ?>"  name="payment_id"/>
                             <div class="col-sm-6">
                                <div class="form-group row">
                                     <label for="supplier_sss" class="col-sm-4 col-form-label">Bill to
@@ -163,11 +163,11 @@ textarea:focus, input:focus{
                                         <i class="text-danger">*</i>
                                     </label>
                                     <div class="col-sm-6">
-                                        <select name="shipment_company" id="shipment_company" class="form-control " required="" tabindex="1"> 
+                                        <select name="company_name" id="company_name" class="form-control " required="" tabindex="1">
                                             <option value=" "><?php echo display('select_one') ?></option>
-                                            {all_supplier}
-                                            <option value="{supplier_name}">{supplier_name}</option>
-                                            {/all_supplier}
+                                            {company_name}
+                                            <option value="{company_name}">{company_name}</option>
+                                            {/company_name}
                                         </select>
                                     </div>
                                   <?php if($this->permission1->method('add_supplier','create')->access()){ ?>
@@ -178,7 +178,7 @@ textarea:focus, input:focus{
 
 
 
-                                          <a href="#" class="client-add-btn btn btn-info" aria-hidden="true" data-toggle="modal" data-target="#add_vendor"><i class="fa fa-user"></i></a>
+                                       
 
 
                                     </div>
@@ -592,7 +592,7 @@ textarea:focus, input:focus{
     <div class="form-group row">
             <label for="previous_balance" class="col-sm-4 col-form-label"><?php echo "Preferred Currency" ?></label>
             <div class="col-sm-6">
-            <select name="currency_type" class="currency" id="currency1" style="width: 100%;">
+            <select name="currency1" class="currency" id="currency1" style="width: 100%;">
             <option id="im" value="select preferred currency">select preferred currency</option>
     </select>
 <input type="hidden" name="" id="num" >
@@ -829,7 +829,11 @@ textarea:focus, input:focus{
      
      </div>   </div>
      <div class="modal-footer">
-     <input class=" form-control" type="submit"  name="submit_pay" id="submit_pay"   required   />
+     <div class="col-sm-8"></div>
+     <div class="col-sm-2"></div>
+     <div class="col-sm-2">
+     <input class=" form-control pull-left btn btn-primary" type="submit"  name="submit_pay" id="submit_pay"   required   />
+</div>
      </div>
    </div>
    </form>
@@ -839,7 +843,7 @@ textarea:focus, input:focus{
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="myModal5" aria-hidden="true">×</button>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 	<h4 class="modal-title">ADD BANK</h4>
 
             </div>
@@ -945,10 +949,10 @@ textarea:focus, input:focus{
 
       
 
-      <a href="#" class="btn btn-danger" data-dismiss="modal">Close</a>
+     
 
       
-      <input type="submit" id="addBank"  name="addBank" value="<?php echo display('save') ?>"/>
+      <input type="submit" id="addBank"  name="addBank" class="btn btn-primary" value="<?php echo display('save') ?>"/>
      <!--  <input type="submit" class="btn btn-success" value="Submit"> -->
 
   </div>
@@ -1049,6 +1053,7 @@ if (isNaN(value)) {
            $('.bankpayment').append(result).selectmenu('refresh',true);
           $("#bodyModal1").html("Bank Added Successfully");
           $('#myModal3').modal('hide');
+          $('#add_bank_info').modal('hide');
            $('#myModal1').modal('show');
           window.setTimeout(function(){
          
@@ -1546,11 +1551,45 @@ var custo_final = isNaN(parseInt(value)) ? 0 : parseInt(value)
 $('#customer_gtotal').val(custo_final);  
 }
 
+$( document ).ready(function() {
+    $('#final_submit').hide();
+$('#download').hide();
+                        $('.hiden').css("display","none");
 
+  
+
+$('#Total').on('change textInput input', function (e) {
+    calculate();
+});
+
+$('#custocurrency_rate').on('change textInput input', function (e) {
+    calculate();
+});
+function calculate(){
+  
+  var first=$("#Total").val();
+var custo_amt=$('#custocurrency_rate').val();
+var value=parseInt(first*custo_amt);
+
+var custo_final = isNaN(parseInt(value)) ? 0 : parseInt(value)
+$('#vendor_gtotal').val(custo_final);  
+}
+});
     </script>
 
 
-       <!-- script for currency selector -->
+<style>
+    .ui-selectmenu-text{
+        display:none;
+    }
+   </style>
+
+<style>
+    .ui-selectmenu-text{
+        display:none;
+    }
+   </style>
+
 <script>
 const select = document.querySelectorAll(".currency");
 const btn = document.getElementById("btn");
@@ -1560,7 +1599,8 @@ const err = document.getElementById("errorMSG");
 const info = document.getElementById("info");
 const baseFlagsUrl = "https://wise.com/public-resources/assets/flags/rectangle";
 const currencyApiUrl = "https://open.er-api.com/v6/latest";
-document.addEventListener('DOMContentLoaded', function(){
+
+document.addEventListener('DOMContentLoaded', function(){ 
   fetch(currencyApiUrl)
     .then((data) => data.json())
     .then((data) => {
@@ -1568,8 +1608,7 @@ document.addEventListener('DOMContentLoaded', function(){
     display(data.rates);
     $('.currency').select2({
       width: 'resolve',
-      templateResult: formatFlags,
-      templateSelection: formatCountry,
+  
       maximumInputLength: 3
     });
     info.innerHTML = "Result: "+data.result+"<br>Provider: "+data.provider+"<br>Documentation: "+data.documentation+"<br>Terms of use: "+data.terms_of_use+"<br>Time Last Update UTC: "+data.time_last_update_utc;
@@ -1578,61 +1617,16 @@ document.addEventListener('DOMContentLoaded', function(){
     err.innerHTML = "Error: " + error;
     $('#pageLoader').fadeOut();
   });
-  $('.currency').on('select2:select', function (e) {
-    let currency1 = select[0].value;
-    let currency2 = select[1].value;
-    let num1 = num.value;
-    convert(currency1, currency2, num1)
-  });
-}, false);
 function display(data){
   const entries = Object.entries(data);
   for (var i = 0; i < entries.length; i++){
     select[0].innerHTML += `<option value="${entries[i][0]}">${entries[i][0]}</option>`;
     select[1].innerHTML += `<option value="${entries[i][0]}">${entries[i][0]}</option>`;
   }
-  if ($('#currency2').find("option[value='CLP']").length) {
-    $('#currency2').val('CLP').trigger('change');
-    $('#num').val(1);
-    let currency1 = select[0].value;
-    let currency2 = select[1].value;
-    let num1 = num.value;
-    convert(currency1, currency2, num1)
-  }
+  
 }
-function formatFlags (country) {
-  if (!country.id) {
-    return country.text;
-  }
-  var $countryFlag = $('<span><img src="' + baseFlagsUrl + '/' + country.element.value.toLowerCase() + '.png" class="img-flag" /> ' + country.text + '</span>');
-  return $countryFlag;
-}
-function formatCountry (country) {
-  if (!country.id) {
-    return country.text;
-  }
-  var $countryFlag = $('<span><img class="img-flag"/> <span></span></span>');
-  $countryFlag.find("span").text(country.text);
-  $countryFlag.find("img").attr("src", baseFlagsUrl + "/" + country.element.value.toLowerCase() + ".png");
-  return $countryFlag;
-}
-function convert(currency1, currency2, value){
-  fetch(`${currencyApiUrl}/${currency1}`)
-    .then((val) => val.json())
-    .then((val) => {
-    console.log('Converting ' +currency1 + ' to '+currency2);
-    var res  = val.rates[currency2] * value
-    ans.value = res.toFixed(2);
-    err.innerHTML = "";
-  }).catch(function(error) {
-    err.innerHTML = "Error: " + error;
-  });
-}
+});
+
     </script>
- <!-- style for currency list   -->
-<style>
-.img-flag{
-  max-height: 11px;
- display: none;
-}
-    </style> 
+
+

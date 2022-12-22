@@ -184,9 +184,11 @@ $CI = & get_instance();
         $data=array();
          $get_customer= $this->accounts_model->get_customer();
          $bank_list        = $this->Web_settings->bank_list();
+       
         $data = array(
             'customer_list' => $get_customer,
             'bank_list'     => $bank_list,
+          
         );
         $data['voucher_no'] = $this->accounts_model->Creceive();
     

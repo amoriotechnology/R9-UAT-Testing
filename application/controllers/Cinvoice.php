@@ -590,9 +590,14 @@ public function deletesale(){
         $CI = & get_instance();
 
         $CI->auth->check_admin_auth();
-
+        $CI->load->model('Products');
         $CI->load->library('linvoice');
+        $products=$CI->Products->get_all_products();
         $data=array();
+        $data=array(
+            'products'=> $products
+            );
+      
        // echo $content = $CI->linvoice->invoice_add_form();
         $content = $this->load->view('invoice/add_packing_list', $data, true);
         //$content='';
@@ -1057,7 +1062,13 @@ public function deletesale(){
     }
 
 
-
+    public function company_name() {
+        $CI = & get_instance();
+        $CI->auth->check_admin_auth();
+         $CI->load->model('Invoices');
+        $companyid=$CI->Invoices->trucking_entry();
+        echo json_encode($companyid);
+    }
 
 
      public function setmail($email, $file_path, $id = null, $name = null) {
@@ -2148,7 +2159,7 @@ $this->db->update('bootgrid_data');
         $packing_details = $CB->Invoices->packing_details_data($expense_id);
 
         // print_r($packing_details); exit();
-
+     
         $data=array(
             'header'=> $dataw[0]['header'],
             'logo'=> $dataw[0]['logo'],
@@ -2160,10 +2171,12 @@ $this->db->update('bootgrid_data');
             'phone' => $company_info[0]['mobile'],
             'invoice'  =>$packing_details[0]['invoice_no'],
             'invoice_date' => $packing_details[0]['invoice_date'],
+       
             'expense_packing_id'=>$packing_details[0]['expense_packing_id'],
             'gross' => $packing_details[0]['gross_weight'],
             'container' => $packing_details[0]['container_no'],
             'remarks' => $packing_details[0]['remarks'],
+            'company' => $company_info[0]['company_name'],
             'description' => $packing_details[0]['description'],
             'thickness' => $packing_details[0]['thickness'],
             'total' => $packing_details[0]['grand_total_amount'],

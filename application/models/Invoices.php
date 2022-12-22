@@ -3218,6 +3218,14 @@ if(!empty($this->input->post('paid_amount',TRUE))){
 
 
     }
+    public function company_information() {
+        $this->db->select('*');
+        $this->db->from('company_information');
+        $query = $this->db->get();
+        if ($query->num_rows() > 0) {
+            return $query->result_array();
+        }
+     }
     public function get_payment_info($payment_id){
         
       //,sum(amt_paid) as total_paid
@@ -4924,6 +4932,7 @@ return $output;
               'total_amt' => $this->input->post('total',TRUE),
               'tax' => $this->input->post('tax_details',TRUE),
               'grand_total_amount' => $this->input->post('gtotal',TRUE),
+              'customer_gtotal' =>$this->input->post('customer_gtotal',TRUE),
               'amt_paid'    => $this->input->post('amount_paid',TRUE),
             'balance'    => $this->input->post('balance',TRUE),
               'remarks' => $this->input->post('remarks',TRUE),

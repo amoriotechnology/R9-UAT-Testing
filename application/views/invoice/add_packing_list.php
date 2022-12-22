@@ -167,9 +167,23 @@
                                         
 
                                         <td class="span3 supplier">
-                                           <input type="text" name="product_name" required class="form-control product_name productSelection" onkeypress="product_pur_or_list_by_company(1);" placeholder="<?php echo display('product_name') ?>" id="product_name_1" tabindex="5" >
+                                        <select name="product_name"  required class="form-control product_name productSelection"  id="product_name_1" tabindex="5" class="form-control product_name" >
+                                        <option value="Select the Product" selected>Select the Product</option>
+                                        <?php
+                                        foreach ($products as $ppn)
+                                        {
+                                         ?>
+                                          <option value="<?php echo $ppn['product_name'].'-'.$ppn['product_model']; ?>"><?php echo $ppn['product_name'].'-'.$ppn['product_model']; ?></option>
+                                          <?php
+                                        }?>
+                                    </select>
 
-                                            <input type="hidden" class="autocomplete_hidden_value product_id_1" name="product_id" id="SchoolHiddenId"/>
+
+  <input type='hidden' class='common_product autocomplete_hidden_value  product_id_1' name='product_id[]' id='SchoolHiddenId' />
+                               
+
+
+                                        
 
                                             <input type="hidden" class="sl" value="1">
 

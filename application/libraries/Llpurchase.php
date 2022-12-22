@@ -932,11 +932,19 @@ class Llpurchase {
 
 
         $currency_details = $CI->Web_settings->retrieve_setting_editdata();
-
+        $curn_info_default = $CI->db->select('*')->from('currency_tbl')->where('icon',$currency_details[0]['currency'])->get()->result_array();
+        $taxfield = $CI->db->select('tax_name,default_value')->from('tax_settings')->get()->result_array();
+        $taxfield1 = $CI->db->select('tax_id,tax')
+        ->from('tax_information')
+        ->get()
+        ->result_array();
+      
         $data = array(
-
+            'curn_info_default' =>$curn_info_default[0]['currency_name'],
+            'currency'  =>$currency_details[0]['currency'],
             'title'         => 'Edit Trucking Invoice',
-
+            'taxes'         => $taxfield,
+            'tax'         => $taxfield1,
             'trucking_id'   => $purchase_detail[0]['trucking_id'],
 
             'invoice_no'     => $purchase_detail[0]['invoice_no'],
@@ -963,7 +971,7 @@ class Llpurchase {
         );
 
 
-
+print_r($purchase_detail);
         $chapterList = $CI->parser->parse('purchase/edit_trucking_form', $data, true);
 
         return $chapterList;
