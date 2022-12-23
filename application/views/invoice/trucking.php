@@ -28,7 +28,7 @@
     <style>
         input {
     border: none;
-    background-color: #eee;
+
  }
 textarea:focus, input:focus{
    
@@ -163,7 +163,7 @@ textarea:focus, input:focus{
                                         <i class="text-danger">*</i>
                                     </label>
                                     <div class="col-sm-6">
-                                        <select name="company_name" id="company_name" class="form-control " required="" tabindex="1">
+                                        <select name="shipment_company" id="shipment_company" class="form-control " required="" tabindex="1">
                                             <option value=" "><?php echo display('select_one') ?></option>
                                             {company_name}
                                             <option value="{company_name}">{company_name}</option>
@@ -286,17 +286,26 @@ textarea:focus, input:focus{
                                         <td class="text-right">
                                             <input type="text" name="description[]" id="" required="" min="0" class="form-control text-right" value=""  tabindex="6"/>
                                         </td>
-                                        <td><span style='padding:5px;background-color: #eee;'><?php echo $currency;  ?>
-                                            <input type="text" name="product_rate[]" required="" onkeyup="total_amt(1);"  id="product_rate_1" class="product_rate_1" placeholder="0.00" value="" min="0" tabindex="7"/>
-                                  </span>  </td>
+                                        <td>
+                                        <table border="0">
+      <tr>
+        <td><?php  echo $currency." ";  ?></td>
+        <td>   <input type="text" name="product_rate[]" required="" onkeyup="total_amt(1);"  id="product_rate_1" class="product_rate_1" placeholder="0.00" value="" min="0" tabindex="7"/></td>
+     </tr>
+   </table>      </td>
 
                                         <td class="text-right">
                                             <input class="form-control" type="text" name="pro_no[]" id="pro_no" value=""  />
                                         </td>
                                            
-                                        <td><span class='form-control' style='background-color: #eee;'><?php echo $currency;  ?>
-                                            <input class="total_price" type="text" name="total_price[]" id="total_price_1" value="0.00" readonly="readonly" />
-                                  </span></td>
+                                        <td>
+                                        <table border="0">
+      <tr>
+        <td><?php  echo $currency." ";  ?></td>
+        <td>   <input class="total_price" type="text" name="total_price[]" id="total_price_1" value="0.00" readonly="readonly" /></td>
+     </tr>
+   </table>    
+                                    </td>
                                         <td>
                                             <button  class="btn btn-danger text-right red" type="button" value="<?php echo display('delete')?>" onclick="deleteRow(this)" tabindex="8"><i class="fa fa-close"></i></button>
                                         </td>
@@ -304,58 +313,89 @@ textarea:focus, input:focus{
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        
-                                        <td style="text-align:right;" colspan="5"><b>Overall Total:</b></td>
-                                        <td><span class='form-control' style='background-color: #eee;'><?php echo $currency;  ?>
-                                            <input type="text" id="Total"  name="total" value="0.00" readonly="readonly" />
-                                  </span></td>
-                                        
-
-                                       <input type="hidden" name="baseUrl" class="baseUrl" value="<?php echo base_url();?>"/>
+                                   
+                                        <td style="text-align:right;" colspan="5"><b><?php echo display('total') ?>:</b></td>
+                                        <td style="text-align:left;">
+                                        <table border="0">
+      <tr>
+        <td><?php  echo $currency." ";  ?></td>
+        <td>     <input type="text" id="Total" class="text-right" name="total"  readonly="readonly" /></td>
+     </tr>
+   </table>
+                                           </td>
+                                    
+                                           
                                     </tr>
                                     <tr>
                                    
                                    <td style="text-align:right;" colspan="5"><b>Tax Details :</b></td>
                                    <td style="text-align:left;">
-                                 <span class="form-control" style="background-color: #eee;"><?php echo $currency;  ?>
-                                       <input type="text" id="tax_details" class="text-right" value="0.00" name="tax_details"  readonly="readonly" />
-                                       </span></td>
+                                   <table border="0">
+      <tr>
+        <td><?php  echo $currency." ";  ?></td>
+        <td>       <input type="text" id="tax_details" class="text-right" value="0.00" name="tax_details"  readonly="readonly" /></td>
+     </tr>
+   </table>
+                               </td>
                                
                                       
                                </tr>
-                               <tr> <td style="text-align:right;" colspan="5"><b><?php echo "Grand Total" ?>:</b></td>
-                                    <td><span class='form-control' style='background-color: #eee;'><?php echo $currency;  ?>
-                                            <input type="text" id="gtotal"  name="gtotal" value="0.00" readonly="readonly" />
-                                 </span></td>
-                                 <td> <button type="button" id="add_invoice_item" class="btn btn-info" name="add-invoice-item"  onClick="addTruckingOrderField('addPurchaseItem')"  tabindex="9"/><i class="fa fa-plus"></i></button></td>
-  </tr>
-  <tr> <td style="text-align:right;"  colspan="5"><b><?php echo "Grand Total" ?>:</b><br/><b>(Preferred Currency)</b></td>
+                                    <tr> <td style="text-align:right;" colspan="5"><b><?php echo "Grand Total" ?>:</b></td>
                                     <td>
-                                            <span class="form-control" style="background-color: #eee;" id="custospan"><input style="width:15%;font-weight:bold;" type="text" class="cus"  name="cus"  readonly="readonly" />
-                                            <input type="text" id="customer_gtotal"  name="customer_gtotal"  readonly="readonly" />
-                                            </span></td>
+                                    <table border="0">
+      <tr>
+        <td><?php  echo $currency." ";  ?></td>
+        <td>    <input type="text" id="gtotal"  name="gtotal" onchange=""value="0.00" readonly="readonly" /></td>
+     </tr>
+   </table></td>
+                                        <td> <button type="button" id="add_invoice_item" class="btn btn-info" name="add-invoice-item" onClick="addTruckingOrderField('addPurchaseItem')"  tabindex="9" ><i class="fa fa-plus"></i></button>
+
+                                           
+                                    </tr>
+                                  
+                                    <tr>
+                                        
+                                    
+                                    
+                                    <td style="text-align:right;"  colspan="5"><b><?php echo "Grand Total" ?>:</b><br/><b>(Preferred Currency)</b></td>
+                                    <td>
+                                    <table border="0">
+      <tr>
+        <td class="cus" name="cus"></td>
+        <td><input  type="text"  readonly id="customer_gtotal"  name="customer_gtotal" class="form-control" required   /></td>
+     </tr>
+   </table></td>
                                       
 
                                             <input type="hidden" id="final_gtotal"  name="final_gtotal" />
 
                                             <input type="hidden" name="baseUrl" class="baseUrl" value="<?php echo base_url();?>"/></td>
-                                    </tr>  
+                                    </tr> 
+                                    
                                     <tr id="amt">
                                    
                                             <td style="text-align:right;"  colspan="5"><b><?php echo "Amount Paid" ?>:</b></td>
                                           
                                             <td>
-                                            <span class="form-control" style="background-color: #eee;" class="custospan"><input style="width:15%;font-weight:bold;" type="text" class="cus"  name="cus"  readonly="readonly" />
-                                            <input type="text" id="amount_paid"  value="0.00" name="amount_paid"  readonly="readonly" />
-                                            </span>
+                                            <table border="0">
+      <tr>
+        <td class="cus" name="cus"></td>
+        <td><input  type="text"  readonly id="amount_paid"  name="amount_paid" class="form-control" required   /></td>
+     </tr>
+   </table>
+                                        
                                             </td>
                                             </tr> 
                                             <tr id="bal">
                                             <td style="text-align:right;"  colspan="5"><b><?php echo "Balance Amount " ?>:</b></td>
                                             <td>
-                                            <span class="form-control" style="background-color: #eee;" class="custospan"><input style="width:15%;font-weight:bold;" type="text" class="cus"  name="cus"  readonly="readonly" />
-                                            <input type="text" id="balance"  name="balance"  readonly="readonly" />
-                                            </span>
+                                            <table border="0">
+      <tr>
+        <td class="cus" name="cus"></td>
+        <td><input  type="text"  readonly id="balance"  name="balance" class="form-control" required   /></td>
+     </tr>
+   </table>
+                                         
                                             </td>
                                             </tr> 
                                             <tr style="border-right:none;border-left:none;border-bottom:none;border-top:none">
@@ -363,7 +403,7 @@ textarea:focus, input:focus{
                                             <td colspan="6" style="text-align: end;">
                                         <input type="submit" value="Make Payment" class="btn btn-primary btn-large" id="paypls"/>
                                             </td>
-                                            </tr> 
+                                            </tr>
                                 </tfoot>
                                     <!--     <tr>
                                        
@@ -756,7 +796,7 @@ textarea:focus, input:focus{
 <option value="UCO Bank">UCO Bank</option>
 <option value="Union Bank of India">Union Bank of India</option>
 <option value="YES Bank Ltd.">YES Bank Ltd.</option>
-<?php foreach($bank_name as $b){ ?>
+<?php foreach($bank_list as $b){ ?>
   <option value="<?=$b['bank_name']; ?>"><?=$b['bank_name']; ?></option>
 <?php } ?>
 </select>
@@ -769,9 +809,14 @@ textarea:focus, input:focus{
 <label for="billing_address" style="text-align:end;" class="col-sm-3 col-form-label">Amount to be paid : </label>
 
 <div class="col-sm-5">
-<span class="form-control" style="background-color: #eee;" class="custospan"><input style="width:15%;font-weight:bold;" type="text" class="cus"  name="cus"  readonly="readonly" />
-<input  type="text"  readonly name="amount_to_pay" id="amount_to_pay" required   />
-</span>
+<table border="0">
+      <tr>
+        <td class="cus" name="cus"></td>
+        <td><input  type="text"  readonly name="amount_to_pay" id="amount_to_pay" class="form-control" required   /></td>
+     </tr>
+   </table>
+
+
 </div>
 </div> 
       <div class="form-group row" style="display:none;">
@@ -779,9 +824,15 @@ textarea:focus, input:focus{
 <label for="billing_address" style="text-align:end;" class="col-sm-3 col-form-label">Amount Received : </label>
 
 <div class="col-sm-5">
-<span class="form-control" style="background-color: #eee;" class="custospan"><input style="width:15%;font-weight:bold;" type="text" class="cus"  name="cus"  readonly="readonly" />
-<input  type="text"  name="amount_received" value="0.00" id="amount_received" required   />
-</span>
+<table border="0">
+      <tr>
+        <td class="cus" name="cus"></td>
+        <td><input  type="text"  readonly name="amount_received" id="amount_received" class="form-control"required   /></td>
+     </tr>
+   </table>
+
+
+
 </div>
 </div> 
 <div class="form-group row">
@@ -789,9 +840,13 @@ textarea:focus, input:focus{
 <label for="billing_address" style="text-align:end;" class="col-sm-3 col-form-label">Balance : </label>
 
 <div class="col-sm-5">
-<span class="form-control" style="background-color: #eee;" class="custospan"><input style="width:15%;font-weight:bold;" type="text" class="cus"  name="cus"  readonly="readonly" />
-<input  type="text"  readonly name="balance" value="0.00" id="balance_modal" required   />
-</span>
+
+<table border="0">
+      <tr>
+        <td class="cus" name="cus"></td>
+        <td><input  type="text"  style="border:none;" readonly name="balance_modal" id="balance_modal" class="form-control" required  /></td>
+     </tr>
+   </table>
 </div>
 </div> 
 <div class="form-group row">
@@ -799,9 +854,14 @@ textarea:focus, input:focus{
 <label for="billing_address" style="text-align:end;" class="col-sm-3 col-form-label">Payment Amount: <i class="text-danger">*</i></label>
 
 <div class="col-sm-5">
-<span class="form-control" style="background-color: #eee;" class="custospan"><input style="width:15%;font-weight:bold;" type="text" class="cus"  name="cus"  readonly="readonly" />
-<input  type="text"  name="payment" id="payment_from_modal" required   />
-</span>
+<table border="0">
+      <tr>
+        <td class="cus" name="cus"></td>
+        <td><input  type="text"   name="payment" id="payment_from_modal" class="form-control"required   /></td>
+     </tr>
+   </table>
+
+
 </div>
 </div>
 
@@ -821,13 +881,7 @@ textarea:focus, input:focus{
 <input class=" form-control" type="file"  name="attachement" id="attachement" />
 </div>
 </div> 
-
-
-
-
-
-     
-     </div>   </div>
+  </div>   </div>
      <div class="modal-footer">
      <div class="col-sm-8"></div>
      <div class="col-sm-2"></div>
@@ -1119,7 +1173,7 @@ function discard(){
 }
      function submit_redirect(){
         window.btn_clicked = true;      //set btn_clicked to true
-    var input_hdn="Your Invoice No :"+$('#invoice_hdn').val()+" has been Updated Successfully";
+    var input_hdn="Your Invoice No :"+$('#invoice_hdn').val()+" has been Created Successfully";
   
     console.log(input_hdn);
     $('#myModal3').modal('hide');
@@ -1149,7 +1203,7 @@ $('#insert_trucking').submit(function (event) {
 
         success:function (data) {
         console.log(data);
-        var input_hdn="Trucking invoice Updated Successfully";
+        var input_hdn="Trucking invoice Created Successfully";
         $("#bodyModal1").html(input_hdn);
         $('#myModal1').modal('show');
         $('#final_submit').show();
@@ -1188,7 +1242,7 @@ console.log(link);
 $('.final_submit').on('click', function (e) {
 
     window.btn_clicked = true;      //set btn_clicked to true
-    var input_hdn="Your Invoice No :"+$('#invoice_hdn').val()+" has been Updated Successfully";
+    var input_hdn="Your Invoice No :"+$('#invoice_hdn').val()+" has been Created Successfully";
   
     console.log(input_hdn);
     $("#bodyModal1").html(input_hdn);
@@ -1261,7 +1315,7 @@ function addTruckingOrderField(t) {
         tab10 = tabindex + 10;
         tab11 = tabindex + 11;
         tab12 = tabindex + 12;
-        e.innerHTML ='<td class="span3 supplier"><input type="date" name="trucking_date[]" required="" class="form-control" tabindex="'+tab1+'" > <input type="hidden" class="autocomplete_hidden_value product_id_'+ count +'" name="product_id[]" id="SchoolHiddenId"/>  <input type="hidden" class="sl" value="'+ count +'">  </td> <td class="text-right"><input type="text" name="product_quantity[]" tabindex="'+tab2+'" required  id="cartoon_'+ count +'" class="form-control text-right store_cal_' + count + '" onkeyup="total_amt(' + count + ');"  placeholder="0.00" value="" min="0"/></td><td class="text-right"><input class="form-control" type="text" name="description[]" id="pro_no" value=""  /></td><td><span  style="padding:5px;background-color: #eee;"><?php  echo $currency." ";  ?> <input type="text" name="product_rate[]" onkeyup="total_amt('+ count +');"  id="product_rate_'+ count +'" class="product_rate_'+ count +'" placeholder="0.00" value="" min="0" tabindex="'+tab3+'"/></span></td><td class="text-right"><input class="form-control" type="text" name="pro_no[]" id="pro_no" value=""  /></td><td><span class="form-control" style="background-color: #eee;"><?php echo $currency." ";   ?> <input class="total_price total_price_'+ count +'" type="text" name="total_price[]" id="total_price_'+ count +'" value="0.00" readonly="readonly" /></span> </td><td> <input type="hidden" id="total_discount_1" class="" /><input type="hidden" id="all_discount_1" class="total_discount" /><button style="text-align: right;" class="btn btn-danger red" type="button"  onclick="deleteRow(this)" tabindex="8"><i class="fa fa-close"></i></button></td>';
+        e.innerHTML ='<td class="span3 supplier"><input type="date" name="trucking_date[]" required="" class="form-control" tabindex="'+tab1+'" > <input type="hidden" class="autocomplete_hidden_value product_id_'+ count +'" name="product_id[]" id="SchoolHiddenId"/>  <input type="hidden" class="sl" value="'+ count +'">  </td> <td class="text-right"><input type="text" name="product_quantity[]" tabindex="'+tab2+'" required  id="cartoon_'+ count +'" class="form-control text-right store_cal_' + count + '" onkeyup="total_amt(' + count + ');"  placeholder="0.00" value="" min="0"/></td><td class="text-right"><input class="form-control" type="text" name="description[]" id="pro_no" value=""  /></td><td> <table border="0"> <tr> <td><?php  echo $currency." ";  ?></td><td>   <input type="text" name="product_rate[]" required="" onkeyup="total_amt(' + count + ');"  id="product_rate_'+ count +'" class="product_rate_'+ count +'" placeholder="0.00" value="" min="0" tabindex="7"/></td>  </tr> </table> </td><td class="text-right"><input class="form-control" type="text" name="pro_no[]" id="pro_no" value=""  /></td><td> <table border="0"> <tr><td><?php  echo $currency." ";  ?></td><td><input class="total_price" type="text" name="total_price[]" id="total_price_'+ count +'" value="0.00" readonly="readonly" /></td> </tr></table>  </td><td> <input type="hidden" id="total_discount_1" class="" /><input type="hidden" id="all_discount_1" class="total_discount" /><button style="text-align: right;" class="btn btn-danger red" type="button"  onclick="deleteRow(this)" tabindex="8"><i class="fa fa-close"></i></button></td>';
                
         document.getElementById(t).appendChild(e),
              
@@ -1440,7 +1494,7 @@ $('#bill_to').on('change', function (e) {
          // var parsedData = JSON.parse(result);
         //  alert(result[0].p_quantity);
         console.log(result[0]['currency_type']);
-        $(".cus").val(result[0]['currency_type']);
+        $(".cus").html(result[0]['currency_type']);
         $("label[for='custocurrency']").html(result[0]['currency_type']);
        console.log('https://open.er-api.com/v6/latest/<?php echo $curn_info_default; ?>');
        $.getJSON('https://open.er-api.com/v6/latest/<?php echo $curn_info_default; ?>', 

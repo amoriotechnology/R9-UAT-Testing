@@ -25,7 +25,6 @@ class Csupplier extends CI_Controller {
     //Insert supplier
         //Insert supplier
         public function insert_supplier() {
-       
             $data = array(
                 'service_provider' => $this->input->post('service_provider',TRUE),
                 'category' => $this->input->post('vendor_type',TRUE),
@@ -47,10 +46,8 @@ class Csupplier extends CI_Controller {
                 'details'       => $this->input->post('details',TRUE),
                 'status'        => 1
             );
-            print_r($data);
-    
             $this->db->insert('supplier_information',$data);
-
+//echo $this->db->last_query(); die();
                 $supplier_id = $this->db->insert_id();
               $coa = $this->Suppliers->headcode();
             if($coa->HeadCode!=NULL){
@@ -81,28 +78,7 @@ class Csupplier extends CI_Controller {
                 //Previous balance adding -> Sending to supplier model to adjust the data.
                 $this->db->insert('acc_coa',$supplier_coa);
                 $this->Suppliers->previous_balance_add($this->input->post('previous_balance',TRUE), $supplier_id,$c_acc,$this->input->post('supplier_name',TRUE));
-                
-                $this->session->set_userdata(array('message' => display('successfully_added')));
-                 if (isset($_POST['add-supplier-from-expense'])) {
-                    redirect(base_url('Ccpurchase/trucking'));
-                    exit;
-                }
-                if (isset($_POST['add-supplier-from-oit'])) {
-                    redirect(base_url('Ccpurchase/ocean_import_tracking'));
-                    exit;
-                }
-                if (isset($_POST['add-supplier-from-trucking-sale'])) {
-                    redirect(base_url('Cinvoice/trucking'));
-                    exit;
-                }
-                if (isset($_POST['add-supplier'])) {
-                    redirect(base_url('Csupplier/manage_supplier'));
-                    exit;
-                } elseif (isset($_POST['add-supplier-another'])) {
-                    redirect(base_url('Csupplier'));
-                    exit;
-                }
-         
+         echo json_encode($data);
         }
 
     //Manage supplier

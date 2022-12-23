@@ -85,12 +85,20 @@
                     </tr>
                     <?php $count++;}}  ?>
                     <tr>
-                        <td colspan="5" style="text-align:right;font-weight:bold;">Overall Total:</td>
+                        <td colspan="6" style="text-align:right;font-weight:bold;">Overall Total</td>
                         <td style="font-size: 16px;"><?php  echo $currency." " ; ?><?php echo $purchase_all_data[0]['grand_total_amount']; ?></td>
                     </tr>
                     <tr>
-                        <td colspan="5" style="text-align:right;font-weight:bold;">Grand Total(Preferred Currency):</td>
-                        <td style="font-size: 16px;"><?php echo "" ?>$<?php echo $purchase_all_data[0]['grand_total_amount']; ?></td>
+                        <td colspan="6" style="text-align:right;font-weight:bold;">Grand Total(Preferred Currency)</td>
+                        <td style="font-size: 16px;"><?php echo "" ?>$<?php echo $purchase_all_data[0]['gtotal_preferred_currency']; ?></td>
+                    </tr>
+                    <tr>
+                        <td colspan="6" style="text-align:right;font-weight:bold;">Amount Paid</td>
+                        <td style="font-size: 16px;"><?php echo "" ?>$<?php echo $purchase_all_data[0]['paid_amount']; ?></td>
+                    </tr>
+                    <tr>
+                        <td colspan="6" style="text-align:right;font-weight:bold;">Balance</td>
+                        <td style="font-size: 16px;"><?php echo "" ?>$<?php echo $purchase_all_data[0]['balance']; ?></td>
                     </tr>
                 </tbody>
             </table>
@@ -169,12 +177,20 @@ elseif($template==1)
                     </tr>
                     <?php $count++;}}  ?>
                     <tr>
-                        <td colspan="5" style="text-align:right;font-weight:bold;">Overall Total:</td>
+                        <td colspan="6" style="text-align:right;font-weight:bold;">Overall Total</td>
                         <td style="font-size: 16px;"><?php  echo $currency." " ; ?><?php echo $purchase_all_data[0]['grand_total_amount']; ?></td>
                     </tr>
                     <tr>
-                        <td colspan="5" style="text-align:right;font-weight:bold;">Grand Total(Preferred Currency):</td>
-                        <td style="font-size: 16px;"><?php echo "" ?>$<?php echo $purchase_all_data[0]['grand_total_amount']; ?></td>
+                        <td colspan="6" style="text-align:right;font-weight:bold;">Grand Total(Preferred Currency)</td>
+                        <td style="font-size: 16px;"><?php echo "" ?>$<?php echo $purchase_all_data[0]['gtotal_preferred_currency']; ?></td>
+                    </tr>
+                    <tr>
+                        <td colspan="6" style="text-align:right;font-weight:bold;">Amount Paid</td>
+                        <td style="font-size: 16px;"><?php echo "" ?>$<?php echo $purchase_all_data[0]['paid_amount']; ?></td>
+                    </tr>
+                    <tr>
+                        <td colspan="6" style="text-align:right;font-weight:bold;">Balance</td>
+                        <td style="font-size: 16px;"><?php echo "" ?>$<?php echo $purchase_all_data[0]['balance']; ?></td>
                     </tr>
                 </tbody>
             </table>
@@ -260,12 +276,20 @@ elseif($template==3)
                     </tr>
                     <?php $count++;}}  ?>
                     <tr>
-                        <td colspan="5" style="text-align:right;font-weight:bold;">Overall Total:</td>
+                        <td colspan="6" style="text-align:right;font-weight:bold;">Overall Total</td>
                         <td style="font-size: 16px;"><?php  echo $currency." " ; ?><?php echo $purchase_all_data[0]['grand_total_amount']; ?></td>
                     </tr>
                     <tr>
-                        <td colspan="5" style="text-align:right;font-weight:bold;">Grand Total(Preferred Currency):</td>
-                        <td style="font-size: 16px;"><?php echo "" ?>$<?php echo $purchase_all_data[0]['grand_total_amount']; ?></td>
+                        <td colspan="6" style="text-align:right;font-weight:bold;">Grand Total(Preferred Currency)</td>
+                        <td style="font-size: 16px;"><?php echo "" ?>$<?php echo $purchase_all_data[0]['customer_gtotal']; ?></td>
+                    </tr>
+                    <tr>
+                        <td colspan="6" style="text-align:right;font-weight:bold;">Amount Paid</td>
+                        <td style="font-size: 16px;"><?php echo "" ?>$<?php echo $purchase_all_data[0]['amt_paid']; ?></td>
+                    </tr>
+                    <tr>
+                        <td colspan="6" style="text-align:right;font-weight:bold;">Balance</td>
+                        <td style="font-size: 16px;"><?php echo "" ?>$<?php echo $purchase_all_data[0]['balance']; ?></td>
                     </tr>
                 </tbody>
             </table>

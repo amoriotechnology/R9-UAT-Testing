@@ -816,9 +816,8 @@ public function deletesale(){
         $CI->auth->check_admin_auth();
         $CI->load->model('Invoices');
         $invoice_id=$CI->Invoices->ocean_export_entry();
-        // echo json_encode($invoice_id);
-        $this->session->set_userdata(array('message' => display('successfully_added')));
-        redirect(base_url('Cinvoice/manage_ocean_export_tracking/'.$invoice_id));
+         echo json_encode($invoice_id);
+  
         
     }
 
@@ -2457,7 +2456,7 @@ $this->db->update('bootgrid_data');
             'color'=> $dataw[0]['color'],
             'template'=> $dataw[0]['template'],
             'company'=> $company_info,
-          
+            'customer_currency'=> $customer[0]['currency_type'],
             'customername'=> $customer[0]['customer_name'],
             'payment'=> $invoice_detail[0]['payment_type'],
             'billing'=> $invoice_detail[0]['billing_address'],
@@ -2482,6 +2481,8 @@ $this->db->update('bootgrid_data');
             'tax_details'=> $all_invoice[0]['total_tax'],
             'etd'=> $all_invoice[0]['etd'],
             'eta'=> $all_invoice[0]['eta'],
+            'amt_paid'=> $all_invoice[0]['amt_paid'],
+            'balance'=> $all_invoice[0]['balance'],
             'gtotal'       => $all_invoice[0]['gtotal']
         );
    
@@ -3542,121 +3543,72 @@ $this->db->update('bootgrid_data');
 
 
 
-        public function instant_customer(){
-
-         $this->load->model('Customers');
-
-       
-
-        $data = array(
-             'create_by'    => $this->session->userdata('user_id'),
-
-            'customer_name'    => $this->input->post('customer_name',TRUE),
-
-            'customer_address' => $this->input->post('address',TRUE),
-
-            'customer_mobile'  => $this->input->post('mobile',TRUE),
-            'currency_type'   => $this->input->post('currency1',TRUE),
-
-            'customer_email'   => $this->input->post('email',TRUE),
-
-            'status'           => 1
-
-        );
-
-
-        // print_r($data); exit();
-
-        $result = $this->Customers->customer_entry($data);
-
-        if ($result) {
-
-        $customer_id = $this->db->insert_id();
-
-        $vouchar_no = $this->auth->generator(10);
-
-        //Customer  basic information adding.
-
-        $coa = $this->Customers->headcode();
-
-            if($coa->HeadCode!=NULL){
-
-                $headcode=$coa->HeadCode+1;
-
-            }else{
-
-                $headcode="102030001";
-
-            }
-
-    $c_acc=$customer_id.'-'.$this->input->post('customer_name',TRUE);
-
-   $createby=$this->session->userdata('user_id');
-
-  $createdate=date('Y-m-d H:i:s');
-
-
-
-    $customer_coa = [
-
-             'HeadCode'         => $headcode,
-
-             'HeadName'         => $c_acc,
-
-             'PHeadName'        => 'Customer Receivable',
-
-             'HeadLevel'        => '4',
-
-             'IsActive'         => '1',
-
-             'IsTransaction'    => '1',
-
-             'IsGL'             => '0',
-
-             'HeadType'         => 'A',
-
-             'IsBudget'         => '0',
-
-             'IsDepreciation'   => '0',
-
-             'customer_id'      => $customer_id,
-
-             'DepreciationRate' => '0',
-
-             'CreateBy'         => $createby,
-
-             'CreateDate'       => $createdate,
-
-        ];
-
-            //Previous balance adding -> Sending to customer model to adjust the data.
-
-            $this->db->insert('acc_coa',$customer_coa);
-
-            $this->Customers->previous_balance_add($this->input->post('previous_balance',TRUE), $customer_id);
-
-          
-
-            $data['status']        = true;
-
-            $data['message']       = display('save_successfully');
-
-            $data['customer_id']   = $customer_id;
-
-            $data['customer_name'] = $data['customer_name'];
-
-        } else {
-
-            $data['status'] = false;
-
-            $data['error_message'] = display('please_try_again');
-
+     public function instant_customer(){
+        $CI = & get_instance();
+        $CI->auth->check_admin_auth();
+        $CI->load->model('Customers');
+    $data = array(
+        'customer_name'   => $this->input->post('customer_name',TRUE),
+        'customer_address'=> $this->input->post('address',TRUE),
+        'address2'        => $this->input->post('address2',TRUE),
+        'customer_mobile' => $this->input->post('mobile',TRUE),
+        'currency_type'   => $this->input->post('currency1',TRUE),
+        'phone'           => $this->input->post('phone',TRUE),
+        'fax'             => $this->input->post('fax',TRUE),
+        'contact'         => $this->input->post('contact',TRUE),
+        'city'            => $this->input->post('city',TRUE),
+        'state'           => $this->input->post('state',TRUE),
+        'zip'             => $this->input->post('zip',TRUE),
+        'country'         => $this->input->post('country',TRUE),
+        'email_address'   => $this->input->post('emailaddress',TRUE),
+        'customer_email'  => $this->input->post('email',TRUE),
+        'status'          => 2,
+        'create_by'       => $this->session->userdata('user_id'),
+  );
+    $result = $this->Customers->customer_entry($data);
+    if ($result) {
+    $customer_id = $this->db->insert_id();
+    $vouchar_no = $this->auth->generator(10);
+    //Customer  basic information adding.
+    $coa = $this->Customers->headcode();
+        if($coa->HeadCode!=NULL){
+            $headcode=$coa->HeadCode+1;
+        }else{
+            $headcode="102030001";
         }
-
-         echo json_encode($data);
-
-        }
-
+$c_acc=$customer_id.'-'.$this->input->post('customer_name',TRUE);
+$createby=$this->session->userdata('user_id');
+$createdate=date('Y-m-d H:i:s');
+$customer_coa = [
+         'HeadCode'         => $headcode,
+         'HeadName'         => $c_acc,
+         'PHeadName'        => 'Customer Receivable',
+         'HeadLevel'        => '4',
+         'IsActive'         => '1',
+         'IsTransaction'    => '1',
+         'IsGL'             => '0',
+         'HeadType'         => 'A',
+         'IsBudget'         => '0',
+         'IsDepreciation'   => '0',
+         'customer_id'      => $customer_id,
+         'DepreciationRate' => '0',
+         'CreateBy'         => $createby,
+         'CreateDate'       => $createdate,
+    ];
+        //Previous balance adding -> Sending to customer model to adjust the data.
+        $this->db->insert('acc_coa',$customer_coa);
+        $this->Customers->previous_balance_add($this->input->post('previous_balance',TRUE), $customer_id);
+    //     $data['status']        = true;
+    //     $data['message']       = display('save_successfully');
+    //     $data['customer_id']   = $customer_id;
+    //     $data['customer_name'] = $data['customer_name'];
+    // } else {
+    //     $data['status'] = false;
+    //     $data['error_message'] = display('please_try_again');
+    // }
+}
+    echo json_encode($data);
+    }
 
 public function newsale_with_attachment_stand($invoiceid)
   {

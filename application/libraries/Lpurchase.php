@@ -762,7 +762,7 @@ class Lpurchase {
 
         $currency_details = $CI->Web_settings->retrieve_setting_editdata();
         $curn_info_default = $CI->db->select('*')->from('currency_tbl')->where('icon',$currency_details[0]['currency'])->get()->result_array();
-      
+        $bank_list        = $CI->Web_settings->bank_list();
         $taxfield1 = $CI->db->select('tax_id,tax')
         ->from('tax_information')
         ->get()
@@ -1307,7 +1307,7 @@ public function purchase_details_data($purchase_id) {
     $curn_info_default = $CI->db->select('*')->from('currency_tbl')->where('icon',$currency_details[0]['currency'])->get()->result_array();
       
     $dataw = $CI->invoice_design->retrieve_data();
-     
+   
 
     $data = array(
         'header'=> $dataw[0]['header'],
@@ -1356,7 +1356,7 @@ public function purchase_details_data($purchase_id) {
 
         'paid_amount'      => number_format($purchase_detail[0]['paid_amount'],2),
 
-        'due_amount'      => number_format($purchase_detail[0]['due_amount'],2),
+     
 
         'purchase_all_data'=> $purchase_detail,
 

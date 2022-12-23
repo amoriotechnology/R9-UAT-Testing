@@ -26519,3 +26519,1023 @@ ERROR - 2022-12-22 12:06:51 --> Severity: Notice --> Undefined offset: 0 D:\wamp
 ERROR - 2022-12-22 12:06:51 --> Severity: Notice --> Trying to get property 'setting' of non-object D:\wamp\www\R9-UAT-Testing\application\controllers\Cinvoice.php 1375
 INFO - 2022-12-22 12:06:51 --> Final output sent to browser
 DEBUG - 2022-12-22 12:06:51 --> Total execution time: 0.0339
+ERROR - 2022-12-22 12:25:08 --> $config['composer_autoload'] is set to TRUE but D:\wamp\www\R9-UAT-Testing\application\vendor/autoload.php was not found.
+INFO - 2022-12-22 12:25:08 --> Config Class Initialized
+INFO - 2022-12-22 12:25:08 --> Hooks Class Initialized
+DEBUG - 2022-12-22 12:25:08 --> UTF-8 Support Enabled
+INFO - 2022-12-22 12:25:08 --> Utf8 Class Initialized
+INFO - 2022-12-22 12:25:08 --> URI Class Initialized
+DEBUG - 2022-12-22 12:25:08 --> No URI present. Default controller set.
+INFO - 2022-12-22 12:25:08 --> Router Class Initialized
+INFO - 2022-12-22 12:25:08 --> Output Class Initialized
+INFO - 2022-12-22 12:25:08 --> Security Class Initialized
+DEBUG - 2022-12-22 12:25:08 --> Global POST, GET and COOKIE data sanitized
+INFO - 2022-12-22 12:25:08 --> CSRF cookie sent
+INFO - 2022-12-22 12:25:08 --> Input Class Initialized
+INFO - 2022-12-22 12:25:08 --> Language Class Initialized
+INFO - 2022-12-22 12:25:08 --> Loader Class Initialized
+INFO - 2022-12-22 12:25:08 --> Helper loaded: url_helper
+INFO - 2022-12-22 12:25:08 --> Helper loaded: file_helper
+INFO - 2022-12-22 12:25:08 --> Helper loaded: form_helper
+INFO - 2022-12-22 12:25:08 --> Helper loaded: lang_helper
+INFO - 2022-12-22 12:25:08 --> Database Driver Class Initialized
+INFO - 2022-12-22 12:25:08 --> Session: Class initialized using 'files' driver.
+INFO - 2022-12-22 12:25:08 --> Parser Class Initialized
+INFO - 2022-12-22 12:25:08 --> Language file loaded: language/english/pagination_lang.php
+INFO - 2022-12-22 12:25:08 --> Pagination Class Initialized
+INFO - 2022-12-22 12:25:08 --> Form Validation Class Initialized
+INFO - 2022-12-22 12:25:08 --> Controller Class Initialized
+INFO - 2022-12-22 12:25:08 --> Model "Web_settings" initialized
+INFO - 2022-12-22 12:25:08 --> Model "reports" initialized
+INFO - 2022-12-22 12:25:08 --> Model "Customers" initialized
+INFO - 2022-12-22 12:25:08 --> Model "Products" initialized
+INFO - 2022-12-22 12:25:08 --> Model "Suppliers" initialized
+DEBUG - 2022-12-22 12:25:08 --> Auth class already loaded. Second attempt ignored.
+DEBUG - 2022-12-22 12:25:08 --> Session class already loaded. Second attempt ignored.
+INFO - 2022-12-22 12:25:08 --> Model "Invoices" initialized
+INFO - 2022-12-22 12:25:08 --> Model "Purchases" initialized
+ERROR - 2022-12-22 12:25:08 --> Severity: Notice --> Undefined variable: vendor D:\wamp\www\R9-UAT-Testing\application\views\include\admin_home.php 257
+ERROR - 2022-12-22 12:25:08 --> Severity: Notice --> Undefined variable: searchdate D:\wamp\www\R9-UAT-Testing\application\views\include\admin_home.php 320
+ERROR - 2022-12-22 12:25:08 --> Severity: Notice --> Undefined variable: chart_label D:\wamp\www\R9-UAT-Testing\application\views\include\admin_home.php 578
+INFO - 2022-12-22 12:25:08 --> File loaded: D:\wamp\www\R9-UAT-Testing\application\views\include/admin_home.php
+DEBUG - 2022-12-22 12:25:08 --> Parser class already loaded. Second attempt ignored.
+INFO - 2022-12-22 12:25:08 --> File loaded: D:\wamp\www\R9-UAT-Testing\application\views\include/top_menu.php
+INFO - 2022-12-22 12:25:08 --> File loaded: D:\wamp\www\R9-UAT-Testing\application\views\include/admin_loggedin_info.php
+INFO - 2022-12-22 17:55:08 --> Model "Users" initialized
+INFO - 2022-12-22 17:55:09 --> File loaded: D:\wamp\www\R9-UAT-Testing\application\views\include/admin_header.php
+ERROR - 2022-12-22 17:55:09 --> Severity: Notice --> Undefined variable: email_setting D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 106
+ERROR - 2022-12-22 17:55:09 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 106
+ERROR - 2022-12-22 17:55:09 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 106
+ERROR - 2022-12-22 17:55:09 --> Severity: Notice --> Undefined variable: email_setting D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 118
+ERROR - 2022-12-22 17:55:09 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 118
+ERROR - 2022-12-22 17:55:09 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 118
+ERROR - 2022-12-22 17:55:09 --> Severity: Notice --> Undefined variable: email_setting D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 121
+ERROR - 2022-12-22 17:55:09 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 121
+ERROR - 2022-12-22 17:55:09 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 121
+INFO - 2022-12-22 17:55:09 --> File loaded: D:\wamp\www\R9-UAT-Testing\application\views\include/admin_footer.php
+INFO - 2022-12-22 17:55:09 --> File loaded: D:\wamp\www\R9-UAT-Testing\application\views\admin_html_template.php
+INFO - 2022-12-22 17:55:09 --> Final output sent to browser
+DEBUG - 2022-12-22 17:55:09 --> Total execution time: 0.3333
+ERROR - 2022-12-22 12:25:09 --> $config['composer_autoload'] is set to TRUE but D:\wamp\www\R9-UAT-Testing\application\vendor/autoload.php was not found.
+INFO - 2022-12-22 12:25:09 --> Config Class Initialized
+INFO - 2022-12-22 12:25:09 --> Hooks Class Initialized
+DEBUG - 2022-12-22 12:25:09 --> UTF-8 Support Enabled
+INFO - 2022-12-22 12:25:09 --> Utf8 Class Initialized
+INFO - 2022-12-22 12:25:09 --> URI Class Initialized
+INFO - 2022-12-22 12:25:09 --> Router Class Initialized
+INFO - 2022-12-22 12:25:09 --> Output Class Initialized
+INFO - 2022-12-22 12:25:09 --> Security Class Initialized
+DEBUG - 2022-12-22 12:25:09 --> Global POST, GET and COOKIE data sanitized
+INFO - 2022-12-22 12:25:09 --> CSRF cookie sent
+INFO - 2022-12-22 12:25:09 --> Input Class Initialized
+INFO - 2022-12-22 12:25:09 --> Language Class Initialized
+INFO - 2022-12-22 12:25:09 --> Loader Class Initialized
+INFO - 2022-12-22 12:25:09 --> Helper loaded: url_helper
+INFO - 2022-12-22 12:25:09 --> Helper loaded: file_helper
+INFO - 2022-12-22 12:25:09 --> Helper loaded: form_helper
+INFO - 2022-12-22 12:25:09 --> Helper loaded: lang_helper
+INFO - 2022-12-22 12:25:09 --> Database Driver Class Initialized
+INFO - 2022-12-22 12:25:09 --> Session: Class initialized using 'files' driver.
+INFO - 2022-12-22 12:25:09 --> Parser Class Initialized
+INFO - 2022-12-22 12:25:09 --> Language file loaded: language/english/pagination_lang.php
+INFO - 2022-12-22 12:25:09 --> Pagination Class Initialized
+INFO - 2022-12-22 12:25:09 --> Form Validation Class Initialized
+INFO - 2022-12-22 12:25:09 --> Controller Class Initialized
+INFO - 2022-12-22 12:25:09 --> Model "Web_settings" initialized
+INFO - 2022-12-22 12:25:09 --> Model "reports" initialized
+INFO - 2022-12-22 12:25:09 --> Final output sent to browser
+DEBUG - 2022-12-22 12:25:09 --> Total execution time: 0.0190
+ERROR - 2022-12-22 12:25:12 --> $config['composer_autoload'] is set to TRUE but D:\wamp\www\R9-UAT-Testing\application\vendor/autoload.php was not found.
+INFO - 2022-12-22 12:25:12 --> Config Class Initialized
+INFO - 2022-12-22 12:25:12 --> Hooks Class Initialized
+DEBUG - 2022-12-22 12:25:12 --> UTF-8 Support Enabled
+INFO - 2022-12-22 12:25:12 --> Utf8 Class Initialized
+INFO - 2022-12-22 12:25:12 --> URI Class Initialized
+INFO - 2022-12-22 12:25:12 --> Router Class Initialized
+INFO - 2022-12-22 12:25:12 --> Output Class Initialized
+INFO - 2022-12-22 12:25:12 --> Security Class Initialized
+DEBUG - 2022-12-22 12:25:12 --> Global POST, GET and COOKIE data sanitized
+INFO - 2022-12-22 12:25:12 --> CSRF cookie sent
+INFO - 2022-12-22 12:25:12 --> Input Class Initialized
+INFO - 2022-12-22 12:25:12 --> Language Class Initialized
+INFO - 2022-12-22 12:25:12 --> Loader Class Initialized
+INFO - 2022-12-22 12:25:12 --> Helper loaded: url_helper
+INFO - 2022-12-22 12:25:12 --> Helper loaded: file_helper
+INFO - 2022-12-22 12:25:12 --> Helper loaded: form_helper
+INFO - 2022-12-22 12:25:12 --> Helper loaded: lang_helper
+INFO - 2022-12-22 12:25:12 --> Database Driver Class Initialized
+INFO - 2022-12-22 12:25:12 --> Session: Class initialized using 'files' driver.
+INFO - 2022-12-22 12:25:12 --> Parser Class Initialized
+INFO - 2022-12-22 12:25:12 --> Language file loaded: language/english/pagination_lang.php
+INFO - 2022-12-22 12:25:12 --> Pagination Class Initialized
+INFO - 2022-12-22 12:25:12 --> Form Validation Class Initialized
+INFO - 2022-12-22 12:25:12 --> Controller Class Initialized
+INFO - 2022-12-22 12:25:12 --> Model "Suppliers" initialized
+INFO - 2022-12-22 12:25:12 --> Model "Categories" initialized
+INFO - 2022-12-22 12:25:12 --> Model "Units" initialized
+DEBUG - 2022-12-22 12:25:12 --> Auth class already loaded. Second attempt ignored.
+INFO - 2022-12-22 12:25:12 --> Model "Products" initialized
+INFO - 2022-12-22 12:25:12 --> Model "Web_settings" initialized
+ERROR - 2022-12-22 12:25:12 --> Severity: Notice --> Undefined index: supplier_name D:\wamp\www\R9-UAT-Testing\application\views\product\product.php 119
+ERROR - 2022-12-22 12:25:12 --> Severity: Notice --> Undefined index: supplier_price D:\wamp\www\R9-UAT-Testing\application\views\product\product.php 122
+ERROR - 2022-12-22 12:25:12 --> Severity: Notice --> Undefined index: supplier_name D:\wamp\www\R9-UAT-Testing\application\views\product\product.php 119
+ERROR - 2022-12-22 12:25:12 --> Severity: Notice --> Undefined index: supplier_price D:\wamp\www\R9-UAT-Testing\application\views\product\product.php 122
+ERROR - 2022-12-22 12:25:12 --> Severity: Notice --> Undefined index: supplier_name D:\wamp\www\R9-UAT-Testing\application\views\product\product.php 119
+ERROR - 2022-12-22 12:25:12 --> Severity: Notice --> Undefined index: supplier_price D:\wamp\www\R9-UAT-Testing\application\views\product\product.php 122
+ERROR - 2022-12-22 12:25:12 --> Severity: Notice --> Undefined index: supplier_name D:\wamp\www\R9-UAT-Testing\application\views\product\product.php 119
+ERROR - 2022-12-22 12:25:12 --> Severity: Notice --> Undefined index: supplier_price D:\wamp\www\R9-UAT-Testing\application\views\product\product.php 122
+INFO - 2022-12-22 12:25:12 --> File loaded: D:\wamp\www\R9-UAT-Testing\application\views\product/product.php
+DEBUG - 2022-12-22 12:25:12 --> Parser class already loaded. Second attempt ignored.
+INFO - 2022-12-22 12:25:12 --> File loaded: D:\wamp\www\R9-UAT-Testing\application\views\include/top_menu.php
+INFO - 2022-12-22 12:25:12 --> File loaded: D:\wamp\www\R9-UAT-Testing\application\views\include/admin_loggedin_info.php
+INFO - 2022-12-22 17:55:12 --> Model "reports" initialized
+INFO - 2022-12-22 17:55:12 --> Model "Users" initialized
+INFO - 2022-12-22 17:55:12 --> File loaded: D:\wamp\www\R9-UAT-Testing\application\views\include/admin_header.php
+ERROR - 2022-12-22 17:55:12 --> Severity: Notice --> Undefined variable: email_setting D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 106
+ERROR - 2022-12-22 17:55:12 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 106
+ERROR - 2022-12-22 17:55:12 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 106
+ERROR - 2022-12-22 17:55:12 --> Severity: Notice --> Undefined variable: email_setting D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 118
+ERROR - 2022-12-22 17:55:12 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 118
+ERROR - 2022-12-22 17:55:12 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 118
+ERROR - 2022-12-22 17:55:12 --> Severity: Notice --> Undefined variable: email_setting D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 121
+ERROR - 2022-12-22 17:55:12 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 121
+ERROR - 2022-12-22 17:55:12 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 121
+INFO - 2022-12-22 17:55:12 --> File loaded: D:\wamp\www\R9-UAT-Testing\application\views\include/admin_footer.php
+INFO - 2022-12-22 17:55:12 --> File loaded: D:\wamp\www\R9-UAT-Testing\application\views\admin_html_template.php
+INFO - 2022-12-22 17:55:12 --> Final output sent to browser
+DEBUG - 2022-12-22 17:55:12 --> Total execution time: 0.2809
+ERROR - 2022-12-22 12:25:15 --> $config['composer_autoload'] is set to TRUE but D:\wamp\www\R9-UAT-Testing\application\vendor/autoload.php was not found.
+INFO - 2022-12-22 12:25:15 --> Config Class Initialized
+INFO - 2022-12-22 12:25:15 --> Hooks Class Initialized
+DEBUG - 2022-12-22 12:25:15 --> UTF-8 Support Enabled
+INFO - 2022-12-22 12:25:15 --> Utf8 Class Initialized
+INFO - 2022-12-22 12:25:15 --> URI Class Initialized
+INFO - 2022-12-22 12:25:15 --> Router Class Initialized
+INFO - 2022-12-22 12:25:15 --> Output Class Initialized
+INFO - 2022-12-22 12:25:15 --> Security Class Initialized
+DEBUG - 2022-12-22 12:25:15 --> Global POST, GET and COOKIE data sanitized
+INFO - 2022-12-22 12:25:15 --> CSRF cookie sent
+INFO - 2022-12-22 12:25:15 --> Input Class Initialized
+INFO - 2022-12-22 12:25:15 --> Language Class Initialized
+INFO - 2022-12-22 12:25:15 --> Loader Class Initialized
+INFO - 2022-12-22 12:25:15 --> Helper loaded: url_helper
+INFO - 2022-12-22 12:25:15 --> Helper loaded: file_helper
+INFO - 2022-12-22 12:25:15 --> Helper loaded: form_helper
+INFO - 2022-12-22 12:25:15 --> Helper loaded: lang_helper
+INFO - 2022-12-22 12:25:15 --> Database Driver Class Initialized
+INFO - 2022-12-22 12:25:15 --> Session: Class initialized using 'files' driver.
+INFO - 2022-12-22 12:25:15 --> Parser Class Initialized
+INFO - 2022-12-22 12:25:15 --> Language file loaded: language/english/pagination_lang.php
+INFO - 2022-12-22 12:25:15 --> Pagination Class Initialized
+INFO - 2022-12-22 12:25:15 --> Form Validation Class Initialized
+INFO - 2022-12-22 12:25:15 --> Controller Class Initialized
+DEBUG - 2022-12-22 12:25:15 --> Auth class already loaded. Second attempt ignored.
+DEBUG - 2022-12-22 12:25:15 --> Session class already loaded. Second attempt ignored.
+INFO - 2022-12-22 12:25:15 --> Model "Suppliers" initialized
+DEBUG - 2022-12-22 12:25:15 --> Lsupplier class already loaded. Second attempt ignored.
+INFO - 2022-12-22 12:25:15 --> Model "Web_settings" initialized
+INFO - 2022-12-22 12:25:15 --> File loaded: D:\wamp\www\R9-UAT-Testing\application\views\supplier/supplier.php
+DEBUG - 2022-12-22 12:25:15 --> Parser class already loaded. Second attempt ignored.
+INFO - 2022-12-22 12:25:15 --> File loaded: D:\wamp\www\R9-UAT-Testing\application\views\include/top_menu.php
+INFO - 2022-12-22 12:25:15 --> File loaded: D:\wamp\www\R9-UAT-Testing\application\views\include/admin_loggedin_info.php
+INFO - 2022-12-22 12:25:15 --> Model "Products" initialized
+INFO - 2022-12-22 17:55:15 --> Model "reports" initialized
+INFO - 2022-12-22 17:55:15 --> Model "Users" initialized
+INFO - 2022-12-22 17:55:15 --> File loaded: D:\wamp\www\R9-UAT-Testing\application\views\include/admin_header.php
+ERROR - 2022-12-22 17:55:15 --> Severity: Notice --> Undefined variable: email_setting D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 106
+ERROR - 2022-12-22 17:55:15 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 106
+ERROR - 2022-12-22 17:55:15 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 106
+ERROR - 2022-12-22 17:55:15 --> Severity: Notice --> Undefined variable: email_setting D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 118
+ERROR - 2022-12-22 17:55:15 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 118
+ERROR - 2022-12-22 17:55:15 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 118
+ERROR - 2022-12-22 17:55:15 --> Severity: Notice --> Undefined variable: email_setting D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 121
+ERROR - 2022-12-22 17:55:15 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 121
+ERROR - 2022-12-22 17:55:15 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 121
+INFO - 2022-12-22 17:55:15 --> File loaded: D:\wamp\www\R9-UAT-Testing\application\views\include/admin_footer.php
+INFO - 2022-12-22 17:55:15 --> File loaded: D:\wamp\www\R9-UAT-Testing\application\views\admin_html_template.php
+INFO - 2022-12-22 17:55:15 --> Final output sent to browser
+DEBUG - 2022-12-22 17:55:15 --> Total execution time: 0.3011
+ERROR - 2022-12-22 12:25:16 --> $config['composer_autoload'] is set to TRUE but D:\wamp\www\R9-UAT-Testing\application\vendor/autoload.php was not found.
+INFO - 2022-12-22 12:25:16 --> Config Class Initialized
+INFO - 2022-12-22 12:25:16 --> Hooks Class Initialized
+DEBUG - 2022-12-22 12:25:16 --> UTF-8 Support Enabled
+INFO - 2022-12-22 12:25:16 --> Utf8 Class Initialized
+INFO - 2022-12-22 12:25:16 --> URI Class Initialized
+INFO - 2022-12-22 12:25:16 --> Router Class Initialized
+INFO - 2022-12-22 12:25:16 --> Output Class Initialized
+INFO - 2022-12-22 12:25:16 --> Security Class Initialized
+DEBUG - 2022-12-22 12:25:16 --> Global POST, GET and COOKIE data sanitized
+INFO - 2022-12-22 12:25:16 --> CSRF cookie sent
+INFO - 2022-12-22 12:25:16 --> CSRF token verified
+INFO - 2022-12-22 12:25:16 --> Input Class Initialized
+INFO - 2022-12-22 12:25:16 --> Language Class Initialized
+INFO - 2022-12-22 12:25:16 --> Loader Class Initialized
+INFO - 2022-12-22 12:25:16 --> Helper loaded: url_helper
+INFO - 2022-12-22 12:25:16 --> Helper loaded: file_helper
+INFO - 2022-12-22 12:25:16 --> Helper loaded: form_helper
+INFO - 2022-12-22 12:25:16 --> Helper loaded: lang_helper
+INFO - 2022-12-22 12:25:16 --> Database Driver Class Initialized
+INFO - 2022-12-22 12:25:16 --> Session: Class initialized using 'files' driver.
+INFO - 2022-12-22 12:25:16 --> Parser Class Initialized
+INFO - 2022-12-22 12:25:16 --> Language file loaded: language/english/pagination_lang.php
+INFO - 2022-12-22 12:25:16 --> Pagination Class Initialized
+INFO - 2022-12-22 12:25:16 --> Form Validation Class Initialized
+INFO - 2022-12-22 12:25:16 --> Controller Class Initialized
+DEBUG - 2022-12-22 12:25:16 --> Auth class already loaded. Second attempt ignored.
+DEBUG - 2022-12-22 12:25:16 --> Session class already loaded. Second attempt ignored.
+INFO - 2022-12-22 12:25:16 --> Model "Suppliers" initialized
+INFO - 2022-12-22 12:25:16 --> Final output sent to browser
+DEBUG - 2022-12-22 12:25:16 --> Total execution time: 0.0675
+ERROR - 2022-12-22 12:25:17 --> $config['composer_autoload'] is set to TRUE but D:\wamp\www\R9-UAT-Testing\application\vendor/autoload.php was not found.
+INFO - 2022-12-22 12:25:17 --> Config Class Initialized
+INFO - 2022-12-22 12:25:17 --> Hooks Class Initialized
+DEBUG - 2022-12-22 12:25:17 --> UTF-8 Support Enabled
+INFO - 2022-12-22 12:25:17 --> Utf8 Class Initialized
+INFO - 2022-12-22 12:25:17 --> URI Class Initialized
+INFO - 2022-12-22 12:25:17 --> Router Class Initialized
+INFO - 2022-12-22 12:25:17 --> Output Class Initialized
+INFO - 2022-12-22 12:25:17 --> Security Class Initialized
+DEBUG - 2022-12-22 12:25:17 --> Global POST, GET and COOKIE data sanitized
+INFO - 2022-12-22 12:25:17 --> CSRF cookie sent
+INFO - 2022-12-22 12:25:17 --> Input Class Initialized
+INFO - 2022-12-22 12:25:17 --> Language Class Initialized
+INFO - 2022-12-22 12:25:17 --> Loader Class Initialized
+INFO - 2022-12-22 12:25:17 --> Helper loaded: url_helper
+INFO - 2022-12-22 12:25:17 --> Helper loaded: file_helper
+INFO - 2022-12-22 12:25:17 --> Helper loaded: form_helper
+INFO - 2022-12-22 12:25:17 --> Helper loaded: lang_helper
+INFO - 2022-12-22 12:25:17 --> Database Driver Class Initialized
+INFO - 2022-12-22 12:25:17 --> Session: Class initialized using 'files' driver.
+INFO - 2022-12-22 12:25:17 --> Parser Class Initialized
+INFO - 2022-12-22 12:25:17 --> Language file loaded: language/english/pagination_lang.php
+INFO - 2022-12-22 12:25:17 --> Pagination Class Initialized
+INFO - 2022-12-22 12:25:17 --> Form Validation Class Initialized
+INFO - 2022-12-22 12:25:17 --> Controller Class Initialized
+DEBUG - 2022-12-22 12:25:17 --> Auth class already loaded. Second attempt ignored.
+DEBUG - 2022-12-22 12:25:17 --> Session class already loaded. Second attempt ignored.
+INFO - 2022-12-22 12:25:17 --> Model "Customers" initialized
+DEBUG - 2022-12-22 12:25:17 --> Lcustomer class already loaded. Second attempt ignored.
+INFO - 2022-12-22 12:25:17 --> Model "Web_settings" initialized
+INFO - 2022-12-22 12:25:17 --> File loaded: D:\wamp\www\R9-UAT-Testing\application\views\customer/customer.php
+DEBUG - 2022-12-22 12:25:17 --> Parser class already loaded. Second attempt ignored.
+INFO - 2022-12-22 12:25:17 --> File loaded: D:\wamp\www\R9-UAT-Testing\application\views\include/top_menu.php
+INFO - 2022-12-22 12:25:17 --> File loaded: D:\wamp\www\R9-UAT-Testing\application\views\include/admin_loggedin_info.php
+INFO - 2022-12-22 12:25:17 --> Model "Products" initialized
+INFO - 2022-12-22 17:55:17 --> Model "reports" initialized
+INFO - 2022-12-22 17:55:17 --> Model "Users" initialized
+INFO - 2022-12-22 17:55:17 --> File loaded: D:\wamp\www\R9-UAT-Testing\application\views\include/admin_header.php
+ERROR - 2022-12-22 17:55:17 --> Severity: Notice --> Undefined variable: email_setting D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 106
+ERROR - 2022-12-22 17:55:17 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 106
+ERROR - 2022-12-22 17:55:17 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 106
+ERROR - 2022-12-22 17:55:17 --> Severity: Notice --> Undefined variable: email_setting D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 118
+ERROR - 2022-12-22 17:55:17 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 118
+ERROR - 2022-12-22 17:55:17 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 118
+ERROR - 2022-12-22 17:55:17 --> Severity: Notice --> Undefined variable: email_setting D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 121
+ERROR - 2022-12-22 17:55:17 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 121
+ERROR - 2022-12-22 17:55:17 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 121
+INFO - 2022-12-22 17:55:17 --> File loaded: D:\wamp\www\R9-UAT-Testing\application\views\include/admin_footer.php
+INFO - 2022-12-22 17:55:17 --> File loaded: D:\wamp\www\R9-UAT-Testing\application\views\admin_html_template.php
+INFO - 2022-12-22 17:55:17 --> Final output sent to browser
+DEBUG - 2022-12-22 17:55:17 --> Total execution time: 0.3208
+ERROR - 2022-12-22 12:25:17 --> $config['composer_autoload'] is set to TRUE but D:\wamp\www\R9-UAT-Testing\application\vendor/autoload.php was not found.
+INFO - 2022-12-22 12:25:17 --> Config Class Initialized
+INFO - 2022-12-22 12:25:17 --> Hooks Class Initialized
+DEBUG - 2022-12-22 12:25:17 --> UTF-8 Support Enabled
+INFO - 2022-12-22 12:25:17 --> Utf8 Class Initialized
+INFO - 2022-12-22 12:25:17 --> URI Class Initialized
+INFO - 2022-12-22 12:25:17 --> Router Class Initialized
+INFO - 2022-12-22 12:25:17 --> Output Class Initialized
+INFO - 2022-12-22 12:25:17 --> Security Class Initialized
+DEBUG - 2022-12-22 12:25:17 --> Global POST, GET and COOKIE data sanitized
+INFO - 2022-12-22 12:25:17 --> CSRF cookie sent
+INFO - 2022-12-22 12:25:17 --> CSRF token verified
+INFO - 2022-12-22 12:25:17 --> Input Class Initialized
+INFO - 2022-12-22 12:25:17 --> Language Class Initialized
+INFO - 2022-12-22 12:25:17 --> Loader Class Initialized
+INFO - 2022-12-22 12:25:17 --> Helper loaded: url_helper
+INFO - 2022-12-22 12:25:17 --> Helper loaded: file_helper
+INFO - 2022-12-22 12:25:17 --> Helper loaded: form_helper
+INFO - 2022-12-22 12:25:17 --> Helper loaded: lang_helper
+INFO - 2022-12-22 12:25:17 --> Database Driver Class Initialized
+INFO - 2022-12-22 12:25:17 --> Session: Class initialized using 'files' driver.
+INFO - 2022-12-22 12:25:17 --> Parser Class Initialized
+INFO - 2022-12-22 12:25:17 --> Language file loaded: language/english/pagination_lang.php
+INFO - 2022-12-22 12:25:17 --> Pagination Class Initialized
+INFO - 2022-12-22 12:25:17 --> Form Validation Class Initialized
+INFO - 2022-12-22 12:25:17 --> Controller Class Initialized
+DEBUG - 2022-12-22 12:25:17 --> Auth class already loaded. Second attempt ignored.
+DEBUG - 2022-12-22 12:25:17 --> Session class already loaded. Second attempt ignored.
+INFO - 2022-12-22 12:25:17 --> Model "Customers" initialized
+INFO - 2022-12-22 12:25:17 --> Final output sent to browser
+DEBUG - 2022-12-22 12:25:17 --> Total execution time: 0.0415
+ERROR - 2022-12-22 12:25:19 --> $config['composer_autoload'] is set to TRUE but D:\wamp\www\R9-UAT-Testing\application\vendor/autoload.php was not found.
+INFO - 2022-12-22 12:25:19 --> Config Class Initialized
+INFO - 2022-12-22 12:25:19 --> Hooks Class Initialized
+DEBUG - 2022-12-22 12:25:19 --> UTF-8 Support Enabled
+INFO - 2022-12-22 12:25:19 --> Utf8 Class Initialized
+INFO - 2022-12-22 12:25:19 --> URI Class Initialized
+INFO - 2022-12-22 12:25:19 --> Router Class Initialized
+INFO - 2022-12-22 12:25:19 --> Output Class Initialized
+INFO - 2022-12-22 12:25:19 --> Security Class Initialized
+DEBUG - 2022-12-22 12:25:19 --> Global POST, GET and COOKIE data sanitized
+INFO - 2022-12-22 12:25:19 --> CSRF cookie sent
+INFO - 2022-12-22 12:25:19 --> Input Class Initialized
+INFO - 2022-12-22 12:25:19 --> Language Class Initialized
+INFO - 2022-12-22 12:25:19 --> Loader Class Initialized
+INFO - 2022-12-22 12:25:19 --> Helper loaded: url_helper
+INFO - 2022-12-22 12:25:19 --> Helper loaded: file_helper
+INFO - 2022-12-22 12:25:19 --> Helper loaded: form_helper
+INFO - 2022-12-22 12:25:19 --> Helper loaded: lang_helper
+INFO - 2022-12-22 12:25:19 --> Database Driver Class Initialized
+INFO - 2022-12-22 12:25:19 --> Session: Class initialized using 'files' driver.
+INFO - 2022-12-22 12:25:19 --> Parser Class Initialized
+INFO - 2022-12-22 12:25:19 --> Language file loaded: language/english/pagination_lang.php
+INFO - 2022-12-22 12:25:19 --> Pagination Class Initialized
+INFO - 2022-12-22 12:25:19 --> Form Validation Class Initialized
+INFO - 2022-12-22 12:25:19 --> Controller Class Initialized
+INFO - 2022-12-22 12:25:19 --> Model "Suppliers" initialized
+INFO - 2022-12-22 12:25:19 --> Model "Categories" initialized
+INFO - 2022-12-22 12:25:19 --> Model "Units" initialized
+DEBUG - 2022-12-22 12:25:19 --> Auth class already loaded. Second attempt ignored.
+INFO - 2022-12-22 12:25:19 --> Model "Products" initialized
+INFO - 2022-12-22 12:25:19 --> Model "Web_settings" initialized
+ERROR - 2022-12-22 12:25:19 --> Severity: Notice --> Undefined index: supplier_name D:\wamp\www\R9-UAT-Testing\application\views\product\product.php 119
+ERROR - 2022-12-22 12:25:19 --> Severity: Notice --> Undefined index: supplier_price D:\wamp\www\R9-UAT-Testing\application\views\product\product.php 122
+ERROR - 2022-12-22 12:25:19 --> Severity: Notice --> Undefined index: supplier_name D:\wamp\www\R9-UAT-Testing\application\views\product\product.php 119
+ERROR - 2022-12-22 12:25:19 --> Severity: Notice --> Undefined index: supplier_price D:\wamp\www\R9-UAT-Testing\application\views\product\product.php 122
+ERROR - 2022-12-22 12:25:19 --> Severity: Notice --> Undefined index: supplier_name D:\wamp\www\R9-UAT-Testing\application\views\product\product.php 119
+ERROR - 2022-12-22 12:25:19 --> Severity: Notice --> Undefined index: supplier_price D:\wamp\www\R9-UAT-Testing\application\views\product\product.php 122
+ERROR - 2022-12-22 12:25:19 --> Severity: Notice --> Undefined index: supplier_name D:\wamp\www\R9-UAT-Testing\application\views\product\product.php 119
+ERROR - 2022-12-22 12:25:19 --> Severity: Notice --> Undefined index: supplier_price D:\wamp\www\R9-UAT-Testing\application\views\product\product.php 122
+INFO - 2022-12-22 12:25:19 --> File loaded: D:\wamp\www\R9-UAT-Testing\application\views\product/product.php
+DEBUG - 2022-12-22 12:25:19 --> Parser class already loaded. Second attempt ignored.
+INFO - 2022-12-22 12:25:19 --> File loaded: D:\wamp\www\R9-UAT-Testing\application\views\include/top_menu.php
+INFO - 2022-12-22 12:25:19 --> File loaded: D:\wamp\www\R9-UAT-Testing\application\views\include/admin_loggedin_info.php
+INFO - 2022-12-22 17:55:19 --> Model "reports" initialized
+INFO - 2022-12-22 17:55:19 --> Model "Users" initialized
+INFO - 2022-12-22 17:55:19 --> File loaded: D:\wamp\www\R9-UAT-Testing\application\views\include/admin_header.php
+ERROR - 2022-12-22 17:55:19 --> Severity: Notice --> Undefined variable: email_setting D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 106
+ERROR - 2022-12-22 17:55:19 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 106
+ERROR - 2022-12-22 17:55:19 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 106
+ERROR - 2022-12-22 17:55:19 --> Severity: Notice --> Undefined variable: email_setting D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 118
+ERROR - 2022-12-22 17:55:19 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 118
+ERROR - 2022-12-22 17:55:19 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 118
+ERROR - 2022-12-22 17:55:19 --> Severity: Notice --> Undefined variable: email_setting D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 121
+ERROR - 2022-12-22 17:55:19 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 121
+ERROR - 2022-12-22 17:55:19 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 121
+INFO - 2022-12-22 17:55:19 --> File loaded: D:\wamp\www\R9-UAT-Testing\application\views\include/admin_footer.php
+INFO - 2022-12-22 17:55:19 --> File loaded: D:\wamp\www\R9-UAT-Testing\application\views\admin_html_template.php
+INFO - 2022-12-22 17:55:19 --> Final output sent to browser
+DEBUG - 2022-12-22 17:55:19 --> Total execution time: 0.2927
+ERROR - 2022-12-22 12:27:15 --> $config['composer_autoload'] is set to TRUE but D:\wamp\www\R9-UAT-Testing\application\vendor/autoload.php was not found.
+INFO - 2022-12-22 12:27:15 --> Config Class Initialized
+INFO - 2022-12-22 12:27:15 --> Hooks Class Initialized
+DEBUG - 2022-12-22 12:27:15 --> UTF-8 Support Enabled
+INFO - 2022-12-22 12:27:15 --> Utf8 Class Initialized
+INFO - 2022-12-22 12:27:15 --> URI Class Initialized
+INFO - 2022-12-22 12:27:15 --> Router Class Initialized
+INFO - 2022-12-22 12:27:15 --> Output Class Initialized
+INFO - 2022-12-22 12:27:15 --> Security Class Initialized
+DEBUG - 2022-12-22 12:27:15 --> Global POST, GET and COOKIE data sanitized
+INFO - 2022-12-22 12:27:15 --> CSRF cookie sent
+INFO - 2022-12-22 12:27:15 --> Input Class Initialized
+INFO - 2022-12-22 12:27:15 --> Language Class Initialized
+INFO - 2022-12-22 12:27:15 --> Loader Class Initialized
+INFO - 2022-12-22 12:27:15 --> Helper loaded: url_helper
+INFO - 2022-12-22 12:27:15 --> Helper loaded: file_helper
+INFO - 2022-12-22 12:27:15 --> Helper loaded: form_helper
+INFO - 2022-12-22 12:27:15 --> Helper loaded: lang_helper
+INFO - 2022-12-22 12:27:15 --> Database Driver Class Initialized
+INFO - 2022-12-22 12:27:15 --> Session: Class initialized using 'files' driver.
+INFO - 2022-12-22 12:27:15 --> Parser Class Initialized
+INFO - 2022-12-22 12:27:15 --> Language file loaded: language/english/pagination_lang.php
+INFO - 2022-12-22 12:27:15 --> Pagination Class Initialized
+INFO - 2022-12-22 12:27:15 --> Form Validation Class Initialized
+INFO - 2022-12-22 12:27:15 --> Controller Class Initialized
+INFO - 2022-12-22 12:27:15 --> Model "Suppliers" initialized
+INFO - 2022-12-22 12:27:15 --> Model "Categories" initialized
+INFO - 2022-12-22 12:27:15 --> Model "Units" initialized
+DEBUG - 2022-12-22 12:27:15 --> Auth class already loaded. Second attempt ignored.
+INFO - 2022-12-22 12:27:15 --> Model "Products" initialized
+INFO - 2022-12-22 12:27:15 --> Model "Web_settings" initialized
+ERROR - 2022-12-22 12:27:15 --> Severity: Notice --> Undefined index: supplier_name D:\wamp\www\R9-UAT-Testing\application\views\product\product.php 123
+ERROR - 2022-12-22 12:27:15 --> Severity: Notice --> Undefined index: supplier_price D:\wamp\www\R9-UAT-Testing\application\views\product\product.php 126
+ERROR - 2022-12-22 12:27:15 --> Severity: Notice --> Undefined index: supplier_name D:\wamp\www\R9-UAT-Testing\application\views\product\product.php 123
+ERROR - 2022-12-22 12:27:15 --> Severity: Notice --> Undefined index: supplier_price D:\wamp\www\R9-UAT-Testing\application\views\product\product.php 126
+ERROR - 2022-12-22 12:27:15 --> Severity: Notice --> Undefined index: supplier_name D:\wamp\www\R9-UAT-Testing\application\views\product\product.php 123
+ERROR - 2022-12-22 12:27:15 --> Severity: Notice --> Undefined index: supplier_price D:\wamp\www\R9-UAT-Testing\application\views\product\product.php 126
+ERROR - 2022-12-22 12:27:15 --> Severity: Notice --> Undefined index: supplier_name D:\wamp\www\R9-UAT-Testing\application\views\product\product.php 123
+ERROR - 2022-12-22 12:27:15 --> Severity: Notice --> Undefined index: supplier_price D:\wamp\www\R9-UAT-Testing\application\views\product\product.php 126
+INFO - 2022-12-22 12:27:15 --> File loaded: D:\wamp\www\R9-UAT-Testing\application\views\product/product.php
+DEBUG - 2022-12-22 12:27:15 --> Parser class already loaded. Second attempt ignored.
+INFO - 2022-12-22 12:27:15 --> File loaded: D:\wamp\www\R9-UAT-Testing\application\views\include/top_menu.php
+INFO - 2022-12-22 12:27:15 --> File loaded: D:\wamp\www\R9-UAT-Testing\application\views\include/admin_loggedin_info.php
+INFO - 2022-12-22 17:57:15 --> Model "reports" initialized
+INFO - 2022-12-22 17:57:15 --> Model "Users" initialized
+INFO - 2022-12-22 17:57:15 --> File loaded: D:\wamp\www\R9-UAT-Testing\application\views\include/admin_header.php
+ERROR - 2022-12-22 17:57:15 --> Severity: Notice --> Undefined variable: email_setting D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 106
+ERROR - 2022-12-22 17:57:15 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 106
+ERROR - 2022-12-22 17:57:15 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 106
+ERROR - 2022-12-22 17:57:15 --> Severity: Notice --> Undefined variable: email_setting D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 118
+ERROR - 2022-12-22 17:57:15 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 118
+ERROR - 2022-12-22 17:57:15 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 118
+ERROR - 2022-12-22 17:57:15 --> Severity: Notice --> Undefined variable: email_setting D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 121
+ERROR - 2022-12-22 17:57:15 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 121
+ERROR - 2022-12-22 17:57:15 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 121
+INFO - 2022-12-22 17:57:15 --> File loaded: D:\wamp\www\R9-UAT-Testing\application\views\include/admin_footer.php
+INFO - 2022-12-22 17:57:15 --> File loaded: D:\wamp\www\R9-UAT-Testing\application\views\admin_html_template.php
+INFO - 2022-12-22 17:57:15 --> Final output sent to browser
+DEBUG - 2022-12-22 17:57:15 --> Total execution time: 0.2543
+ERROR - 2022-12-22 12:27:23 --> $config['composer_autoload'] is set to TRUE but D:\wamp\www\R9-UAT-Testing\application\vendor/autoload.php was not found.
+INFO - 2022-12-22 12:27:23 --> Config Class Initialized
+INFO - 2022-12-22 12:27:23 --> Hooks Class Initialized
+DEBUG - 2022-12-22 12:27:23 --> UTF-8 Support Enabled
+INFO - 2022-12-22 12:27:23 --> Utf8 Class Initialized
+INFO - 2022-12-22 12:27:23 --> URI Class Initialized
+INFO - 2022-12-22 12:27:23 --> Router Class Initialized
+INFO - 2022-12-22 12:27:23 --> Output Class Initialized
+INFO - 2022-12-22 12:27:23 --> Security Class Initialized
+DEBUG - 2022-12-22 12:27:23 --> Global POST, GET and COOKIE data sanitized
+INFO - 2022-12-22 12:27:23 --> CSRF cookie sent
+INFO - 2022-12-22 12:27:23 --> Input Class Initialized
+INFO - 2022-12-22 12:27:23 --> Language Class Initialized
+INFO - 2022-12-22 12:27:23 --> Loader Class Initialized
+INFO - 2022-12-22 12:27:23 --> Helper loaded: url_helper
+INFO - 2022-12-22 12:27:23 --> Helper loaded: file_helper
+INFO - 2022-12-22 12:27:23 --> Helper loaded: form_helper
+INFO - 2022-12-22 12:27:23 --> Helper loaded: lang_helper
+INFO - 2022-12-22 12:27:23 --> Database Driver Class Initialized
+INFO - 2022-12-22 12:27:23 --> Session: Class initialized using 'files' driver.
+INFO - 2022-12-22 12:27:23 --> Parser Class Initialized
+INFO - 2022-12-22 12:27:23 --> Language file loaded: language/english/pagination_lang.php
+INFO - 2022-12-22 12:27:23 --> Pagination Class Initialized
+INFO - 2022-12-22 12:27:23 --> Form Validation Class Initialized
+INFO - 2022-12-22 12:27:23 --> Controller Class Initialized
+DEBUG - 2022-12-22 12:27:23 --> Auth class already loaded. Second attempt ignored.
+DEBUG - 2022-12-22 12:27:23 --> Session class already loaded. Second attempt ignored.
+INFO - 2022-12-22 12:27:23 --> Model "Suppliers" initialized
+DEBUG - 2022-12-22 12:27:23 --> Lsupplier class already loaded. Second attempt ignored.
+INFO - 2022-12-22 12:27:23 --> Model "Web_settings" initialized
+INFO - 2022-12-22 12:27:23 --> File loaded: D:\wamp\www\R9-UAT-Testing\application\views\supplier/supplier.php
+DEBUG - 2022-12-22 12:27:23 --> Parser class already loaded. Second attempt ignored.
+INFO - 2022-12-22 12:27:23 --> File loaded: D:\wamp\www\R9-UAT-Testing\application\views\include/top_menu.php
+INFO - 2022-12-22 12:27:23 --> File loaded: D:\wamp\www\R9-UAT-Testing\application\views\include/admin_loggedin_info.php
+INFO - 2022-12-22 12:27:23 --> Model "Products" initialized
+INFO - 2022-12-22 17:57:23 --> Model "reports" initialized
+INFO - 2022-12-22 17:57:23 --> Model "Users" initialized
+INFO - 2022-12-22 17:57:23 --> File loaded: D:\wamp\www\R9-UAT-Testing\application\views\include/admin_header.php
+ERROR - 2022-12-22 17:57:23 --> Severity: Notice --> Undefined variable: email_setting D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 106
+ERROR - 2022-12-22 17:57:23 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 106
+ERROR - 2022-12-22 17:57:23 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 106
+ERROR - 2022-12-22 17:57:23 --> Severity: Notice --> Undefined variable: email_setting D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 118
+ERROR - 2022-12-22 17:57:23 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 118
+ERROR - 2022-12-22 17:57:23 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 118
+ERROR - 2022-12-22 17:57:23 --> Severity: Notice --> Undefined variable: email_setting D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 121
+ERROR - 2022-12-22 17:57:23 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 121
+ERROR - 2022-12-22 17:57:23 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 121
+INFO - 2022-12-22 17:57:23 --> File loaded: D:\wamp\www\R9-UAT-Testing\application\views\include/admin_footer.php
+INFO - 2022-12-22 17:57:23 --> File loaded: D:\wamp\www\R9-UAT-Testing\application\views\admin_html_template.php
+INFO - 2022-12-22 17:57:23 --> Final output sent to browser
+DEBUG - 2022-12-22 17:57:23 --> Total execution time: 0.2747
+ERROR - 2022-12-22 12:27:23 --> $config['composer_autoload'] is set to TRUE but D:\wamp\www\R9-UAT-Testing\application\vendor/autoload.php was not found.
+INFO - 2022-12-22 12:27:23 --> Config Class Initialized
+INFO - 2022-12-22 12:27:23 --> Hooks Class Initialized
+DEBUG - 2022-12-22 12:27:23 --> UTF-8 Support Enabled
+INFO - 2022-12-22 12:27:23 --> Utf8 Class Initialized
+INFO - 2022-12-22 12:27:23 --> URI Class Initialized
+INFO - 2022-12-22 12:27:23 --> Router Class Initialized
+INFO - 2022-12-22 12:27:23 --> Output Class Initialized
+INFO - 2022-12-22 12:27:23 --> Security Class Initialized
+DEBUG - 2022-12-22 12:27:23 --> Global POST, GET and COOKIE data sanitized
+INFO - 2022-12-22 12:27:23 --> CSRF cookie sent
+INFO - 2022-12-22 12:27:23 --> CSRF token verified
+INFO - 2022-12-22 12:27:23 --> Input Class Initialized
+INFO - 2022-12-22 12:27:23 --> Language Class Initialized
+INFO - 2022-12-22 12:27:23 --> Loader Class Initialized
+INFO - 2022-12-22 12:27:23 --> Helper loaded: url_helper
+INFO - 2022-12-22 12:27:23 --> Helper loaded: file_helper
+INFO - 2022-12-22 12:27:23 --> Helper loaded: form_helper
+INFO - 2022-12-22 12:27:23 --> Helper loaded: lang_helper
+INFO - 2022-12-22 12:27:23 --> Database Driver Class Initialized
+INFO - 2022-12-22 12:27:23 --> Session: Class initialized using 'files' driver.
+INFO - 2022-12-22 12:27:23 --> Parser Class Initialized
+INFO - 2022-12-22 12:27:23 --> Language file loaded: language/english/pagination_lang.php
+INFO - 2022-12-22 12:27:23 --> Pagination Class Initialized
+INFO - 2022-12-22 12:27:23 --> Form Validation Class Initialized
+INFO - 2022-12-22 12:27:23 --> Controller Class Initialized
+DEBUG - 2022-12-22 12:27:23 --> Auth class already loaded. Second attempt ignored.
+DEBUG - 2022-12-22 12:27:23 --> Session class already loaded. Second attempt ignored.
+INFO - 2022-12-22 12:27:23 --> Model "Suppliers" initialized
+INFO - 2022-12-22 12:27:23 --> Final output sent to browser
+DEBUG - 2022-12-22 12:27:23 --> Total execution time: 0.0596
+ERROR - 2022-12-22 12:27:43 --> $config['composer_autoload'] is set to TRUE but D:\wamp\www\R9-UAT-Testing\application\vendor/autoload.php was not found.
+INFO - 2022-12-22 12:27:43 --> Config Class Initialized
+INFO - 2022-12-22 12:27:43 --> Hooks Class Initialized
+DEBUG - 2022-12-22 12:27:43 --> UTF-8 Support Enabled
+INFO - 2022-12-22 12:27:43 --> Utf8 Class Initialized
+INFO - 2022-12-22 12:27:43 --> URI Class Initialized
+INFO - 2022-12-22 12:27:43 --> Router Class Initialized
+INFO - 2022-12-22 12:27:43 --> Output Class Initialized
+INFO - 2022-12-22 12:27:43 --> Security Class Initialized
+DEBUG - 2022-12-22 12:27:43 --> Global POST, GET and COOKIE data sanitized
+INFO - 2022-12-22 12:27:43 --> CSRF cookie sent
+INFO - 2022-12-22 12:27:43 --> Input Class Initialized
+INFO - 2022-12-22 12:27:43 --> Language Class Initialized
+INFO - 2022-12-22 12:27:43 --> Loader Class Initialized
+INFO - 2022-12-22 12:27:43 --> Helper loaded: url_helper
+INFO - 2022-12-22 12:27:43 --> Helper loaded: file_helper
+INFO - 2022-12-22 12:27:43 --> Helper loaded: form_helper
+INFO - 2022-12-22 12:27:43 --> Helper loaded: lang_helper
+INFO - 2022-12-22 12:27:43 --> Database Driver Class Initialized
+INFO - 2022-12-22 12:27:43 --> Session: Class initialized using 'files' driver.
+INFO - 2022-12-22 12:27:43 --> Parser Class Initialized
+INFO - 2022-12-22 12:27:43 --> Language file loaded: language/english/pagination_lang.php
+INFO - 2022-12-22 12:27:43 --> Pagination Class Initialized
+INFO - 2022-12-22 12:27:43 --> Form Validation Class Initialized
+INFO - 2022-12-22 12:27:43 --> Controller Class Initialized
+INFO - 2022-12-22 12:27:43 --> Model "Suppliers" initialized
+INFO - 2022-12-22 12:27:43 --> Model "Categories" initialized
+INFO - 2022-12-22 12:27:43 --> Model "Units" initialized
+DEBUG - 2022-12-22 12:27:43 --> Auth class already loaded. Second attempt ignored.
+INFO - 2022-12-22 12:27:43 --> Model "Products" initialized
+INFO - 2022-12-22 12:27:43 --> Model "Web_settings" initialized
+ERROR - 2022-12-22 12:27:43 --> Severity: Notice --> Undefined index: supplier_name D:\wamp\www\R9-UAT-Testing\application\views\product\product.php 123
+ERROR - 2022-12-22 12:27:43 --> Severity: Notice --> Undefined index: supplier_price D:\wamp\www\R9-UAT-Testing\application\views\product\product.php 126
+ERROR - 2022-12-22 12:27:43 --> Severity: Notice --> Undefined index: supplier_name D:\wamp\www\R9-UAT-Testing\application\views\product\product.php 123
+ERROR - 2022-12-22 12:27:43 --> Severity: Notice --> Undefined index: supplier_price D:\wamp\www\R9-UAT-Testing\application\views\product\product.php 126
+ERROR - 2022-12-22 12:27:43 --> Severity: Notice --> Undefined index: supplier_name D:\wamp\www\R9-UAT-Testing\application\views\product\product.php 123
+ERROR - 2022-12-22 12:27:43 --> Severity: Notice --> Undefined index: supplier_price D:\wamp\www\R9-UAT-Testing\application\views\product\product.php 126
+ERROR - 2022-12-22 12:27:43 --> Severity: Notice --> Undefined index: supplier_name D:\wamp\www\R9-UAT-Testing\application\views\product\product.php 123
+ERROR - 2022-12-22 12:27:43 --> Severity: Notice --> Undefined index: supplier_price D:\wamp\www\R9-UAT-Testing\application\views\product\product.php 126
+INFO - 2022-12-22 12:27:43 --> File loaded: D:\wamp\www\R9-UAT-Testing\application\views\product/product.php
+DEBUG - 2022-12-22 12:27:43 --> Parser class already loaded. Second attempt ignored.
+INFO - 2022-12-22 12:27:43 --> File loaded: D:\wamp\www\R9-UAT-Testing\application\views\include/top_menu.php
+INFO - 2022-12-22 12:27:43 --> File loaded: D:\wamp\www\R9-UAT-Testing\application\views\include/admin_loggedin_info.php
+INFO - 2022-12-22 17:57:43 --> Model "reports" initialized
+INFO - 2022-12-22 17:57:43 --> Model "Users" initialized
+INFO - 2022-12-22 17:57:43 --> File loaded: D:\wamp\www\R9-UAT-Testing\application\views\include/admin_header.php
+ERROR - 2022-12-22 17:57:43 --> Severity: Notice --> Undefined variable: email_setting D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 106
+ERROR - 2022-12-22 17:57:43 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 106
+ERROR - 2022-12-22 17:57:43 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 106
+ERROR - 2022-12-22 17:57:43 --> Severity: Notice --> Undefined variable: email_setting D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 118
+ERROR - 2022-12-22 17:57:43 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 118
+ERROR - 2022-12-22 17:57:43 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 118
+ERROR - 2022-12-22 17:57:43 --> Severity: Notice --> Undefined variable: email_setting D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 121
+ERROR - 2022-12-22 17:57:43 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 121
+ERROR - 2022-12-22 17:57:43 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 121
+INFO - 2022-12-22 17:57:43 --> File loaded: D:\wamp\www\R9-UAT-Testing\application\views\include/admin_footer.php
+INFO - 2022-12-22 17:57:43 --> File loaded: D:\wamp\www\R9-UAT-Testing\application\views\admin_html_template.php
+INFO - 2022-12-22 17:57:43 --> Final output sent to browser
+DEBUG - 2022-12-22 17:57:43 --> Total execution time: 0.2667
+ERROR - 2022-12-22 12:27:55 --> $config['composer_autoload'] is set to TRUE but D:\wamp\www\R9-UAT-Testing\application\vendor/autoload.php was not found.
+INFO - 2022-12-22 12:27:55 --> Config Class Initialized
+INFO - 2022-12-22 12:27:55 --> Hooks Class Initialized
+DEBUG - 2022-12-22 12:27:55 --> UTF-8 Support Enabled
+INFO - 2022-12-22 12:27:55 --> Utf8 Class Initialized
+INFO - 2022-12-22 12:27:55 --> URI Class Initialized
+INFO - 2022-12-22 12:27:55 --> Router Class Initialized
+INFO - 2022-12-22 12:27:55 --> Output Class Initialized
+INFO - 2022-12-22 12:27:55 --> Security Class Initialized
+DEBUG - 2022-12-22 12:27:55 --> Global POST, GET and COOKIE data sanitized
+INFO - 2022-12-22 12:27:55 --> CSRF cookie sent
+INFO - 2022-12-22 12:27:55 --> Input Class Initialized
+INFO - 2022-12-22 12:27:55 --> Language Class Initialized
+INFO - 2022-12-22 12:27:55 --> Loader Class Initialized
+INFO - 2022-12-22 12:27:55 --> Helper loaded: url_helper
+INFO - 2022-12-22 12:27:55 --> Helper loaded: file_helper
+INFO - 2022-12-22 12:27:55 --> Helper loaded: form_helper
+INFO - 2022-12-22 12:27:55 --> Helper loaded: lang_helper
+INFO - 2022-12-22 12:27:55 --> Database Driver Class Initialized
+INFO - 2022-12-22 12:27:55 --> Session: Class initialized using 'files' driver.
+INFO - 2022-12-22 12:27:55 --> Parser Class Initialized
+INFO - 2022-12-22 12:27:55 --> Language file loaded: language/english/pagination_lang.php
+INFO - 2022-12-22 12:27:55 --> Pagination Class Initialized
+INFO - 2022-12-22 12:27:55 --> Form Validation Class Initialized
+INFO - 2022-12-22 12:27:55 --> Controller Class Initialized
+DEBUG - 2022-12-22 12:27:55 --> Auth class already loaded. Second attempt ignored.
+DEBUG - 2022-12-22 12:27:55 --> Session class already loaded. Second attempt ignored.
+INFO - 2022-12-22 12:27:55 --> Model "Customers" initialized
+DEBUG - 2022-12-22 12:27:55 --> Lcustomer class already loaded. Second attempt ignored.
+INFO - 2022-12-22 12:27:55 --> Model "Web_settings" initialized
+INFO - 2022-12-22 12:27:55 --> File loaded: D:\wamp\www\R9-UAT-Testing\application\views\customer/customer.php
+DEBUG - 2022-12-22 12:27:55 --> Parser class already loaded. Second attempt ignored.
+INFO - 2022-12-22 12:27:55 --> File loaded: D:\wamp\www\R9-UAT-Testing\application\views\include/top_menu.php
+INFO - 2022-12-22 12:27:55 --> File loaded: D:\wamp\www\R9-UAT-Testing\application\views\include/admin_loggedin_info.php
+INFO - 2022-12-22 12:27:55 --> Model "Products" initialized
+INFO - 2022-12-22 17:57:55 --> Model "reports" initialized
+INFO - 2022-12-22 17:57:55 --> Model "Users" initialized
+INFO - 2022-12-22 17:57:55 --> File loaded: D:\wamp\www\R9-UAT-Testing\application\views\include/admin_header.php
+ERROR - 2022-12-22 17:57:55 --> Severity: Notice --> Undefined variable: email_setting D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 106
+ERROR - 2022-12-22 17:57:55 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 106
+ERROR - 2022-12-22 17:57:55 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 106
+ERROR - 2022-12-22 17:57:55 --> Severity: Notice --> Undefined variable: email_setting D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 118
+ERROR - 2022-12-22 17:57:55 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 118
+ERROR - 2022-12-22 17:57:55 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 118
+ERROR - 2022-12-22 17:57:55 --> Severity: Notice --> Undefined variable: email_setting D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 121
+ERROR - 2022-12-22 17:57:55 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 121
+ERROR - 2022-12-22 17:57:55 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 121
+INFO - 2022-12-22 17:57:55 --> File loaded: D:\wamp\www\R9-UAT-Testing\application\views\include/admin_footer.php
+INFO - 2022-12-22 17:57:55 --> File loaded: D:\wamp\www\R9-UAT-Testing\application\views\admin_html_template.php
+INFO - 2022-12-22 17:57:55 --> Final output sent to browser
+DEBUG - 2022-12-22 17:57:55 --> Total execution time: 0.2789
+ERROR - 2022-12-22 12:27:56 --> $config['composer_autoload'] is set to TRUE but D:\wamp\www\R9-UAT-Testing\application\vendor/autoload.php was not found.
+INFO - 2022-12-22 12:27:56 --> Config Class Initialized
+INFO - 2022-12-22 12:27:56 --> Hooks Class Initialized
+DEBUG - 2022-12-22 12:27:56 --> UTF-8 Support Enabled
+INFO - 2022-12-22 12:27:56 --> Utf8 Class Initialized
+INFO - 2022-12-22 12:27:56 --> URI Class Initialized
+INFO - 2022-12-22 12:27:56 --> Router Class Initialized
+INFO - 2022-12-22 12:27:56 --> Output Class Initialized
+INFO - 2022-12-22 12:27:56 --> Security Class Initialized
+DEBUG - 2022-12-22 12:27:56 --> Global POST, GET and COOKIE data sanitized
+INFO - 2022-12-22 12:27:56 --> CSRF cookie sent
+INFO - 2022-12-22 12:27:56 --> CSRF token verified
+INFO - 2022-12-22 12:27:56 --> Input Class Initialized
+INFO - 2022-12-22 12:27:56 --> Language Class Initialized
+INFO - 2022-12-22 12:27:56 --> Loader Class Initialized
+INFO - 2022-12-22 12:27:56 --> Helper loaded: url_helper
+INFO - 2022-12-22 12:27:56 --> Helper loaded: file_helper
+INFO - 2022-12-22 12:27:56 --> Helper loaded: form_helper
+INFO - 2022-12-22 12:27:56 --> Helper loaded: lang_helper
+INFO - 2022-12-22 12:27:56 --> Database Driver Class Initialized
+INFO - 2022-12-22 12:27:56 --> Session: Class initialized using 'files' driver.
+INFO - 2022-12-22 12:27:56 --> Parser Class Initialized
+INFO - 2022-12-22 12:27:56 --> Language file loaded: language/english/pagination_lang.php
+INFO - 2022-12-22 12:27:56 --> Pagination Class Initialized
+INFO - 2022-12-22 12:27:56 --> Form Validation Class Initialized
+INFO - 2022-12-22 12:27:56 --> Controller Class Initialized
+DEBUG - 2022-12-22 12:27:56 --> Auth class already loaded. Second attempt ignored.
+DEBUG - 2022-12-22 12:27:56 --> Session class already loaded. Second attempt ignored.
+INFO - 2022-12-22 12:27:56 --> Model "Customers" initialized
+INFO - 2022-12-22 12:27:56 --> Final output sent to browser
+DEBUG - 2022-12-22 12:27:56 --> Total execution time: 0.0611
+ERROR - 2022-12-22 12:27:57 --> $config['composer_autoload'] is set to TRUE but D:\wamp\www\R9-UAT-Testing\application\vendor/autoload.php was not found.
+INFO - 2022-12-22 12:27:57 --> Config Class Initialized
+INFO - 2022-12-22 12:27:57 --> Hooks Class Initialized
+DEBUG - 2022-12-22 12:27:57 --> UTF-8 Support Enabled
+INFO - 2022-12-22 12:27:57 --> Utf8 Class Initialized
+INFO - 2022-12-22 12:27:57 --> URI Class Initialized
+INFO - 2022-12-22 12:27:57 --> Router Class Initialized
+INFO - 2022-12-22 12:27:57 --> Output Class Initialized
+INFO - 2022-12-22 12:27:57 --> Security Class Initialized
+DEBUG - 2022-12-22 12:27:57 --> Global POST, GET and COOKIE data sanitized
+INFO - 2022-12-22 12:27:57 --> CSRF cookie sent
+INFO - 2022-12-22 12:27:57 --> Input Class Initialized
+INFO - 2022-12-22 12:27:57 --> Language Class Initialized
+INFO - 2022-12-22 12:27:57 --> Loader Class Initialized
+INFO - 2022-12-22 12:27:57 --> Helper loaded: url_helper
+INFO - 2022-12-22 12:27:57 --> Helper loaded: file_helper
+INFO - 2022-12-22 12:27:57 --> Helper loaded: form_helper
+INFO - 2022-12-22 12:27:57 --> Helper loaded: lang_helper
+INFO - 2022-12-22 12:27:57 --> Database Driver Class Initialized
+INFO - 2022-12-22 12:27:57 --> Session: Class initialized using 'files' driver.
+INFO - 2022-12-22 12:27:57 --> Parser Class Initialized
+INFO - 2022-12-22 12:27:57 --> Language file loaded: language/english/pagination_lang.php
+INFO - 2022-12-22 12:27:57 --> Pagination Class Initialized
+INFO - 2022-12-22 12:27:57 --> Form Validation Class Initialized
+INFO - 2022-12-22 12:27:57 --> Controller Class Initialized
+DEBUG - 2022-12-22 12:27:57 --> Auth class already loaded. Second attempt ignored.
+DEBUG - 2022-12-22 12:27:57 --> Session class already loaded. Second attempt ignored.
+INFO - 2022-12-22 12:27:57 --> Model "Suppliers" initialized
+DEBUG - 2022-12-22 12:27:57 --> Lsupplier class already loaded. Second attempt ignored.
+INFO - 2022-12-22 12:27:57 --> Model "Web_settings" initialized
+INFO - 2022-12-22 12:27:57 --> File loaded: D:\wamp\www\R9-UAT-Testing\application\views\supplier/supplier.php
+DEBUG - 2022-12-22 12:27:57 --> Parser class already loaded. Second attempt ignored.
+INFO - 2022-12-22 12:27:57 --> File loaded: D:\wamp\www\R9-UAT-Testing\application\views\include/top_menu.php
+INFO - 2022-12-22 12:27:57 --> File loaded: D:\wamp\www\R9-UAT-Testing\application\views\include/admin_loggedin_info.php
+INFO - 2022-12-22 12:27:57 --> Model "Products" initialized
+INFO - 2022-12-22 17:57:57 --> Model "reports" initialized
+INFO - 2022-12-22 17:57:57 --> Model "Users" initialized
+INFO - 2022-12-22 17:57:57 --> File loaded: D:\wamp\www\R9-UAT-Testing\application\views\include/admin_header.php
+ERROR - 2022-12-22 17:57:57 --> Severity: Notice --> Undefined variable: email_setting D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 106
+ERROR - 2022-12-22 17:57:57 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 106
+ERROR - 2022-12-22 17:57:57 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 106
+ERROR - 2022-12-22 17:57:57 --> Severity: Notice --> Undefined variable: email_setting D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 118
+ERROR - 2022-12-22 17:57:57 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 118
+ERROR - 2022-12-22 17:57:57 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 118
+ERROR - 2022-12-22 17:57:57 --> Severity: Notice --> Undefined variable: email_setting D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 121
+ERROR - 2022-12-22 17:57:57 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 121
+ERROR - 2022-12-22 17:57:57 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 121
+INFO - 2022-12-22 17:57:57 --> File loaded: D:\wamp\www\R9-UAT-Testing\application\views\include/admin_footer.php
+INFO - 2022-12-22 17:57:57 --> File loaded: D:\wamp\www\R9-UAT-Testing\application\views\admin_html_template.php
+INFO - 2022-12-22 17:57:57 --> Final output sent to browser
+DEBUG - 2022-12-22 17:57:57 --> Total execution time: 0.2854
+ERROR - 2022-12-22 12:27:57 --> $config['composer_autoload'] is set to TRUE but D:\wamp\www\R9-UAT-Testing\application\vendor/autoload.php was not found.
+INFO - 2022-12-22 12:27:57 --> Config Class Initialized
+INFO - 2022-12-22 12:27:57 --> Hooks Class Initialized
+DEBUG - 2022-12-22 12:27:57 --> UTF-8 Support Enabled
+INFO - 2022-12-22 12:27:57 --> Utf8 Class Initialized
+INFO - 2022-12-22 12:27:57 --> URI Class Initialized
+INFO - 2022-12-22 12:27:57 --> Router Class Initialized
+INFO - 2022-12-22 12:27:57 --> Output Class Initialized
+INFO - 2022-12-22 12:27:57 --> Security Class Initialized
+DEBUG - 2022-12-22 12:27:57 --> Global POST, GET and COOKIE data sanitized
+INFO - 2022-12-22 12:27:57 --> CSRF cookie sent
+INFO - 2022-12-22 12:27:57 --> CSRF token verified
+INFO - 2022-12-22 12:27:57 --> Input Class Initialized
+INFO - 2022-12-22 12:27:57 --> Language Class Initialized
+INFO - 2022-12-22 12:27:57 --> Loader Class Initialized
+INFO - 2022-12-22 12:27:57 --> Helper loaded: url_helper
+INFO - 2022-12-22 12:27:57 --> Helper loaded: file_helper
+INFO - 2022-12-22 12:27:57 --> Helper loaded: form_helper
+INFO - 2022-12-22 12:27:57 --> Helper loaded: lang_helper
+INFO - 2022-12-22 12:27:57 --> Database Driver Class Initialized
+INFO - 2022-12-22 12:27:57 --> Session: Class initialized using 'files' driver.
+INFO - 2022-12-22 12:27:57 --> Parser Class Initialized
+INFO - 2022-12-22 12:27:57 --> Language file loaded: language/english/pagination_lang.php
+INFO - 2022-12-22 12:27:57 --> Pagination Class Initialized
+INFO - 2022-12-22 12:27:57 --> Form Validation Class Initialized
+INFO - 2022-12-22 12:27:57 --> Controller Class Initialized
+DEBUG - 2022-12-22 12:27:57 --> Auth class already loaded. Second attempt ignored.
+DEBUG - 2022-12-22 12:27:57 --> Session class already loaded. Second attempt ignored.
+INFO - 2022-12-22 12:27:57 --> Model "Suppliers" initialized
+INFO - 2022-12-22 12:27:57 --> Final output sent to browser
+DEBUG - 2022-12-22 12:27:57 --> Total execution time: 0.0654
+ERROR - 2022-12-22 12:27:58 --> $config['composer_autoload'] is set to TRUE but D:\wamp\www\R9-UAT-Testing\application\vendor/autoload.php was not found.
+INFO - 2022-12-22 12:27:58 --> Config Class Initialized
+INFO - 2022-12-22 12:27:58 --> Hooks Class Initialized
+DEBUG - 2022-12-22 12:27:58 --> UTF-8 Support Enabled
+INFO - 2022-12-22 12:27:58 --> Utf8 Class Initialized
+INFO - 2022-12-22 12:27:58 --> URI Class Initialized
+INFO - 2022-12-22 12:27:58 --> Router Class Initialized
+INFO - 2022-12-22 12:27:58 --> Output Class Initialized
+INFO - 2022-12-22 12:27:58 --> Security Class Initialized
+DEBUG - 2022-12-22 12:27:58 --> Global POST, GET and COOKIE data sanitized
+INFO - 2022-12-22 12:27:58 --> CSRF cookie sent
+INFO - 2022-12-22 12:27:58 --> Input Class Initialized
+INFO - 2022-12-22 12:27:58 --> Language Class Initialized
+INFO - 2022-12-22 12:27:58 --> Loader Class Initialized
+INFO - 2022-12-22 12:27:58 --> Helper loaded: url_helper
+INFO - 2022-12-22 12:27:58 --> Helper loaded: file_helper
+INFO - 2022-12-22 12:27:58 --> Helper loaded: form_helper
+INFO - 2022-12-22 12:27:58 --> Helper loaded: lang_helper
+INFO - 2022-12-22 12:27:58 --> Database Driver Class Initialized
+INFO - 2022-12-22 12:27:58 --> Session: Class initialized using 'files' driver.
+INFO - 2022-12-22 12:27:58 --> Parser Class Initialized
+INFO - 2022-12-22 12:27:58 --> Language file loaded: language/english/pagination_lang.php
+INFO - 2022-12-22 12:27:58 --> Pagination Class Initialized
+INFO - 2022-12-22 12:27:58 --> Form Validation Class Initialized
+INFO - 2022-12-22 12:27:58 --> Controller Class Initialized
+INFO - 2022-12-22 12:27:58 --> Model "Suppliers" initialized
+INFO - 2022-12-22 12:27:58 --> Model "Categories" initialized
+INFO - 2022-12-22 12:27:58 --> Model "Units" initialized
+DEBUG - 2022-12-22 12:27:58 --> Auth class already loaded. Second attempt ignored.
+INFO - 2022-12-22 12:27:58 --> Model "Products" initialized
+INFO - 2022-12-22 12:27:58 --> Model "Web_settings" initialized
+ERROR - 2022-12-22 12:27:58 --> Severity: Notice --> Undefined index: supplier_name D:\wamp\www\R9-UAT-Testing\application\views\product\product.php 123
+ERROR - 2022-12-22 12:27:58 --> Severity: Notice --> Undefined index: supplier_price D:\wamp\www\R9-UAT-Testing\application\views\product\product.php 126
+ERROR - 2022-12-22 12:27:58 --> Severity: Notice --> Undefined index: supplier_name D:\wamp\www\R9-UAT-Testing\application\views\product\product.php 123
+ERROR - 2022-12-22 12:27:58 --> Severity: Notice --> Undefined index: supplier_price D:\wamp\www\R9-UAT-Testing\application\views\product\product.php 126
+ERROR - 2022-12-22 12:27:58 --> Severity: Notice --> Undefined index: supplier_name D:\wamp\www\R9-UAT-Testing\application\views\product\product.php 123
+ERROR - 2022-12-22 12:27:58 --> Severity: Notice --> Undefined index: supplier_price D:\wamp\www\R9-UAT-Testing\application\views\product\product.php 126
+ERROR - 2022-12-22 12:27:58 --> Severity: Notice --> Undefined index: supplier_name D:\wamp\www\R9-UAT-Testing\application\views\product\product.php 123
+ERROR - 2022-12-22 12:27:58 --> Severity: Notice --> Undefined index: supplier_price D:\wamp\www\R9-UAT-Testing\application\views\product\product.php 126
+INFO - 2022-12-22 12:27:58 --> File loaded: D:\wamp\www\R9-UAT-Testing\application\views\product/product.php
+DEBUG - 2022-12-22 12:27:58 --> Parser class already loaded. Second attempt ignored.
+INFO - 2022-12-22 12:27:58 --> File loaded: D:\wamp\www\R9-UAT-Testing\application\views\include/top_menu.php
+INFO - 2022-12-22 12:27:58 --> File loaded: D:\wamp\www\R9-UAT-Testing\application\views\include/admin_loggedin_info.php
+INFO - 2022-12-22 17:57:58 --> Model "reports" initialized
+INFO - 2022-12-22 17:57:58 --> Model "Users" initialized
+INFO - 2022-12-22 17:57:58 --> File loaded: D:\wamp\www\R9-UAT-Testing\application\views\include/admin_header.php
+ERROR - 2022-12-22 17:57:58 --> Severity: Notice --> Undefined variable: email_setting D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 106
+ERROR - 2022-12-22 17:57:58 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 106
+ERROR - 2022-12-22 17:57:58 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 106
+ERROR - 2022-12-22 17:57:58 --> Severity: Notice --> Undefined variable: email_setting D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 118
+ERROR - 2022-12-22 17:57:58 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 118
+ERROR - 2022-12-22 17:57:58 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 118
+ERROR - 2022-12-22 17:57:58 --> Severity: Notice --> Undefined variable: email_setting D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 121
+ERROR - 2022-12-22 17:57:58 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 121
+ERROR - 2022-12-22 17:57:58 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 121
+INFO - 2022-12-22 17:57:58 --> File loaded: D:\wamp\www\R9-UAT-Testing\application\views\include/admin_footer.php
+INFO - 2022-12-22 17:57:58 --> File loaded: D:\wamp\www\R9-UAT-Testing\application\views\admin_html_template.php
+INFO - 2022-12-22 17:57:58 --> Final output sent to browser
+DEBUG - 2022-12-22 17:57:58 --> Total execution time: 0.2471
+ERROR - 2022-12-22 12:28:03 --> $config['composer_autoload'] is set to TRUE but D:\wamp\www\R9-UAT-Testing\application\vendor/autoload.php was not found.
+INFO - 2022-12-22 12:28:03 --> Config Class Initialized
+INFO - 2022-12-22 12:28:03 --> Hooks Class Initialized
+DEBUG - 2022-12-22 12:28:03 --> UTF-8 Support Enabled
+INFO - 2022-12-22 12:28:03 --> Utf8 Class Initialized
+INFO - 2022-12-22 12:28:03 --> URI Class Initialized
+INFO - 2022-12-22 12:28:03 --> Router Class Initialized
+INFO - 2022-12-22 12:28:03 --> Output Class Initialized
+INFO - 2022-12-22 12:28:03 --> Security Class Initialized
+DEBUG - 2022-12-22 12:28:03 --> Global POST, GET and COOKIE data sanitized
+INFO - 2022-12-22 12:28:03 --> CSRF cookie sent
+INFO - 2022-12-22 12:28:03 --> Input Class Initialized
+INFO - 2022-12-22 12:28:03 --> Language Class Initialized
+INFO - 2022-12-22 12:28:03 --> Loader Class Initialized
+INFO - 2022-12-22 12:28:03 --> Helper loaded: url_helper
+INFO - 2022-12-22 12:28:03 --> Helper loaded: file_helper
+INFO - 2022-12-22 12:28:03 --> Helper loaded: form_helper
+INFO - 2022-12-22 12:28:03 --> Helper loaded: lang_helper
+INFO - 2022-12-22 12:28:03 --> Database Driver Class Initialized
+INFO - 2022-12-22 12:28:03 --> Session: Class initialized using 'files' driver.
+INFO - 2022-12-22 12:28:03 --> Parser Class Initialized
+INFO - 2022-12-22 12:28:03 --> Language file loaded: language/english/pagination_lang.php
+INFO - 2022-12-22 12:28:03 --> Pagination Class Initialized
+INFO - 2022-12-22 12:28:03 --> Form Validation Class Initialized
+INFO - 2022-12-22 12:28:03 --> Controller Class Initialized
+DEBUG - 2022-12-22 12:28:03 --> Auth class already loaded. Second attempt ignored.
+DEBUG - 2022-12-22 12:28:03 --> Session class already loaded. Second attempt ignored.
+INFO - 2022-12-22 12:28:03 --> Model "Suppliers" initialized
+DEBUG - 2022-12-22 12:28:03 --> Lsupplier class already loaded. Second attempt ignored.
+INFO - 2022-12-22 12:28:03 --> Model "Web_settings" initialized
+INFO - 2022-12-22 12:28:03 --> File loaded: D:\wamp\www\R9-UAT-Testing\application\views\supplier/supplier.php
+DEBUG - 2022-12-22 12:28:03 --> Parser class already loaded. Second attempt ignored.
+INFO - 2022-12-22 12:28:03 --> File loaded: D:\wamp\www\R9-UAT-Testing\application\views\include/top_menu.php
+INFO - 2022-12-22 12:28:03 --> File loaded: D:\wamp\www\R9-UAT-Testing\application\views\include/admin_loggedin_info.php
+INFO - 2022-12-22 12:28:03 --> Model "Products" initialized
+INFO - 2022-12-22 17:58:03 --> Model "reports" initialized
+INFO - 2022-12-22 17:58:03 --> Model "Users" initialized
+INFO - 2022-12-22 17:58:03 --> File loaded: D:\wamp\www\R9-UAT-Testing\application\views\include/admin_header.php
+ERROR - 2022-12-22 17:58:03 --> Severity: Notice --> Undefined variable: email_setting D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 106
+ERROR - 2022-12-22 17:58:03 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 106
+ERROR - 2022-12-22 17:58:03 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 106
+ERROR - 2022-12-22 17:58:03 --> Severity: Notice --> Undefined variable: email_setting D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 118
+ERROR - 2022-12-22 17:58:03 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 118
+ERROR - 2022-12-22 17:58:03 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 118
+ERROR - 2022-12-22 17:58:03 --> Severity: Notice --> Undefined variable: email_setting D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 121
+ERROR - 2022-12-22 17:58:03 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 121
+ERROR - 2022-12-22 17:58:03 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 121
+INFO - 2022-12-22 17:58:03 --> File loaded: D:\wamp\www\R9-UAT-Testing\application\views\include/admin_footer.php
+INFO - 2022-12-22 17:58:03 --> File loaded: D:\wamp\www\R9-UAT-Testing\application\views\admin_html_template.php
+INFO - 2022-12-22 17:58:03 --> Final output sent to browser
+DEBUG - 2022-12-22 17:58:03 --> Total execution time: 0.2564
+ERROR - 2022-12-22 12:28:03 --> $config['composer_autoload'] is set to TRUE but D:\wamp\www\R9-UAT-Testing\application\vendor/autoload.php was not found.
+INFO - 2022-12-22 12:28:03 --> Config Class Initialized
+INFO - 2022-12-22 12:28:03 --> Hooks Class Initialized
+DEBUG - 2022-12-22 12:28:03 --> UTF-8 Support Enabled
+INFO - 2022-12-22 12:28:03 --> Utf8 Class Initialized
+INFO - 2022-12-22 12:28:03 --> URI Class Initialized
+INFO - 2022-12-22 12:28:03 --> Router Class Initialized
+INFO - 2022-12-22 12:28:03 --> Output Class Initialized
+INFO - 2022-12-22 12:28:03 --> Security Class Initialized
+DEBUG - 2022-12-22 12:28:03 --> Global POST, GET and COOKIE data sanitized
+INFO - 2022-12-22 12:28:03 --> CSRF cookie sent
+INFO - 2022-12-22 12:28:03 --> CSRF token verified
+INFO - 2022-12-22 12:28:03 --> Input Class Initialized
+INFO - 2022-12-22 12:28:03 --> Language Class Initialized
+INFO - 2022-12-22 12:28:03 --> Loader Class Initialized
+INFO - 2022-12-22 12:28:03 --> Helper loaded: url_helper
+INFO - 2022-12-22 12:28:03 --> Helper loaded: file_helper
+INFO - 2022-12-22 12:28:03 --> Helper loaded: form_helper
+INFO - 2022-12-22 12:28:03 --> Helper loaded: lang_helper
+INFO - 2022-12-22 12:28:03 --> Database Driver Class Initialized
+INFO - 2022-12-22 12:28:03 --> Session: Class initialized using 'files' driver.
+INFO - 2022-12-22 12:28:03 --> Parser Class Initialized
+INFO - 2022-12-22 12:28:03 --> Language file loaded: language/english/pagination_lang.php
+INFO - 2022-12-22 12:28:03 --> Pagination Class Initialized
+INFO - 2022-12-22 12:28:03 --> Form Validation Class Initialized
+INFO - 2022-12-22 12:28:03 --> Controller Class Initialized
+DEBUG - 2022-12-22 12:28:03 --> Auth class already loaded. Second attempt ignored.
+DEBUG - 2022-12-22 12:28:03 --> Session class already loaded. Second attempt ignored.
+INFO - 2022-12-22 12:28:03 --> Model "Suppliers" initialized
+INFO - 2022-12-22 12:28:03 --> Final output sent to browser
+DEBUG - 2022-12-22 12:28:03 --> Total execution time: 0.0427
+ERROR - 2022-12-22 12:29:23 --> $config['composer_autoload'] is set to TRUE but D:\wamp\www\R9-UAT-Testing\application\vendor/autoload.php was not found.
+INFO - 2022-12-22 12:29:23 --> Config Class Initialized
+INFO - 2022-12-22 12:29:23 --> Hooks Class Initialized
+DEBUG - 2022-12-22 12:29:23 --> UTF-8 Support Enabled
+INFO - 2022-12-22 12:29:23 --> Utf8 Class Initialized
+INFO - 2022-12-22 12:29:23 --> URI Class Initialized
+INFO - 2022-12-22 12:29:23 --> Router Class Initialized
+INFO - 2022-12-22 12:29:23 --> Output Class Initialized
+INFO - 2022-12-22 12:29:23 --> Security Class Initialized
+DEBUG - 2022-12-22 12:29:23 --> Global POST, GET and COOKIE data sanitized
+INFO - 2022-12-22 12:29:23 --> CSRF cookie sent
+INFO - 2022-12-22 12:29:23 --> Input Class Initialized
+INFO - 2022-12-22 12:29:23 --> Language Class Initialized
+INFO - 2022-12-22 12:29:23 --> Loader Class Initialized
+INFO - 2022-12-22 12:29:23 --> Helper loaded: url_helper
+INFO - 2022-12-22 12:29:23 --> Helper loaded: file_helper
+INFO - 2022-12-22 12:29:23 --> Helper loaded: form_helper
+INFO - 2022-12-22 12:29:23 --> Helper loaded: lang_helper
+INFO - 2022-12-22 12:29:23 --> Database Driver Class Initialized
+INFO - 2022-12-22 12:29:23 --> Session: Class initialized using 'files' driver.
+INFO - 2022-12-22 12:29:23 --> Parser Class Initialized
+INFO - 2022-12-22 12:29:23 --> Language file loaded: language/english/pagination_lang.php
+INFO - 2022-12-22 12:29:23 --> Pagination Class Initialized
+INFO - 2022-12-22 12:29:23 --> Form Validation Class Initialized
+INFO - 2022-12-22 12:29:23 --> Controller Class Initialized
+INFO - 2022-12-22 12:29:23 --> Model "Accounts_model" initialized
+INFO - 2022-12-22 12:29:23 --> Model "Purchases" initialized
+INFO - 2022-12-22 12:29:23 --> Model "Web_settings" initialized
+INFO - 2022-12-22 12:29:23 --> Model "Ppurchases" initialized
+ERROR - 2022-12-22 12:29:23 --> Severity: Notice --> Undefined variable: expense D:\wamp\www\R9-UAT-Testing\application\views\purchase\ocean_import_list.php 158
+ERROR - 2022-12-22 12:29:23 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R9-UAT-Testing\application\views\purchase\ocean_import_list.php 158
+ERROR - 2022-12-22 12:29:23 --> Severity: Warning --> count(): Parameter must be an array or an object that implements Countable D:\wamp\www\R9-UAT-Testing\application\views\purchase\ocean_import_list.php 158
+INFO - 2022-12-22 12:29:23 --> File loaded: D:\wamp\www\R9-UAT-Testing\application\views\purchase/ocean_import_list.php
+INFO - 2022-12-22 12:29:23 --> File loaded: D:\wamp\www\R9-UAT-Testing\application\views\purchase/ocean_import_list.php
+DEBUG - 2022-12-22 12:29:23 --> Parser class already loaded. Second attempt ignored.
+INFO - 2022-12-22 12:29:23 --> File loaded: D:\wamp\www\R9-UAT-Testing\application\views\include/top_menu.php
+INFO - 2022-12-22 12:29:23 --> File loaded: D:\wamp\www\R9-UAT-Testing\application\views\include/admin_loggedin_info.php
+INFO - 2022-12-22 12:29:23 --> Model "Products" initialized
+INFO - 2022-12-22 17:59:23 --> Model "reports" initialized
+INFO - 2022-12-22 17:59:23 --> Model "Users" initialized
+INFO - 2022-12-22 17:59:23 --> File loaded: D:\wamp\www\R9-UAT-Testing\application\views\include/admin_header.php
+ERROR - 2022-12-22 17:59:23 --> Severity: Notice --> Undefined variable: email_setting D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 106
+ERROR - 2022-12-22 17:59:23 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 106
+ERROR - 2022-12-22 17:59:23 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 106
+ERROR - 2022-12-22 17:59:23 --> Severity: Notice --> Undefined variable: email_setting D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 118
+ERROR - 2022-12-22 17:59:23 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 118
+ERROR - 2022-12-22 17:59:23 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 118
+ERROR - 2022-12-22 17:59:23 --> Severity: Notice --> Undefined variable: email_setting D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 121
+ERROR - 2022-12-22 17:59:23 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 121
+ERROR - 2022-12-22 17:59:23 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 121
+INFO - 2022-12-22 17:59:23 --> File loaded: D:\wamp\www\R9-UAT-Testing\application\views\include/admin_footer.php
+INFO - 2022-12-22 17:59:23 --> File loaded: D:\wamp\www\R9-UAT-Testing\application\views\admin_html_template.php
+INFO - 2022-12-22 17:59:23 --> Final output sent to browser
+DEBUG - 2022-12-22 17:59:23 --> Total execution time: 0.2448
+ERROR - 2022-12-22 12:29:23 --> $config['composer_autoload'] is set to TRUE but D:\wamp\www\R9-UAT-Testing\application\vendor/autoload.php was not found.
+INFO - 2022-12-22 12:29:23 --> Config Class Initialized
+INFO - 2022-12-22 12:29:23 --> Hooks Class Initialized
+DEBUG - 2022-12-22 12:29:23 --> UTF-8 Support Enabled
+INFO - 2022-12-22 12:29:23 --> Utf8 Class Initialized
+INFO - 2022-12-22 12:29:23 --> URI Class Initialized
+INFO - 2022-12-22 12:29:23 --> Router Class Initialized
+INFO - 2022-12-22 12:29:23 --> Output Class Initialized
+INFO - 2022-12-22 12:29:23 --> Security Class Initialized
+DEBUG - 2022-12-22 12:29:23 --> Global POST, GET and COOKIE data sanitized
+INFO - 2022-12-22 12:29:23 --> CSRF cookie sent
+INFO - 2022-12-22 12:29:23 --> CSRF token verified
+INFO - 2022-12-22 12:29:23 --> Input Class Initialized
+INFO - 2022-12-22 12:29:23 --> Language Class Initialized
+INFO - 2022-12-22 12:29:23 --> Loader Class Initialized
+INFO - 2022-12-22 12:29:23 --> Helper loaded: url_helper
+INFO - 2022-12-22 12:29:23 --> Helper loaded: file_helper
+INFO - 2022-12-22 12:29:23 --> Helper loaded: form_helper
+INFO - 2022-12-22 12:29:23 --> Helper loaded: lang_helper
+INFO - 2022-12-22 12:29:23 --> Database Driver Class Initialized
+INFO - 2022-12-22 12:29:23 --> Session: Class initialized using 'files' driver.
+INFO - 2022-12-22 12:29:23 --> Parser Class Initialized
+INFO - 2022-12-22 12:29:23 --> Language file loaded: language/english/pagination_lang.php
+INFO - 2022-12-22 12:29:23 --> Pagination Class Initialized
+INFO - 2022-12-22 12:29:23 --> Form Validation Class Initialized
+INFO - 2022-12-22 12:29:23 --> Controller Class Initialized
+INFO - 2022-12-22 12:29:23 --> Model "Web_settings" initialized
+DEBUG - 2022-12-22 12:29:23 --> Auth class already loaded. Second attempt ignored.
+DEBUG - 2022-12-22 12:29:23 --> Session class already loaded. Second attempt ignored.
+INFO - 2022-12-22 12:29:23 --> Model "Customers" initialized
+INFO - 2022-12-22 12:29:23 --> Model "Invoices" initialized
+ERROR - 2022-12-22 12:29:23 --> Severity: Notice --> Undefined offset: 0 D:\wamp\www\R9-UAT-Testing\application\controllers\Cinvoice.php 1373
+ERROR - 2022-12-22 12:29:23 --> Severity: Notice --> Trying to get property 'menu' of non-object D:\wamp\www\R9-UAT-Testing\application\controllers\Cinvoice.php 1373
+ERROR - 2022-12-22 12:29:23 --> Severity: Notice --> Undefined offset: 0 D:\wamp\www\R9-UAT-Testing\application\controllers\Cinvoice.php 1374
+ERROR - 2022-12-22 12:29:23 --> Severity: Notice --> Trying to get property 'submenu' of non-object D:\wamp\www\R9-UAT-Testing\application\controllers\Cinvoice.php 1374
+ERROR - 2022-12-22 12:29:23 --> Severity: Notice --> Undefined offset: 0 D:\wamp\www\R9-UAT-Testing\application\controllers\Cinvoice.php 1375
+ERROR - 2022-12-22 12:29:23 --> Severity: Notice --> Trying to get property 'setting' of non-object D:\wamp\www\R9-UAT-Testing\application\controllers\Cinvoice.php 1375
+INFO - 2022-12-22 12:29:23 --> Final output sent to browser
+DEBUG - 2022-12-22 12:29:23 --> Total execution time: 0.0138
+ERROR - 2022-12-22 12:29:24 --> $config['composer_autoload'] is set to TRUE but D:\wamp\www\R9-UAT-Testing\application\vendor/autoload.php was not found.
+INFO - 2022-12-22 12:29:24 --> Config Class Initialized
+INFO - 2022-12-22 12:29:24 --> Hooks Class Initialized
+DEBUG - 2022-12-22 12:29:24 --> UTF-8 Support Enabled
+INFO - 2022-12-22 12:29:24 --> Utf8 Class Initialized
+INFO - 2022-12-22 12:29:24 --> URI Class Initialized
+INFO - 2022-12-22 12:29:24 --> Router Class Initialized
+INFO - 2022-12-22 12:29:24 --> Output Class Initialized
+INFO - 2022-12-22 12:29:24 --> Security Class Initialized
+DEBUG - 2022-12-22 12:29:24 --> Global POST, GET and COOKIE data sanitized
+INFO - 2022-12-22 12:29:24 --> CSRF cookie sent
+INFO - 2022-12-22 12:29:24 --> Input Class Initialized
+INFO - 2022-12-22 12:29:24 --> Language Class Initialized
+INFO - 2022-12-22 12:29:24 --> Loader Class Initialized
+INFO - 2022-12-22 12:29:24 --> Helper loaded: url_helper
+INFO - 2022-12-22 12:29:24 --> Helper loaded: file_helper
+INFO - 2022-12-22 12:29:24 --> Helper loaded: form_helper
+INFO - 2022-12-22 12:29:24 --> Helper loaded: lang_helper
+INFO - 2022-12-22 12:29:24 --> Database Driver Class Initialized
+INFO - 2022-12-22 12:29:24 --> Session: Class initialized using 'files' driver.
+INFO - 2022-12-22 12:29:24 --> Parser Class Initialized
+INFO - 2022-12-22 12:29:24 --> Language file loaded: language/english/pagination_lang.php
+INFO - 2022-12-22 12:29:24 --> Pagination Class Initialized
+INFO - 2022-12-22 12:29:24 --> Form Validation Class Initialized
+INFO - 2022-12-22 12:29:24 --> Controller Class Initialized
+INFO - 2022-12-22 12:29:24 --> Model "Accounts_model" initialized
+INFO - 2022-12-22 12:29:24 --> Model "Purchases" initialized
+INFO - 2022-12-22 12:29:24 --> Model "Web_settings" initialized
+INFO - 2022-12-22 12:29:24 --> Model "Ppurchases" initialized
+INFO - 2022-12-22 12:29:24 --> Model "Categories" initialized
+INFO - 2022-12-22 12:29:24 --> Model "Units" initialized
+DEBUG - 2022-12-22 12:29:24 --> Smsgateway class already loaded. Second attempt ignored.
+INFO - 2022-12-22 12:29:24 --> Model "Accounts_model" initialized
+INFO - 2022-12-22 12:29:24 --> File loaded: D:\wamp\www\R9-UAT-Testing\application\views\purchase/ocean_import_tracking.php
+DEBUG - 2022-12-22 12:29:24 --> Parser class already loaded. Second attempt ignored.
+INFO - 2022-12-22 12:29:24 --> File loaded: D:\wamp\www\R9-UAT-Testing\application\views\include/top_menu.php
+INFO - 2022-12-22 12:29:24 --> File loaded: D:\wamp\www\R9-UAT-Testing\application\views\include/admin_loggedin_info.php
+INFO - 2022-12-22 12:29:24 --> Model "Products" initialized
+INFO - 2022-12-22 17:59:24 --> Model "reports" initialized
+INFO - 2022-12-22 17:59:24 --> Model "Users" initialized
+INFO - 2022-12-22 17:59:24 --> File loaded: D:\wamp\www\R9-UAT-Testing\application\views\include/admin_header.php
+ERROR - 2022-12-22 17:59:24 --> Severity: Notice --> Undefined variable: email_setting D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 106
+ERROR - 2022-12-22 17:59:24 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 106
+ERROR - 2022-12-22 17:59:24 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 106
+ERROR - 2022-12-22 17:59:24 --> Severity: Notice --> Undefined variable: email_setting D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 118
+ERROR - 2022-12-22 17:59:24 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 118
+ERROR - 2022-12-22 17:59:24 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 118
+ERROR - 2022-12-22 17:59:24 --> Severity: Notice --> Undefined variable: email_setting D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 121
+ERROR - 2022-12-22 17:59:24 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 121
+ERROR - 2022-12-22 17:59:24 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R9-UAT-Testing\application\views\include\admin_footer.php 121
+INFO - 2022-12-22 17:59:24 --> File loaded: D:\wamp\www\R9-UAT-Testing\application\views\include/admin_footer.php
+INFO - 2022-12-22 17:59:24 --> File loaded: D:\wamp\www\R9-UAT-Testing\application\views\admin_html_template.php
+INFO - 2022-12-22 17:59:24 --> Final output sent to browser
+DEBUG - 2022-12-22 17:59:24 --> Total execution time: 0.3444

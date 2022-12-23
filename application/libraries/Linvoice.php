@@ -460,7 +460,7 @@ class Linvoice {
 
 
        
-
+        $bank_list      = $CI->Web_settings->bank_list();
         $data = array(
             'all_supplier'  => $all_supplier,
             'curn_info_default' =>$curn_info_default[0]['currency_name'],
@@ -473,11 +473,11 @@ class Linvoice {
             'trucking_id'   => $purchase_detail[0]['trucking_id'],
 
             'invoice_no'     => $purchase_detail[0]['invoice_no'],
-
+          
             'customer_name' => $purchase_detail[0]['customer_name'],
 
             'customer_id'   => $purchase_detail[0]['customer_id'],
-
+            'bank_list'       => $bank_list,
             'bill_to'   => $purchase_detail[0]['bill_to'],
 
             'purchase_info' => $purchase_detail,
@@ -599,6 +599,7 @@ class Linvoice {
             'truckingdate' => $purchase_detail[0]['trucking_date'],
             
             'customer_name' => $purchase_detail[0]['customer_name'],
+            'customer_currency' => $purchase_detail[0]['currency_type'],
 
             'qty' => $purchase_detail[0]['qty'],
 

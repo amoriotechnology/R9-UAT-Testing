@@ -287,7 +287,7 @@
                                 </div> 
                             </div>
                         </div>
-                        <input type="hidden" id="invoice_hdn"/> <input type="hidden" id="invoice_hdn1"/>
+                        <input type="text" id="invoice_hdn"/> <input type="text" id="invoice_hdn1"/>
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="form-group row">
@@ -448,7 +448,7 @@
       </div>
       <div class="modal-body">
           <div id="customeMessage" class="alert hide"></div>
-           <?php echo form_open_multipart('Csupplier/insert_supplier', array('id' => 'insert_supplier')) ?>
+          
   <div class="panel-body">
       <div class="col-sm-6">
       <div class="form-group row">

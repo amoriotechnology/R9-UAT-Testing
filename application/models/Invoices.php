@@ -1063,10 +1063,11 @@ public function retrieve_packing_editdata($purchase_id) {
          $this->db->where('a.trucking_id', $purchase_id);
        // $this->db->order_by('a.purchase_details', 'asc');
         $query = $this->db->get();
+       echo $this->db->last_query();
         if ($query->num_rows() > 0) {
             return $query->result_array();
         }
-        return false;
+    
     }
 
 
@@ -1925,7 +1926,7 @@ public function retrieve_packing_editdata($purchase_id) {
             'gtotal'    => $this->input->post('gtotal',TRUE),
             'ac_details'    => $this->input->post('ac_details',TRUE),
             'remark'    => $this->input->post('remark',TRUE),
-
+            'gtotal_preferred_currency' =>$this->input->post('customer_gtotal',TRUE),
             'total_tax'       => $this->input->post('tax_details',TRUE),
 
             'invoice'         => $invoice_no_generated,
@@ -3255,7 +3256,7 @@ $this->db->where('payment_id',$payment_id);
             'bank_name' => $this->input->post('bank'),
             'total_amt' => $this->input->post('amount_to_pay'),
             'amt_received' =>$this->input->post('amount_received') ,
-            'balance' => $this->input->post('balance'),
+            'balance' => $this->input->post('balance_modal'),
             'amt_paid' =>$this->input->post('payment') ,
             'details' => $this->input->post('details'),
             'attachement' => $this->input->post('attachement'),

@@ -110,7 +110,7 @@
                             </div>  <div class="col-sm-6" >
                             <form id="histroy" method="post" >
 <input type="hidden" name="<?php echo $this->security->get_csrf_token_name();?>" value="<?php echo $this->security->get_csrf_hash();?>">
-<input type="hidden"  value="<?php echo $all_invoice[0]['payment_id']; ?>" name="payment_id" class="payment_id"/>
+<input type="hidden"  value="<?php echo $purchase_info[0]['payment_id']; ?>" name="payment_id" class="payment_id"/>
 <input type="submit" id="payment_history" name="payment_history" class="btn btn-primary" value="Payment_histroy" style="float:right;margin-bottom:30px;"/>
                                             </form>
                                             </div>
@@ -171,7 +171,7 @@
 
                             </div>
 
-                            <input type="hidden"  value="<?php echo $payment_id; ?>"  name="payment_id"/>
+                            <input type="hidden"  value="<?php echo $purchase_info[0]['payment_id']; ?>"  name="payment_id"/>
 
                              <div class="col-sm-6">
 
@@ -904,7 +904,7 @@
 
     </div>
 <input type="hidden" id="cutomer_name" name="cutomer_name"/>
-<input type="hidden"  value="<?php echo $payment_id; ?>"  name="payment_id"/>
+<input type="hidden"  value="<?php echo $purchase_info[0]['payment_id']; ?>"  name="payment_id"/>
  <div class="form-group row">
 
         <label for="billing_address" style="text-align:end;" class="col-sm-3 col-form-label">Reference No<i class="text-danger">*</i></label>
@@ -952,7 +952,7 @@
 <option value="UCO Bank">UCO Bank</option>
 <option value="Union Bank of India">Union Bank of India</option>
 <option value="YES Bank Ltd.">YES Bank Ltd.</option>
-<?php foreach($bank_name as $b){ ?>
+<?php foreach($bank_list as $b){ ?>
   <option value="<?=$b['bank_name']; ?>"><?=$b['bank_name']; ?></option>
 <?php } ?>
 </select>

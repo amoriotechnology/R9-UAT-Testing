@@ -385,31 +385,99 @@ textarea:focus, input:focus{
                                     </tr>
                                 </tbody>
                                 <tfoot>
-                                <tr>
-                                        
-                                        <td style="text-align:right;" colspan="5"><b>Grand Total</b></td>
-                                        <td ><span class='form-control' style='background-color: #eee;'><?php  echo $currency; ?>
-                                            <input type="text" id="Total"  name="total" value="0.00" readonly="readonly" />
-                                        </span></td>
-                                        <td> <button type="button" id="add_invoice_item" class="btn btn-info" name="add-invoice-item"  onClick="addPurchaseOrderField2('addPurchaseItem')"  tabindex="9"/><i class="fa fa-plus"></i></button>
-
-                                            <input type="hidden" name="baseUrl" class="baseUrl" value="<?php echo base_url();?>"/></td>
-                                    </tr><tr>
-                                    <td style="width:30%;border:none;"><span style="width:30%;border:none;"></span>
-                         </td> 
-                
-                                <td  style="width:30%px;border:none;"><span class="hiden" style="width:200px;padding:5px;background-color:#38469f;border:none;font-weight:bold;color:white;">1 <?php  echo $curn_info_default;  ?>
-                                 = <input style="color:black;width:70px;text-align:center;padding:5px;" type="text" id="custocurrency_rate"/>&nbsp;<label for="custocurrency"></label></span></td>
-                    <td style="border:none;text-align:right;font-weight:bold;" colspan="3"><b><?php echo "Grand Total" ?>:</b><br/><b>(Preferred Currency)</b></td>
+                                    <tr>
+                                   
+                                        <td style="text-align:right;" colspan="4"><b><?php echo display('total') ?>:</b></td>
+                                        <td style="text-align:left;">
+                                        <table border="0">
+      <tr>
+        <td><?php  echo $currency." ";  ?></td>
+        <td>     <input type="text" id="Total" class="text-right" name="total"  readonly="readonly" /></td>
+     </tr>
+   </table>
+                                           </td>
+                                    
+                                           
+                                    </tr>
+                                    <tr>
+                                   
+                                   <td style="text-align:right;" colspan="4"><b>Tax Details :</b></td>
+                                   <td style="text-align:left;">
+                                   <table border="0">
+      <tr>
+        <td><?php  echo $currency." ";  ?></td>
+        <td>       <input type="text" id="tax_details" class="text-right" value="0.00" name="tax_details"  readonly="readonly" /></td>
+     </tr>
+   </table>
+                               </td>
+                               
+                                      
+                               </tr>
+                                    <tr> <td style="text-align:right;" colspan="4"><b><?php echo "Grand Total" ?>:</b></td>
                                     <td>
-                                            <span class="form-control" style="background-color: #eee;" ><input style="width:12%;font-weight:bold;" type="text" id="cus"  name="cus"  readonly="readonly" />
-                                            <input type="text" id="vendor_gtotal"  name="vendor_gtotal" value="0.00" readonly="readonly" />
-                                            </span></td>
+                                    <table border="0">
+      <tr>
+        <td><?php  echo $currency." ";  ?></td>
+        <td>    <input type="text" id="gtotal"  name="gtotal" onchange=""value="0.00" readonly="readonly" /></td>
+     </tr>
+   </table></td>
+                                        <td> <button type="button" id="add_invoice_item" class="btn btn-info" name="add-invoice-item" onclick="addInputField('addPurchaseItem');"  tabindex="9" ><i class="fa fa-plus"></i></button>
+
+                                           
+                                    </tr>
+                                  
+                                    <tr>
+                                        
+                                    
+                                    
+                                    <td style="text-align:right;"  colspan="4"><b><?php echo "Grand Total" ?>:</b><br/><b>(Preferred Currency)</b></td>
+                                    <td>
+                                    <table border="0">
+      <tr>
+        <td class="cus" name="cus"></td>
+        <td><input  type="text"  readonly id="customer_gtotal"  name="customer_gtotal" class="form-control" required   /></td>
+     </tr>
+   </table></td>
                                       
 
                                             <input type="hidden" id="final_gtotal"  name="final_gtotal" />
-                                        </tr>
+
+                                            <input type="hidden" name="baseUrl" class="baseUrl" value="<?php echo base_url();?>"/></td>
+                                    </tr> 
                                     
+                                    <tr id="amt">
+                                   
+                                            <td style="text-align:right;"  colspan="4"><b><?php echo "Amount Paid" ?>:</b></td>
+                                          
+                                            <td>
+                                            <table border="0">
+      <tr>
+        <td class="cus" name="cus"></td>
+        <td><input  type="text"  readonly id="amount_paid"  name="amount_paid" class="form-control" required   /></td>
+     </tr>
+   </table>
+                                        
+                                            </td>
+                                            </tr> 
+                                            <tr id="bal">
+                                            <td style="text-align:right;"  colspan="4"><b><?php echo "Balance Amount " ?>:</b></td>
+                                            <td>
+                                            <table border="0">
+      <tr>
+        <td class="cus" name="cus"></td>
+        <td><input  type="text"  readonly id="balance"  name="balance" class="form-control" required   /></td>
+     </tr>
+   </table>
+                                         
+                                            </td>
+                                            </tr> 
+                                            <tr style="border-right:none;border-left:none;border-bottom:none;border-top:none">
+                                               
+                                            <td colspan="6" style="text-align: end;">
+                                        <input type="submit" value="Make Payment" class="btn btn-primary btn-large" id="paypls"/>
+                                            </td>
+                                            </tr>
+                                
 
 
 
@@ -719,38 +787,28 @@ textarea:focus, input:focus{
             </div>
             </form>
 
-
-
+            <form id="insert_product_from_expense"  method="post">
             <div class="modal fade" id="product_info" role="dialog">
-
 <div class="modal-dialog">
-
     <div class="modal-content">
-
         <div class="modal-header">
-
-            
-
             <a href="#" class="close" data-dismiss="modal">&times;</a>
-
             <h3 class="modal-title"><?php echo display('new_product') ?></h3>
-
         </div>
-
-        
-
         <div class="modal-body">
-
             <div id="customeMessage" class="alert hide"></div>
-
-      <?php echo form_open_multipart('Cpurchase/insert_po_product', array('class' => 'form-vertical', 'id' => 'insert_product_from_expense', 'name' => 'insert_product')) ?>
-
+      <!-- <?php //echo form_open_multipart('Cproduct/insert_product_from_expense', array('class' => 'form-vertical', 'id' => 'insert_product_from_expense', 'name' => 'insert_product_from_expense')) ?> -->
+      <form action="ada">
     <div class="panel-body">
-
 <input type ="hidden" name="csrf_test_name" id="" value="<?php echo $this->security->get_csrf_hash();?>">
-
       <div class="row">
-           
+   <div class="form-group row">
+                                    <label for="barcode_or_qrcode" class="col-sm-4 col-form-label"><?php echo display('barcode_or_qrcode') ?> <i class="text-danger"></i></label>
+                                    <div class="col-sm-8">
+                                        <input class="form-control" name="productid" type="text" id="product_id" placeholder="<?php echo display('barcode_or_qrcode') ?>"  tabindex="1" >
+                                    </div>
+                                </div>
+    <input type="hidden" name="<?php echo $this->security->get_csrf_token_name();?>" value="<?php echo $this->security->get_csrf_hash();?>">
             <div class="col-sm-6">
                 <div class="form-group row">
                     <label for="quantity" class="col-sm-4 col-form-label"><?php echo 'Quantity' ?> <i class="text-danger">*</i></label>
@@ -760,39 +818,16 @@ textarea:focus, input:focus{
                 </div>
             </div>
         </div>
-
-
-
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="form-group row">
-                    <label for="product_name" class="col-sm-4 col-form-label"><?php echo display('product_name') ?> <i class="text-danger">*</i></label>
-                    <div class="col-sm-8">
-                      <select name="product_id">
-                          <option value="">Select Products</option>
-                          <?php 
-                          for($i=0;$i<count($products);$i++)
-                          {
-                            ?>
-                            <option value="<?php echo $products[$i]['product_id']; ?>"><?php echo $products[$i]['product_name']; ?></option>
-                        <?php } ?>
-                      </select>
-                    </div>
-                </div>
-            </div>
-           <!--  <div class="col-sm-6">
-                <div class="form-group row">
-                    <label for="serial_no" class="col-sm-4 col-form-label"><?php echo display('serial_no') ?> </label>
-                    <div class="col-sm-8">
-                        <input type="text" tabindex="" class="form-control " id="serial_no" name="serial_no" placeholder="111,abc,XYz"   />
-                    </div>
-                </div>
-            </div> -->
-
+          <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group row">
+                                    <label for="product_name" class="col-sm-4 col-form-label"><?php echo display('product_name') ?> <i class="text-danger">*</i></label>
+                                    <div class="col-sm-8">
+                                        <input class="form-control" name="productname" type="text" id="product_name" placeholder="<?php echo display('product_name') ?>" required tabindex="1" >
+                                    </div>
+                                </div>
+                            </div>
         </div>
-
-
-
        <div class="row">
             <div class="col-sm-6">
                 <div class="form-group row">
@@ -802,55 +837,37 @@ textarea:focus, input:focus{
                     </div>
                 </div>
             </div>
-
-        </div>  
-
-
-
-        
-
+        </div>
                                                 <div class="row">
-                             <div class="col-sm-6">
-                                    <div class="form-group row" style="300">
-                                    <label for="supplier" class="col-sm-4 col-form-label">Supplier<i class="text-danger"></i></label>
+                             <div class="col-sm-6" >
+                                    <div class="form-group row" style="300"     >
+                                    <label for="supplier" class="col-sm-4 col-form-label ">Supplier<i class="text-danger"></i></label>
                                     <div class="col-sm-8">
-                                        <select name="supplier_id" id="supplier_id" class="form-control " required="" tabindex="1"> 
+                                        <select name="supplier_id" id="supplier_id" class="form-control " required="" tabindex="1">
                                             <option value=" "><?php echo display('select_one') ?></option>
                                             {all_supplier}
                                             <option value="{supplier_id}">{supplier_name}</option>
                                             {/all_supplier}
                                         </select>
                                     </div>
-
-
-
-
-
-
-                    
             </div>
-        </div>    
-
-
-
+        </div>
          <div class="row">
-            <div class="col-sm-8">
+            <div class="col-sm-7">
                 <div class="form-group row">
                     <label for="sell_price" class="col-sm-4 col-form-label"><?php echo display('sell_price') ?> <i class="text-danger">*</i> </label>
                     <div class="col-sm-6">
                         <input class="form-control text-right" id="sell_price" name="price" type="text" required="" placeholder="0.00" tabindex="5" min="0">
                     </div>
-                </div> 
+                </div>
             </div>
       </div>
-
-
       <div class="row">
-              <div class="col-sm-5">
+              <div class="col-sm-7">
                 <div class="form-group row">
                     <label for="category_id" class="col-sm-4 col-form-label"><?php echo display('category') ?></label>
-                    <div class="col-sm-8">
-                        <select class="form-control" id="category_id" name="category_id" tabindex="3">
+                    <div class="col-sm-8"     >
+                        <select class="form-control" id="category_id" width:158px;  name="category_id" tabindex="10">
                             <option value=""></option>
                             <?php if ($category_list) { ?>
                                 {category_list}
@@ -861,20 +878,9 @@ textarea:focus, input:focus{
                     </div>
                 </div>
             </div>
-
-
-
-            
       </div>
-
-
-   
-
-
-
-
 <div class="row">
-      <div class="col-sm-5">
+      <div class="col-sm-7">
                 <div class="form-group row">
                     <label for="unit" class="col-sm-4 col-form-label"><?php echo display('unit') ?></label>
                     <div class="col-sm-8">
@@ -889,31 +895,8 @@ textarea:focus, input:focus{
                     </div>
                 </div>
             </div>
-
-
-           <!--   <div class=" col-sm-1">
-
-                         <a href="#" class="client-add-btn btn btn-info" aria-hidden="true" data-toggle="modal" data-target="#add_cat"><i class="ti-plus m-r-2"></i></a>
-
-             </div> -->
-
         </div>
-
-
-
-
-       <div class="row">
-           <!--  <div class="col-sm-6">
-                <div class="form-group row">
-                    <label for="image" class="col-sm-4 col-form-label"><?php echo display('image') ?> </label>
-                    <div class="col-sm-8">
-                        <input type="file" name="image" class="form-control" id="image" tabindex="4">
-                    </div>
-                </div> 
-            </div> -->
-    
-        </div> 
-        
+        </div>
    <div class="row">
             <div class="col-sm-12">
                 <center><label for="description" class="col-form-label"><?php echo display('product_details') ?></label></center>
@@ -922,40 +905,18 @@ textarea:focus, input:focus{
         </div><br>
         <div class="form-group row">
             <div class="col-sm-6">
-
-                <input type="submit" id="add-product" class="btn btn-primary btn-large" name="insert_product_from_expense" value="<?php echo display('save') ?>" tabindex="10"/>
-                <input type="submit" value="<?php echo display('save_and_add_another') ?>" name="insert_product_from_expense" class="btn btn-large btn-success" id="add-product-another" tabindex="9">
-            </div>
+                <input type="submit" id="add-product" class="btn btn-primary btn-large" name="insert_product_from_expense" value="<?php echo display('save') ?>s" tabindex="10"/>
+                  </div>
+               </div>
+           </div>
         </div>
+                          </div>
+                   </div><!-- /.modal-content -->
+               </div><!-- /.modal-dialog -->
+          </div><!-- /.modal -->
+          </form>
 
-    </div>
-
-    
-
-        </div>
-
-
-
-        <div class="modal-footer">
-
-            
-
-            <a href="#" class="btn btn-danger" data-dismiss="modal">Close</a>
-
-            
-            <input type="submit" id="add-deposit" class="btn btn-success" name="add-deposit" value="<?php echo display('save') ?>" tabindex="6"/>
-           <!--  <input type="submit" class="btn btn-success" value="Submit"> -->
-
-        </div>
-
-        <?php echo form_close() ?>
-
-    </div><!-- /.modal-content -->
-
-</div><!-- /.modal-dialog -->
-
-</div><!-- /.modal -->
-
+          
 
 <!-- Purchase Report End -->
 <script>
@@ -1286,6 +1247,32 @@ function convert(currency1, currency2, value){
     err.innerHTML = "Error: " + error;
   });
 }
+$('#insert_product_from_expense').submit(function (event) {
+    var dataString = {
+        dataString : $("#insert_product_from_expense").serialize()
+   };
+   dataString[csrfName] = csrfHash;
+    $.ajax({
+        type:"POST",
+        dataType:"json",
+        url:"<?php echo base_url(); ?>Cproduct/insert_product_from_expense",
+        data:$("#insert_product_from_expense").serialize(),
+        success:function (data) {
+            $("#bodyModal1").html("Add New Product Saved Successfully");
+        $('#myModal1').modal('show');
+        $('#product_info').modal('hide');
+        console.log(data);
+  console.log(input_hdn);
+        }
+    });
+    event.preventDefault();
+    window.setTimeout(function(){
+       $('#product_info').modal('hide');
+     }, 2000);
+     window.setTimeout(function(){
+        $('#myModal1').modal('hide');
+     }, 2000);
+});
     </script>
   <!-- style for currency list   -->
 <style>
