@@ -167,9 +167,23 @@
                                         
 
                                         <td class="span3 supplier">
-                                           <input type="text" name="product_name" required class="form-control product_name productSelection" onkeypress="product_pur_or_list_by_company(1);" placeholder="<?php echo display('product_name') ?>" id="product_name_1" tabindex="5" >
+                                        <select name="product_name"  required class="form-control product_name productSelection"  id="product_name_1" tabindex="5" class="form-control product_name" >
+                                        <option value="Select the Product" selected>Select the Product</option>
+                                        <?php
+                                        foreach ($products as $ppn)
+                                        {
+                                         ?>
+                                          <option value="<?php echo $ppn['product_name'].'-'.$ppn['product_model']; ?>"><?php echo $ppn['product_name'].'-'.$ppn['product_model']; ?></option>
+                                          <?php
+                                        }?>
+                                    </select>
 
-                                            <input type="hidden" class="autocomplete_hidden_value product_id_1" name="product_id" id="SchoolHiddenId"/>
+
+  <input type='hidden' class='common_product autocomplete_hidden_value  product_id_1' name='product_id[]' id='SchoolHiddenId' />
+                               
+
+
+                                        
 
                                             <input type="hidden" class="sl" value="1">
 
@@ -758,6 +772,22 @@ $(document).ready(function(){
 
   
 });
+let s1=0;
+    $('#Measurments'+s1).change(function(){
+    let measure1 = $("#Measurments"+s1).val();
+    let height1 , weight1 , thickness1;
+    $("#thickness"+s1).keyup(function(){
+        height1 = $("#height"+s1).val();
+        console.log(height1);
+        weight1 = $("#weight"+s1).val();
+          console.log(weight1);
+        thickness1 = $("#thickness"+s1).val();
+          console.log(thickness1);
+        let calcu1 = height1*weight1*thickness1;
+        calcu1 = calcu1+measure1;
+        $("#area"+s1).val(calcu1);
+    });
+  });
 $('#insert_purchase').submit(function (event) {
     var dataString = {
         dataString : $("#insert_purchase").serialize()

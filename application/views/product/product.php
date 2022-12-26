@@ -1,4 +1,8 @@
 
+<link rel="stylesheet" type="text/css" href="<?php echo base_url()?>my-assets/css/css.css" />
+
+
+
 <div class="content-wrapper">
     <section class="content-header">
         <div class="header-icon">

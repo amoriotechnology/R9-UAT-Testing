@@ -36,6 +36,15 @@ function invoice_content()
         $content = $this->lweb_setting->setting_add_form();
         $this->template->full_admin_html_view($content);
     }
+    public function admin_user_mail_ids(){
+         $val=$this->input->post('dataString');
+           $CI = & get_instance();
+           $CI->auth->check_admin_auth();
+           $CI->load->model('Web_settings');
+        $data = $CI->Web_settings->admin_user_mail_ids($val);
+   echo json_encode($data);
+   
+       }
 function email_template()
 {
   $content = $this->lweb_setting->email_template();

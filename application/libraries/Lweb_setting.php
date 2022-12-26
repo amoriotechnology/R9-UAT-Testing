@@ -305,6 +305,9 @@ class Lweb_setting {
 
         $language       = $CI->Web_settings->languages();
 
+  
+        $admin_company =$CI->Web_settings->admin_company();
+
         $data = array(
 
             'title'             => display('update_setting'),
@@ -320,7 +323,8 @@ class Lweb_setting {
             'favicon'           => $setting_detail[0]['favicon'],
 
             'footer_text'       => $setting_detail[0]['footer_text'],
-
+           // 'admin_user_mail'  => $admin_user_mail_ids,
+            'admin_company'  => $admin_company,
             'language'          => $language,
 
             'currency_list'     => $curlist,

@@ -3,7 +3,20 @@ $CI = & get_instance();
 $CI->load->model('Web_settings');
 $Web_settings = $CI->Web_settings->retrieve_setting_editdata();
 ?>
+<style>
+        input {
+    border: none;
+   
+ }
+textarea:focus, input:focus{
+   
+    outline: none;
+}
+ .text-right {
+    text-align: left; 
+}
 
+</style>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -55,6 +68,7 @@ $Web_settings = $CI->Web_settings->retrieve_setting_editdata();
 ?>
     <div class="container" id="content">
         <?php
+        echo $template;
     if($template==2)
             {
             ?>
@@ -111,7 +125,7 @@ $Web_settings = $CI->Web_settings->retrieve_setting_editdata();
                 <thead>
                     <tr>
                     <th class="text-center text-white">S.No</th>
-                        <th class="text-center text-white">Product Name</th>
+                        <th class="absorbing-column text-center text-white">Product Name</th>
                         <th class="text-center text-white">In stock</th>
                         <th class="text-center text-white">Quantity / Sq ft.</th>
                         <th class="text-center text-white">Amount</th>
@@ -148,6 +162,39 @@ $Web_settings = $CI->Web_settings->retrieve_setting_editdata();
                     <td colspan="5" style="text-align:right;font-weight:bold;">Grand Total:</td>
                         <td style="font-size: 16px;"><?php  echo $currency." " ; ?><?php echo $all_invoice[0]['gtotal']; ?></td>
                     </tr>
+                   <tr>
+                                        
+                     <td style="text-align:right;"  colspan="5"><b><?php echo "Grand Total" ?>:</b><br/><b>(Preferred Currency)</b></td>
+                                        <td >
+                                              <?php echo $customer_currency." ".$all_invoice[0]['gtotal_preferred_currency'] ;?>
+                                               </td>
+                                          
+    
+                                                <input type="hidden" id="final_gtotal"  name="final_gtotal" />
+    
+                                                <input type="hidden" name="baseUrl" class="baseUrl" value="<?php echo base_url();?>"/></td>
+                                        </tr> 
+                                    <?php    if($all_invoice[0]['amt_paid'] !==''){   ?>
+                                        <tr id="amt">
+                                       
+                                                <td style="text-align:right;"  colspan="5"><b><?php echo "Amount Paid" ?>:</b></td>
+                                              
+                                                <td>
+                                           <?php echo $customer_currency." ".$all_invoice[0]['amt_paid'] ;?>
+                                           </td>
+
+                                                
+                                              
+                                                </tr> 
+                                                <tr id="bal">
+                                                <td style="text-align:right;"  colspan="5"><b><?php echo "Balance Amount " ?>:</b></td>
+                                                <td>
+                                               
+                                              <?php echo $customer_currency." ".$balance;?>
+                                             
+                                                </td>
+                                                </tr> 
+                                                <?php   }  ?>
                                    </tfoot>
             </table>
             <br>
@@ -247,6 +294,39 @@ elseif($template==1)
                     <td colspan="5" style="text-align:right;font-weight:bold;">Grand Total:</td>
                         <td style="font-size: 16px;"><?php  echo $currency." " ; ?><?php echo $all_invoice[0]['gtotal']; ?></td>
                     </tr>
+                   <tr>
+                                        
+                     <td style="text-align:right;"  colspan="5"><b><?php echo "Grand Total" ?>:</b><br/><b>(Preferred Currency)</b></td>
+                                        <td >
+                                              <?php echo $customer_currency." ".$all_invoice[0]['gtotal_preferred_currency'] ;?>
+                                               </td>
+                                          
+    
+                                                <input type="hidden" id="final_gtotal"  name="final_gtotal" />
+    
+                                                <input type="hidden" name="baseUrl" class="baseUrl" value="<?php echo base_url();?>"/></td>
+                                        </tr> 
+                                    <?php    if($all_invoice[0]['amt_paid'] !==''){   ?>
+                                        <tr id="amt">
+                                       
+                                                <td style="text-align:right;"  colspan="5"><b><?php echo "Amount Paid" ?>:</b></td>
+                                              
+                                                <td>
+                                           <?php echo $customer_currency." ".$all_invoice[0]['amt_paid'] ;?>
+                                           </td>
+
+                                                
+                                              
+                                                </tr> 
+                                                <tr id="bal">
+                                                <td style="text-align:right;"  colspan="5"><b><?php echo "Balance Amount " ?>:</b></td>
+                                                <td>
+                                               
+                                              <?php echo $customer_currency." ".$balance;?>
+                                             
+                                                </td>
+                                                </tr> 
+                                                <?php   }  ?>
                                    </tfoot>
             </table>
             <br>
@@ -356,6 +436,39 @@ elseif($template==3)
                     <td colspan="5" style="text-align:right;font-weight:bold;">Grand Total:</td>
                         <td style="font-size: 16px;"><?php  echo $currency." " ; ?><?php echo $all_invoice[0]['gtotal']; ?></td>
                     </tr>
+                   <tr>
+                                        
+                     <td style="text-align:right;"  colspan="5"><b><?php echo "Grand Total" ?>:</b><br/><b>(Preferred Currency)</b></td>
+                                        <td >
+                                              <?php echo $customer_currency." ".$all_invoice[0]['gtotal_preferred_currency'] ;?>
+                                               </td>
+                                          
+    
+                                                <input type="hidden" id="final_gtotal"  name="final_gtotal" />
+    
+                                                <input type="hidden" name="baseUrl" class="baseUrl" value="<?php echo base_url();?>"/></td>
+                                        </tr> 
+                                    <?php    if($all_invoice[0]['amt_paid'] !==''){   ?>
+                                        <tr id="amt">
+                                       
+                                                <td style="text-align:right;"  colspan="5"><b><?php echo "Amount Paid" ?>:</b></td>
+                                              
+                                                <td>
+                                           <?php echo $customer_currency." ".$all_invoice[0]['amt_paid'] ;?>
+                                           </td>
+
+                                                
+                                              
+                                                </tr> 
+                                                <tr id="bal">
+                                                <td style="text-align:right;"  colspan="5"><b><?php echo "Balance Amount " ?>:</b></td>
+                                                <td>
+                                               
+                                              <?php echo $customer_currency." ".$balance;?>
+                                             
+                                                </td>
+                                                </tr> 
+                                                <?php   }  ?>
                                    </tfoot>
             </table>
             <br>
@@ -586,7 +699,7 @@ table th, table td {
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
 <script>
-    
+
 $(document).ready(function () {
  
  var pdf = new jsPDF('p','pt','a4');
@@ -626,5 +739,6 @@ $( '.close' ).click(function() {
   $( '.modal' ).removeClass( 'open' );
   $( '.cont' ).removeClass( 'blur' );
 });
+
    </script>
 

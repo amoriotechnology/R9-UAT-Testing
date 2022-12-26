@@ -127,6 +127,10 @@ for($i=0;$i<sizeof($order);$i++){ ?>
  <td colspan="6" class="text-right" style="text-align:right;font-weight:bold;">Overall Total:</td>
  <td style="font-size: 16px;">$<?= $invoice[0]['grand_total_amount']; ?></td>
 </tr>
+<tr>
+ <td colspan="6" class="text-right" style="text-align:right;font-weight:bold;">Overall Total(Preferred Currency):</td>
+ <td style="font-size: 16px;">$<?= $invoice[0]['grand_total_amount']; ?></td>
+</tr>
 </tbody>
 </table>
 <br>
@@ -223,6 +227,10 @@ for($i=0;$i<sizeof($order);$i++){ ?>
  <td colspan="6" class="text-right" style="text-align:right;font-weight:bold;">Overall Total:</td>
  <td style="font-size: 16px;">$<?= $invoice[0]['grand_total_amount']; ?></td>
 </tr>
+<tr>
+ <td colspan="6" class="text-right" style="text-align:right;font-weight:bold;">Overall Total(Preferred Currency):</td>
+ <td style="font-size: 16px;">$<?= $invoice[0]['grand_total_amount']; ?></td>
+</tr>
 </tbody>
 </table>
 <br>
@@ -310,6 +318,10 @@ for($i=0;$i<sizeof($order);$i++){ ?>
 <?php $count++;}}  ?>
 <tr>
  <td colspan="6" class="text-right" style="text-align:right;font-weight:bold;">Overall Total:</td>
+ <td style="font-size: 16px;">$<?= $invoice[0]['grand_total_amount']; ?></td>
+</tr>
+<tr>
+ <td colspan="6" class="text-right" style="text-align:right;font-weight:bold;">Overall Total(Preferred Currency):</td>
  <td style="font-size: 16px;">$<?= $invoice[0]['grand_total_amount']; ?></td>
 </tr>
 </tbody>

@@ -167,7 +167,7 @@ a{
 
                         </div>
                         <div class="text" style="background-color: #18628f;">
-		<a href="<?php echo base_url('Admin_dashboard/todays_sales_report') ?>">Total Sale</a>
+		<a href="<?php echo base_url('Admin_dashboard/todays_sales_report') ?>">Total Sales</a>
 	</div></div>
                     </div>
                     <div style="<?php if($expense_setting=='disable'){ echo "display: none;"; }else{ echo "display: block;"; } ?>" >
@@ -178,11 +178,11 @@ a{
                         </div>
                         <div>
                             <span> <h1><span class="count-number"><?php if($no_of_expense==''){echo 0;}else{echo html_escape($no_of_expense);}   ?></span></h1>
-                            <p><?php echo "Expenses"?></p></span>
+                            <p><?php echo "Expense"?></p></span>
 
                         </div>
                         <div class="text" style="background-color: #9D467A;">
-		<a href="<?php echo base_url('Admin_dashboard/todays_purchase_report') ?>">Total Expenses</a>
+		<a href="<?php echo base_url('Admin_dashboard/todays_purchase_report') ?>">Total Expense</a>
 	</div>
                     </div>
                     </div>
@@ -234,11 +234,11 @@ a{
                         </div>
                         <div>
                             <span> <h1><span class="count-number"><?php if($total_sales_product==''){echo 0;}else{echo html_escape($total_sales_product);} ?></span></h1>
-                            <p><?php echo "Product Sold"?></p></span>
+                            <p><?php echo "Products Sold"?></p></span>
 
                         </div>
                         <div class="text" style="background-color: #9B59B6 ;">
-		<a href="<?php echo base_url('Cproduct/manage_product') ?>">Total Product Sold</a>
+		<a href="<?php echo base_url('Cproduct/manage_product') ?>">Total Products Sold</a>
 	</div></div>
                     </div>
                     <div style="<?php if($product_purchased=='disable'){ echo "display: none;"; }else{ echo "display: block;"; } ?>" >
@@ -250,11 +250,11 @@ a{
                         </div>
                         <div>
                             <span> <h1><span class="count-number"><?php if($total_expense_product==''){echo 0;}else{echo html_escape($total_expense_product);} ?></span></h1>
-                            <p><?php echo "Product Purchased"?></p></span>
+                            <p><?php echo "Products Purchased"?></p></span>
 
                         </div>
                         <div class="text" style="background-color: #76448A;">
-                    <a href="<?php echo base_url('Cproduct/manage_product') ?>">Total Product Purchased</a>
+                    <a href="<?php echo base_url('Cproduct/manage_product') ?>">Total Products Purchased</a>
 	</div></div>
                     </div>
                     <div style="<?php if($vendor=='disable'){ echo "display: none;"; }else{ echo "display: block;"; } ?>" >
@@ -281,7 +281,7 @@ a{
                           //  echo "<br/>";
                             $count++;
                          }
-                         echo 'Vendor('.count($service_provider_list).')';
+                         echo 'Vendors('.count($service_provider_list).')';
                        //
                        //  echo $count;
                          ?>
@@ -290,7 +290,7 @@ a{
 
                      </div>
                      <div class="text" style="background-color: #7645768A;">
-     <a href="<?php echo base_url('Csupplier/supplier_ledger_report') ?>">Total Vendor</a>
+     <a href="<?php echo base_url('Csupplier/supplier_ledger_report') ?>">Total Vendors</a>
  </div></div>
                  </div>
                   

@@ -1063,10 +1063,11 @@ public function retrieve_packing_editdata($purchase_id) {
          $this->db->where('a.trucking_id', $purchase_id);
        // $this->db->order_by('a.purchase_details', 'asc');
         $query = $this->db->get();
+      
         if ($query->num_rows() > 0) {
             return $query->result_array();
         }
-        return false;
+    
     }
 
 
@@ -1889,13 +1890,17 @@ public function retrieve_packing_editdata($purchase_id) {
 
             ############ default table :: customer_payment :: inflow_92mizdldrv #################
 
-     
+            $payment_id=$this->input->post('payment_id');
+      
+          
+               
 
 
 
         //Data inserting into invoice table
 
         $datainv = array(
+            'payment_id' => $payment_id,
 
             'invoice_id'      => $invoice_id,
 
@@ -1916,12 +1921,12 @@ public function retrieve_packing_editdata($purchase_id) {
             'total_amount'    => $this->input->post('total',TRUE),
             'etd'    => $this->input->post('etd',TRUE),
             'eta'    => $this->input->post('eta',TRUE),
-           
-
+            'amt_paid'    => $this->input->post('amount_paid',TRUE),
+            'balance'    => $this->input->post('balance',TRUE),
             'gtotal'    => $this->input->post('gtotal',TRUE),
             'ac_details'    => $this->input->post('ac_details',TRUE),
             'remark'    => $this->input->post('remark',TRUE),
-
+            'gtotal_preferred_currency' =>$this->input->post('customer_gtotal',TRUE),
             'total_tax'       => $this->input->post('tax_details',TRUE),
 
             'invoice'         => $invoice_no_generated,
@@ -1972,15 +1977,15 @@ public function retrieve_packing_editdata($purchase_id) {
   
         $this->db->insert('invoice', $datainv);
    
-    
+     
     }   
     else{
     $this->db->insert('invoice', $datainv);
-
+ 
     
     }
       $purchase_id = $this->db->select('invoice_id')->from('invoice')->where('invoice_id',$invoice_id)->get()->row()->invoice_id;
-    
+ 
        $this->session->set_userdata("sale_2",$purchase_id);
 
 
@@ -3214,8 +3219,54 @@ if(!empty($this->input->post('paid_amount',TRUE))){
 
 
     }
+    public function company_information() {
+        $this->db->select('*');
+        $this->db->from('company_information');
+        $query = $this->db->get();
+        if ($query->num_rows() > 0) {
+            return $query->result_array();
+        }
+     }
+    public function get_payment_info($payment_id){
+        
+      //,sum(amt_paid) as total_paid
+$this->db->select('payment_date,reference_no,bank_name,amt_paid,balance,details');
+$this->db->from('payment');
+$this->db->where('payment_id',$payment_id);
 
 
+        $query = $this->db->get();
+//echo $this->db->last_query();
+        if ($query->num_rows() > 0) {
+
+            return $query->result_array();
+
+        }
+
+       
+    }
+    public function add_payment_info(){
+       $payment_id=$this->input->post('payment_id');
+      
+        $data=array(
+            'payment_id' => $payment_id,
+            'customer_name' =>$this->input->post('customer_name_modal'),
+            'payment_date'  =>$this->input->post('payment_date'),
+            'reference_no' => $this->input->post('ref_no'),
+            'bank_name' => $this->input->post('bank'),
+            'total_amt' => $this->input->post('amount_to_pay'),
+            'amt_received' =>$this->input->post('amount_received') ,
+            'balance' => $this->input->post('balance_modal'),
+            'amt_paid' =>$this->input->post('payment') ,
+            'details' => $this->input->post('details'),
+            'attachement' => $this->input->post('attachement'),
+            'create_by'  => $this->session->userdata('user_id')
+           );
+           $this->db->insert('payment', $data);
+
+
+
+    }
     //update ocean import trucking
 
      public function update_ocean_import() {
@@ -4846,7 +4897,7 @@ return $output;
         $trucking_date = $this->input->post('trucking_date',TRUE);
         $invoice_no= $this->input->post('invoice_no',TRUE);
   
-  
+        $payment_id=$this->input->post('payment_id');
           $p_id = $this->input->post('product_id',TRUE);
         //  $supplier_id = $this->input->post('supplier_id',TRUE);
         //  $supinfo =$this->db->select('*')->from('supplier_information')->where('supplier_id',$supplier_id)->get()->row();
@@ -4870,6 +4921,7 @@ return $output;
           $purchase_id = date('YmdHis');
   
           $data = array(
+            'payment_id' => $payment_id,
               'trucking_id'        => $purchase_id,
               'create_by'       =>  $this->session->userdata('user_id'),
               'invoice_no' => $this->input->post('invoice_no',TRUE),
@@ -4881,6 +4933,9 @@ return $output;
               'total_amt' => $this->input->post('total',TRUE),
               'tax' => $this->input->post('tax_details',TRUE),
               'grand_total_amount' => $this->input->post('gtotal',TRUE),
+              'customer_gtotal' =>$this->input->post('customer_gtotal',TRUE),
+              'amt_paid'    => $this->input->post('amount_paid',TRUE),
+            'balance'    => $this->input->post('balance',TRUE),
               'remarks' => $this->input->post('remarks',TRUE),
              'status'             => 1,
            

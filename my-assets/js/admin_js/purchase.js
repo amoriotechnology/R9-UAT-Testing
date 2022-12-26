@@ -30,14 +30,17 @@ function calculate_store(sl) {
 
     $("#Total").val(gr_tot.toFixed(2,2));
     var grandtotal = gr_tot - dis;
-    $("#grandTotal").val(grandtotal.toFixed(2,2));
+   //
     invoice_paidamount();
     var first=$("#Total").val();
 var custo_amt=$('#custocurrency_rate').val();
-var value=parseInt(first*custo_amt);
+var valuee=first*custo_amt;
 console.log(first+"/"+custo_amt);
-var custo_final = isNaN(parseInt(value)) ? 0 : parseInt(value)
+$("#gtotal").val(first*custo_amt);
+var custo_final = isNaN(parseInt(valuee)) ? 0 : parseInt(valuee)
 $('#vendor_gtotal').val(custo_final);  
+var paid=$('#amount_paid').val();
+$('#balance').val(custo_final-paid);
 }
 
 

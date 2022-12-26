@@ -562,6 +562,7 @@ var answer=0;
  var value=amt*parseInt(custo_amt);
  var custo_final = isNaN(parseInt(value)) ? 0 : parseInt(value)
 $('#customer_gtotal').val(custo_final);  
+calculate();
 });
 });
 $( document ).ready(function() {

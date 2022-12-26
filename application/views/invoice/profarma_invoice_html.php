@@ -139,6 +139,10 @@
                         <td colspan="4" style="text-align:right;font-weight:bold;">Grand Total:</td>
                         <td style="font-size: 16px;"><?php  echo $currency." " ; ?><?php echo $gtotal;  ?></td>
                     </tr>
+                    <tr>
+                        <td colspan="4" style="text-align:right;font-weight:bold;">Grand Total(Preferred Currency):</td>
+                        <td style="font-size: 16px;"><?php  echo $currency." " ; ?><?php echo $gtotal;  ?></td>
+                    </tr>
                     </tfoot>
             </table>
             <br>
@@ -239,6 +243,10 @@ elseif($template==1)
                     </tr>
                     <tr>
                         <td colspan="4" style="text-align:right;font-weight:bold;">Grand Total:</td>
+                        <td style="font-size: 16px;"><?php  echo $currency." " ; ?><?php echo $gtotal;  ?></td>
+                    </tr>
+                    <tr>
+                        <td colspan="4" style="text-align:right;font-weight:bold;">Grand Total(Preferred Currency):</td>
                         <td style="font-size: 16px;"><?php  echo $currency." " ; ?><?php echo $gtotal;  ?></td>
                     </tr>
                     </tfoot>
@@ -350,6 +358,10 @@ elseif($template==3)
                     </tr>
                     <tr>
                         <td colspan="4" style="text-align:right;font-weight:bold;">Grand Total:</td>
+                        <td style="font-size: 16px;"><?php  echo $currency." " ; ?><?php echo $gtotal;  ?></td>
+                    </tr>
+                    <tr>
+                        <td colspan="4" style="text-align:right;font-weight:bold;">Grand Total(Preferred Currency):</td>
                         <td style="font-size: 16px;"><?php  echo $currency." " ; ?><?php echo $gtotal;  ?></td>
                     </tr>
                     </tfoot>

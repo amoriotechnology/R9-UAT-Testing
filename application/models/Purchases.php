@@ -1437,15 +1437,18 @@ return $output;
             'payment_due_date'   => $this->input->post('payment_due_date',TRUE),
             'remarks'            => $this->input->post('remark',TRUE),
             'message_invoice'    => $this->input->post('message_invoice',TRUE),
-          
+            'total_tax'  =>  $this->input->post('tax_details',TRUE),
             'etd'   => $this->input->post('etd',TRUE),
             'eta'   => $this->input->post('eta',TRUE),
+            'slab'    => $this->input->post('slab',TRUE),
+            'gtotal_preferred_currency'  => $this->input->post('vendor_gtotal',TRUE),
             'shipping_line'   => $this->input->post('shipping_line',TRUE),
             'container_no'   => $this->input->post('container_no',TRUE),
             'bl_number'   => $this->input->post('bl_number',TRUE),
-            'isf_filling'   => $this->input->post('isf_filling',TRUE),
-            'paid_amount'        => $paid_amount,
-            'due_amount'         => $due_amount,
+            'isf_filling'   => $this->input->post('isf_no',TRUE),
+            'paid_amount'    => $this->input->post('amount_paid',TRUE),
+            'balance'    => $this->input->post('balance',TRUE),
+            'payment_id'    => $this->input->post('payment_id',TRUE),
             'status'             => 1,
             'bank_id'            =>  $this->input->post('bank_id',TRUE),
             'payment_type'       =>  $this->input->post('paytype',TRUE),
@@ -2040,7 +2043,7 @@ $chalan_no =$this->input->post('chalan_no',TRUE);
             'freight_forwarder' =>$this->input->post('freight_forwarder',TRUE),
             'particular'   => $this->input->post('particulars',TRUE),
             'country_origin' => $this->input->post('country_of_origin',TRUE),
-            'remarks'              => $this->input->post('remarks',TRUE),
+            'remarks'              => $this->input->post('remark',TRUE),
             'status'             => 1,
             'create_by'       =>  $this->session->userdata('user_id'),
             );
@@ -2131,17 +2134,24 @@ $chalan_no =$this->input->post('chalan_no',TRUE);
        }else{
            $bankcoaid = '';
        }
+       $payment_id=$this->input->post('payment_id');
    $data = array(
+    'payment_id' => $payment_id,
             'trucking_id'        => $purchase_id,
             'create_by'       =>  $this->session->userdata('user_id'),
             'invoice_no' => $this->input->post('invoice_no',TRUE),
             'invoice_date' =>$this->input->post('invoice_date',TRUE),
             'bill_to'      =>$this->input->post('bill_to',TRUE),
+            'total_amt' => $this->input->post('total',TRUE),
+            'customer_gtotal' =>$this->input->post('customer_gtotal',TRUE),
+            'tax' => $this->input->post('tax_details',TRUE),
+            'amt_paid'    => $this->input->post('amount_paid',TRUE),
+            'balance'    => $this->input->post('balance',TRUE),
             'shipment_company'   => $this->input->post('shipment_company',TRUE),
             'container_pickup_date'   => $this->input->post('container_pick_up_date',TRUE),
             'container_no'   => $this->input->post('container_number',TRUE),
             'delivery_date' => $this->input->post('delivery_date',TRUE),
-            'grand_total_amount' => $this->input->post('total',TRUE),
+            'grand_total_amount' => $this->input->post('gtotal',TRUE),
             'status'             => 1,
             'remarks'             => $this->input->post('remarks',TRUE),
           

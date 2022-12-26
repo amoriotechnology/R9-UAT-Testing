@@ -247,9 +247,10 @@ $this->session->set_userdata(array('message' => display('successfully_added')));
             'password' => md5($this->input->post('password',true)),
             'user_type'      => $this->input->post('user_type',true),
             'security_code'   => $this->input->post('mobile',true),
-            'email'  => $this->input->post('user_email',true),
+            'email_id'  => $this->input->post('user_email',true),
             'status'       =>1,
-            'cid'     => $cid
+            'cid'     => $cid,
+            'create_by'     => $uid,
            
         );
          $insert=$this->db->insert('user_login',$data);
