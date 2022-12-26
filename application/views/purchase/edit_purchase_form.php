@@ -391,15 +391,21 @@
                                             <td class="text-right">
 
                                                 <input type="text" name="product_quantity[]" id="cartoon_{sl}" class="form-control text-right store_cal_{sl}" onkeyup="calculate_store({sl});" onchange="calculate_store({sl});" placeholder="0.00" value="{quantity}" min="0" tabindex="6"/>
-                                                 <select class="form-control">
-                                                    <option>Slabs/Sq. ft</option>
+                                                <select class="form-control" name="slab">
+                                                    <option value="Slabs">Slabs</option>
+                                                     <option value="Square Feet">Square Feet</option>
                                                 </select>
 
                                             </td>
 
                                             <td class="test">
-
-                                                <input type="text" name="product_rate[]" onkeyup="calculate_store({sl});" onchange="calculate_store({sl});" id="product_rate_{sl}" class="form-control product_rate_{sl} text-right" placeholder="0.00" value="{rate}" min="0" tabindex="7"/>
+                                            <table border="0">
+      <tr>
+        <td><?php  echo $currency." ";  ?></td>
+        <td> <input type="text" name="product_rate[]" onkeyup="calculate_store({sl});" onchange="calculate_store({sl});" id="product_rate_{sl}" class="form-control product_rate_{sl} text-right" placeholder="0.00" value="{rate}" min="0" tabindex="7"/></td>
+     </tr>
+   </table>
+                                               
 
                                             </td>
 
@@ -408,8 +414,13 @@
 
 
                                             <td class="text-right">
-
-                                                <input class="form-control total_price text-right" type="text" name="total_price[]" id="total_price_{sl}" value="{total_amount}" readonly="readonly" />
+                                            <table border="0">
+      <tr>
+        <td><?php  echo $currency." ";  ?></td>
+        <td>          <input class="form-control total_price text-right" type="text" name="total_price[]" id="total_price_{sl}" value="{total_amount}" readonly="readonly" /> </td>
+     </tr>
+   </table>
+                                          
 
                                             </td>
 
@@ -439,9 +450,12 @@
                                    
                                    <td style="text-align:right;" colspan="4"><b><?php echo display('total') ?>:</b></td>
                                    <td style="text-align:left;">
-                                       <span class="form-control" style="background-color: #eee;"><?php   echo $currency;  ?>
-                                       <input type="text" id="Total" class="text-right" name="total" value={total} readonly="readonly" />
-                                       </span></td>
+                                   <table border="0">
+      <tr>
+        <td><?php  echo $currency." ";  ?></td>
+        <td>  <input type="text" id="Total" class="text-right" name="total" value={total} readonly="readonly" /></td>
+     </tr>
+   </table></td>
                                
                                       
                                </tr>
@@ -450,18 +464,24 @@
                                    
                                    <td style="text-align:right;" colspan="4"><b>Tax Details :</b></td>
                                    <td style="text-align:left;">
-                                 <span class="form-control" style="background-color: #eee;"><?php echo $currency;  ?>
-                                       <input type="text" id="tax_details" class="text-right" value={total_tax} name="tax_details"  readonly="readonly" />
-                                       </span></td>
+                                   <table border="0">
+      <tr>
+        <td><?php  echo $currency." ";  ?></td>
+        <td>  <input type="text" id="tax_details" class="text-right" value={total_tax} name="tax_details"  readonly="readonly" /></td>
+     </tr>
+   </table>
+                                </td>
                                
                                       
                                </tr>
                                <tr> <td style="text-align:right;" colspan="4"><b><?php echo "Grand Total" ?>:</b></td>
                                     <td>
-                               
-                                            <span class="form-control" style="background-color: #eee;"><?php  echo $currency;  ?>
-                                            <input type="text" id="gtotal"  name="gtotal" onchange=""value="<?php echo $purchase_info[0]['grand_total_amount'];  ?>" readonly="readonly" />
-                                            </span></td>
+                                    <table border="0">
+      <tr>
+        <td><?php  echo $currency." ";  ?></td>
+        <td>   <input type="text" id="gtotal"  name="gtotal" onchange=""value="<?php echo $purchase_info[0]['grand_total_amount'];  ?>" readonly="readonly" /></td>
+     </tr>
+   </table>  </td>
                                         <td> <button type="button" id="add_invoice_item" class="btn btn-info" name="add-invoice-item" onclick="addPurchaseOrderField1('addPurchaseItem');"  tabindex="9" ><i class="fa fa-plus"></i></button>
 
                                            
@@ -472,9 +492,13 @@
                              
                     <td style="border:none;text-align:right;font-weight:bold;" colspan="4"><b><?php echo "Grand Total" ?>:</b><br/><b>(Preferred Currency)</b></td>
                                     <td>
-                                            <span class="form-control" style="background-color: #eee;" ><input style="width:10%;font-weight:bold;" type="text" class="cus"  name="cus"  readonly="readonly" />
-                                            <input type="text" id="vendor_gtotal"  name="vendor_gtotal" value="<?php echo $purchase_info[0]['gtotal_preferred_currency'];  ?>" readonly="readonly" />
-                                            </span></td>
+                                    <table border="0">
+      <tr>
+        <td><?php  echo $currency." ";  ?></td>
+        <td>  <input type="text" id="vendor_gtotal"  name="vendor_gtotal" value="<?php echo $purchase_info[0]['gtotal_preferred_currency'];  ?>" readonly="readonly" /></td>
+     </tr>
+   </table>
+                                            </td>
                                       
 
                                             <input type="hidden" id="final_gtotal"  name="final_gtotal" />
@@ -486,19 +510,25 @@
                                    <td style="text-align:right;"  colspan="4"><b><?php echo "Amount Paid" ?>:</b></td>
                                  
                                    <td>
-                                   <span class="form-control" style="background-color: #eee;" class="custospan"><input style="width:15%;font-weight:bold;" type="text" class="cus"  name="cus"  readonly="readonly" />
-                                   <input type="text" id="amount_paid"  value="<?php echo $purchase_info[0]['paid_amount'];  ?>" name="amount_paid"  readonly="readonly" />
-                                   </span>
-                                   </td>
+                                   <table border="0">
+      <tr>
+      <td class="cus" name="cus"></td>
+        <td>    <input type="text" id="amount_paid"  value="<?php echo $purchase_info[0]['paid_amount'];  ?>" name="amount_paid"  readonly="readonly" /> </td>
+     </tr>
+   </table>   </td>
                                    </tr> 
                                    <tr id="bal">
                                    <td style="text-align:right;"  colspan="4"><b><?php echo "Balance Amount " ?>:</b></td>
                                    <td>
-                                   <span class="form-control" style="background-color: #eee;" class="custospan"><input style="width:15%;font-weight:bold;" type="text" class="cus"  name="cus"  readonly="readonly" />
-                                   <input type="text" id="balance"  name="balance" value="<?php echo $purchase_info[0]['balance'];  ?>" readonly="readonly" />
-                                   </span>
+                                   <table border="0">
+      <tr>
+      <td class="cus" name="cus"></td>
+        <td>  <input type="text" id="balance"  name="balance" value="<?php echo $purchase_info[0]['balance'];  ?>" readonly="readonly" />       </td>
+     </tr>
+   </table> 
                                    </td>
                                    </tr> 
+                                  
                                    <tr style="border-right:none;border-left:none;border-bottom:none;border-top:none">
                                       
                                    <td colspan="6" style="text-align: end;">
@@ -876,7 +906,7 @@
   </div>
   </div>
   </div>                
-  <div class="modal fade" id="payment_modal" >
+  <div class="modal fade" id="payment_modal" role="dialog">
     <div class="modal-dialog">
     
       <!-- Modal content-->
@@ -904,7 +934,7 @@
 
     </div>
 <input type="hidden" id="cutomer_name" name="cutomer_name"/>
-<input type="hidden"  value="<?php echo $purchase_info[0]['payment_id']; ?>"  name="payment_id"/>
+<input type="hidden"  value="<?php echo $payment_id; ?>"  name="payment_id"/>
  <div class="form-group row">
 
         <label for="billing_address" style="text-align:end;" class="col-sm-3 col-form-label">Reference No<i class="text-danger">*</i></label>
@@ -965,9 +995,14 @@
 <label for="billing_address" style="text-align:end;" class="col-sm-3 col-form-label">Amount to be paid : </label>
 
 <div class="col-sm-5">
-<span class="form-control" style="background-color: #eee;" class="custospan"><input style="width:15%;font-weight:bold;" type="text" class="cus"  name="cus"  readonly="readonly" />
-<input  type="text"  readonly name="amount_to_pay" id="amount_to_pay" required   />
-</span>
+<table border="0">
+      <tr>
+        <td class="cus" name="cus"></td>
+        <td><input  type="text"  readonly name="amount_to_pay" id="amount_to_pay" class="form-control" required   /></td>
+     </tr>
+   </table>
+
+
 </div>
 </div> 
       <div class="form-group row" style="display:none;">
@@ -975,9 +1010,15 @@
 <label for="billing_address" style="text-align:end;" class="col-sm-3 col-form-label">Amount Received : </label>
 
 <div class="col-sm-5">
-<span class="form-control" style="background-color: #eee;" class="custospan"><input style="width:15%;font-weight:bold;" type="text" class="cus"  name="cus"  readonly="readonly" />
-<input  type="text"  name="amount_received" value="0.00" id="amount_received" required   />
-</span>
+<table border="0">
+      <tr>
+        <td class="cus" name="cus"></td>
+        <td><input  type="text"  readonly name="amount_received" id="amount_received" class="form-control"required   /></td>
+     </tr>
+   </table>
+
+
+
 </div>
 </div> 
 <div class="form-group row">
@@ -985,9 +1026,13 @@
 <label for="billing_address" style="text-align:end;" class="col-sm-3 col-form-label">Balance : </label>
 
 <div class="col-sm-5">
-<span class="form-control" style="background-color: #eee;" class="custospan"><input style="width:15%;font-weight:bold;" type="text" class="cus"  name="cus"  readonly="readonly" />
-<input  type="text"  readonly name="balance" value="0.00" id="balance_modal" required   />
-</span>
+
+<table border="0">
+      <tr>
+        <td class="cus" name="cus"></td>
+        <td><input  type="text"  style="border:none;" readonly name="balance_modal" id="balance_modal" class="form-control" required  /></td>
+     </tr>
+   </table>
 </div>
 </div> 
 <div class="form-group row">
@@ -995,9 +1040,14 @@
 <label for="billing_address" style="text-align:end;" class="col-sm-3 col-form-label">Payment Amount: <i class="text-danger">*</i></label>
 
 <div class="col-sm-5">
-<span class="form-control" style="background-color: #eee;" class="custospan"><input style="width:15%;font-weight:bold;" type="text" class="cus"  name="cus"  readonly="readonly" />
-<input  type="text"  name="payment" id="payment_from_modal" required   />
-</span>
+<table border="0">
+      <tr>
+        <td class="cus" name="cus"></td>
+        <td><input  type="text"   name="payment" id="payment_from_modal" class="form-control"required   /></td>
+     </tr>
+   </table>
+
+
 </div>
 </div>
 
@@ -1017,13 +1067,7 @@
 <input class=" form-control" type="file"  name="attachement" id="attachement" />
 </div>
 </div> 
-
-
-
-
-
-     
-     </div>   </div>
+  </div>   </div>
      <div class="modal-footer">
      <div class="col-sm-8"></div>
      <div class="col-sm-2"></div>
@@ -1035,7 +1079,6 @@
    </form>
  </div>
 </div>
-
 <style>
     .td{
     width: 200px;
@@ -1044,12 +1087,9 @@
 }
         input {
     border: none;
-    background-color: #eee;
+
  }
-textarea:focus, input:focus{
-   
-    outline: none;
-}
+
  .text-right {
     text-align: left; 
 }
@@ -1079,10 +1119,10 @@ function addPurchaseOrderField1(divName){
         tab6 = tab5 + 1;
         tab7 = tab6 +1;
        
-
-
         newdiv.innerHTML ='<td class="span3 supplier"><input type="text" name="product_name" class="form-control product_name productSelection" onkeypress="product_pur_or_list('+ count +');" placeholder="Product Name" id="product_name_'+ count +'" tabindex="'+tab1+'" required> <input type="hidden" class="autocomplete_hidden_value product_id_'+ count +'" name="product_id[]" id="SchoolHiddenId"/>  <input type="hidden" class="sl" value="'+ count +'">  </td>  <td class="wt"> <input type="text" id="" class="form-control" name="description[]" /></td><td class="text-right"><input type="text" name="product_quantity[]" tabindex="'+tab2+'"   id="cartoon_'+ count +'" class="form-control text-right store_cal_' + count + '" onkeyup="calculate_store(' + count + ');" onchange="calculate_store(' + count + ');" placeholder="0.00" value="" min="0" required/><select class="form-control"><option value="Slabs">Slabs</option><option value="Square Feet">Slabs/Sq. ft</option></select> </td><td><span class="form-control" style="background-color: #eee;"><?php  echo $currency." "; ?><input type="text" name="product_rate[]" onkeyup="calculate_store('+ count +');" onchange="calculate_store('+ count +');" id="product_rate_'+ count +'" class="product_rate_'+ count +'" placeholder="0.00" value="" min="0"  tabindex="'+tab3+'" required/></span></td><td><span class="form-control" style="background-color: #eee;"><?php  echo $currency." ";  ?><input class="total_price total_price_'+ count +'" type="text" name="total_price[]" id="total_price_'+ count +'" value="0.00" readonly="readonly" /></span> </td><td> <input type="hidden" id="total_discount_1" class="" /><input type="hidden" id="all_discount_1" class="total_discount" /><button style="text-align: right;" class="btn btn-danger red" type="button"  onclick="deleteRow(this)" tabindex="8"><i class="fa fa-close"></i></button></td>';
-        document.getElementById(divName).appendChild(newdiv);
+       
+
+       document.getElementById(divName).appendChild(newdiv);
         document.getElementById(tabin).focus();
         document.getElementById("add_invoice_item").setAttribute("tabindex", tab5);
         document.getElementById("add_purchase").setAttribute("tabindex", tab6);
@@ -1417,7 +1457,7 @@ window.onbeforeunload = function(){
         //  alert(result[0].p_quantity);
         console.log(result[0]['currency_type']);
      // $("#vendor_gtotal").val(result[0]['currency_type']);
-      $(".cus").val(result[0]['currency_type']);
+      $(".cus").html(result[0]['currency_type']);
         $("label[for='custocurrency']").html(result[0]['currency_type']);
        console.log('https://open.er-api.com/v6/latest/<?php echo $curn_info_default; ?>');
        $.getJSON('https://open.er-api.com/v6/latest/<?php echo $curn_info_default; ?>', 
