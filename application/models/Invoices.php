@@ -1063,7 +1063,7 @@ public function retrieve_packing_editdata($purchase_id) {
          $this->db->where('a.trucking_id', $purchase_id);
        // $this->db->order_by('a.purchase_details', 'asc');
         $query = $this->db->get();
-       echo $this->db->last_query();
+      
         if ($query->num_rows() > 0) {
             return $query->result_array();
         }
