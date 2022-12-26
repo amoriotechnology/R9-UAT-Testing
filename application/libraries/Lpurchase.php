@@ -110,6 +110,7 @@ class Lpurchase {
         return $purchaseForm;
     }
 
+
       public function packing_add_form() {
 
         $CI = & get_instance();

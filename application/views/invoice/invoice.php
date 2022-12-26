@@ -157,6 +157,14 @@ $today = date('Y-m-d');
             </div>
          </div>
 
+          <div class="row">
+            <div class="col-sm-12">
+        
+                    <a href="<?php echo base_url('Cinvoice/add_product_csv') ?>" class="btn btn-primary m-b-5 m-r-2 text-white"><i class="ti-plus"> </i> &nbsp;  <?php echo display('add_product_csv') ?> </a>
+
+            </div>
+        </div>
+
 
         <div class="row"> 
 

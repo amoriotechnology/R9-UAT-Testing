@@ -26,6 +26,39 @@ class Purchases extends CI_Model {
         return false;
     }
 
+    // CSV PRODUCT UPLOAD ON EXPENSE
+
+    public function get_expense_product()
+    {
+        $this->db->select('a.*,b.*');
+        $this->db->from('product_purchase a');
+        $this->db->join('product_purchase_details b', 'b.purchase_id = a.purchase_id');
+        $this->db->where('a.create_by',$this->session->userdata('user_id'));
+
+        $query = $this->db->get();
+          
+        if ($query->num_rows() > 0) {
+            return $query->result_array();
+        }
+    }
+
+
+    // CSV PRODUCT UPLOAD ON PURCHASE
+
+    public function get_purchase_product()
+    {
+        $this->db->select('a.*,b.*');
+        $this->db->from('purchase_order a');
+        $this->db->join('purchase_order_details b', 'b.purchase_order_detail_id = a.purchase_order_id');
+        $this->db->where('a.create_by',$this->session->userdata('user_id'));
+
+        $query = $this->db->get();
+          
+        if ($query->num_rows() > 0) {
+            return $query->result_array();
+        }
+    }
+
     public function expense_package()
     {
         $sql='select * from expense_packing_list where create_by='.$_SESSION['user_id'];

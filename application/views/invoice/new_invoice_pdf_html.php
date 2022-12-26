@@ -142,7 +142,7 @@ $Web_settings = $CI->Web_settings->retrieve_setting_editdata();
                     <tr>
                        
                     <td colspan="5" style="text-align:right;font-weight:bold;"><?php echo  "Tax (".$tax_des;  ?></td>
-                           <td style="font-size: 16px;"><?php  echo $currency." " ; ?><?php echo $tax_amt;  ?></td>
+                    <td style="font-size: 16px;"><?php  echo $currency." " ; ?><?php echo $tax_amt;  ?></td>
                        </tr>
                     <tr>
                     <td colspan="5" style="text-align:right;font-weight:bold;">Grand Total:</td>

@@ -8,7 +8,7 @@
             <h1><?php echo display('manage_product') ?></h1>
             <small><?php echo display('manage_your_product') ?></small>
             <ol class="breadcrumb">
-                <li><a href="#"><i class="pe-7s-home"></i> <?php echo display('home') ?>55</a></li>
+                <li><a href="#"><i class="pe-7s-home"></i> <?php echo display('home') ?></a></li>
                 <li><a href="#"><?php echo display('product') ?></a></li>
                 <li class="active"><?php echo display('manage_product') ?></li>
             </ol>

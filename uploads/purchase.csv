@@ -1,0 +1,4 @@
+purchase_date,ship_to,created_by,payment_terms,shipment_terms,est_ship_date,product_name,slabs,quantity,rate,message_invoice
+23-12-2022,Test,Infinity Stones,test,test,25-12-2022,Calacutta,12,10,100,Test
+24-12-2022,Demo,Absolute Stones,test,test,26-12-2022,African,13,20,200,Test
+25-12-2022,View,Lancaster Stones,test,test,27-12-2022,Marble,14,30,300,Test

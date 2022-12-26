@@ -46,6 +46,275 @@ class Cinvoice extends CI_Controller {
 
     }
 
+    // Import Product File
+
+    public function add_product_csv() {
+        $CI = & get_instance();
+        $this->load->model('Products');
+        // $data = array(
+        //     'title' => display('add_product_csv')
+        // );
+        $data['productdetails'] = $this->Products->get_product();
+        $content = $CI->parser->parse('invoice/add_product_csv', $data, true);
+        $this->template->full_admin_html_view($content);
+    }
+    
+    public function uploadCsv()
+    {
+        $CI = & get_instance();
+
+        $this->load->model('Products');
+
+        $data['productdetails'] = $this->Products->get_product();
+
+        $this->load->library('upload');
+        $this->load->library('csvimport');
+
+        if (($_FILES['upload_csv_file']['name'])){
+            $files = $_FILES;
+            $config = array();
+            $config['upload_path'] = './uploads';
+            $config['allowed_types'] = 'csv';
+            $config['max_size'] = '1000';
+            
+            $this->upload->initialize($config);
+              if (!$this->upload->do_upload('upload_csv_file')) {
+                $data['error_message'] = $this->upload->display_errors();
+                $this->session->set_userdata($data);
+            } else {
+                $file_data = $this->upload->data();
+                $file_path =  './uploads/'.$file_data['file_name'];
+
+            if ($this->csvimport->get_array($file_path)) {
+                $csv_array = $this->csvimport->get_array($file_path);
+                $this->session->set_userdata('file_path',  $csv_array);
+                foreach ($csv_array as $row) {
+                    $insert_data = array(
+                        'sales_by'     =>  $this->session->userdata('user_id'),
+                        'invoice_id'=>$row['invoice_id'],
+                        'date'=>$row['date'],
+                        'commercial_invoice_number'=>$row['commercial_invoice_number'],
+                        'payment_type'=>$row['payment_type'],
+                        'container_no'=>$row['container_no'],
+                        'bl_no'=>$row['bl_no'],
+                        'billing_address' => $row['billing_address'],
+                        'payment_terms' => $row['payment_terms'],
+                        'port_of_discharge' => $row['port_of_discharge'],
+                        'number_of_days' => $row['number_of_days'],
+                        'payment_due_date' => $row['payment_due_date'],
+                        'etd' => $row['etd'],
+                        'eta' => $row['eta'],
+                        'ac_details' => $row['ac_details'],
+                        'remark' => $row['remark'],
+                    );
+                
+                    $this->db->insert('invoice', $insert_data);
+                    
+                    $product_id = $this->generator(10);
+                    $data_invoice = array(
+                        'product_id' => $product_id,
+                        'create_by'     =>  $this->session->userdata('user_id'),
+                        'invoice_id'=>$row['invoice_id'],
+                        'product_name' => $row['product_name'],
+                        'quantity' => $row['quantity'],
+                        'rate' => $row['rate'],
+                    );
+
+                    // print_r($data_invoice);die();
+
+                    $this->db->insert('invoice_details', $data_invoice);
+
+                }
+
+                $data=array();
+                $data=array(
+                    'insert_data' =>$insert_data
+                );
+              
+                $content = $this->load->view('invoice/add_product_csv', $data, true);
+        
+                $this->template->full_admin_html_view($content);
+                                  
+      
+                $this->session->set_userdata(array('message'=>display('successfully_added')));
+               redirect(base_url('Cinvoice/manage_invoice'));
+                //echo "<pre>"; print_r($insert_data);
+            }else {
+                $this->session->set_userdata(array('error_message'=>'Please Import Only Csv File'));
+                redirect(base_url('Cinvoice/add_product_csv'));
+            }
+            $this->session->unset_userdata('file_path');
+            unlink($file_path);
+            }
+        }
+
+}
+    
+
+    // public function bulkupload()
+    // {
+      
+    //     $invoice_id  = $this->input->post('invoice_id',TRUE);
+
+
+    //     foreach ($invoice_id as $value) {
+    //       echo $value; 
+    //     }
+        
+
+    //     $data = array(
+    //         'invoice_id'    =>$invoice_id,
+    //         'date'    =>$this->input->post('date',true),
+    //         'commercial_invoice_number'    =>$this->input->post('commercial_invoice_number',true),
+    //         'payment_type'    =>$this->input->post('payment_type',true),
+    //         'container_no'    =>$this->input->post('container_no',true),
+    //         'bl_no'    =>$this->input->post('bl_no',true),
+    //         'billing_address' => $this->input->post('billing_address',true),
+    //         'payment_terms'      => $this->input->post('payment_terms',true),
+    //         'port_of_discharge'   => $this->input->post('port_of_discharge',true),
+    //         'number_of_days'  => $this->input->post('number_of_days',true),
+    //         'payment_due_date'  => $this->input->post('payment_due_date',true),
+    //         'etd'  => $this->input->post('etd',true),
+    //         'eta'  => $this->input->post('eta',true),
+    //         'ac_details'  => $this->input->post('ac_details',true),
+    //         'remark'  => $this->input->post('remark',true),
+    //     );
+        
+
+    //         foreach ($invoice_id as $value) {
+
+    //             $this->db->where('invoice_id', $value);
+    //             $this->db->update_batch('invoice', $data);
+    //             echo $this->db->last_query();
+     
+    //         }
+
+    //     $data1 = array(
+
+    //       'invoice_id'    =>$this->input->post('invoice_id',true),
+    //       'quantity'    =>$this->input->post('quantity',true),
+    //        'rate'    =>$this->input->post('rate',true),
+    //        'product_name'    =>$this->input->post('product_name',true),
+           
+    //     );
+
+        
+    //         foreach ($invoice_id as $value) {
+    //             $this->db->where('invoice_id', $value);
+    //             $this->db->update('invoice_details', $data1);
+    //               // echo $this->db->last_query();
+    //         }
+
+
+    // }
+
+
+    // Profarma Product CSV Upload
+
+    public function add_profarma_product_csv() {
+        $CI = & get_instance();
+        
+        $data = array(
+            'title' => display('add_product_csv')
+        );
+        $content = $CI->parser->parse('invoice/add_profarma_product_csv', $data, true);
+        $this->template->full_admin_html_view($content);
+    }
+
+
+    public function uploadProformacsv()
+    {
+        $CI = & get_instance();
+
+        $this->load->model('Products');
+
+        $data['productdetails'] = $this->Products->get_profarma_product();
+
+        // print_r($data['productdetails']); die();
+
+        $this->load->library('upload');
+        $this->load->library('csvimport');
+
+        if (($_FILES['upload_csv_file']['name'])){
+            $files = $_FILES;
+            $config = array();
+            $config['upload_path'] = './uploads';
+            $config['allowed_types'] = 'csv';
+            $config['max_size'] = '1000';
+            
+            $this->upload->initialize($config);
+              if (!$this->upload->do_upload('upload_csv_file')) {
+                $data['error_message'] = $this->upload->display_errors();
+                $this->session->set_userdata($data);
+            } else {
+                $file_data = $this->upload->data();
+                $file_path =  './uploads/'.$file_data['file_name'];
+
+            if ($this->csvimport->get_array($file_path)) {
+                $csv_array = $this->csvimport->get_array($file_path);
+                $this->session->set_userdata('file_path',  $csv_array);
+                foreach ($csv_array as $row) {
+                    $purchase_id = date('YmdHis');
+
+                    $proforma_data = array(
+                        'sales_by'     =>  $this->session->userdata('user_id'),
+                        'purchase_id'=>$purchase_id,
+                        'purchase_date'=>$row['purchase_date'],
+                        'chalan_no'=>$row['chalan_no'],
+                        'receipt'=>$row['receipt'],
+                        'pre_carriage'=>$row['pre_carriage'],
+                        'country_destination'=>$row['country_destination'],
+                        'loading' => $row['loading'],
+                        'discharge' => $row['discharge'],
+                        'terms_payment' => $row['terms_payment'],
+                        'description_goods' => $row['description_goods'],
+                        'ac_details' => $row['ac_details'],
+                        'remark' => $row['remark'],
+                    );
+
+                    // print_r($proforma_data); die();
+                
+                    $this->db->insert('profarma_invoice', $proforma_data);
+                    
+                    $product_id = $this->generator(10);
+                    $data_invoice = array(
+                        'product_id' => $product_id,
+                        'create_by'     =>  $this->session->userdata('user_id'),
+                        'purchase_id'=>$purchase_id,
+                        'product_name' => $row['product_name'],
+                        'quantity' => $row['quantity'],
+                        'rate' => $row['rate'],
+                    );
+
+                    // print_r($data_invoice);die();
+
+                    $this->db->insert('profarma_invoice_details', $data_invoice);
+
+                }
+
+                $data=array();
+                $data=array(
+                    'proforma_data' =>$proforma_data
+                );
+              
+                $content = $this->load->view('invoice/add_profarma_product_csv', $data, true);
+        
+                $this->template->full_admin_html_view($content);
+                                  
+      
+                $this->session->set_userdata(array('message'=>display('successfully_added')));
+               redirect(base_url('Cinvoice/manage_profarma_invoice'));
+                //echo "<pre>"; print_r($insert_data);
+            }else {
+                $this->session->set_userdata(array('error_message'=>'Please Import Only Csv File'));
+                redirect(base_url('Cinvoice/add_profarma_product_csv'));
+            }
+            $this->session->unset_userdata('file_path');
+            unlink($file_path);
+            }
+        } 
+    }
+
 
      public function profarma_invoice() {
 
@@ -148,10 +417,11 @@ class Cinvoice extends CI_Controller {
       $curn_info_default = $CI->db->select('*')->from('currency_tbl')->where('icon',$currency_details[0]['currency'])->get()->result_array();
        // print_r($curn_info_default); die();
     $uid=$_SESSION['user_id'];
-    $sql='select c.* from company_information c join user_login as u on u.cid=c.company_id where u.user_id='.$uid;
+    $sql='select * from company_information c join user_login as u on u.cid=c.company_id where u.user_id='.$uid;
     $query=$this->db->query($sql);
     $company_info=$query->result_array();
-    $product_sql='select c.* from invoice i join customer_information c on c.customer_id=i.customer_id where i.invoice_id='.$invoice_id;
+    // print_r($company_info); die();
+    $product_sql='select * from invoice i join customer_information c on c.customer_id=i.customer_id where i.invoice_id='.$invoice_id;
     $query=$this->db->query($product_sql);
     $customer_info=$query->result_array();
     // print_r($customer_info); die();
@@ -161,9 +431,9 @@ class Cinvoice extends CI_Controller {
     $invoice_sql='select * from `invoice` i join invoice_details p on p.invoice_id=i.invoice_id';
     $query=$this->db->query($invoice_sql);
     $invoice_info=$query->result_array();
-// echo '<pre>';
-//     print_r($invoice_info); die();
-//     echo '</pre>';
+    // echo '<pre>';
+    // print_r($invoice_info); die();
+    // echo '</pre>';
     $sql='select * from invoice where invoice_id='.$invoice_id;
     $query=$this->db->query($sql);
     $invoice=$query->result_array();

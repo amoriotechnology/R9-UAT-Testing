@@ -31,6 +31,210 @@ $CI = & get_instance();
         $this->template->full_admin_html_view($content);
     }
 
+    // Upload CSV New Expenses
+
+    public function add_csv_product()
+    {
+        $CI = & get_instance();
+        
+        $data = array(
+            'title' => display('add_csv_product')
+        );
+        $content = $CI->parser->parse('purchase/add_expense_product', $data, true);
+        $this->template->full_admin_html_view($content);
+    }
+
+    public function uploadExpensecsv()
+    {
+        $CI = & get_instance();
+
+        $this->load->model('Purchases');
+
+        $data['productdetails'] = $this->Purchases->get_expense_product();
+
+        // print_r($data); die();
+
+        $this->load->library('upload');
+        $this->load->library('csvimport');
+
+        if (($_FILES['upload_csv_file']['name'])){
+            $files = $_FILES;
+            $config = array();
+            $config['upload_path'] = './uploads';
+            $config['allowed_types'] = 'csv';
+            $config['max_size'] = '1000';
+            
+            $this->upload->initialize($config);
+              if (!$this->upload->do_upload('upload_csv_file')) {
+                $data['error_message'] = $this->upload->display_errors();
+                $this->session->set_userdata($data);
+            } else {
+                $file_data = $this->upload->data();
+                $file_path =  './uploads/'.$file_data['file_name'];
+
+            if ($this->csvimport->get_array($file_path)) {
+                $csv_array = $this->csvimport->get_array($file_path);
+                $this->session->set_userdata('file_path',  $csv_array);
+                foreach ($csv_array as $row) {
+                     $purchase_id = date('YmdHis');
+                     $expense_data = array(
+                        'create_by'     =>  $this->session->userdata('user_id'),
+                        'purchase_id' => $purchase_id,
+                        'purchase_date'=>$row['purchase_date'],
+                        'payment_due_date'=>$row['payment_due_date'],
+                        'chalan_no'=>$row['chalan_no'],
+                        'description'=>$row['description'],
+                        'remarks'=>$row['remarks'],
+                    );
+
+                
+                    $this->db->insert('product_purchase', $expense_data);
+                    
+                    $data_invoice = array(
+                        'create_by'     =>  $this->session->userdata('user_id'),
+                        'purchase_id' => $purchase_id,
+                        'product_name' => $row['product_name'],
+                        'quantity' => $row['quantity'],
+                        'rate' => $row['rate'],
+                    );
+
+                    // print_r($data_invoice);die();
+
+                    $this->db->insert('product_purchase_details', $data_invoice);
+
+                }
+
+                $data=array();
+                $data=array(
+                    'expense_data' =>$expense_data
+                );
+              
+                $content = $this->load->view('purchase/add_expense_product', $data, true);
+        
+                $this->template->full_admin_html_view($content);
+                                  
+      
+                $this->session->set_userdata(array('message'=>display('successfully_added')));
+               redirect(base_url('Cpurchase/manage_purchase'));
+                //echo "<pre>"; print_r($insert_data);
+            }else {
+                $this->session->set_userdata(array('error_message'=>'Please Import Only Csv File'));
+                redirect(base_url('Cpurchase/add_csv_product'));
+            }
+            $this->session->unset_userdata('file_path');
+            unlink($file_path);
+        }
+
+    }
+}
+
+
+
+
+   // Purchase CSV Upload Product
+
+   public function add_csv_purchase()
+   {
+        $CI = & get_instance();
+        
+        $data = array(
+            'title' => display('add_csv_product')
+        );
+        $content = $CI->parser->parse('purchase/add_purchase_product', $data, true);
+        $this->template->full_admin_html_view($content);
+   }
+
+   public function uploadPurchasecsv()
+   {
+        $CI = & get_instance();
+
+        $this->load->model('Purchases');
+
+        $data['purchaseOrder'] = $this->Purchases->get_expense_product();
+        
+        // print_r($data['purchaseOrder']); die();
+        $this->load->library('upload');
+        $this->load->library('csvimport');
+
+        if (($_FILES['upload_csv_file']['name'])){
+            $files = $_FILES;
+            $config = array();
+            $config['upload_path'] = './uploads';
+            $config['allowed_types'] = 'csv';
+            $config['max_size'] = '1000';
+            
+            $this->upload->initialize($config);
+              if (!$this->upload->do_upload('upload_csv_file')) {
+                $data['error_message'] = $this->upload->display_errors();
+                $this->session->set_userdata($data);
+            } else {
+                $file_data = $this->upload->data();
+                $file_path =  './uploads/'.$file_data['file_name'];
+
+            if ($this->csvimport->get_array($file_path)) {
+                $csv_array = $this->csvimport->get_array($file_path);
+                $this->session->set_userdata('file_path',  $csv_array);
+                foreach ($csv_array as $row) {
+                    $purchase_order_id  = date('YmdHis');
+
+                    $purchase_id = date('YmdHis');
+                    $purchase_data = array(
+                        'create_by'     =>  $this->session->userdata('user_id'),
+                        'purchase_order_id' => $purchase_order_id,
+                        'purchase_date'=>$row['purchase_date'],
+                        'ship_to'=>$row['ship_to'],
+                        'created_by'=>$row['created_by'],
+                        'payment_terms'=>$row['payment_terms'],
+                        'shipment_terms'=>$row['shipment_terms'],
+                        'est_ship_date'=>$row['est_ship_date'],
+                        'message_invoice'=>$row['message_invoice'],
+                    );
+
+                     // print_r($purchase_data);die();
+                
+                    $this->db->insert('purchase_order', $purchase_data);
+                    
+                    $data_invoice = array(
+                        'create_by'     =>  $this->session->userdata('user_id'),
+                        'purchase_id' => $purchase_id,
+                        'product_name'=>$row['product_name'],
+                        'slabs'=>$row['slabs'],
+                        'quantity'=>$row['quantity'],
+                        'rate' => $row['rate'],
+                    );
+
+                    // print_r($data_invoice);die();
+
+                    $this->db->insert('purchase_order_details', $data_invoice);
+
+                }
+
+                $data=array();
+                $data=array(
+                    'purchase_data' =>$purchase_data
+                );
+              
+                $content = $this->load->view('purchase/add_purchase_product', $data, true);
+        
+                $this->template->full_admin_html_view($content);
+                                  
+      
+                $this->session->set_userdata(array('message'=>display('successfully_added')));
+               redirect(base_url('Cpurchase/manage_purchase_order'));
+                //echo "<pre>"; print_r($insert_data);
+            }else {
+                $this->session->set_userdata(array('error_message'=>'Please Import Only Csv File'));
+                redirect(base_url('Cpurchase/add_csv_purchase'));
+            }
+           
+            $this->session->unset_userdata('file_path');
+            unlink($file_path);
+        }
+
+    }
+
+   }
+
 
     public function add_packing_list(){
         $CI = & get_instance();

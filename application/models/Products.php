@@ -28,7 +28,40 @@ public function get_invoice_product($purchase_id) {
                 return $query->num_rows();
     }
 
-    //Product List
+    // CSV PRODUCT DETAILS
+
+    public function get_product()
+    {
+        // $query = $this->db->get('invoice');
+      $this->db->select('a.*,b.*');
+      $this->db->from('invoice a');
+      $this->db->join('invoice_details b', 'b.invoice_id = a.invoice_id');
+      $this->db->where('a.sales_by',$this->session->userdata('user_id'));
+
+     $query = $this->db->get();
+          
+      if ($query->num_rows() > 0) {
+                return $query->result_array();
+            }
+
+        }
+
+
+    public function get_profarma_product()
+    {
+          $this->db->select('a.*,b.*');
+          $this->db->from('profarma_invoice a');
+          $this->db->join('profarma_invoice_details b', 'b.purchase_id = a.purchase_id');
+          $this->db->where('a.sales_by',$this->session->userdata('user_id'));
+
+     $query = $this->db->get();
+          
+      if ($query->num_rows() > 0) {
+                return $query->result_array();
+            }
+
+    }
+
     public function product_list($per_page, $page) {
         $query = $this->db->select('supplier_information.*,product_information.*,supplier_product.*')
                 ->from('product_information')

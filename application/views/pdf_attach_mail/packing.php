@@ -47,7 +47,7 @@ if(1==1)
       th {
         border: 1px solid #dddddd;
         text-align: left;
-        padding: 35px;
+        padding: 10px;
       }
       .table_view {
         border: 1px solid #111;
@@ -80,30 +80,28 @@ if(1==1)
  
   $content .= '<table>
       <tr class="header_view">
-        <th style="border: none">
+        <td style="border: none">
           <img src="../../assets/'.$company_info[0]['logo'].'" width="100px" />
-        </th>
-        <th style="border: none; color: white">'.$company_info[0]['company_name'].'</th>
-        <th style="border: none; text-align: right; color: white">'.$company_info[0]['address'].'</th>
+        </td>
+        <td style="border: none; color: white">'.$company_info[0]['company_name'].'</td>
+        <td style="border: none; text-align: right; color: white">'.$company_info[0]['address'].'</td>
       </tr>
     </table>
     <br />
 
     <table>
       <tr>
-      <th style="border: none; font-weight: normal; "><b>Packing List No</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp;: &nbsp;'.$invoice[0]['invoice_no'].'</span></th>
+      <td style="border: none; font-weight: normal; line-height: 20px;"><b>Packing List No</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp;: &nbsp;'.$invoice[0]['invoice_no'].'</span></td>
 
-      <th style="border: none; font-weight: normal; "><b>Invoice Date</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp;: &nbsp;'.$invoice[0]['invoice_date'].'</span></th>
+      <td style="border: none; font-weight: normal; line-height: 20px;"><b>Invoice Date</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp;: &nbsp;'.$invoice[0]['invoice_date'].'</span></td>
       
       </tr>
-      <br><br>
 
       <tr>
-      <th style="border: none; font-weight: normal; "><b>Gross Weight</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="margin-left: 2px;">&nbsp;: &nbsp;'.$invoice[0]['gross_weight'].'</span></th>
+      <td style="border: none; font-weight: normal; line-height: 20px;"><b>Gross Weight</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="margin-left: 2px;">&nbsp;: &nbsp;'.$invoice[0]['gross_weight'].'</span></td>
       
-       <th style="border: none; font-weight: normal; "><b>Container No</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="margin-left: 2px;">&nbsp;: &nbsp;'.$invoice[0]['container_no'].'</span></th>
-        
-      </tr>
+       <td style="border: none; font-weight: normal; line-height: 20px;"><b>Container No</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="margin-left: 2px;">&nbsp;: &nbsp;'.$invoice[0]['container_no'].'</span></td>
+      </tr>  
       
     </table>
     
@@ -137,13 +135,11 @@ if(1==1)
       <tr class="table_view"> 
         <th style="color:#fff; text-align: center;">Width</th>
         <th style="color:#fff; text-align: center;">Height</th>
-      </tr>
-
-      <tr>';
+      </tr>';
       if ($product_info) {
         $count=1;
         for($i=0;$i<sizeof($product_info);$i++){
-        $content .='<td style="text-align: center;">'.$count.'</td>
+        $content .='<tr><td style="text-align: center;">'.$count.'</td>
         <td style="text-align: center;">'.$product_info[0]['slab_no'].'</td>
         <td style="text-align: center;">'.$product_info[0]['width'].'</td>
         <td style="text-align: center;">'.$product_info[0]['height'].'</td>
@@ -164,32 +160,30 @@ if(1==1)
 
  }elseif($template == 1){
 
-     $content .= '<table>
+       $content .= '<table>
       <tr class="header_view">
-        <th style="border: none">
+        <td style="border: none">
           <img src="../../assets/'.$company_info[0]['logo'].'" width="100px" />
-        </th>
-        <th style="border: none; color: white">'.$company_info[0]['company_name'].'</th>
-        <th style="border: none; text-align: right; color: white">'.$company_info[0]['address'].'</th>
+        </td>
+        <td style="border: none; color: white">'.$company_info[0]['company_name'].'</td>
+        <td style="border: none; text-align: right; color: white">'.$company_info[0]['address'].'</td>
       </tr>
     </table>
     <br />
 
     <table>
       <tr>
-      <th style="border: none; font-weight: normal; "><b>Packing List No</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp;: &nbsp;'.$invoice[0]['invoice_no'].'</span></th>
+      <td style="border: none; font-weight: normal; line-height: 20px;"><b>Packing List No</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp;: &nbsp;'.$invoice[0]['invoice_no'].'</span></td>
 
-      <th style="border: none; font-weight: normal; "><b>Invoice Date</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp;: &nbsp;'.$invoice[0]['invoice_date'].'</span></th>
+      <td style="border: none; font-weight: normal; line-height: 20px;"><b>Invoice Date</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp;: &nbsp;'.$invoice[0]['invoice_date'].'</span></td>
       
       </tr>
-      <br><br>
 
       <tr>
-      <th style="border: none; font-weight: normal; "><b>Gross Weight</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="margin-left: 2px;">&nbsp;: &nbsp;'.$invoice[0]['gross_weight'].'</span></th>
+      <td style="border: none; font-weight: normal; line-height: 20px;"><b>Gross Weight</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="margin-left: 2px;">&nbsp;: &nbsp;'.$invoice[0]['gross_weight'].'</span></td>
       
-       <th style="border: none; font-weight: normal; "><b>Container No</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="margin-left: 2px;">&nbsp;: &nbsp;'.$invoice[0]['container_no'].'</span></th>
-        
-      </tr>
+       <td style="border: none; font-weight: normal; line-height: 20px;"><b>Container No</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="margin-left: 2px;">&nbsp;: &nbsp;'.$invoice[0]['container_no'].'</span></td>
+      </tr>  
       
     </table>
     
@@ -223,13 +217,11 @@ if(1==1)
       <tr class="table_view"> 
         <th style="color:#fff; text-align: center;">Width</th>
         <th style="color:#fff; text-align: center;">Height</th>
-      </tr>
-
-      <tr>';
+      </tr>';
       if ($product_info) {
         $count=1;
         for($i=0;$i<sizeof($product_info);$i++){
-        $content .='<td style="text-align: center;">'.$count.'</td>
+        $content .='<tr><td style="text-align: center;">'.$count.'</td>
         <td style="text-align: center;">'.$product_info[0]['slab_no'].'</td>
         <td style="text-align: center;">'.$product_info[0]['width'].'</td>
         <td style="text-align: center;">'.$product_info[0]['height'].'</td>
@@ -237,7 +229,12 @@ if(1==1)
       $count++;
       }
     }  
-   $content .='</table>
+   $content .='
+      <tr>
+        <td colspan="4" style="text-align: right">Total:</td>
+        <td class="data_view">'.$invoice[0]['grand_total_amount'].'</td>
+      </tr>
+      </table>
      <br>
 
      <h4 style="margin-left: 10px;">Remarks/Conditions</h4>'.$invoice[0]['remarks'].'<br><br>';
@@ -246,32 +243,30 @@ if(1==1)
 
  }elseif($template == 3){
 
-    $content .= '<table>
+      $content .= '<table>
       <tr class="header_view">
-        <th style="border: none">
+        <td style="border: none">
           <img src="../../assets/'.$company_info[0]['logo'].'" width="100px" />
-        </th>
-        <th style="border: none; color: white">'.$company_info[0]['company_name'].'</th>
-        <th style="border: none; text-align: right; color: white">'.$company_info[0]['address'].'</th>
+        </td>
+        <td style="border: none; color: white">'.$company_info[0]['company_name'].'</td>
+        <td style="border: none; text-align: right; color: white">'.$company_info[0]['address'].'</td>
       </tr>
     </table>
     <br />
 
     <table>
       <tr>
-      <th style="border: none; font-weight: normal; "><b>Packing List No</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp;: &nbsp;'.$invoice[0]['invoice_no'].'</span></th>
+      <td style="border: none; font-weight: normal; line-height: 20px;"><b>Packing List No</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp;: &nbsp;'.$invoice[0]['invoice_no'].'</span></td>
 
-      <th style="border: none; font-weight: normal; "><b>Invoice Date</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp;: &nbsp;'.$invoice[0]['invoice_date'].'</span></th>
+      <td style="border: none; font-weight: normal; line-height: 20px;"><b>Invoice Date</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp;: &nbsp;'.$invoice[0]['invoice_date'].'</span></td>
       
       </tr>
-      <br><br>
 
       <tr>
-      <th style="border: none; font-weight: normal; "><b>Gross Weight</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="margin-left: 2px;">&nbsp;: &nbsp;'.$invoice[0]['gross_weight'].'</span></th>
+      <td style="border: none; font-weight: normal; line-height: 20px;"><b>Gross Weight</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="margin-left: 2px;">&nbsp;: &nbsp;'.$invoice[0]['gross_weight'].'</span></td>
       
-       <th style="border: none; font-weight: normal; "><b>Container No</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="margin-left: 2px;">&nbsp;: &nbsp;'.$invoice[0]['container_no'].'</span></th>
-        
-      </tr>
+       <td style="border: none; font-weight: normal; line-height: 20px;"><b>Container No</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="margin-left: 2px;">&nbsp;: &nbsp;'.$invoice[0]['container_no'].'</span></td>
+      </tr>  
       
     </table>
     
@@ -305,13 +300,11 @@ if(1==1)
       <tr class="table_view"> 
         <th style="color:#fff; text-align: center;">Width</th>
         <th style="color:#fff; text-align: center;">Height</th>
-      </tr>
-
-      <tr>';
+      </tr>';
       if ($product_info) {
         $count=1;
         for($i=0;$i<sizeof($product_info);$i++){
-        $content .='<td style="text-align: center;">'.$count.'</td>
+        $content .='<tr><td style="text-align: center;">'.$count.'</td>
         <td style="text-align: center;">'.$product_info[0]['slab_no'].'</td>
         <td style="text-align: center;">'.$product_info[0]['width'].'</td>
         <td style="text-align: center;">'.$product_info[0]['height'].'</td>
@@ -319,10 +312,15 @@ if(1==1)
       $count++;
       }
     }  
-   $content .='</table>
+   $content .='
+      <tr>
+        <td colspan="4" style="text-align: right">Total:</td>
+        <td class="data_view">'.$invoice[0]['grand_total_amount'].'</td>
+      </tr>
+      </table>
      <br>
 
-    <h4 style="margin-left: 10px;">Remarks/Conditions</h4>'.$invoice[0]['remarks'].'<br><br>';
+     <h4 style="margin-left: 10px;">Remarks/Conditions</h4>'.$invoice[0]['remarks'].'<br><br>';
 
  }
 

@@ -515,8 +515,8 @@ public function get_all_product(){
     //CSV Upload File
     function uploadCsv()
     {
-         $this->load->model('suppliers');
-         $filename = $_FILES['upload_csv_file']['name'];  
+        $this->load->model('suppliers');
+        $filename = $_FILES['upload_csv_file']['name'];  
         $ext = end(explode('.', $filename));
         $ext = substr(strrchr($filename, '.'), 1);
         if($ext == 'csv'){
@@ -687,7 +687,7 @@ public function get_all_product(){
                         $this->db->select('*');
                         $this->db->from('product_information');
                         $this->db->where('status',1);
-                        $query = $this->db->get();
+                        $query = $this->db->get();  
                         foreach ($query->result() as $row) {
                             $json_product[] = array('label'=>$row->product_name."-(".$row->product_model.")",'value'=>$row->product_id);
                         }

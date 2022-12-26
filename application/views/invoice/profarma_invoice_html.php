@@ -45,7 +45,7 @@
 <div class="container" id="content">
 <?php
 
-   $myArray = explode('(',$tax); 
+ $myArray = explode('(',$tax); 
  $tax_amt=$myArray[0];
  $tax_des=$myArray[1];
  $tax_des=str_replace(")","%)", $tax_des);

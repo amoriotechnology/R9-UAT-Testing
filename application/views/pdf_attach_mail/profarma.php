@@ -25,10 +25,11 @@ if(1==1)
 	$pdf->AddPage(); //default A4
 	//$pdf->AddPage('P','A5'); //when you require custome page size 
 
- // $myArray = explode('(',$customer_info); 
- // $tax_amt=$myArray[0];
- // $tax_des=$myArray[1];
- // $tax_des=str_replace(")","%)", $tax_des);
+ $myArray = explode('(',$customer_info[0]['tax_details']); 
+ // print_r($myArray); die();
+ $tax_amt=$myArray[0];
+ $tax_des=$myArray[1];
+ $tax_des=str_replace(")","%)", $tax_des);
 	
 	$content = ''; 
 
@@ -50,7 +51,7 @@ if(1==1)
       th {
         border: 1px solid #dddddd;
         text-align: left;
-        padding: 35px;
+        padding: 10px;
       }
       .table_view {
         border: 1px solid #111;
@@ -83,49 +84,46 @@ if(1==1)
 
      $content .= ' <table>
       <tr class="header_view">
-        <th style="border: none">
+        <td style="border: none">
           <img src="../../assets/'.$company_info[0]['logo'].'" width="100px" />
-        </th>
-        <th style="border: none; color: white">'.$company_info[0]['company_name'].'</th>
-        <th style="border: none; text-align: right; color: white">'.$company_info[0]['address'].'</th>
+        </td>
+        <td style="border: none; color: white">'.$company_info[0]['company_name'].'</td>
+        <td style="border: none; text-align: right; color: white">'.$company_info[0]['address'].'</td>
       </tr>
     </table>
     <br> <br>
 
     <table>
       <tr>
-        <th style="border: none; font-weight: normal; "><b>Date</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp;: &nbsp;'.$invoice[0]['purchase_date'].'</span></th>
-         <th style="border: none; font-weight: normal; "><b>Buyer / Customer</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp; : &nbsp;'.$invoice[0]['purchase_date'].'</span></th>
+        <td style="border: none; font-weight: normal; line-height: 20px;"><b>Date</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp;: &nbsp;'.$invoice[0]['purchase_date'].'</span></td>
+         <td style="border: none; font-weight: normal; line-height: 20px;"><b>Buyer / Customer</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp; : &nbsp;'.$invoice[0]['purchase_date'].'</span></td>
       </tr>
-       <br>
 
       <tr>
-      <th style="border: none; font-weight: normal;"><b>Invoice No</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp; : &nbsp;'.$invoice[0]['purchase_id'].'</span></th>
+      <td style="border: none; font-weight: normal; line-height: 20px;"><b>Invoice No</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp; : &nbsp;'.$invoice[0]['purchase_id'].'</span></td>
 
-      <th style="border: none; font-weight: normal;"><b>Place of Receipt</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp; : &nbsp;'.$invoice[0]['receipt'].'</span></th>
+      <td style="border: none; font-weight: normal; line-height: 20px;"><b>Place of Receipt</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp; : &nbsp;'.$invoice[0]['receipt'].'</span></td>
       </tr>
-       <br>
+      
 
       <tr>
-      <th style="border: none; font-weight: normal;"><b>Pre Carriage By</b>&nbsp;&nbsp;<span>&nbsp; : &nbsp;'.$invoice[0]['pre_carriage'].'</span></th>
+      <td style="border: none; font-weight: normal; line-height: 20px;"><b>Pre Carriage By</b>&nbsp;&nbsp;<span>&nbsp; : &nbsp;'.$invoice[0]['pre_carriage'].'</span></td>
 
-         <th style="border: none; font-weight: normal;"><b>Country of <br> Final Destination</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp; : &nbsp;'.$invoice[0]['country_destination'].'</span></th>
+         <td style="border: none; font-weight: normal; line-height: 20px;"><b>Country of <br> Final Destination</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp; : &nbsp;'.$invoice[0]['country_destination'].'</span></td>
       </tr>
-        <br>
 
       <tr>
-      <th style="border: none; font-weight: normal;"><b>Port of Loading</b>&nbsp;&nbsp;<span>&nbsp; : &nbsp;'.$invoice[0]['loading'].'</span></th>
+      <td style="border: none; font-weight: normal; line-height: 20px;"><b>Port of Loading</b>&nbsp;&nbsp;<span>&nbsp; : &nbsp;'.$invoice[0]['loading'].'</span></td>
 
 
-       <th style="border: none; font-weight: normal;"><b>Port of Discharge</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp; : &nbsp;'.$invoice[0]['country_goods'].'</span></th>
+       <td style="border: none; font-weight: normal;line-height: 20px;"><b>Port of Discharge</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp; : &nbsp;'.$invoice[0]['country_goods'].'</span></td>
     
       </tr>
-       <br>
 
       <tr>
-      <th style="border: none; font-weight: normal;"><b>Terms of <br>Payment</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp; : &nbsp;'.$invoice[0]['terms_payment'].'</span></th>
+      <td style="border: none; font-weight: normal;"><b>Terms of <br>Payment</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp; : &nbsp;'.$invoice[0]['terms_payment'].'</span></td>
 
-      <th style="border: none; font-weight: normal;"><b>Description of Goods</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp; : &nbsp;'.$invoice[0]['description_goods'].'</span></th>
+      <td style="border: none; font-weight: normal; line-height: 20px;"><b>Description of Goods</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp; : &nbsp;'.$invoice[0]['description_goods'].'</span></td>
 
       </tr>
     </table>
@@ -139,32 +137,32 @@ if(1==1)
         <th class="data_view">Quantity / Sq ft.</th>
         <th class="data_view">Rate</th>
         <th class="data_view">Total</th>
-      </tr>
-      <tr>';
+      </tr>';
         if ($product_info) {
         $count=1;
         for($i=0;$i<sizeof($product_info);$i++){
 
-      $content .='<td class="data_view">'.$count.'</td>
+      $content .='<tr>
+      <td class="data_view">'.$count.'</td>
           <td class="data_view">'.$product_info[$i]['product_name'].'</td>
         <td class="data_view">'.$product_info[$i]['p_quantity'].'</td>
         <td class="data_view">'.$product_info[$i]['quantity'].'</td>
         <td class="data_view">'.$currency[0]['currency'].' '.$product_info[$i]['rate'].'</td>
-        <td class="data_view">'.$currency[0]['currency'].' '.$total=$product_info[$i]['quantity']*$product_info[$i]['rate'].'.00</td></tr>';
+        <td class="data_view">'.$currency[0]['currency'].' '.$product_info[$i]['total_amount'].'.00</td></tr>';
         $count++;
       }
     }
       $content .='<tr>
         <td colspan="5" style="text-align: right">Total:</td>
-        <td class="data_view">'.$currency[0]['currency'].''.$product_info[0]['total_amount'].'</td>
+        <td class="data_view">'.$currency[0]['currency'].''.$invoice[0]['total'].'</td>
       </tr>
       <tr>
-        <td colspan="5" style="text-align: right">Tax:</td>
-        <td class="data_view">'.$currency[0]['currency'].' '.$customer_info[0]['tax_details'].'</td>
+        <td colspan="5" style="text-align:right;">Tax:&nbsp;('.$tax_des.'</td>
+        <td class="data_view">'.$currency[0]['currency'].''.$tax_amt.'</td>
       </tr>
       <tr>
         <td colspan="5" style="text-align: right">Grand Total:</td>
-        <td class="data_view">'.$currency[0]['currency'].''.$product_info[0]['total_amount'].'</td>
+        <td class="data_view">'.$currency[0]['currency'].''.$invoice[0]['gtotal'].'</td>
       </tr>
     </table>
      <br>
@@ -184,46 +182,43 @@ if(1==1)
     </table>
     <br> <br>
 
-    <table>
+        <table>
       <tr>
-        <th style="border: none; font-weight: normal; "><b>Date</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp;: &nbsp;'.$invoice[0]['purchase_date'].'</span></th>
-         <th style="border: none; font-weight: normal; "><b>Buyer / Customer</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp; : &nbsp;'.$invoice[0]['purchase_date'].'</span></th>
+        <td style="border: none; font-weight: normal; line-height: 20px;"><b>Date</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp;: &nbsp;'.$invoice[0]['purchase_date'].'</span></td>
+         <td style="border: none; font-weight: normal; line-height: 50px;"><b>Buyer / Customer</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp; : &nbsp;'.$invoice[0]['purchase_date'].'</span></td>
       </tr>
-       <br>
 
       <tr>
-      <th style="border: none; font-weight: normal;"><b>Invoice No</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp; : &nbsp;'.$invoice[0]['purchase_id'].'</span></th>
+      <td style="border: none; font-weight: normal; line-height: 20px;"><b>Invoice No</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp; : &nbsp;'.$invoice[0]['purchase_id'].'</span></td>
 
-      <th style="border: none; font-weight: normal;"><b>Place of Receipt</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp; : &nbsp;'.$invoice[0]['receipt'].'</span></th>
+      <td style="border: none; font-weight: normal; line-height: 20px;"><b>Place of Receipt</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp; : &nbsp;'.$invoice[0]['receipt'].'</span></td>
       </tr>
-       <br>
+      
 
       <tr>
-      <th style="border: none; font-weight: normal;"><b>Pre Carriage By</b>&nbsp;&nbsp;<span>&nbsp; : &nbsp;'.$invoice[0]['pre_carriage'].'</span></th>
+      <td style="border: none; font-weight: normal; line-height: 20px;"><b>Pre Carriage By</b>&nbsp;&nbsp;<span>&nbsp; : &nbsp;'.$invoice[0]['pre_carriage'].'</span></td>
 
-         <th style="border: none; font-weight: normal;"><b>Country of <br> Final Destination</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp; : &nbsp;'.$invoice[0]['country_destination'].'</span></th>
+         <td style="border: none; font-weight: normal; line-height: 20px;"><b>Country of <br> Final Destination</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp; : &nbsp;'.$invoice[0]['country_destination'].'</span></td>
       </tr>
-        <br>
 
       <tr>
-      <th style="border: none; font-weight: normal;"><b>Port of Loading</b>&nbsp;&nbsp;<span>&nbsp; : &nbsp;'.$invoice[0]['loading'].'</span></th>
+      <td style="border: none; font-weight: normal; line-height: 20px;"><b>Port of Loading</b>&nbsp;&nbsp;<span>&nbsp; : &nbsp;'.$invoice[0]['loading'].'</span></td>
 
 
-       <th style="border: none; font-weight: normal;"><b>Port of Discharge</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp; : &nbsp;'.$invoice[0]['country_goods'].'</span></th>
+       <td style="border: none; font-weight: normal;line-height: 20px;"><b>Port of Discharge</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp; : &nbsp;'.$invoice[0]['country_goods'].'</span></td>
     
       </tr>
-       <br>
 
       <tr>
-      <th style="border: none; font-weight: normal;"><b>Terms of <br>Payment</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp; : &nbsp;'.$invoice[0]['terms_payment'].'</span></th>
+      <td style="border: none; font-weight: normal;"><b>Terms of <br>Payment</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp; : &nbsp;'.$invoice[0]['terms_payment'].'</span></td>
 
-      <th style="border: none; font-weight: normal;"><b>Description of Goods</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp; : &nbsp;'.$invoice[0]['description_goods'].'</span></th>
+      <td style="border: none; font-weight: normal; line-height: 20px;"><b>Description of Goods</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp; : &nbsp;'.$invoice[0]['description_goods'].'</span></td>
 
       </tr>
     </table>
 
     <br> <br>
-    <table>
+     <table>
       <tr class="table_view">
         <th class="data_view">S.NO</th>
         <th class="data_view">Product Name</th>
@@ -231,32 +226,47 @@ if(1==1)
         <th class="data_view">Quantity / Sq ft.</th>
         <th class="data_view">Rate</th>
         <th class="data_view">Total</th>
-      </tr>
-      <tr>';
+      </tr>';
         if ($product_info) {
-                               $count=1;
-                                   for($i=0;$i<sizeof($product_info);$i++){
+        $count=1;
+        for($i=0;$i<sizeof($product_info);$i++){
 
-      $content .='<td class="data_view">'.$count.'</td>
+      $content .='<tr>
+      <td class="data_view">'.$count.'</td>
           <td class="data_view">'.$product_info[$i]['product_name'].'</td>
         <td class="data_view">'.$product_info[$i]['p_quantity'].'</td>
         <td class="data_view">'.$product_info[$i]['quantity'].'</td>
         <td class="data_view">'.$currency[0]['currency'].' '.$product_info[$i]['rate'].'</td>
-        <td class="data_view">'.$currency[0]['currency'].' '.$total=$product_info[$i]['quantity']*$product_info[$i]['rate'].'.00</td></tr>';
+        <td class="data_view">'.$currency[0]['currency'].' '.$product_info[$i]['total_amount'].'.00</td></tr>';
         $count++;
       }
     }
       $content .='<tr>
         <td colspan="5" style="text-align: right">Total:</td>
-        <td class="data_view">'.$currency[0]['currency'].''.$product_info[0]['total_amount'].'</td>
+        <td class="data_view">'.$currency[0]['currency'].''.$invoice[0]['total'].'</td>
       </tr>
       <tr>
-        <td colspan="5" style="text-align: right">Tax:</td>
-        <td class="data_view">'.$currency[0]['currency'].' '.$customer_info[0]['tax_details'].'</td>
+        <td colspan="5" style="text-align:right;">Tax:&nbsp;('.$tax_des.'</td>
+        <td class="data_view">'.$currency[0]['currency'].''.$tax_amt.'</td>
       </tr>
       <tr>
         <td colspan="5" style="text-align: right">Grand Total:</td>
-        <td class="data_view">'.$currency[0]['currency'].''.$product_info[0]['total_amount'].'</td>
+        <td class="data_view">'.$currency[0]['currency'].''.$invoice[0]['gtotal'].'</td>
+      </tr>
+    </table>
+     <br>
+    <h3 class="heading_view">Account Details/Additional Information : <span style="font-weight: normal;">'.$invoice[0]['ac_details'].'</span></h3>
+    <h3 class="heading_view">Remarks/Conditions : <span style="font-weight: normal;">'.$invoice[0]['remarks'].'</span></h3>';
+
+  } elseif($template == 1) {
+    
+    $content .= ' <table>
+      <tr class="header_view">
+        <th style="border: none">
+          <img src="../../assets/'.$company_info[0]['logo'].'" width="100px" />
+        </th>
+        <th style="border: none; color: white">'.$company_info[0]['company_name'].'</th>
+        <th style="border: none; text-align: right; color: white">'.$company_info[0]['address'].'</th>
       </tr>
     </table>
      <br>
@@ -277,46 +287,43 @@ if(1==1)
     </table>
     <br> <br>
 
-    <table>
+        <table>
       <tr>
-        <th style="border: none; font-weight: normal; "><b>Date</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp;: &nbsp;'.$invoice[0]['purchase_date'].'</span></th>
-         <th style="border: none; font-weight: normal; "><b>Buyer / Customer</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp; : &nbsp;'.$invoice[0]['purchase_date'].'</span></th>
+        <td style="border: none; font-weight: normal; line-height: 20px;"><b>Date</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp;: &nbsp;'.$invoice[0]['purchase_date'].'</span></td>
+         <td style="border: none; font-weight: normal; line-height: 50px;"><b>Buyer / Customer</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp; : &nbsp;'.$invoice[0]['purchase_date'].'</span></td>
       </tr>
-       <br>
 
       <tr>
-      <th style="border: none; font-weight: normal;"><b>Invoice No</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp; : &nbsp;'.$invoice[0]['purchase_id'].'</span></th>
+      <td style="border: none; font-weight: normal; line-height: 20px;"><b>Invoice No</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp; : &nbsp;'.$invoice[0]['purchase_id'].'</span></td>
 
-      <th style="border: none; font-weight: normal;"><b>Place of Receipt</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp; : &nbsp;'.$invoice[0]['receipt'].'</span></th>
+      <td style="border: none; font-weight: normal; line-height: 20px;"><b>Place of Receipt</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp; : &nbsp;'.$invoice[0]['receipt'].'</span></td>
       </tr>
-       <br>
+      
 
       <tr>
-      <th style="border: none; font-weight: normal;"><b>Pre Carriage By</b>&nbsp;&nbsp;<span>&nbsp; : &nbsp;'.$invoice[0]['pre_carriage'].'</span></th>
+      <td style="border: none; font-weight: normal; line-height: 20px;"><b>Pre Carriage By</b>&nbsp;&nbsp;<span>&nbsp; : &nbsp;'.$invoice[0]['pre_carriage'].'</span></td>
 
-         <th style="border: none; font-weight: normal;"><b>Country of <br> Final Destination</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp; : &nbsp;'.$invoice[0]['country_destination'].'</span></th>
+         <td style="border: none; font-weight: normal; line-height: 20px;"><b>Country of <br> Final Destination</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp; : &nbsp;'.$invoice[0]['country_destination'].'</span></td>
       </tr>
-        <br>
 
       <tr>
-      <th style="border: none; font-weight: normal;"><b>Port of Loading</b>&nbsp;&nbsp;<span>&nbsp; : &nbsp;'.$invoice[0]['loading'].'</span></th>
+      <td style="border: none; font-weight: normal; line-height: 20px;"><b>Port of Loading</b>&nbsp;&nbsp;<span>&nbsp; : &nbsp;'.$invoice[0]['loading'].'</span></td>
 
 
-       <th style="border: none; font-weight: normal;"><b>Port of Discharge</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp; : &nbsp;'.$invoice[0]['country_goods'].'</span></th>
+       <td style="border: none; font-weight: normal;line-height: 20px;"><b>Port of Discharge</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp; : &nbsp;'.$invoice[0]['country_goods'].'</span></td>
     
       </tr>
-       <br>
 
       <tr>
-      <th style="border: none; font-weight: normal;"><b>Terms of <br>Payment</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp; : &nbsp;'.$invoice[0]['terms_payment'].'</span></th>
+      <td style="border: none; font-weight: normal;"><b>Terms of <br>Payment</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp; : &nbsp;'.$invoice[0]['terms_payment'].'</span></td>
 
-      <th style="border: none; font-weight: normal;"><b>Description of Goods</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp; : &nbsp;'.$invoice[0]['description_goods'].'</span></th>
+      <td style="border: none; font-weight: normal; line-height: 20px;"><b>Description of Goods</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp; : &nbsp;'.$invoice[0]['description_goods'].'</span></td>
 
       </tr>
     </table>
 
     <br> <br>
-    <table>
+     <table>
       <tr class="table_view">
         <th class="data_view">S.NO</th>
         <th class="data_view">Product Name</th>
@@ -324,32 +331,47 @@ if(1==1)
         <th class="data_view">Quantity / Sq ft.</th>
         <th class="data_view">Rate</th>
         <th class="data_view">Total</th>
-      </tr>
-      <tr>';
+      </tr>';
         if ($product_info) {
-                               $count=1;
-                                   for($i=0;$i<sizeof($product_info);$i++){
+        $count=1;
+        for($i=0;$i<sizeof($product_info);$i++){
 
-      $content .='<td class="data_view">'.$count.'</td>
+      $content .='<tr>
+      <td class="data_view">'.$count.'</td>
           <td class="data_view">'.$product_info[$i]['product_name'].'</td>
         <td class="data_view">'.$product_info[$i]['p_quantity'].'</td>
         <td class="data_view">'.$product_info[$i]['quantity'].'</td>
         <td class="data_view">'.$currency[0]['currency'].' '.$product_info[$i]['rate'].'</td>
-        <td class="data_view">'.$currency[0]['currency'].' '.$total=$product_info[$i]['quantity']*$product_info[$i]['rate'].'.00</td></tr>';
+        <td class="data_view">'.$currency[0]['currency'].' '.$product_info[$i]['total_amount'].'.00</td></tr>';
         $count++;
       }
     }
       $content .='<tr>
         <td colspan="5" style="text-align: right">Total:</td>
-        <td class="data_view">'.$currency[0]['currency'].''.$product_info[0]['total_amount'].'</td>
+        <td class="data_view">'.$currency[0]['currency'].''.$invoice[0]['total'].'</td>
       </tr>
       <tr>
-        <td colspan="5" style="text-align: right">Tax:</td>
-        <td class="data_view">'.$currency[0]['currency'].' '.$customer_info[0]['tax_details'].'</td>
+        <td colspan="5" style="text-align:right;">Tax:&nbsp;('.$tax_des.'</td>
+        <td class="data_view">'.$currency[0]['currency'].''.$tax_amt.'</td>
       </tr>
       <tr>
         <td colspan="5" style="text-align: right">Grand Total:</td>
-        <td class="data_view">'.$currency[0]['currency'].''.$product_info[0]['total_amount'].'</td>
+        <td class="data_view">'.$currency[0]['currency'].''.$invoice[0]['gtotal'].'</td>
+      </tr>
+    </table>
+     <br>
+    <h3 class="heading_view">Account Details/Additional Information : <span style="font-weight: normal;">'.$invoice[0]['ac_details'].'</span></h3>
+    <h3 class="heading_view">Remarks/Conditions : <span style="font-weight: normal;">'.$invoice[0]['remarks'].'</span></h3>';
+
+  } elseif($template == 1) {
+    
+    $content .= ' <table>
+      <tr class="header_view">
+        <th style="border: none">
+          <img src="../../assets/'.$company_info[0]['logo'].'" width="100px" />
+        </th>
+        <th style="border: none; color: white">'.$company_info[0]['company_name'].'</th>
+        <th style="border: none; text-align: right; color: white">'.$company_info[0]['address'].'</th>
       </tr>
     </table>
      <br>

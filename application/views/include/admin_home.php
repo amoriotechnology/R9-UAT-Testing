@@ -149,7 +149,10 @@ a{
         ?>
         <!-- First Counter -->
         <div class="row">
+<?php  $base_url= base_url() ;
+ $this->session->set_userdata("base",$base_url);
 
+?>
         <div class="cards">
 <div style="<?php if($sale_setting=='disable'){ echo "display: none;"; }else{ echo "display: block;"; } ?>" >
                     <div class="card-single col">

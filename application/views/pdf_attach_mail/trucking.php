@@ -24,6 +24,11 @@ if(1==1)
 	$pdf->SetFont('helvetica', '', 12);  
 	$pdf->AddPage(); //default A4
 	//$pdf->AddPage('P','A5'); //when you require custome page size 
+
+  $myArray = explode('(',$customer_info[0]['tax']); 
+ // print_r($myArray); die();
+ $tax_amt=$myArray[0];
+ $tax_des=$myArray[1];
 	
 	$content = ''; 
 
@@ -45,7 +50,7 @@ if(1==1)
       th {
         border: 1px solid #dddddd;
         text-align: left;
-        padding: 35px;
+        padding: 10px;
       }
       .table_view {
         border: 1px solid #111;
@@ -78,36 +83,35 @@ if(1==1)
   
     $content .= '<table>
       <tr class="header_view">
-        <th style="border: none">
+        <td style="border: none">
           <img src="../../assets/'.$company_info[0]['logo'].'" width="100px" />
-        </th>
-        <th style="border: none; color: white">'.$company_info[0]['company_name'].'</th>
-        <th style="border: none; text-align: right; color: white">'.$company_info[0]['address'].'</th>
+        </td>
+        <td style="border: none; color: white">'.$company_info[0]['company_name'].'</td>
+        <td style="border: none; text-align: right; color: white">'.$company_info[0]['address'].'</td>
       </tr>
     </table>
     <br><br>
 
     <table>
       <tr>
-      <th style="border: none; font-weight: normal; "><b>Invoice No</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp;: &nbsp;'.$sale_trucking[0]['trucking_id'].'</span></th>
+      <td style="border: none; font-weight: normal; line-height: 20px;"><b>Invoice No</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp;: &nbsp;'.$sale_trucking[0]['trucking_id'].'</span></td>
 
-      <th style="border: none; font-weight: normal; "><b>Invoice Date</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp;: &nbsp;'.$sale_trucking[0]['invoice_date'].'</span></th>
+      <td style="border: none; font-weight: normal; line-height: 20px;"><b>Invoice Date</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp;: &nbsp;'.$sale_trucking[0]['invoice_date'].'</span></td>
       </tr>
-      <br>
+      
 
       <tr>
 
-      <th style="border: none; font-weight: normal; "><b>Bill To</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp;: &nbsp;'.$customer_info[0]['customer_name'].'</span></th>
+      <td style="border: none; font-weight: normal; line-height: 20px;"><b>Bill To</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp;: &nbsp;'.$customer_info[0]['customer_name'].'</span></td>
 
-      <th style="border: none; font-weight: normal; "><b>Shipping Company</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp;: &nbsp;'.$company_info[0]['company_name'].'</span></th>
+      <td style="border: none; font-weight: normal; "><b>Shipping Company</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp;: &nbsp;'.$company_info[0]['company_name'].'</span></td>
 
       </tr>
-      <br>
-
+     
       <tr>
-      <th style="border: none; font-weight: normal; "><b>Container / <br> Goods pickup date</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp;: &nbsp;'.$sale_trucking[0]['container_pickup_date'].'</span></th>
+      <td style="border: none; font-weight: normal; line-height: 20px;"><b>Container / <br> Goods pickup date</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp;: &nbsp;'.$sale_trucking[0]['container_pickup_date'].'</span></td>
 
-       <th style="border: none; font-weight: normal; "><b>Delivery Date</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp;: &nbsp;'.$sale_trucking[0]['delivery_date'].'</span></th>
+       <td style="border: none; font-weight: normal; line-height: 20px;"><b>Delivery Date</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp;: &nbsp;'.$sale_trucking[0]['delivery_date'].'</span></td>
 
       </tr>
     </table>
@@ -121,14 +125,14 @@ if(1==1)
         <th style="color: #fff; text-align: center">Rate</th>
         <th style="color: #fff; text-align: center">Pro no/Reference</th>
         <th style="color: #fff; text-align: center">Total</th>
-      </tr>
-      <tr>';
+      </tr>';
 
       if ($sale_trucking_details) {
         $count=1;
         for($i=0;$i<sizeof($sale_trucking_details);$i++){
 
-        $content .='<td style="text-align: center">'.$count.'</td>
+        $content .='<tr>
+        <td style="text-align: center">'.$count.'</td>
         <td style="text-align: center">'.$sale_trucking_details[$i]['trucking_date'].'</td>
         <td style="text-align: center">'.$sale_trucking_details[$i]['qty'].'</td>
         <td style="text-align: center">'.$sale_trucking_details[$i]['description'].'</td>
@@ -139,7 +143,16 @@ if(1==1)
         $count++;
         }
       }
-       $content .='<tr>
+       $content .='
+       <tr>
+        <td colspan="6" style="text-align: right">Total:</td>
+        <td style="text-align: center">'.$currency[0]['currency'].' '.$customer_info[0]['total_amt'].'</td>
+      </tr>
+       <tr>
+        <td colspan="6" style="text-align:right;">Tax:&nbsp;('.$tax_des.'</td>
+        <td style="text-align: center">'.$currency[0]['currency'].''.$tax_amt.'</td>
+      </tr>
+       <tr>
         <td colspan="6" style="text-align: right">Total:</td>
         <td style="text-align: center">'.$currency[0]['currency'].' '.$sale_trucking[0]['grand_total_amount'].'</td>
       </tr>
@@ -152,36 +165,36 @@ if(1==1)
 
   $content .= '<table>
       <tr class="header_view">
-        <th style="border: none">
+        <td style="border: none">
           <img src="../../assets/'.$company_info[0]['logo'].'" width="100px" />
-        </th>
-        <th style="border: none; color: white">'.$company_info[0]['company_name'].'</th>
-        <th style="border: none; text-align: right; color: white">'.$company_info[0]['address'].'</th>
+        </td>
+        <td style="border: none; color: white">'.$company_info[0]['company_name'].'</td>
+        <td style="border: none; text-align: right; color: white">'.$company_info[0]['address'].'</td>
       </tr>
     </table>
     <br><br>
 
-    <table>
+        <table>
       <tr>
-      <th style="border: none; font-weight: normal; "><b>Invoice No</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp;: &nbsp;'.$sale_trucking[0]['trucking_id'].'</span></th>
+      <td style="border: none; font-weight: normal; line-height: 20px;"><b>Invoice No</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp;: &nbsp;'.$sale_trucking[0]['trucking_id'].'</span></td>
 
-      <th style="border: none; font-weight: normal; "><b>Invoice Date</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp;: &nbsp;'.$sale_trucking[0]['invoice_date'].'</span></th>
+      <td style="border: none; font-weight: normal; line-height: 20px;"><b>Invoice Date</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp;: &nbsp;'.$sale_trucking[0]['invoice_date'].'</span></td>
       </tr>
-      <br>
+      
 
       <tr>
 
-      <th style="border: none; font-weight: normal; "><b>Bill To</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp;: &nbsp;'.$customer_info[0]['customer_name'].'</span></th>
+      <td style="border: none; font-weight: normal; line-height: 20px;"><b>Bill To</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp;: &nbsp;'.$customer_info[0]['customer_name'].'</span></td>
 
-      <th style="border: none; font-weight: normal; "><b>Shipping Company</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp;: &nbsp;'.$company_info[0]['company_name'].'</span></th>
+      <td style="border: none; font-weight: normal; "><b>Shipping Company</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp;: &nbsp;'.$company_info[0]['company_name'].'</span></td>
 
       </tr>
-      <br>
+     
 
       <tr>
-      <th style="border: none; font-weight: normal; "><b>Container / <br> Goods pickup date</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp;: &nbsp;'.$sale_trucking[0]['container_pickup_date'].'</span></th>
+      <td style="border: none; font-weight: normal; line-height: 20px;"><b>Container / <br> Goods pickup date</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp;: &nbsp;'.$sale_trucking[0]['container_pickup_date'].'</span></td>
 
-       <th style="border: none; font-weight: normal; "><b>Delivery Date</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp;: &nbsp;'.$sale_trucking[0]['delivery_date'].'</span></th>
+       <td style="border: none; font-weight: normal; line-height: 20px;"><b>Delivery Date</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp;: &nbsp;'.$sale_trucking[0]['delivery_date'].'</span></td>
 
       </tr>
     </table>
@@ -195,14 +208,14 @@ if(1==1)
         <th style="color: #fff; text-align: center">Rate</th>
         <th style="color: #fff; text-align: center">Pro no/Reference</th>
         <th style="color: #fff; text-align: center">Total</th>
-      </tr>
-      <tr>';
+      </tr>';
 
       if ($sale_trucking_details) {
         $count=1;
         for($i=0;$i<sizeof($sale_trucking_details);$i++){
 
-        $content .='<td style="text-align: center">'.$count.'</td>
+        $content .='<tr>
+        <td style="text-align: center">'.$count.'</td>
         <td style="text-align: center">'.$sale_trucking_details[$i]['trucking_date'].'</td>
         <td style="text-align: center">'.$sale_trucking_details[$i]['qty'].'</td>
         <td style="text-align: center">'.$sale_trucking_details[$i]['description'].'</td>
@@ -213,7 +226,16 @@ if(1==1)
         $count++;
         }
       }
-       $content .='<tr>
+       $content .='
+       <tr>
+        <td colspan="6" style="text-align: right">Total:</td>
+        <td style="text-align: center">'.$currency[0]['currency'].' '.$customer_info[0]['total_amt'].'</td>
+      </tr>
+       <tr>
+        <td colspan="6" style="text-align:right;">Tax:&nbsp;('.$tax_des.'</td>
+        <td style="text-align: center">'.$currency[0]['currency'].''.$tax_amt.'</td>
+      </tr>
+      <tr>
         <td colspan="6" style="text-align: right">Total:</td>
         <td style="text-align: center">'.$currency[0]['currency'].' '.$sale_trucking[0]['grand_total_amount'].'</td>
       </tr>
@@ -225,36 +247,36 @@ if(1==1)
    
    $content .= '<table>
       <tr class="header_view">
-        <th style="border: none">
+        <td style="border: none">
           <img src="../../assets/'.$company_info[0]['logo'].'" width="100px" />
-        </th>
-        <th style="border: none; color: white">'.$company_info[0]['company_name'].'</th>
-        <th style="border: none; text-align: right; color: white">'.$company_info[0]['address'].'</th>
+        </td>
+        <td style="border: none; color: white">'.$company_info[0]['company_name'].'</td>
+        <td style="border: none; text-align: right; color: white">'.$company_info[0]['address'].'</td>
       </tr>
     </table>
     <br><br>
 
-    <table>
+            <table>
       <tr>
-      <th style="border: none; font-weight: normal; "><b>Invoice No</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp;: &nbsp;'.$sale_trucking[0]['trucking_id'].'</span></th>
+      <td style="border: none; font-weight: normal; line-height: 20px;"><b>Invoice No</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp;: &nbsp;'.$sale_trucking[0]['trucking_id'].'</span></td>
 
-      <th style="border: none; font-weight: normal; "><b>Invoice Date</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp;: &nbsp;'.$sale_trucking[0]['invoice_date'].'</span></th>
+      <td style="border: none; font-weight: normal; line-height: 20px;"><b>Invoice Date</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp;: &nbsp;'.$sale_trucking[0]['invoice_date'].'</span></td>
       </tr>
-      <br>
+      
 
       <tr>
 
-      <th style="border: none; font-weight: normal; "><b>Bill To</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp;: &nbsp;'.$customer_info[0]['customer_name'].'</span></th>
+      <td style="border: none; font-weight: normal; line-height: 20px;"><b>Bill To</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp;: &nbsp;'.$customer_info[0]['customer_name'].'</span></td>
 
-      <th style="border: none; font-weight: normal; "><b>Shipping Company</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp;: &nbsp;'.$company_info[0]['company_name'].'</span></th>
+      <td style="border: none; font-weight: normal; "><b>Shipping Company</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp;: &nbsp;'.$company_info[0]['company_name'].'</span></td>
 
       </tr>
-      <br>
+     
 
       <tr>
-      <th style="border: none; font-weight: normal; "><b>Container / <br> Goods pickup date</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp;: &nbsp;'.$sale_trucking[0]['container_pickup_date'].'</span></th>
+      <td style="border: none; font-weight: normal; line-height: 20px;"><b>Container / <br> Goods pickup date</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp;: &nbsp;'.$sale_trucking[0]['container_pickup_date'].'</span></td>
 
-       <th style="border: none; font-weight: normal; "><b>Delivery Date</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp;: &nbsp;'.$sale_trucking[0]['delivery_date'].'</span></th>
+       <td style="border: none; font-weight: normal; line-height: 20px;"><b>Delivery Date</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp;: &nbsp;'.$sale_trucking[0]['delivery_date'].'</span></td>
 
       </tr>
     </table>
@@ -268,26 +290,34 @@ if(1==1)
         <th style="color: #fff; text-align: center">Rate</th>
         <th style="color: #fff; text-align: center">Pro no/Reference</th>
         <th style="color: #fff; text-align: center">Total</th>
-      </tr>
-      <tr>';
+      </tr>';
 
       if ($sale_trucking_details) {
         $count=1;
         for($i=0;$i<sizeof($sale_trucking_details);$i++){
 
-        $content .='<td style="text-align: center">'.$count.'</td>
+        $content .='<tr>
+        <td style="text-align: center">'.$count.'</td>
         <td style="text-align: center">'.$sale_trucking_details[$i]['trucking_date'].'</td>
         <td style="text-align: center">'.$sale_trucking_details[$i]['qty'].'</td>
         <td style="text-align: center">'.$sale_trucking_details[$i]['description'].'</td>
         <td style="text-align: center">'.$currency[0]['currency'].' '.$sale_trucking_details[$i]['rate'].'</td>
         <td style="text-align: center">'.$sale_trucking_details[$i]['pro_no_reference'].'</td>
-        <td style="text-align: center">'.$currency[0]['currency'].' '.$total=$sale_trucking_details[$i]['qty']*$sale_trucking_details[$i]['rate'].'.00</td></tr>';
+        <td style="text-align: center">'.$currency[0]['currency'].' '.$sale_trucking_details[$i]['total'].'.00</td></tr>';
 
         $count++;
         }
       }
-       $content .='<tr>
+       $content .='
+        <tr>
         <td colspan="6" style="text-align: right">Total:</td>
+        <td style="text-align: center">'.$currency[0]['currency'].' '.$customer_info[0]['total_amt'].'</td>
+       <tr>
+        <td colspan="6" style="text-align:right;">Tax:&nbsp;('.$tax_des.'</td>
+        <td style="text-align: center">'.$currency[0]['currency'].''.$tax_amt.'</td>
+      </tr>
+      <tr>
+        <td colspan="6" style="text-align: right">Grand Total:</td>
         <td style="text-align: center">'.$currency[0]['currency'].' '.$sale_trucking[0]['grand_total_amount'].'</td>
       </tr>
     </table>

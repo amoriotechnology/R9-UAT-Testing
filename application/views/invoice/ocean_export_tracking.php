@@ -19,7 +19,7 @@
         </div>
         <div class="header-title">
             <h1>Ocean Export Tracking</h1>
-            <small>Generate New Ocean Export Tracking</small>
+            <small>Generate New Ocean Export Tracking </small>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="pe-7s-home"></i> <?php echo display('home') ?></a></li>
                 <li><a href="#">Ocean Export Tracking</a></li>
@@ -723,6 +723,20 @@ console.log(link);
       e.preventDefault();
 
 });  
+
+$('#email_btn').on('click', function (e) {
+var link= $('#invoice_hdn').val();
+console.log(link);
+ var popout = window.open("<?php  echo base_url(); ?>Cinvoice/ocean_with_attachment_cus/"+link);
+ 
+    window.setTimeout(function(){
+         popout.close();
+      
+      }, 2500);
+      e.preventDefault();
+
+});
+
 $('#add_purchase').on('click', function (e) {
     
     $('#myModal1').modal('show');
