@@ -64,6 +64,7 @@
                         <th class="text-center text-white">Product</th>
                         <th class="text-center text-white">Description</th>
                         <th class="text-center text-white">Quantity</th>
+                        <th class="text-center text-white">Unit</th>
                         <th class="text-center text-white">Rate</th>
                         <th class="text-center text-white">Total</th>
                     </tr>
@@ -78,13 +79,26 @@
                        <td style="font-size: 16px;"><?php echo $purchase_all_data[$i]['product_name']; ?></td>
                        <td style="font-size: 16px;"><?php echo $purchase_all_data[$i]['description']; ?></td>
                        <td style="font-size: 16px;"><?php echo $purchase_all_data[$i]['quantity']; ?></td>
+                       <td style="font-size: 16px;"><?php echo $purchase_all_data[$i]['slab']; ?></td>
                        <td style="font-size: 16px;"><?php echo $purchase_all_data[$i]['rate']; ?></td>
                        <td style="font-size: 16px;"><?php  echo $currency." " ; ?><?php echo $purchase_all_data[$i]['total_amount']; ?></td>
                     </tr>
                     <?php $count++;}}  ?>
                     <tr>
-                        <td colspan="5" style="text-align:right;font-weight:bold;">Overall Total:</td>
+                        <td colspan="6" style="text-align:right;font-weight:bold;">Overall Total</td>
                         <td style="font-size: 16px;"><?php  echo $currency." " ; ?><?php echo $purchase_all_data[0]['grand_total_amount']; ?></td>
+                    </tr>
+                    <tr>
+                        <td colspan="6" style="text-align:right;font-weight:bold;">Grand Total(Preferred Currency)</td>
+                        <td style="font-size: 16px;"><?php echo "" ?>$<?php echo $purchase_all_data[0]['gtotal_preferred_currency']; ?></td>
+                    </tr>
+                    <tr>
+                        <td colspan="6" style="text-align:right;font-weight:bold;">Amount Paid</td>
+                        <td style="font-size: 16px;"><?php echo "" ?>$<?php echo $purchase_all_data[0]['paid_amount']; ?></td>
+                    </tr>
+                    <tr>
+                        <td colspan="6" style="text-align:right;font-weight:bold;">Balance</td>
+                        <td style="font-size: 16px;"><?php echo "" ?>$<?php echo $purchase_all_data[0]['balance']; ?></td>
                     </tr>
                 </tbody>
             </table>
@@ -142,6 +156,7 @@ elseif($template==1)
                         <th class="text-center text-white">Product</th>
                         <th class="text-center text-white">Description</th>
                         <th class="text-center text-white">Quantity</th>
+                        <th class="text-center text-white">Unit</th>
                         <th class="text-center text-white">Rate</th>
                         <th class="text-center text-white">Total</th>
                     </tr>
@@ -156,13 +171,26 @@ elseif($template==1)
                        <td style="font-size: 16px;"><?php echo $purchase_all_data[$i]['product_name']; ?></td>
                        <td style="font-size: 16px;"><?php echo $purchase_all_data[$i]['description']; ?></td>
                        <td style="font-size: 16px;"><?php echo $purchase_all_data[$i]['quantity']; ?></td>
+                       <td style="font-size: 16px;"><?php echo $purchase_all_data[$i]['slab']; ?></td>
                        <td style="font-size: 16px;"><?php echo $purchase_all_data[$i]['rate']; ?></td>
                        <td style="font-size: 16px;"><?php  echo $currency." " ; ?><?php echo $purchase_all_data[$i]['total_amount']; ?></td>
                     </tr>
                     <?php $count++;}}  ?>
                     <tr>
-                        <td colspan="5" style="text-align:right;font-weight:bold;">Overall Total:</td>
+                        <td colspan="6" style="text-align:right;font-weight:bold;">Overall Total</td>
                         <td style="font-size: 16px;"><?php  echo $currency." " ; ?><?php echo $purchase_all_data[0]['grand_total_amount']; ?></td>
+                    </tr>
+                    <tr>
+                        <td colspan="6" style="text-align:right;font-weight:bold;">Grand Total(Preferred Currency)</td>
+                        <td style="font-size: 16px;"><?php echo "" ?>$<?php echo $purchase_all_data[0]['gtotal_preferred_currency']; ?></td>
+                    </tr>
+                    <tr>
+                        <td colspan="6" style="text-align:right;font-weight:bold;">Amount Paid</td>
+                        <td style="font-size: 16px;"><?php echo "" ?>$<?php echo $purchase_all_data[0]['paid_amount']; ?></td>
+                    </tr>
+                    <tr>
+                        <td colspan="6" style="text-align:right;font-weight:bold;">Balance</td>
+                        <td style="font-size: 16px;"><?php echo "" ?>$<?php echo $purchase_all_data[0]['balance']; ?></td>
                     </tr>
                 </tbody>
             </table>
@@ -227,6 +255,7 @@ elseif($template==3)
                         <th class="text-center text-white">Product</th>
                         <th class="text-center text-white">Description</th>
                         <th class="text-center text-white">Quantity</th>
+                        <th class="text-center text-white">Unit</th>
                         <th class="text-center text-white">Rate</th>
                         <th class="text-center text-white">Total</th>
                     </tr>
@@ -241,13 +270,26 @@ elseif($template==3)
                        <td style="font-size: 16px;"><?php echo $purchase_all_data[$i]['product_name']; ?></td>
                        <td style="font-size: 16px;"><?php echo $purchase_all_data[$i]['description']; ?></td>
                        <td style="font-size: 16px;"><?php echo $purchase_all_data[$i]['quantity']; ?></td>
+                       <td style="font-size: 16px;"><?php echo $purchase_all_data[$i]['slab']; ?></td>
                        <td style="font-size: 16px;"><?php echo $purchase_all_data[$i]['rate']; ?></td>
                        <td style="font-size: 16px;"><?php  echo $currency." " ; ?><?php echo $purchase_all_data[$i]['total_amount']; ?></td>
                     </tr>
                     <?php $count++;}}  ?>
                     <tr>
-                        <td colspan="5" style="text-align:right;font-weight:bold;">Overall Total:</td>
+                        <td colspan="6" style="text-align:right;font-weight:bold;">Overall Total</td>
                         <td style="font-size: 16px;"><?php  echo $currency." " ; ?><?php echo $purchase_all_data[0]['grand_total_amount']; ?></td>
+                    </tr>
+                    <tr>
+                        <td colspan="6" style="text-align:right;font-weight:bold;">Grand Total(Preferred Currency)</td>
+                        <td style="font-size: 16px;"><?php echo "" ?>$<?php echo $purchase_all_data[0]['customer_gtotal']; ?></td>
+                    </tr>
+                    <tr>
+                        <td colspan="6" style="text-align:right;font-weight:bold;">Amount Paid</td>
+                        <td style="font-size: 16px;"><?php echo "" ?>$<?php echo $purchase_all_data[0]['amt_paid']; ?></td>
+                    </tr>
+                    <tr>
+                        <td colspan="6" style="text-align:right;font-weight:bold;">Balance</td>
+                        <td style="font-size: 16px;"><?php echo "" ?>$<?php echo $purchase_all_data[0]['balance']; ?></td>
                     </tr>
                 </tbody>
             </table>

@@ -25,27 +25,7 @@ class Csettings extends CI_Controller {
     #================Add new bank==============#
 
     public function add_new_bank() {
-
-        if ($_FILES['signature_pic']['name']) {
-
-            $config['upload_path'] = './my-assets/image/logo/';
-            $config['allowed_types'] = 'gif|jpg|png|jpeg|JPEG|GIF|JPG|PNG';
-            $config['max_size'] = "*";
-            $config['max_width'] = "*";
-            $config['max_height'] = "*";
-            $config['encrypt_name'] = TRUE;
-
-            $this->load->library('upload', $config);
-            if (!$this->upload->do_upload('signature_pic')) {
-                $error = array('error' => $this->upload->display_errors());
-                $this->session->set_userdata(array('error_message' => $this->upload->display_errors()));
-                redirect(base_url('Csettings/index'));
-            } else {
-                $image = $this->upload->data();
-                $signature_pic = base_url() . "my-assets/image/logo/" . $image['file_name'];
-            }
-        }
-        $coa = $this->Settings->headcode();
+   $coa = $this->Settings->headcode();
            if($coa->HeadCode!=NULL){
                 $headcode=$coa->HeadCode+1;
            }else{
@@ -61,9 +41,11 @@ class Csettings extends CI_Controller {
             'ac_name'   => $this->input->post('ac_name',TRUE),
             'ac_number' => $this->input->post('ac_no',TRUE),
             'branch'    => $this->input->post('branch',TRUE),
-            'signature_pic' => (!empty($signature_pic) ? $signature_pic : null),
-            'status'    => 1
+           'country' => $this->input->post('country',TRUE),
+            'currency'    => $this->input->post('currency1',TRUE),
+            'status'   => 1
         );
+
             $bank_coa = [
              'HeadCode'         => $headcode,
              'HeadName'         => $this->input->post('bank_name',TRUE),
@@ -82,11 +64,12 @@ class Csettings extends CI_Controller {
         $bankinfo = $this->Settings->bank_entry($data);
 
             $this->db->insert('acc_coa',$bank_coa);
-             $this->session->set_userdata(array('message' => display('successfully_added')));
-        redirect(base_url('Csettings/bank_list'));
-        exit;
+
+        
+     echo json_encode($bankinfo);
        
     }
+
 
     public function bank_transaction() {
         $bank_list = $this->Settings->get_bank_list();

@@ -932,11 +932,19 @@ class Llpurchase {
 
 
         $currency_details = $CI->Web_settings->retrieve_setting_editdata();
-
+        $curn_info_default = $CI->db->select('*')->from('currency_tbl')->where('icon',$currency_details[0]['currency'])->get()->result_array();
+        $taxfield = $CI->db->select('tax_name,default_value')->from('tax_settings')->get()->result_array();
+        $taxfield1 = $CI->db->select('tax_id,tax')
+        ->from('tax_information')
+        ->get()
+        ->result_array();
+        $bank_list      = $CI->Web_settings->bank_list();
         $data = array(
-
+            'curn_info_default' =>$curn_info_default[0]['currency_name'],
+            'currency'  =>$currency_details[0]['currency'],
             'title'         => 'Edit Trucking Invoice',
-
+            'taxes'         => $taxfield,
+            'tax'         => $taxfield1,
             'trucking_id'   => $purchase_detail[0]['trucking_id'],
 
             'invoice_no'     => $purchase_detail[0]['invoice_no'],
@@ -944,7 +952,7 @@ class Llpurchase {
             'customer_name' => $purchase_detail[0]['customer_name'],
 
             'customer_id'   => $purchase_detail[0]['customer_id'],
-
+            'bank_list'       => $bank_list,
             'bill_to'   => $purchase_detail[0]['bill_to'],
             'container_no'   => $purchase_detail[0]['container_no'],
 
@@ -1222,7 +1230,7 @@ class Llpurchase {
         }
         $currency_details = $CI->Web_settings->retrieve_setting_editdata();
         $curn_info_default = $CI->db->select('*')->from('currency_tbl')->where('icon',$currency_details[0]['currency'])->get()->result_array();
-      
+        $shipment_currency = $CI->db->select('*')->from('supplier_information')->where('supplier_name',$purchase_detail[0]['shipment_company'])->get()->result_array();
         $CII = & get_instance();
         $CC = & get_instance();
         $company_info = $CI->Ppurchases->retrieve_company();
@@ -1238,6 +1246,7 @@ class Llpurchase {
         // print_r($datacontent); die();
      $data = array(
    //     'value'=>$value,
+   'shipment_currency'  => $shipment_currency[0]['currency_type'],
         'curn_info_default' =>$curn_info_default[0]['currency_name'],
         'currency'  =>$currency_details[0]['currency'],
             'header'=> $dataw[0]['header'],

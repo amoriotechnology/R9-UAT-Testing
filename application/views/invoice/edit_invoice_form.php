@@ -1,8 +1,8 @@
  <!-- Invoice js -->
 
  <script src="<?php echo base_url() ?>my-assets/js/admin_js/invoice.js" type="text/javascript"></script>
+ <script src="<?php echo base_url() ?>my-assets/js/countrypicker.js" type="text/javascript"></script>
 
-<?php error_reporting(1); ?>
 
 <!-- Customer type change by javascript end -->
 
@@ -127,10 +127,18 @@
                     <div class="panel-heading">
 
                         <div class="panel-title">
-
+                        <div class="row" style="height: 30px;">
+                        <div class="col-sm-6" >
                             <h4><?php echo display('new_invoice') ?></h4>
+                            </div>  <div class="col-sm-6" >
+                            <form id="histroy" method="post" >
+<input type="hidden" name="<?php echo $this->security->get_csrf_token_name();?>" value="<?php echo $this->security->get_csrf_hash();?>">
+<input type="hidden"  value="<?php echo $all_invoice[0]['payment_id']; ?>" name="payment_id" class="payment_id"/>
+<input type="submit" id="payment_history" name="payment_history" class="btn btn-primary" value="Payment_histroy" style="float:right;margin-bottom:30px;"/>
+                                            </form>
+                                            </div>
+                        </div>
 
-                           
 
                         </div>
 
@@ -436,7 +444,7 @@
                             </div>
 
 
-
+                          
 
                         <div class="col-sm-5" id="bank_div">
 
@@ -534,7 +542,7 @@ input[type=number]::-webkit-outer-spin-button {
 </td>
 </tr>
 </table>
-
+<input type="hidden"  value="<?php echo $all_invoice[0]['payment_id']; ?>" name="payment_id" class="payment_id"/>
 
 <table class="table table-bordered table-hover" id="normalinvoice">
                                 <thead>
@@ -551,7 +559,7 @@ input[type=number]::-webkit-outer-spin-button {
                                 <style>
         input {
     border: none;
-    background-color: #eee;
+    
  }
 textarea:focus, input:focus{
    
@@ -563,11 +571,13 @@ textarea:focus, input:focus{
 </style>
 
                                 <tbody id="addPurchaseItem">
-                                {all_invoice}
+                              
+                                <?php $cnt=1;
+                                 foreach($all_invoice as $pf){ ?>
                                     <tr>
                                         <td>
                                         <select name="prodt[]" id="prodt_1" class="form-control product_name" onchange="available_quantity(1);">
-                                        <option value="{product_name}" selected>{product_name}</option>
+                                        <option value="<?php echo $pf['product_name'];  ?>" selected><?php echo $pf['product_name'];  ?></option>
                                             <?php 
                                        
                                             foreach($product as $tx){?>
@@ -575,47 +585,59 @@ textarea:focus, input:focus{
                                                 <option value="<?php echo $tx['product_name'].'-'.$tx['product_model'];?>">  <?php echo $tx['product_name'].'-'.$tx['product_model'];  ?></option>
                                            <?php } ?>
                                         </select>
-                                        <input type='hidden' class='common_product autocomplete_hidden_value  product_id_1' value="{product_id}" name='product_id[]' id='SchoolHiddenId' />
+                                        <input type='hidden' class='common_product autocomplete_hidden_value  product_id_<?php echo $cnt;  ?>' value="<?php echo $pf['product_id']  ?>" name='product_id[]' id='SchoolHiddenId' />
                                         </td>
 
                                        <td class="wt">
-                                                <input type="text" id="available_quantity[]"  value="{in_stock}" name="available_quantity[]" class="form-control text-right available_quantity_1" placeholder="0.00" readonly/>
+                                                <input type="text" id="available_quantity[]"  value="<?php echo $pf['in_stock']  ?>"   name="available_quantity[]" class="form-control text-right available_quantity_<?php echo $cnt;  ?>" placeholder="0.00" readonly/>
                                             </td>
                                         
                                             <td class="text-right">
-                                                <input type="text" name="product_quantity[]" id="cartoon_1" required="" min="0" class="form-control text-right store_cal_1" onkeyup="total_amt(1);" placeholder="0.00" value="{quantity}"  tabindex="6"/>
+                                                <input type="text" name="product_quantity[]" id="cartoon_<?php echo $cnt;  ?>" required="" min="0" class="form-control text-right store_cal_<?php echo $cnt;  ?>" onkeyup="total_amt(<?php echo $cnt;  ?>);" onchange="total_amt(<?php echo $cnt;  ?>);" placeholder="0.00" value="<?php echo $pf['quantity']  ?>"   tabindex="6"/>
                                             </td>
                                             <td>
-                                            <span class="form-control" style="background-color: #eee;"><?php  echo $currency;  ?>
-                                                <input type="text" name="product_rate[]" required=""  id="product_rate_1" class="product_rate_1" placeholder="0.00" value="{rate}"  min="0" tabindex="7" readonly/>
-                                            </span> </td>
+                                            <table border="0">
+      <tr>
+        <td><?php  echo $currency." ";  ?></td>
+        <td>    <input type="text" name="product_rate[]" required=""  id="product_rate_<?php echo $cnt;  ?>" class="product_rate_<?php echo $cnt;  ?>" placeholder="0.00" value="<?php echo $pf['rate']  ?>"   min="0" tabindex="7" readonly/></td>
+     </tr>
+   </table>
+</td>
                                          
 
                                             <td style="text-align:left;">
-                                            <span class="form-control" style="    background-color: #eee;"><?php  echo $currency;  ?> 
-                                                <input class="total_price" type="text" name="total_price[]" id="total_price_1" value="{total_price}"  readonly="readonly" />
-                                                <input type="hidden" name="invoice_details_id[]" id="invoice_details_id" value="{invoice_details_id}"/>
-                                                </span></td>
+                                            <table border="0">
+      <tr>
+        <td><?php  echo $currency." ";  ?></td>
+        <td> <input class="total_price" type="text" name="total_price[]" id="total_price_<?php echo $cnt;  ?>" value="<?php echo $pf['total_price']  ?>"   readonly="readonly" />  </td>
+     </tr>
+   </table>
+       <input type="hidden" name="invoice_details_id[]" id="invoice_details_id" value="<?php echo $pf['invoice_details_id']  ?>"/>
+                                                </td>
 
 
                                             <td>
 
                                                
                                          
-                                                <button  class="btn btn-danger text-right red" type="button" value="<?php echo display('delete')?>" onclick="calculate();total_amt(1);deleteRow(this)" tabindex="8"><i class="fa fa-close"></i></button>
+                                                <button  class="btn btn-danger text-right red" type="button" value="<?php echo display('delete')?>" onclick="calculate();total_amt(<?php echo $cnt;  ?>);deleteRow(this)" tabindex="8"><i class="fa fa-close"></i></button>
                                             </td>
                                            
                                     </tr>
-                                    {/all_invoice}
+                                    <?php $cnt++; } ?>
                                 </tbody>
                                 <tfoot>
                                     <tr>
                                    
                                         <td style="text-align:right;" colspan="4"><b><?php echo display('total') ?>:</b></td>
                                         <td style="text-align:left;">
-                                            <span class="form-control" style="background-color: #eee;"><?php   echo $currency;  ?>
-                                            <input type="text" id="Total" class="text-right" name="total" value="<?php echo $all_invoice[0]['total_amount']; ?>"  readonly="readonly" />
-                                            </span></td>
+                                        <table border="0">
+      <tr>
+        <td><?php  echo $currency." ";  ?></td>
+        <td>     <input type="text" id="Total" class="text-right" name="total"  value="<?php echo $all_invoice[0]['total_amount']; ?>" readonly="readonly" /></td>
+     </tr>
+   </table>
+                                           </td>
                                     
                                            
                                     </tr>
@@ -623,37 +645,80 @@ textarea:focus, input:focus{
                                    
                                    <td style="text-align:right;" colspan="4"><b>Tax Details :</b></td>
                                    <td style="text-align:left;">
-                                 <span class="form-control" style="background-color: #eee;"><?php echo $currency;  ?>
-                                       <input type="text" id="tax_details" class="text-right" value="<?php echo $all_invoice[0]['total_tax']; ?>" name="tax_details"  readonly="readonly" />
-                                       </span></td>
+                                   <table border="0">
+      <tr>
+        <td><?php  echo $currency." ";  ?></td>
+        <td>       <input type="text" id="tax_details" class="text-right" value="<?php echo $all_invoice[0]['total_tax']; ?>" name="tax_details"  readonly="readonly" /></td>
+     </tr>
+   </table>
+                               </td>
                                
                                       
                                </tr>
                                     <tr> <td style="text-align:right;" colspan="4"><b><?php echo "Grand Total" ?>:</b></td>
                                     <td>
-                                            <span class="form-control" style="background-color: #eee;"><?php  echo $currency;  ?>
-                                            <input type="text" id="gtotal"  name="gtotal" onchange="" value="<?php echo $all_invoice[0]['gtotal']; ?>" readonly="readonly" />
-                                            </span></td>
+                                    <table border="0">
+      <tr>
+        <td><?php  echo $currency." ";  ?></td>
+        <td>    <input type="text" id="gtotal"  name="gtotal" onchange="" value="<?php echo $all_invoice[0]['gtotal']; ?>"  readonly="readonly" /></td>
+     </tr>
+   </table></td>
                                         <td> <button type="button" id="add_invoice_item" class="btn btn-info" name="add-invoice-item" onclick="addInputField('addPurchaseItem');"  tabindex="9" ><i class="fa fa-plus"></i></button>
 
                                            
                                     </tr>
-                                    </tr>
+                                  
                                     <tr>
                                         
                                     
                                     
                                     <td style="text-align:right;"  colspan="4"><b><?php echo "Grand Total" ?>:</b><br/><b>(Preferred Currency)</b></td>
                                     <td>
-                                            <span class="form-control" style="background-color: #eee;" id="custospan"><input style="width:7%;font-weight:bold;" type="text" id="cus"  name="cus"  readonly="readonly" />
-                                            <input type="text" id="customer_gtotal"  name="customer_gtotal"  readonly="readonly" />
-                                            </span></td>
+                                    <table border="0">
+      <tr>
+        <td class="cus" name="cus"></td>
+        <td><input  type="text"  readonly id="customer_gtotal"  name="customer_gtotal" class="form-control" required   /></td>
+     </tr>
+   </table></td>
                                       
 
                                             <input type="hidden" id="final_gtotal"  name="final_gtotal" />
 
                                             <input type="hidden" name="baseUrl" class="baseUrl" value="<?php echo base_url();?>"/></td>
-                                    </tr>  
+                                    </tr> 
+                                    
+                                    <tr id="amt">
+                                   
+                                            <td style="text-align:right;"  colspan="4"><b><?php echo "Amount Paid" ?>:</b></td>
+                                          
+                                            <td>
+                                            <table border="0">
+      <tr>
+        <td class="cus" name="cus"></td>
+        <td><input  type="text"  readonly id="amount_paid"  name="amount_paid" value="<?php echo $all_invoice[0]['amt_paid']; ?>" class="form-control" required   /></td>
+     </tr>
+   </table>
+                                        
+                                            </td>
+                                            </tr> 
+                                            <tr id="bal">
+                                            <td style="text-align:right;"  colspan="4"><b><?php echo "Balance Amount " ?>:</b></td>
+                                            <td>
+                                            <table border="0">
+      <tr>
+        <td class="cus" name="cus"></td>
+        <td><input  type="text"  readonly id="balance"  value="<?php echo $all_invoice[0]['balance']; ?>" name="balance" class="form-control" required   /></td>
+     </tr>
+   </table>
+                                         
+                                            </td>
+                                            </tr> 
+                                            <tr style="border-right:none;border-left:none;border-bottom:none;border-top:none">
+                                               
+                                            <td colspan="6" style="text-align: end;">
+                                        <input type="submit" value="Make Payment" class="btn btn-primary btn-large" id="paypls"/>
+                                            </td>
+                                            </tr>
                                 </tfoot>
                             </table>
                         </div>
@@ -727,11 +792,11 @@ textarea:focus, input:focus{
                         </div>
 <div id='customer-data' style='color:red;'></div>
                                             </form>
-                              
+                                     
                     </div>
                     <input type="hidden" id="hdn"/>
-<input type="text" id="gtotal_dup"/>
-                  
+<input type="hidden" id="gtotal_dup"/>
+
 <div class="modal fade" id="myModal1" role="dialog" >
     <div class="modal-dialog">
     
@@ -777,7 +842,301 @@ textarea:focus, input:focus{
 	</div>
 
 </div>         
-                 
+<div class="modal fade" id="payment_modal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content" style="    margin-top: 190px;">
+        <div class="modal-header" style="">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">ADD PAYMENT</h4>
+        </div>
+        <div class="modal-body">
+          
+   
+<form id="add_payment_info"  method="post" >  
+            <div class="row">
+
+
+<div class="form-group row">
+
+        <label for="date" style="text-align:end;" class="col-sm-3 col-form-label">Payment Date <i class="text-danger">*</i></label>
+
+        <div class="col-sm-5">
+
+            <input class=" form-control" type="date"  name="payment_date" id="payment_date" required value="<?php echo html_escape($date); ?>" tabindex="4" />
+
+        </div>
+
+    </div>
+<input type="hidden" id="cutomer_name" name="cutomer_name"/>
+<input type="hidden"  value="<?php echo $all_invoice[0]['payment_id']; ?>"  name="payment_id"/>
+ <div class="form-group row">
+
+        <label for="billing_address" style="text-align:end;" class="col-sm-3 col-form-label">Reference No<i class="text-danger">*</i></label>
+
+        <div class="col-sm-5">
+        <input class=" form-control" type="text"  name="ref_no" id="ref_no" required   />
+</div>
+ </div> 
+    <div class="form-group row">
+      <label for="bank" style="text-align:end;" class="col-sm-3 col-form-label">Select Bank:<i class="text-danger">*</i></label>
+      <a data-toggle="modal" href="#add_bank_info" class="btn btn-primary">Add Bank</a>
+      <div class="col-sm-5">
+  <select name="bank" id="bank"  class="form-control bankpayment" >
+
+<option value="Axis Bank Ltd.">Axis Bank Ltd.</option>
+<option value="Bandhan Bank Ltd.">Bandhan Bank Ltd.</option>
+<option value="Bank of Baroda">Bank of Baroda</option>
+<option value="Bank of India">Bank of India</option>
+<option value="Bank of Maharashtra">Bank of Maharashtra</option>
+<option value="Canara Bank">Canara Bank</option>
+<option value="Central Bank of India">Central Bank of India</option>
+<option value="City Union Bank Ltd.">City Union Bank Ltd.</option>
+<option value="CSB Bank Ltd.">CSB Bank Ltd.</option>
+<option value="DCB Bank Ltd.">DCB Bank Ltd.</option>
+<option value="Dhanlaxmi Bank Ltd.">Dhanlaxmi Bank Ltd.</option>
+<option value="Federal Bank Ltd.">Federal Bank Ltd.</option>
+<option value="HDFC Bank Ltd">HDFC Bank Ltd</option>
+<option value="ICICI Bank Ltd.">ICICI Bank Ltd.</option>
+<option value="IDBI Bank Ltd.">IDBI Bank Ltd.</option>
+<option value="IDFC First Bank Ltd.">IDFC First Bank Ltd.</option>
+<option value="Indian Bank">Indian Bank</option>
+<option value="Indian Overseas Bank">Indian Overseas Bank</option>
+<option value="Induslnd Bank Ltd">Induslnd Bank Ltd</option>
+<option value="Jammu & Kashmir Bank Ltd.">Jammu & Kashmir Bank Ltd.</option>
+<option value="Karnataka Bank Ltd.">Karnataka Bank Ltd.</option>
+<option value="Karur Vysya Bank Ltd.">Karur Vysya Bank Ltd.</option>
+<option value="Kotak Mahindra Bank Ltd">Kotak Mahindra Bank Ltd</option>
+<option value="Nainital Bank Ltd.">Nainital Bank Ltd.</option>
+<option value="Punjab & Sind Bank">Punjab & Sind Bank</option>
+<option value="Punjab National Bank">Punjab National Bank</option>
+<option value="RBL Bank Ltd.">RBL Bank Ltd.</option>
+<option value="South Indian Bank Ltd.">South Indian Bank Ltd.</option>
+<option value="State Bank of India">State Bank of India</option>
+<option value="Tamilnad Mercantile Bank Ltd.">Tamilnad Mercantile Bank Ltd.</option>
+<option value="UCO Bank">UCO Bank</option>
+<option value="Union Bank of India">Union Bank of India</option>
+<option value="YES Bank Ltd.">YES Bank Ltd.</option>
+<?php foreach($bank_list as $b){ ?>
+  <option value="<?=$b['bank_name']; ?>"><?=$b['bank_name']; ?></option>
+<?php } ?>
+</select>
+</div>
+      </div>
+      <input type="hidden" name="<?php echo $this->security->get_csrf_token_name();?>" value="<?php echo $this->security->get_csrf_hash();?>">
+      <input class=" form-control" type="hidden"  readonly name="customer_name_modal" id="customer_name_modal" required   />    
+      <div class="form-group row">
+
+<label for="billing_address" style="text-align:end;" class="col-sm-3 col-form-label">Amount to be paid : </label>
+
+<div class="col-sm-5">
+<table border="0">
+      <tr>
+        <td class="cus" name="cus"></td>
+        <td><input  type="text"  readonly name="amount_to_pay" id="amount_to_pay" class="form-control" required   /></td>
+     </tr>
+   </table>
+
+
+</div>
+</div> 
+      <div class="form-group row" style="display:none;">
+
+<label for="billing_address" style="text-align:end;" class="col-sm-3 col-form-label">Amount Received : </label>
+
+<div class="col-sm-5">
+<table border="0">
+      <tr>
+        <td class="cus" name="cus"></td>
+        <td><input  type="text"  readonly name="amount_received" id="amount_received" class="form-control"required   /></td>
+     </tr>
+   </table>
+
+
+
+</div>
+</div> 
+<div class="form-group row">
+
+<label for="billing_address" style="text-align:end;" class="col-sm-3 col-form-label">Balance : </label>
+
+<div class="col-sm-5">
+
+<table border="0">
+      <tr>
+        <td class="cus" name="cus"></td>
+        <td><input  type="text"  style="border:none;" readonly name="balance_modal" id="balance_modal" class="form-control" required  /></td>
+     </tr>
+   </table>
+</div>
+</div> 
+<div class="form-group row">
+
+<label for="billing_address" style="text-align:end;" class="col-sm-3 col-form-label">Payment Amount: <i class="text-danger">*</i></label>
+
+<div class="col-sm-5">
+<table border="0">
+      <tr>
+        <td class="cus" name="cus"></td>
+        <td><input  type="text"   name="payment" id="payment_from_modal" class="form-control"required   /></td>
+     </tr>
+   </table>
+
+
+</div>
+</div>
+
+<div class="form-group row">
+
+<label for="billing_address" style="text-align:end;" class="col-sm-3 col-form-label">Additional Information : </label>
+
+<div class="col-sm-5">
+<input class=" form-control" type="text"  name="details" id="details"/>
+</div>
+</div> 
+<div class="form-group row">
+
+<label for="billing_address" style="text-align:end;" class="col-sm-3 col-form-label">Attachement : </label>
+
+<div class="col-sm-5">
+<input class=" form-control" type="file"  name="attachement" id="attachement" />
+</div>
+</div> 
+  </div>   </div>
+     <div class="modal-footer">
+     <div class="col-sm-8"></div>
+     <div class="col-sm-2"></div>
+     <div class="col-sm-2">
+     <input class=" form-control pull-left btn btn-primary" type="submit"  name="submit_pay" id="submit_pay"   required   />
+</div>
+     </div>
+   </div>
+   </form>
+ </div>
+</div>
+<div class="modal fade" id="add_bank_info">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                	<h4 class="modal-title">ADD BANK</h4>
+
+            </div>
+            <div class="container"></div>
+            <div class="modal-body">  <div id="customeMessage" class="alert hide"></div>
+
+
+<form id="add_bank"  method="post">  
+<div class="panel-body">
+
+<input type ="hidden" name="csrf_test_name" id="" value="<?php echo $this->security->get_csrf_hash();?>">
+
+  <div class="form-group row">
+
+      <label for="bank_name" class="col-sm-4 col-form-label"><?php echo display('bank_name') ?> <i class="text-danger">*</i></label>
+
+      <div class="col-sm-6">
+
+          <input type="text" class="form-control" name="bank_name" id="bank_name" required="" placeholder="<?php echo display('bank_name') ?>" tabindex="1"/>
+
+      </div>
+
+  </div>
+
+
+
+  <div class="form-group row">
+
+      <label for="ac_name" class="col-sm-4 col-form-label"><?php echo display('ac_name') ?> <i class="text-danger">*</i></label>
+
+      <div class="col-sm-6">
+
+          <input type="text" class="form-control" name="ac_name" id="ac_name" required="" placeholder="<?php echo display('ac_name') ?>" tabindex="2"/>
+
+      </div>
+
+  </div>
+
+  <input type="hidden" name="<?php echo $this->security->get_csrf_token_name();?>" value="<?php echo $this->security->get_csrf_hash();?>">
+                      
+
+  <div class="form-group row">
+
+      <label for="ac_no" class="col-sm-4 col-form-label"><?php echo display('ac_no') ?> <i class="text-danger">*</i></label>
+
+      <div class="col-sm-6">
+
+          <input type="text" class="form-control" name="ac_no" id="ac_no" required="" placeholder="<?php echo display('ac_no') ?>" tabindex="3"/>
+
+      </div>
+
+  </div>
+
+
+
+  <div class="form-group row">
+
+      <label for="branch" class="col-sm-4 col-form-label"><?php echo display('branch') ?> <i class="text-danger">*</i></label>
+
+      <div class="col-sm-6">
+
+          <input type="text" class="form-control" name="branch" id="branch" required="" placeholder="<?php echo display('branch') ?>" tabindex="4"/>
+
+      </div>
+
+  </div>
+
+  <div class="form-group row">
+  <label for="shipping_line" class="col-sm-4 col-form-label">Country
+                                        <i class="text-danger"></i>
+                                    </label>
+                                    <div class="col-sm-6">
+                                    <select class="selectpicker countrypicker form-control"  data-live-search="true" data-default="Select the Country"  name="country" id="country" style="width:100%"></select>
+                                 
+                                    </div>
+
+</div>
+<div class="form-group row">
+            <label for="previous_balance" class="col-sm-4 col-form-label"><?php echo "Currency" ?></label>
+            <div class="col-sm-6">
+            <select name="currency1" class="currency" id="currency1" style="width: 100%;">
+            <option id="im" value="select currency">Select Currency</option>
+    </select>
+<input type="hidden" name="" id="num" >
+<div class="right_box" style="display:none;">
+<select name="currency1" class="currency" id="currency2" style="width: 95%;"></select>
+<input type="hidden" name="" id="ans" disabled>
+</div>
+<small id="errorMSG" style="display:none;"></small>
+<br><br>
+</div>
+ </div>
+
+</div>
+
+
+
+  </div>
+
+
+
+  <div class="modal-footer">
+
+      
+
+      
+
+      
+      <input type="submit" id="addBank"  class="btn btn-primary" name="addBank" value="<?php echo display('save') ?>"/>
+     <!--  <input type="submit" class="btn btn-success" value="Submit"> -->
+
+  </div>
+
+</form>
+  </div>
+  </div>
+  </div>                
 
                 
 <script>
@@ -790,6 +1149,42 @@ $('#download').hide();
 $('#email_btn').hide();
 
 });
+function available_quantity (id) {
+$('.product_name').on('change', function (e) {
+    var name = 'available_quantity_'+ id;
+
+var amount = 'product_rate_'+ id;
+var pdt=$('#prodt_'+id).val();
+const myArray = pdt.split("-");
+var product_nam=myArray[0];
+var product_model=myArray[1];
+var data = {
+   amount:'product_rate_'+ id,
+   name:'available_quantity_'+ id,
+   product_nam:product_nam,
+   product_model:product_model
+};
+data[csrfName] = csrfHash;
+
+$.ajax({
+    type:'POST',
+    data: data, 
+ dataType:"json",
+    url:'<?php echo base_url();?>Cinvoice/availability',
+    success: function(result, statut) {
+        if(result.csrfName){
+         
+           csrfName = result.csrfName;
+           csrfHash = result.csrfHash;
+        }
+      $(".available_quantity_"+ id).val(result[0]['p_quantity']);
+      $("#product_rate_"+ id).val(result[0]['price']);
+      $(".product_id_"+ id).val(result[0]['product_id']);
+        console.log(result);
+    }
+});
+});
+}
 function discard(){
    $.get(
     "<?php echo base_url(); ?>Cinvoice/deletesale/", 
@@ -911,86 +1306,9 @@ window.onbeforeunload = function(){
     }
 };
  
-$(document).ready(function(){
-
-    $('#product_tax').on('change', function (e) {
-        var first=$("#Total").val();
-    var tax= $('#product_tax').val();
-var field = tax.split('-');
-
-var percent = field[1];
-var answer=0;
-  var answer = parseInt((percent / 100) * first);
-   console.log("Answer : "+answer);
-  var gtotal = parseInt(first + answer);
-  console.log("gtotal :" +gtotal);
-  
- var final_g= $('#final_gtotal').val();
 
 
- var amt=parseInt(answer)+parseInt(first);
- var num = isNaN(parseInt(amt)) ? 0 : parseInt(amt)
- var custo_amt=$('#custocurrency_rate').val(); 
- console.log("numhere :"+num +"-"+custo_amt);
- var value=parseInt(num*custo_amt);
- var custo_final = isNaN(parseInt(value)) ? 0 : parseInt(value)
-$('#customer_gtotal').val(custo_final);  
-calculate();
-});
-});
-$( document ).ready(function() {
-                        $('.hiden').css("display","none");
 
-  
-
-$('#custocurrency_rate').on('change textInput input', function (e) {
-    calculate();
-});
-
-$('.common_qnt').on('change textInput input', function (e) {
-    calculate();
-});
-
-});
-
-var csrfName = '<?php echo $this->security->get_csrf_token_name();?>';
-var csrfHash = '<?php echo $this->security->get_csrf_hash();?>';
-function available_quantity (id) {
-    $('.product_name').on('change', function (e) {
-        var name = 'available_quantity_'+ id;
-   
-   var amount = 'product_rate_'+ id;
-   var pdt=$('#prodt_'+id).val();
-   const myArray = pdt.split("-");
-   var product_nam=myArray[0];
-   var product_model=myArray[1];
-  var data = {
-       amount:'product_rate_'+ id,
-       name:'available_quantity_'+ id,
-       product_nam:product_nam,
-       product_model:product_model
-    };
-    data[csrfName] = csrfHash;
-
-    $.ajax({
-        type:'POST',
-        data: data, 
-     dataType:"json",
-        url:'<?php echo base_url();?>Cinvoice/availability',
-        success: function(result, statut) {
-            if(result.csrfName){
-             
-               csrfName = result.csrfName;
-               csrfHash = result.csrfHash;
-            }
-          $(".available_quantity_"+ id).val(result[0]['p_quantity']);
-          $("#product_rate_"+ id).val(result[0]['price']);
-          $(".product_id_"+ id).val(result[0]['product_id']);
-            console.log(result);
-        }
-    });
-});
-}
 
 
 
@@ -1038,7 +1356,7 @@ $('#customer_name').on('change', function (e) {
         url:'<?php echo base_url();?>Cinvoice/getcustomer_data',
         success: function(result, statut) {
          console.log(result[0]['currency_type']);
-        $("#cus").val(result[0]['currency_type']);
+        $(".cus").html(result[0]['currency_type']);
         $("label[for='custocurrency']").html(result[0]['currency_type']);
        console.log('https://open.er-api.com/v6/latest/<?php echo $curn_info_default; ?>');
        $.getJSON('https://open.er-api.com/v6/latest/<?php echo $curn_info_default; ?>', 
@@ -1057,140 +1375,6 @@ function(data) {
 });
 
 
-$( document ).ready(function() {
-                    $('.hiden').css("display","none");
-                    var data = {
-      value: $('#customer_name').val()
-   };
-  data[csrfName] = csrfHash;
-  $.ajax({
-      type:'POST',
-      data: data,
-     dataType:"json",
-      url:'<?php echo base_url();?>Cinvoice/getcustomer_byID',
-      success: function(result, statut) {
-        console.log(result[0]['currency_type']);
-        $("#cus").val(result[0]['currency_type']);
-        $("label[for='custocurrency']").html(result[0]['currency_type']);
-       console.log('https://open.er-api.com/v6/latest/<?php echo $curn_info_default; ?>');
-       $.getJSON('https://open.er-api.com/v6/latest/<?php echo $curn_info_default; ?>', 
-function(data) {
- var custo_currency=result[0]['currency_type'];
-    var x=data['rates'][custo_currency];
- var Rate =parseFloat(x).toFixed(3);
-  console.log("Rate : "+Rate);
-  $('.hiden').show();
-  $("#custocurrency_rate").val(Rate);
-  var num=$("#gtotal").val();
-
-    var value=parseInt(num*Rate);
-    
-var custo_final = isNaN(parseInt(value)) ? 0 : parseInt(value)
-$('#customer_gtotal').val(custo_final);  
-    
-      }
-)}
-    });
-
-});
-
-
-
-
-
-
-$('#product_tax').on('change', function (e) {
-    var optionSelected = $("option:selected", this);
-    var valueSelected = this.value;
-    var total=$('#Total').val();
-var tax= $('#product_tax').val();
-
-var field = tax.split('-');
-
-var percent = field[1];
-percent=percent.replace("%","");
- var answer = (percent / 100) * parseInt(total);
-$('#final_gtotal').val(answer);
-   $('#hdn').val(valueSelected);
-   console.log("taxi :"+valueSelected);
-  $('#tax_details').val(answer +" ( "+tax+" )");
-   calculate();
-});
-var arr=[];
-
-function total_amt(id){
-
-    var sum=0;
-  
-var total='total_price_'+id;
-
-var quantity='cartoon_'+id;
-var amount = 'product_rate_'+ id;
-var grand=$('#gtotal').val();
-var quan=$('#'+quantity).val();
-var amt=$('#'+amount).val();
-var result=parseInt(quan) * parseInt(amt);
-result = isNaN(result) ? 0 : result;
-arr.push(result);
-$('#'+total).val(result);
-
-gt();
-}
-function gt(){
-    var sum=0;
-    $('.total_price').each(function() {
-    sum += parseFloat($(this).val());
-});
-$('#Total').val(sum);
-var final_g= $('#final_gtotal').val();
-if(final_g !=''){
-var first=$("#Total").val();
-    var tax= $('#product_tax').val();
-
-var field = tax.split('-');
-
-var percent = field[1];
-var answer=0;
-  var answer =(parseInt(percent) / 100) * parseInt(first);
-   console.log(answer);
-   $('#tax_details').val(answer +" ( "+tax+" )");
-
-  var gtotal = parseInt(first + answer);
-  console.log(gtotal);
-var amt=parseInt(answer)+parseInt(first);
- var num = isNaN(parseInt(amt)) ? 0 : parseInt(amt)
- var custo_amt=$('#custocurrency_rate').val();
- $("#gtotal").val(num);  
- console.log(num +"-"+custo_amt);
- var value=parseInt(num*custo_amt);
- var custo_final = isNaN(parseInt(value)) ? 0 : parseInt(value)
-$('#customer_gtotal').val(custo_final);
-}  
-}
-function calculate(){
-  
-  var first=$("#Total").val();
-  var tax= $('#product_tax').val();
-var field = tax.split('-');
-
-var percent = field[1];
-var answer=0;
-var answer = parseInt((percent / 100) * first);
-var gtotal = parseInt(first + answer);
-console.log(gtotal);
-var final_g= $('#final_gtotal').val();
-
-
-var amt=parseInt(final_g)+parseInt(first);
-var num = isNaN(parseInt(amt)) ? 0 : parseInt(amt);
-$("#gtotal").val(num);  
-var custo_amt=$('#custocurrency_rate').val();
-
-console.log(num +"-"+custo_amt);
-var value=parseInt(num*custo_amt);
-var custo_final = isNaN(parseInt(value)) ? 0 : parseInt(value)
-$('#customer_gtotal').val(custo_final);  
-}
 
 
 
@@ -1239,7 +1423,7 @@ $('#customer_gtotal').val(custo_final);
 
             <h4><?php echo display('do_you_want_to_print') ?> ??</h4>
 
-            <input type="hidden" name="invoice_id" id="inv_id">
+            <input type="text" name="invoice_id" id="inv_id">
 
           </div>
 
@@ -1897,7 +2081,26 @@ $('#customer_gtotal').val(custo_final);
 
   <!-- End Modal for all action -->
 <!-- Invoice Report End -->
-
+<div class="modal fade" id="payment_history_modal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content" style="width: 1000px;min-width: max-content;margin-top: 190px;">
+        <div class="modal-header" style="">
+          <button type="button" id="history_close" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">PAYMENT HISTORY</h4>
+        </div>
+        <div class="modal-body1">
+        <div id="salle_list"></div>
+     
+        </div>
+        <div class="modal-footer">
+          
+        </div>
+      </div>
+      
+    </div>
+  </div>
 
 
 <div id="packmodal" class="modal fade" role="dialog">
@@ -1993,8 +2196,9 @@ $('#customer_gtotal').val(custo_final);
         e.innerHTML = "<td><select name='prodt[]' id='prodt_" + count + "' class='form-control product_name' onchange='available_quantity("+ count +");'>"+
         "<option value='Select the Product' selected>Select the Product</option><?php  foreach($product as $tx){?>"+
        " <option value='<?php echo $tx['product_name'].'-'.$tx['product_model'];?>'>  <?php echo $tx['product_name'].'-'.$tx['product_model'];  ?></option>"+
-        "<?php } ?> </select><input type='hidden' class='common_product autocomplete_hidden_value  product_id_" + count + "' name='product_id[]' id='SchoolHiddenId' /></td><td><input type='text' name='available_quantity[]' id='available_quantity[]' class='form-control text-right common_avail_qnt available_quantity_" + count + "' value='0' readonly='readonly' /></td><td> <input type='text' name='product_quantity[]' id='cartoon_" + count + "'  required='required' onkeyup='total_amt(" + count + ");'  onchange='total_amt(" + count + ");' id='total_qntt_" + count + "' class='common_qnt total_qntt_" + count + " form-control text-right'  placeholder='0.00' min='0' tabindex='" + tab3 + "'/></td><td> <span class='form-control' style='background-color: #eee;'><?php  echo $currency." ";  ?><input type='text' name='product_rate[]' id='product_rate_" + count + "' onkeyup='quantity_calculate(" + count + ");' onchange='quantity_calculate(" + count + ");' id='price_item_" + count + "' class='common_rate price_item" + count + "' required placeholder='0.00' min='0' tabindex='" + tab4 + "'/></span></td><td class='text-right'> <span class='form-control' style='background-color: #eee;'><?php  echo $currency." ";  ?><input class='common_total_price total_price' type='text' name='total_price[]' id='total_price_" + count + "' value='0.00' readonly='readonly'/></span></td><td>"+tbfild+"<input type='hidden' id='all_discount_" + count + "' class='total_discount dppr' name='discount_amount[]'/><button tabindex='" + tab5 + "' style='text-align: right;' class='btn btn-danger' type='button' value='Delete' onclick='deleteRow(this)'><i class='fa fa-close'></i></button></td>",
-                document.getElementById(t).appendChild(e),
+        "<?php } ?> </select><input type='hidden' class='common_product autocomplete_hidden_value  product_id_" + count + "' name='product_id[]' id='SchoolHiddenId' /></td><td><input type='text' name='available_quantity[]' id='available_quantity[]' class='form-control text-right common_avail_qnt available_quantity_" + count + "' value='0' readonly='readonly' /></td><td> <input type='text' name='product_quantity[]' id='cartoon_" + count + "'  required='required' onkeyup='total_amt(" + count + ");'  onchange='total_amt(" + count + ");' id='total_qntt_" + count + "' class='common_qnt total_qntt_" + count + " form-control text-right'  placeholder='0.00' min='0' tabindex='" + tab3 + "'/></td><td> <table border='0' style='font-weight:bold;'> <tr><td><?php  echo $currency.' ';  ?></td><td>  <input type='text' name='product_rate[]' required=''  id='product_rate_" + count + "' class='product_rate_" + count + "' placeholder='0.00' value='' min='0' tabindex='7' readonly/></td> </tr></table> </td><td class='text-right'>        <table border='0' style='font-weight:bold;'> <tr><td><?php  echo $currency.' ';  ?></td><td>   <input class='total_price' type='text' name='total_price[]' id='total_price_" + count + "' value='0.00'   readonly='readonly' /></td> </tr></table></td><td>"+tbfild+"<input type='hidden' id='all_discount_" + count + "' class='total_discount dppr' name='discount_amount[]'/><button tabindex='" + tab5 + "' style='text-align: right;' class='btn btn-danger' type='button' value='Delete' onclick='deleteRow(this)'><i class='fa fa-close'></i></button></td>",
+              
+        document.getElementById(t).appendChild(e),
                 document.getElementById(a).focus(),
                 document.getElementById("add_invoice_item").setAttribute("tabindex", tab6);
                 document.getElementById("details").setAttribute("tabindex", tab7);
@@ -2151,20 +2355,18 @@ function refreshPage(){
 
 // }
 </script>
-
+<!--style for payment history modal -->
+<style>
+.td{
+    width: 200px;
+    text-align-last: end;
+    border-right: hidden;
+}
+    </style>
 
 <script type="text/javascript">
-$(document).ready(function () {
-    $("#add_purchase").click(function () {
-        $("#save_another").toggle();
-    });
-});
 
-$(document).ready(function () {
-    $("#add_purchase").click(function () {
-        $("#download").toggle();
-    });
-});
+
 
 function packing(id)
 {
@@ -2176,13 +2378,628 @@ function packing(id)
 
 </script>
 <script type="text/javascript">
+   $(document).ready(function(){
+        $('#final_submit').hide();
+$('#download').hide();
+$('#email_btn').hide();
+
+$('#product_tax').on('change', function (e) {
+    var first=$("#Total").val();
+var tax= $('#product_tax').val();
+var field = tax.split('-');
+
+var percent = field[1];
+var answer=0;
+var answer = parseInt((percent / 100) * first);
+console.log("Answer : "+answer);
+var gtotal = parseInt(first + answer);
+console.log("gtotal :" +gtotal);
+var final_g= $('#final_gtotal').val();
+
+
+var amt=parseInt(answer)+parseInt(first);
+var num = isNaN(parseInt(amt)) ? 0 : parseInt(amt)
+var custo_amt=$('#custocurrency_rate').val(); 
+console.log("numhere :"+num +"-"+custo_amt);
+var value=parseInt(num*custo_amt);
+var custo_final = isNaN(parseInt(value)) ? 0 : parseInt(value)
+$('#customer_gtotal').val(custo_final); 
+
+calculate();
+var v_g_t=$('#customer_gtotal').val();
+   var amount_paid =$("#amount_paid").val();
+   var bal= parseInt(v_g_t-amount_paid);
+   console.log("Bal :");
+   $('#balance').val(bal);
+});
+});
+$( document ).ready(function() {
+                    $('.hiden').css("display","none");
+                    var data = {
+      value: $('#customer_name').val()
+   };
+  data[csrfName] = csrfHash;
+  $.ajax({
+      type:'POST',
+      data: data,
+   
+      //dataType tells jQuery to expect JSON response
+      dataType:"json",
+      url:'<?php echo base_url();?>Cinvoice/getcustomer_byID',
+      success: function(result, statut) {
+          if(result.csrfName){
+             //assign the new csrfName/Hash
+             csrfName = result.csrfName;
+             csrfHash = result.csrfHash;
+          }
+         // var parsedData = JSON.parse(result);
+        //  alert(result[0].p_quantity);
+        console.log(result[0]['currency_type']);
+        $(".cus").html(result[0]['currency_type']);
+        $("label[for='custocurrency']").html(result[0]['currency_type']);
+       console.log('https://open.er-api.com/v6/latest/<?php echo $curn_info_default; ?>');
+       $.getJSON('https://open.er-api.com/v6/latest/<?php echo $curn_info_default; ?>', 
+function(data) {
+ var custo_currency=result[0]['currency_type'];
+    var x=data['rates'][custo_currency];
+ var Rate =parseFloat(x).toFixed(3);
+  console.log(Rate);
+  $('.hiden').show();
+  $("#custocurrency_rate").val(Rate);
+  var num=$("#gtotal").val();
+
+    var value=parseInt(num*Rate);
     
+var custo_final = isNaN(parseInt(value)) ? 0 : parseInt(value)
+$('#customer_gtotal').val(custo_final);  
+var v_g_t=$('#customer_gtotal').val();
+   var amount_paid =$("#amount_paid").val();
+   var bal= parseInt(v_g_t-amount_paid);
+   console.log("Bal :");
+   $('#balance').val(bal);
+      }
+)}
+    });
+
+});
+
+
+
+
+
+$('#custocurrency_rate').on('change textInput input', function (e) {
+calculate();
+});
+
+$('.common_qnt').on('change textInput input', function (e) {
+calculate();
+});
+var csrfName = '<?php echo $this->security->get_csrf_token_name();?>';
+var csrfHash = '<?php echo $this->security->get_csrf_hash();?>';
+
+
+$(".qty").on("input",function(){
+
+var first=$(".someClass").val();
+var tax= $('#product_tax').val();
+console.log(first+"/"+tax);
+var field = tax.split('-');
+
+var percent = field[1];
+var answer=0;
+var answer = parseInt((percent / 100) * first);
+console.log("Answer : "+answer);
+var gtotal = parseInt(first + answer);
+console.log("gtotal :" +gtotal);
+var final_g= $('#final_gtotal').val();
+
+
+var amt=parseInt(answer)+parseInt(first);
+var num = isNaN(parseInt(amt)) ? 0 : parseInt(amt)
+var custo_amt=$('#custocurrency_rate').val(); 
+console.log("numhere :"+num +"-"+custo_amt);
+var value=parseInt(num*custo_amt);
+var custo_final = isNaN(parseInt(value)) ? 0 : parseInt(value)
+$('#customer_gtotal').val(custo_final);  
+calculate();
+var v_g_t=$('#customer_gtotal').val();
+   var amount_paid =$("#amount_paid").val();
+   var bal= parseInt(v_g_t-amount_paid);
+   console.log("Bal :");
+   $('#balance').val(bal);
+});
+
+// Restricts input for each element in the set of matched elements to the given inputFilter.
+(function($) {
+$.fn.inputFilter = function(callback, errMsg) {
+return this.on("input keydown keyup mousedown mouseup select contextmenu drop focusout", function(e) {
+  if (callback(this.value)) {
+    // Accepted value
+    if (["keydown","mousedown","focusout"].indexOf(e.type) >= 0){
+      $(this).removeClass("input-error");
+      this.setCustomValidity("");
+    }
+    this.oldValue = this.value;
+    this.oldSelectionStart = this.selectionStart;
+    this.oldSelectionEnd = this.selectionEnd;
+  } else if (this.hasOwnProperty("oldValue")) {
+    // Rejected value - restore the previous one
+    $(this).addClass("input-error");
+    this.setCustomValidity(errMsg);
+    this.reportValidity();
+    this.value = this.oldValue;
+    this.setSelectionRange(this.oldSelectionStart, this.oldSelectionEnd);
+  } else {
+    // Rejected value - nothing to restore
+    this.value = "";
+  }
+});
+};
+}(jQuery));
+
+$("#custocurrency_rate").inputFilter(function(value) {
+return /^-?\d*[.,]?\d*$/.test(value); }, "Must be a floating (real) Number");
+$('#customer_name').on('change', function (e) {
+  
+  var data = {
+      value: $('#customer_name').val()
+   };
+  data[csrfName] = csrfHash;
+  $.ajax({
+      type:'POST',
+      data: data,
+   
+      //dataType tells jQuery to expect JSON response
+      dataType:"json",
+      url:'<?php echo base_url();?>Cinvoice/getcustomer_byID',
+      success: function(result, statut) {
+          if(result.csrfName){
+             //assign the new csrfName/Hash
+             csrfName = result.csrfName;
+             csrfHash = result.csrfHash;
+          }
+         // var parsedData = JSON.parse(result);
+        //  alert(result[0].p_quantity);
+        console.log(result[0]['currency_type']);
+        $(".cus").html(result[0]['currency_type']);
+        $("label[for='custocurrency']").html(result[0]['currency_type']);
+       console.log('https://open.er-api.com/v6/latest/<?php echo $curn_info_default; ?>');
+       $.getJSON('https://open.er-api.com/v6/latest/<?php echo $curn_info_default; ?>', 
+function(data) {
+ var custo_currency=result[0]['currency_type'];
+    var x=data['rates'][custo_currency];
+ var Rate =parseFloat(x).toFixed(3);
+  console.log(Rate);
+  $('.hiden').show();
+  $("#custocurrency_rate").val(Rate);
+});
+    
+      }
+  });
+
+
+});
+$('#product_tax').on('change', function (e) {
+    var optionSelected = $("option:selected", this);
+    var valueSelected = this.value;
+    var total=$('#Total').val();
+var tax= $('#product_tax').val();
+
+var field = tax.split('-');
+
+var percent = field[1];
+percent=percent.replace("%","");
+ var answer = (percent / 100) * parseInt(total);
+$('#final_gtotal').val(answer);
+   $('#hdn').val(valueSelected);
+   console.log("taxi :"+valueSelected);
+  $('#tax_details').val(answer +" ( "+tax+" )");
+
+   calculate();
+});
+var arr=[];
+
+function total_amt(id){
+
+    var sum=0;
+  
+var total='total_price_'+id;
+
+var quantity='cartoon_'+id;
+var amount = 'product_rate_'+ id;
+var grand=$('#gtotal').val();
+var quan=$('#'+quantity).val();
+var amt=$('#'+amount).val();
+var result=parseInt(quan) * parseInt(amt);
+result = isNaN(result) ? 0 : result;
+arr.push(result);
+$('#'+total).val(result);
+
+gt();
+}
+function gt(){
+    var sum=0;
+    $('.total_price').each(function() {
+    sum += parseFloat($(this).val());
+});
+$('#Total').val(sum);
+var final_g= $('#final_gtotal').val();
+if(final_g !=''){
+var first=$("#Total").val();
+    var tax= $('#product_tax').val();
+
+var field = tax.split('-');
+
+var percent = field[1];
+var answer=0;
+  var answer =(parseInt(percent) / 100) * parseInt(first);
+   console.log(answer);
+   $('#tax_details').val(answer +" ( "+tax+" )");
+
+  var gtotal = parseInt(first + answer);
+  console.log(gtotal);
+var amt=parseInt(answer)+parseInt(first);
+ var num = isNaN(parseInt(amt)) ? 0 : parseInt(amt)
+ var custo_amt=$('#custocurrency_rate').val();
+ $("#gtotal").val(num);  
+ console.log(num +"-"+custo_amt);
+ var value=parseInt(num*custo_amt);
+ var custo_final = isNaN(parseInt(value)) ? 0 : parseInt(value)
+$('#customer_gtotal').val(custo_final);
+var v_g_t=$('#customer_gtotal').val();
+   var amount_paid =$("#amount_paid").val();
+   var bal= parseInt(v_g_t-amount_paid);
+   console.log("Bal :");
+   $('#balance').val(bal);
+}  
+}
+function calculate(){
+  
+  var first=$("#Total").val();
+  var tax= $('#product_tax').val();
+var field = tax.split('-');
+
+var percent = field[1];
+var answer=0;
+var answer = parseInt((percent / 100) * first);
+var gtotal = parseInt(first + answer);
+console.log(gtotal);
+var final_g= $('#final_gtotal').val();
+
+
+var amt=parseInt(final_g)+parseInt(first);
+var num = isNaN(parseInt(amt)) ? 0 : parseInt(amt);
+$("#gtotal").val(num);  
+var custo_amt=$('#custocurrency_rate').val();
+
+console.log(num +"-"+custo_amt);
+var value=parseInt(num*custo_amt);
+var custo_final = isNaN(parseInt(value)) ? 0 : parseInt(value)
+$('#customer_gtotal').val(custo_final);  
+var v_g_t=$('#customer_gtotal').val();
+   var amount_paid =$("#amount_paid").val();
+   var bal= parseInt(v_g_t-amount_paid);
+   console.log("Bal :");
+   $('#balance').val(bal);
+}
+
+
+    </script>
+	
+    <script type="text/javascript">
+   $('#paypls').on('click', function (e) {
+$('#amount_to_pay').val($('#balance').val());
+    $('#payment_modal').modal('show');
+  e.preventDefault();
+
+}); 
+$(document).ready(function () {
+
+$('#openBtn').click(function () {
+    $('#payment_modal').modal({
+        show: true
+    })
+});
+
+    $(document).on('show.bs.modal', '.modal', function (event) {
+        var zIndex = 1040 + (10 * $('.modal:visible').length);
+        $(this).css('z-index', zIndex);
+        setTimeout(function() {
+            $('.modal-backdrop').not('.modal-stack').css('z-index', zIndex - 1).addClass('modal-stack');
+        }, 0);
+    });
+
+
+});
+$('#payment_from_modal').on('input',function(e){
+
+var payment=parseInt($('#payment_from_modal').val());
+var amount_to_pay=parseInt($('#amount_to_pay').val());
+console.log(payment+"/"+amount_to_pay);
+console.log(parseInt(amount_to_pay)-parseInt(payment));
+var value=parseInt(amount_to_pay)-parseInt(payment);
+$('#balance_modal').val(value);
+if (isNaN(value)) {
+ $('#balance_modal').val("0");
+  }
+});
+$('#add_payment_info').submit(function (event) {
+   
+       
+   var dataString = {
+       dataString : $("#add_payment_info").serialize()
+   
+  };
+  dataString[csrfName] = csrfHash;
+ 
+   $.ajax({
+       type:"POST",
+       dataType:"json",
+       url:"<?php echo base_url(); ?>Cinvoice/add_payment_info",
+       data:$("#add_payment_info").serialize(),
+
+       success:function (data) {
+       var already_paid=$('#amount_paid').val();
+       var recent_pay=$('#payment_from_modal').val();
+       console.log(already_paid+"***"+recent_pay);
+        $('#amount_paid').val(parseInt(already_paid)+parseInt(recent_pay));
+    $('#balance').val($('#balance_modal').val());
+    $('#amt').show();
+$('#bal').show();
+    $('#payment_modal').modal('hide');
+    $("#bodyModal1").html("Payment Successfully Completed");
+       $('#myModal1').modal('show');
+    
+    window.setTimeout(function(){
+        $('#myModal1').modal('hide');
+},2500);
+
+
+      
+      }
+
+   });
+   event.preventDefault();
+});
+$('#payment_history').click(function (event) {
+   
+       
+   var dataString = {
+       dataString : $("#histroy").serialize()
+   
+  };
+  dataString[csrfName] = csrfHash;
+ 
+   $.ajax({
+       type:"POST",
+       dataType:"json",
+       url:"<?php echo base_url(); ?>Cinvoice/payment_history",
+       data:$("#histroy").serialize(),
+
+       success:function (data) {
+        var gt=$('#customer_gtotal').val();
+        var amtpd=data.amt_paid;
+        console.log(gt+"^"+amtpd);
+        var bal= parseFloat($('#customer_gtotal').val()) - Number(data.amt_paid);
+var total= "<table class='table table-striped table-bordered'><tr><td rowspan='2' style='vertical-align: middle;text-align-last: center;'><b>Grand Total :  <?php  echo $currency;  ?>"+$('#customer_gtotal').val()+"<b></td><td class='td' style='border-right: hidden;'><b>Total Amount Paid :<b></td><td><?php  echo $currency;  ?>"+data.amt_paid+"</td></tr></tr><td class='td' style='border-right: hidden;'><b>Balance :<b></td><td><?php  echo $currency;  ?>"+bal +"</td></tr></table>"
+        var table_header = "<table class='table table-striped table-bordered'><thead style='FONT-WEIGHT:BOLD;'><tr><td>S.NO</td><td>Payment Date</td><td>Reference.NO</td><td>Bank Name</td><td>Amount Paid</td><td>Balance</td><td>Details</td></tr></thead><tbody>";
+                   var table_footer = "</tbody></table>";
+                var html ="";
+var count=1;
+               data.payment_get.forEach(function(element) {
+              
+              html += "<tr><td>"+count +"</td><td>"+element.payment_date+"</td><td>"+element.reference_no+"</td><td>"+element.bank_name+"</td><td><?php  echo $currency;  ?>"+element.amt_paid+"</td><td><?php  echo $currency;  ?>"+element.balance+"</td><td>"+element.details+"</td></tr>";
+         count++;
+            });
+
+
+
+                var all = total+table_header +html+ table_footer;
+
+               
+
+                $('#salle_list').html(all);
+                            $('#payment_history_modal').modal('show');
+      
+       
+      
+      }
+
+   });
+   event.preventDefault();
+});
+$(document).ready(function(){
+   // $('#payment_modal').modal("show");
+    $('#product_tax').on('change', function (e) {
+        var first=$("#Total").val();
+    var tax= $('#product_tax').val();
+var field = tax.split('-');
+
+var percent = field[1];
+var answer=0;
+  var answer = parseInt((percent / 100) * first);
+   console.log("Answer : "+answer);
+  var gtotal = parseInt(first + answer);
+  console.log("gtotal :" +gtotal);
+  
+ var final_g= $('#final_gtotal').val();
+
+
+ var amt=parseInt(answer)+parseInt(first);
+ var num = isNaN(parseInt(amt)) ? 0 : parseInt(amt)
+ var custo_amt=$('#custocurrency_rate').val(); 
+ console.log("numhere :"+num +"-"+custo_amt);
+ var value=parseInt(num*custo_amt);
+ var custo_final = isNaN(parseInt(value)) ? 0 : parseInt(value)
+$('#customer_gtotal').val(custo_final);  
+
+calculate();
+var v_g_t=$('#customer_gtotal').val();
+   var amount_paid =$("#amount_paid").val();
+   var bal= parseInt(v_g_t-amount_paid);
+   console.log("Bal :");
+   $('#balance').val(bal);
+});
+});
+$( document ).ready(function() {
+                        $('.hiden').css("display","none");
+
+  
+                        $('#customer_gtotal').on('change textInput input', function (e) {
+   var v_g_t=$('#customer_gtotal').val();
+   var amount_paid =$("#amount_paid").val();
+   var bal= parseInt(v_g_t-amount_paid);
+   console.log("Bal :");
+   $('#balance').val(bal);
+});
+$('#custocurrency_rate').on('change textInput input', function (e) {
+    calculate();
+});
+
+$('.common_qnt').on('change textInput input', function (e) {
+    calculate();
+});
+
+});
+
+var csrfName = '<?php echo $this->security->get_csrf_token_name();?>';
+var csrfHash = '<?php echo $this->security->get_csrf_hash();?>';
+function available_quantity (id) {
+    $('.product_name').on('change', function (e) {
+        var name = 'available_quantity_'+ id;
+   
+   var amount = 'product_rate_'+ id;
+   var pdt=$('#prodt_'+id).val();
+   const myArray = pdt.split("-");
+   var product_nam=myArray[0];
+   var product_model=myArray[1];
+  var data = {
+       amount:'product_rate_'+ id,
+       name:'available_quantity_'+ id,
+       product_nam:product_nam,
+       product_model:product_model
+    };
+    data[csrfName] = csrfHash;
+
+    $.ajax({
+        type:'POST',
+        data: data, 
+     dataType:"json",
+        url:'<?php echo base_url();?>Cinvoice/availability',
+        success: function(result, statut) {
+            if(result.csrfName){
+             
+               csrfName = result.csrfName;
+               csrfHash = result.csrfHash;
+            }
+          $(".available_quantity_"+ id).val(result[0]['p_quantity']);
+          $("#product_rate_"+ id).val(result[0]['price']);
+          $(".product_id_"+ id).val(result[0]['product_id']);
+            console.log(result);
+        }
+    });
+});
+}
+$( "#balance" ).on('change', function(){
+   var bl=$(this).val();
+   console.log("bl : "+bl);
+   if(bl<=0){
+    $('#paypls').hide();
+   }
+});
+$('#add_bank').submit(function (event) {
+   
+       
+   var dataString = {
+       dataString : $("#add_bank").serialize()
+   
+  };
+  dataString[csrfName] = csrfHash;
+ 
+   $.ajax({
+       type:"POST",
+       dataType:"json",
+       url:"<?php echo base_url(); ?>Csettings/add_new_bank",
+       data:$("#add_bank").serialize(),
+
+       success: function (data) {
+        $.each(data, function (i, item) {
+           
+            result = '<option value=' + data[i].bank_name + '>' + data[i].bank_name + '</option>';
+        });
+      
+        $('.bankpayment').selectmenu(); 
+        $('.bankpayment').append(result).selectmenu('refresh',true);
+       $("#bodyModal1").html("Bank Added Successfully");
+       $('#myModal3').modal('hide');
+       $('#add_bank_info').modal('hide');
+       
+        $('#myModal1').modal('show');
+       window.setTimeout(function(){
+      
+        $('#myModal5').modal('hide');
+        $('#myModal1').modal('hide');
+    
+     }, 2000);
+     
+      }
+
+   });
+   event.preventDefault();
+});
+
+
+
+
+      $(document).ready(function () {
+      $('#bank').selectize({
+          sortField: 'text'
+      });
+  });
 </script>
+<style>
+    .ui-selectmenu-text{
+        display:none;
+    }
+   </style>
 
+<script>
+const select = document.querySelectorAll(".currency");
+const btn = document.getElementById("btn");
+const num = document.getElementById("num");
+const ans = document.getElementById("ans");
+const err = document.getElementById("errorMSG");
+const info = document.getElementById("info");
+const baseFlagsUrl = "https://wise.com/public-resources/assets/flags/rectangle";
+const currencyApiUrl = "https://open.er-api.com/v6/latest";
 
+document.addEventListener('DOMContentLoaded', function(){ 
+  fetch(currencyApiUrl)
+    .then((data) => data.json())
+    .then((data) => {
+    err.innerHTML = "";
+    display(data.rates);
+    $('.currency').select2({
+      width: 'resolve',
+  
+      maximumInputLength: 3
+    });
+    info.innerHTML = "Result: "+data.result+"<br>Provider: "+data.provider+"<br>Documentation: "+data.documentation+"<br>Terms of use: "+data.terms_of_use+"<br>Time Last Update UTC: "+data.time_last_update_utc;
+    $('#pageLoader').fadeOut();
+  }).catch(function(error) {
+    err.innerHTML = "Error: " + error;
+    $('#pageLoader').fadeOut();
+  });
+function display(data){
+  const entries = Object.entries(data);
+  for (var i = 0; i < entries.length; i++){
+    select[0].innerHTML += `<option value="${entries[i][0]}">${entries[i][0]}</option>`;
+    select[1].innerHTML += `<option value="${entries[i][0]}">${entries[i][0]}</option>`;
+  }
+  
+}
+});
 
-
-
-
+    </script>
 
 

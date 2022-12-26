@@ -428,6 +428,14 @@ class Settings extends CI_Model {
     //COUNT PRODUCT
     public function bank_entry($data) {
         $this->db->insert('bank_add', $data);
+        $this->db->select('bank_name');
+        $this->db->from('bank_add');
+        $this->db->where('created_by', $this->session->userdata('user_id'));
+
+        $query = $this->db->get();
+        if ($query->num_rows() > 0) {
+            return $query->result_array();
+        }
     }
 
     //Add person

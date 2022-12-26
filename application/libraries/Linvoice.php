@@ -460,7 +460,7 @@ class Linvoice {
 
 
        
-
+        $bank_list      = $CI->Web_settings->bank_list();
         $data = array(
             'all_supplier'  => $all_supplier,
             'curn_info_default' =>$curn_info_default[0]['currency_name'],
@@ -473,11 +473,11 @@ class Linvoice {
             'trucking_id'   => $purchase_detail[0]['trucking_id'],
 
             'invoice_no'     => $purchase_detail[0]['invoice_no'],
-
+          
             'customer_name' => $purchase_detail[0]['customer_name'],
 
             'customer_id'   => $purchase_detail[0]['customer_id'],
-
+            'bank_list'       => $bank_list,
             'bill_to'   => $purchase_detail[0]['bill_to'],
 
             'purchase_info' => $purchase_detail,
@@ -599,6 +599,7 @@ class Linvoice {
             'truckingdate' => $purchase_detail[0]['trucking_date'],
             
             'customer_name' => $purchase_detail[0]['customer_name'],
+            'customer_currency' => $purchase_detail[0]['currency_type'],
 
             'qty' => $purchase_detail[0]['qty'],
 
@@ -868,6 +869,11 @@ class Linvoice {
         ->from('tax_information')
         ->get()
         ->result_array();
+        $bank_name = $CI->db->select('bank_name')
+        ->from('bank_add')
+        ->get()
+        ->result_array();
+    
         $taxfield = $CI->db->select('tax_name,default_value')
                 ->from('tax_settings')
                 ->get()
@@ -886,6 +892,7 @@ class Linvoice {
             'title'         => display('add_new_invoice'),
             'discount_type' => $currency_details[0]['discount_type'],
             'taxes'         => $taxfield,
+            'bank_name'  =>$bank_name,
             'tax'           => $taxfield1,
             'product'       =>$prodt,
             'customer_details'   => $customer_details,
@@ -905,6 +912,7 @@ class Linvoice {
        // $invoiceForm = $CI->parser->parse('invoice/profarma_invoice', $data, true);
         return $invoiceForm;
     }
+  
     public function invoice_add_form1() {
         $CI = & get_instance();
         ////////////Tax value////////////////
@@ -962,15 +970,13 @@ class Linvoice {
     }
 
       //ocean_export_tracking_add_form
-    public function ocean_export_tracking_add_form() {
+      public function ocean_export_tracking_add_form() {
         $CI = & get_instance();
         $CI->load->model('Invoices');
         $CI->load->model('Ppurchases');
         $CI->load->model('Web_settings');
-
         $all_supplier = $CI->Ppurchases->select_all_supplier();
         $customer_details = $CI->Invoices->pos_customer_setup();
-     
         $currency_details = $CI->Web_settings->retrieve_setting_editdata();
         $taxfield = $CI->db->select('tax_name,default_value')->from('tax_settings')->get()->result_array();
         $bank_list          = $CI->Web_settings->bank_list();
@@ -978,7 +984,7 @@ class Linvoice {
             'title'         => 'Add New Export Invoice',
             'discount_type' => $currency_details[0]['discount_type'],
             'taxes'         => $taxfield,
-            'customer_name' => isset($customer_details[0]['customer_name'])?$customer_details[0]['customer_name']:'',
+            'customer_name' => $CI->Invoices->pos_customer_setup(),
             'customer_id'   => isset($customer_details[0]['customer_id'])?$customer_details[0]['customer_id']:'',
             'bank_list'     => $bank_list,
                'all_supplier'  => $all_supplier
@@ -1006,6 +1012,7 @@ class Linvoice {
         ->from('tax_information')
         ->get()
         ->result_array();
+        $company_info = $CI->Invoices->company_information();
         $bank_list = $CI->Web_settings->bank_list();
         $data = array(
             'curn_info_default' =>$curn_info_default[0]['currency_name'],
@@ -1015,6 +1022,7 @@ class Linvoice {
             'all_supplier'  => $all_supplier,
             'taxes'         => $taxfield,
             'tax'         => $taxfield1,
+            'company_name' =>$company_info,
             'customer_name' => isset($customer_details[0]['customer_name'])?$customer_details[0]['customer_name']:'',
             'customer_id'   => isset($customer_details[0]['customer_id'])?$customer_details[0]['customer_id']:'',
             'bank_list'     => $bank_list,

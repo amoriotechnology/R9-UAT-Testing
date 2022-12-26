@@ -177,6 +177,10 @@ $Web_settings = $CI->Web_settings->retrieve_setting_editdata();
                         <td colspan="5" style="text-align:right;font-weight:bold;">Grand Total:</td>
                         <td style="font-size: 16px;"><?php  echo $currency." " ; ?><?php echo $grandtotal;  ?></td>
                     </tr>
+                    <tr>
+                        <td colspan="5" style="text-align:right;font-weight:bold;">Grand Total(Preferred Currency):</td>
+                        <td style="font-size: 16px;"><?php echo $customer_currency." ".$purchase_all_data[0]['customer_gtotal'];  ?></td>
+                    </tr>
                     </tfoot>
             </table>
             <br>
@@ -286,6 +290,18 @@ $Web_settings = $CI->Web_settings->retrieve_setting_editdata();
                     <tr>
                         <td colspan="5" style="text-align:right;font-weight:bold;">Grand Total:</td>
                         <td style="font-size: 16px;"><?php  echo $currency." " ; ?><?php echo $grandtotal;  ?></td>
+                    </tr>
+                    <tr>
+                        <td colspan="5" style="text-align:right;font-weight:bold;">Grand Total(Preferred Currency):</td>
+                        <td style="font-size: 16px;"><?php echo $customer_currency." ".$purchase_all_data[0]['customer_gtotal'];  ?></td>
+                    </tr>
+                    <tr>
+                    <td style="text-align:right;"  colspan="5"><b><?php echo "Amount Paid" ?>:</b></td>
+                        <td style="font-size: 16px;"> <?php echo $customer_currency." ".$purchase_all_data[0]['amt_paid'] ;?></td>
+                    </tr>
+                    <tr>
+                    <td style="text-align:right;"  colspan="5"><b><?php echo "Balance" ?>:</b></td>
+                        <td style="font-size: 16px;"> <?php echo $customer_currency." ".$purchase_all_data[0]['balance'] ;?></td>
                     </tr>
                     </tfoot>
             </table>
@@ -410,6 +426,10 @@ elseif($template==3)
                        <td colspan="5" style="text-align:right;font-weight:bold;">Grand Total:</td>
                        <td style="font-size: 16px;"><?php  echo $currency." " ; ?><?php echo $grandtotal;  ?></td>
                    </tr>
+                   <tr>
+                        <td colspan="5" style="text-align:right;font-weight:bold;">Grand Total(Preferred Currency):</td>
+                        <td style="font-size: 16px;"><?php echo $customer_currency." ".$purchase_all_data[0]['customer_gtotal'];  ?></td>
+                    </tr>
                    </tfoot>
            </table> 
            <br>

@@ -159,11 +159,22 @@ $Web_settings = $CI->Web_settings->retrieve_setting_editdata();
                 <?php ?>
                              
                 <tfoot>
-                  
-                  
-                    <tr>
-                        <td colspan="5" style="text-align:right;font-weight:bold;">Grand Total:</td>
+                <tr>
+                        <td colspan="5" style="text-align:right;font-weight:bold;">Grand Total</td>
                         <td style="font-size: 16px;"><?php echo $currency;   ?><?php echo $grand_total;  ?></td>
+                    </tr>
+                 
+                    <tr>
+                        <td colspan="5" style="text-align:right;font-weight:bold;">Grand Total(Preferred Currency)</td>
+                        <td style="font-size: 16px;"><?php  echo $shipment_currency." ".$purchase_all_data[0]['customer_gtotal']; ?></td>
+                    </tr>
+                    <tr>
+                        <td colspan="5" style="text-align:right;font-weight:bold;">Amount Paid</td>
+                        <td style="font-size: 16px;"><?php echo $shipment_currency." ".$purchase_all_data[0]['amt_paid']; ?></td>
+                    </tr>
+                    <tr>
+                        <td colspan="5" style="text-align:right;font-weight:bold;">Balance</td>
+                        <td style="font-size: 16px;"><?php  echo $shipment_currency." ".$purchase_all_data[0]['balance']; ?></td>
                     </tr>
                     </tfoot>
             </table>
@@ -265,8 +276,21 @@ $Web_settings = $CI->Web_settings->retrieve_setting_editdata();
                  
                   
                     <tr>
-                        <td colspan="5" style="text-align:right;font-weight:bold;">Grand Total:</td>
+                        <td colspan="5" style="text-align:right;font-weight:bold;">Grand Total</td>
                         <td style="font-size: 16px;"><?php echo $currency;   ?><?php echo $grand_total;  ?></td>
+                    </tr>
+                 
+                    <tr>
+                        <td colspan="5" style="text-align:right;font-weight:bold;">Grand Total(Preferred Currency)</td>
+                        <td style="font-size: 16px;"><?php  echo $shipment_currency." ".$purchase_all_data[0]['customer_gtotal']; ?></td>
+                    </tr>
+                    <tr>
+                        <td colspan="5" style="text-align:right;font-weight:bold;">Amount Paid</td>
+                        <td style="font-size: 16px;"><?php echo $shipment_currency." ".$purchase_all_data[0]['amt_paid']; ?></td>
+                    </tr>
+                    <tr>
+                        <td colspan="5" style="text-align:right;font-weight:bold;">Balance</td>
+                        <td style="font-size: 16px;"><?php  echo $shipment_currency." ".$purchase_all_data[0]['balance']; ?></td>
                     </tr>
                     </tfoot>
             </table>
@@ -374,15 +398,23 @@ elseif($template==3)
                <?php ?>
                             
                <tfoot>
-                
+               <tr>
+                        <td colspan="5" style="text-align:right;font-weight:bold;">Grand Total</td>
+                        <td style="font-size: 16px;"><?php echo $currency;   ?><?php echo $grand_total;  ?></td>
+                    </tr>
                  
-
-
-
-                   <tr>
-                       <td colspan="5" style="text-align:right;font-weight:bold;">Grand Total:</td>
-                       <td style="font-size: 16px;"><?php echo $currency;   ?><?php echo $grand_total;  ?></td>
-                   </tr>
+                    <tr>
+                        <td colspan="5" style="text-align:right;font-weight:bold;">Grand Total(Preferred Currency)</td>
+                        <td style="font-size: 16px;"><?php  echo $shipment_currency." ".$purchase_all_data[0]['customer_gtotal']; ?></td>
+                    </tr>
+                    <tr>
+                        <td colspan="5" style="text-align:right;font-weight:bold;">Amount Paid</td>
+                        <td style="font-size: 16px;"><?php echo $shipment_currency." ".$purchase_all_data[0]['amt_paid']; ?></td>
+                    </tr>
+                    <tr>
+                        <td colspan="5" style="text-align:right;font-weight:bold;">Balance</td>
+                        <td style="font-size: 16px;"><?php  echo $shipment_currency." ".$purchase_all_data[0]['balance']; ?></td>
+                    </tr>
                    </tfoot>
            </table> 
            <br>

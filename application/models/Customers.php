@@ -476,14 +476,9 @@ class Customers extends CI_Model {
         $this->db->where('customer_name', $data['customer_name']);
         $this->db->where('create_by',$this->session->userdata('user_id'));
         $query = $this->db->get();
-        if ($query->num_rows() > 0) {
-            return FALSE;
-        } else {
-            $this->db->insert('customer_information', $data);
-            return TRUE;
-        }
+        $this->db->insert('customer_information', $data);
+       //echo $this->db->last_query();
     }
-
     //Customer Previous balance adjustment
     public function previous_balance_add($balance, $customer_id) {
         $this->load->library('auth');

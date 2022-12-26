@@ -75,15 +75,17 @@ public function get_invoice_product($purchase_id) {
         }
         return false;
     }
-     public function get_all_products() {
-        $sql='SELECT b.*,a.products_model,a.supplier_price,c.supplier_name,c.country FROM `supplier_product` a join product_information b on a.product_id=b.product_id JOIN supplier_information c on c.supplier_id=a.product_id
-';
-        $query = $this->db->query($sql);
-        if ($query->num_rows() > 0) {
-            return $query->result_array();
-        }
-        return false;
+    public function get_all_products() {
+        $this->db->select('*');
+        $this->db->from('product_information');
+        $this->db->where('status', 1);
+        $this->db->where('created_by',$this->session->userdata('user_id'));
+        $query = $this->db->get();
+//echo $this->db->last_query();
+if ($query->num_rows() > 0) {
+        return $query->result_array();
     }
+}
 
 
  public function sales_product_all() {
